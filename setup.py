@@ -11,7 +11,7 @@ setuptools.setup(
 	description="A Python tool for feature selection of multiplex single-cell tropism experiments. ",
 	long_description=long_description,
 	long_description_content_type="text/markdown",
-	url="https://github.com/ArpiarSaundersLab/annsql",
+	url="https://github.com/ArpiarSaundersLab/tap",
 	packages=setuptools.find_packages(where='src'),  
 	package_dir={'': 'src'},  
 	python_requires='>=3.12',

@@ -29,7 +29,7 @@ parameters = {
 	"categories" ["cell_type"]
 }
 
-results = t.build(adata,parameters)
+results = t.build(parameters)
 ```
 
 <br>
