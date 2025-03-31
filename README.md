@@ -19,12 +19,14 @@
 <br>
 
 ## Usage
-TAP generates an html output file that can be opened in any browser locally, hosted on a server, or shared.  
+TAP accepts an AnnData object and generates an interactive UI in the form of a html file that can be opened in any browser locally, hosted on a server, or shared. 
 ```python
 import tap
 
 parameters = {
-
+	"filename" : "my_file.h5ad"
+	"genes": ["AAV1","AAV2","AAV9","AAV9.Retro"]
+	"categories" ["cell_type"]
 }
 
 results = t.build(adata,parameters)

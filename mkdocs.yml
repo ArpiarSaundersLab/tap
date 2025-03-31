@@ -1,0 +1,26 @@
+site_name: TAP Docs
+nav:
+  - Home: index.md
+  - Installation: install.md
+  - Tutorials:
+    - Basic Usage: basic_usage.ipynb
+    - Advanced Usage: advanced_usage.ipynb
+    - Example: "https://github.com/ArpiarSaundersLab/tap"
+  - API:
+    - TAP: tap.md
+  - Reference: cite.md
+  - Github: "https://github.com/ArpiarSaundersLab/tap"
+plugins:
+    - mkdocs-jupyter:
+          theme: dark
+          ignore_h1_titles: True
+    - mkdocstrings:
+        handlers:
+          python:
+            setup_commands:
+              - import sys
+              - sys.path.append("src")
+theme:
+    name: material
+    palette:
+        scheme: slate
