@@ -10,35 +10,34 @@
 <br>
 
 # Tropism Analysis Package
-*TAP* helps drive discovery of host factors associated with viral tropism in scRNA-seq (or nuclei) datasets.
+**TAP** helps drive discovery of host factors associated with viral tropism in scRNA-seq (or nuclei) datasets.
 
 ## Features
 - Explore your data in an interactive user interface.
-- Uses an ensemble ML approach to rank important features of tropism
-
-<br>
+- Uses an ensemble ML approach to rank important features of tropism.
+- Easily share results as an HTML file.
+- Simple and configurable parameters.
 
 ## Usage
-TAP accepts an AnnData object and generates an interactive UI in the form of a html file that can be opened in any browser locally, hosted on a server, or shared. 
+TAP accepts an AnnData object and generates an interactive UI in the form of a html file that can be opened in any browser, hosted on a server, or shared. A basic usage example is displayed below. Please see our documentation to go down the rabbit hole of parameters available for tuning your taps.
 ```python
 import tap
 
 parameters = {
-	"filename" : "my_file.h5ad"
-	"genes": ["AAV1","AAV2","AAV9","AAV9.Retro"]
-	"categories" ["cell_type"]
+	"filename" : "my_file.h5ad",
+	"name": "Macaque No Dialout",
+	"genes": ["AAV1","AAV2","AAV9","AAV9.Retro"],
+	"categories": ["cell_type"],
+	"outputPath": ".",
 }
 
 results = t.build(parameters)
 ```
 
-<br>
-
 ## Live Example
 
 <br>
-<br>
 
 ## Citation
-<br>
+
 <br>
