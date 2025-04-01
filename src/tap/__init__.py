@@ -1,1 +1,1 @@
-from .tap import tap
+from .tap import TAP

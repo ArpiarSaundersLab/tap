@@ -1,3 +1,29 @@
+Metadata-Version: 2.4
+Name: TAP
+Version: 0.0.1
+Summary: A Python tool for feature selection of multiplex single-cell tropism experiments. 
+Home-page: https://github.com/ArpiarSaundersLab/tap
+Author: Kenny Pavan
+Author-email: pavan@ohsu.edu
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: scanpy>=1.10.3
+Requires-Dist: annsql>=1.0.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 <p align="center">
 	<img src="assets/images/logo.png" width=150>
 </p>

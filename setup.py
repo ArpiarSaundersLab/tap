@@ -13,7 +13,11 @@ setuptools.setup(
 	long_description_content_type="text/markdown",
 	url="https://github.com/ArpiarSaundersLab/tap",
 	packages=setuptools.find_packages(where='src'),  
-	package_dir={'': 'src'},  
+	package_dir={'': 'src'}, 
+    include_package_data=True,
+    package_data={
+        "tap": ["templates/*.html"]
+    },
 	python_requires='>=3.12',
 	classifiers=[
 		"Programming Language :: Python :: 3",

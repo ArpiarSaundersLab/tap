@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/TAP.egg-info/PKG-INFO
+src/TAP.egg-info/SOURCES.txt
+src/TAP.egg-info/dependency_links.txt
+src/TAP.egg-info/requires.txt
+src/TAP.egg-info/top_level.txt
+src/tap/__init__.py
+src/tap/tap.py
+src/tap/templates/tap.html
+tests/testBuild.py
