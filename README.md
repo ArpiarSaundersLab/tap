@@ -21,17 +21,17 @@
 ## Usage
 TAP accepts an AnnData object and generates an interactive UI in the form of a html file that can be opened in any browser, hosted on a server, or shared. A basic usage example is displayed below. Please see our documentation to go down the rabbit hole of parameters available for tuning your taps.
 ```python
-import tap
+import tap as t
 
 parameters = {
 	"filename" : "my_file.h5ad",
 	"name": "Macaque No Dialout",
-	"genes": ["AAV1","AAV2","AAV9","AAV9.Retro"],
+	"genes": ["AAV1","AAV2","AAV9"],
 	"categories": ["cell_type"],
 	"outputPath": ".",
 }
 
-results = t.build(parameters)
+results = t.TAP(**parameters)
 ```
 
 ## Live Example

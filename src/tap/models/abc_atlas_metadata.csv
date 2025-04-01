@@ -1,0 +1,339 @@
+subclass_label,subclass_id_label,subclass.markers.combo,subclass.tf.markers.combo,nt_type_label,class_label
+CLA-EPd-CTX Car3 Glut,001 CLA-EPd-CTX Car3 Glut,"Car3,Slc17a7","Cux2,Satb2,Nr4a2,Zfhx4,Pou6f2",Glut,IT-ET Glut
+IT EP-CLA Glut,002 IT EP-CLA Glut,"Npsr1,Satb2,Plekha2","Satb2,Pparg,Bcl11b,Foxo6,Lin28b,Hes1,Nr4a2,Tox3",Glut,IT-ET Glut
+L5/6 IT TPE-ENT Glut,003 L5/6 IT TPE-ENT Glut,"Susd5,Slc17a7,Mas1","Sox9,Satb2,Fezf2,Pou6f2,Foxo6,Nr2f2",Glut,IT-ET Glut
+L6 IT CTX Glut,004 L6 IT CTX Glut,"Herc6,Slc17a7,Blnk,Sulf1,Gucy1a1,Pde7b","Pou6f2,Satb2,Pparg,Bcl11b,Tox",Glut,IT-ET Glut
+L5 IT CTX Glut,005 L5 IT CTX Glut,"Trbc2,Slc17a7,Prrg1,Arhgap25","Mkx,Satb2,Fezf2,Pou6f2,Lhx2",Glut,IT-ET Glut
+L4/5 IT CTX Glut,006 L4/5 IT CTX Glut,"Col26a1,Satb2,Herc6,Rorb","Rorb,Satb2,Lhx2,Cux2,Pou6f2",Glut,IT-ET Glut
+L2/3 IT CTX Glut,007 L2/3 IT CTX Glut,"Stard8,Slc17a7,Ccbe1,Otof","Glis3,Satb2,Lhx2,Zfhx4",Glut,IT-ET Glut
+L2/3 IT ENT Glut,008 L2/3 IT ENT Glut,"Cd44,Slc17a7,Cemip","Cux2,Satb2,Neurod2,Nr2f2,Klf3,Meis2,Tox2",Glut,IT-ET Glut
+L2/3 IT PIR-ENTl Glut,009 L2/3 IT PIR-ENTl Glut,"Igfn1,Cntnap5a,Dach1,Bcl11a","Zfp536,Tbr1,Egr3,Zfhx4,Bcl11a,Nr2f2,Npas3,Myt1l",Glut,IT-ET Glut
+IT AON-TT-DP Glut,010 IT AON-TT-DP Glut,"Abi3bp,C1ql3,Prss23","Zfp536,Tbr1,Egr3,Zfhx4,Bcl11a,Myt1l,Lin28b",Glut,IT-ET Glut
+L2 IT ENT-po Glut,011 L2 IT ENT-po Glut,"Lef1,Itpka","Lef1,Neurod6,Nr4a2",Glut,IT-ET Glut
+MEA Slc17a7 Glut,012 MEA Slc17a7 Glut,"Zic5,Slc17a7,Crym","Zic5,Bhlhe22,Egr3",Glut,IT-ET Glut
+COAp Grxcr2 Glut,013 COAp Grxcr2 Glut,"Trh,Slc17a7","Foxo1,Neurod2,Egr3,Rorb,Nr2f2,Zfpm2,Bhlhe22,Lin28b",Glut,IT-ET Glut
+LA-BLA-BMA-PA Glut,014 LA-BLA-BMA-PA Glut,"Calb2,Ccn3,C1ql3,Man1a","Id4,Fezf2,Bcl11b,Nr2f2,Pou6f2,Zfpm2",Glut,IT-ET Glut
+ENTmv-PA-COAp Glut,015 ENTmv-PA-COAp Glut,"Abca8a,Sv2b,Dcn","Id4,Neurod2,Fosl2,Lhx9",Glut,IT-ET Glut
+CA1-ProS Glut,016 CA1-ProS Glut,"Fibcd1,Spink8","Zfhx4,Neurod6,Fezf2,Bcl6,Satb2",Glut,IT-ET Glut
+CA3 Glut,017 CA3 Glut,"Tspan18,Slc17a7,Hes1","Lhx9,Neurod6,Foxg1,Hopx,Hes1",Glut,IT-ET Glut
+L2 IT PPP-APr Glut,018 L2 IT PPP-APr Glut,"Ctxn3,Satb2,Tll1","Glis3,Satb2,Pou3f3,Tox",Glut,IT-ET Glut
+L2/3 IT PPP Glut,019 L2/3 IT PPP Glut,"Cdc14a,Satb2,Meis2","Cux2,Satb2,Lhx2,Tshz2,Tox,Sox8,Tead1",Glut,IT-ET Glut
+L2/3 IT RSP Glut,020 L2/3 IT RSP Glut,"Cxcl14,Satb2,Grik3,Brinp3","Pparg,Ovol2,Tshz2,Tox,Zfpm2,Tbr1",Glut,IT-ET Glut
+L4 RSP-ACA Glut,021 L4 RSP-ACA Glut,"Il22,Cbln1","Irf8,Myt1l,Tshz2",Glut,IT-ET Glut
+L5 ET CTX Glut,022 L5 ET CTX Glut,"Lratd2,Slc17a7,Fezf2","L3mbtl4,Fezf2,Bcl11b,Mkx",Glut,IT-ET Glut
+SUB-ProS Glut,023 SUB-ProS Glut,"Rab38,Pou3f1,Hcn1","Fezf2,Bcl6,Sox8,Zfpm2,Nr2f2",Glut,IT-ET Glut
+L5 PPP Glut,024 L5 PPP Glut,Lipm,"L3mbtl4,Satb2,Fezf2,Nr2f2",Glut,IT-ET Glut
+CA2-FC-IG Glut,025 CA2-FC-IG Glut,"Map3k15,Slc17a7","Zfp536,Ovol2,Fezf2",Glut,IT-ET Glut
+NLOT Rho Glut,026 NLOT Rho Glut,"Sim1,Slc17a7","Sim1,Tbr1",Glut,IT-ET Glut
+L6b EPd Glut,027 L6b EPd Glut,"Calca,Satb2","Pou6f2,Satb2,Fezf2,Bcl11b,Meis2,Hes1",Glut,NP-CT-L6b Glut
+L6b/CT ENT Glut,028 L6b/CT ENT Glut,"Cplx3,Nxph3,Npr3","Foxp2,Satb2,Nr2f2,Zeb2",Glut,NP-CT-L6b Glut
+L6b CTX Glut,029 L6b CTX Glut,"Clic5,Cplx3","Foxp2,Satb2,Pou6f2,Zfpm2,Bcl11b",Glut,NP-CT-L6b Glut
+L6 CT CTX Glut,030 L6 CT CTX Glut,"Syt6,Tbr1,Rprm","Foxp2,Satb2,Pou3f3,Zfpm2,Pou6f2",Glut,NP-CT-L6b Glut
+CT SUB Glut,031 CT SUB Glut,"Sntb1,Prss35,Ankrd33b","Foxp2,Tbr1,Rorb,Nr2f2,Zfpm2,Grhl1",Glut,NP-CT-L6b Glut
+L5 NP CTX Glut,032 L5 NP CTX Glut,"Nxph1,Fezf2,Satb2","Foxp2,Fezf2,Meis2,Pou3f3,Ascl1,Tox2",Glut,NP-CT-L6b Glut
+NP SUB Glut,033 NP SUB Glut,"Crybg1,Nxph3","Mafa,Fezf2,Rorb,Nr4a2",Glut,NP-CT-L6b Glut
+NP PPP Glut,034 NP PPP Glut,"Aox3,Rxfp1","Foxp2,Satb2,Pou3f3,Nr2f2",Glut,NP-CT-L6b Glut
+OB Eomes Ms4a15 Glut,035 OB Eomes Ms4a15 Glut,"Eomes,Cck","Eomes,Mkx",Glut,OB-CR Glut
+HPF CR Glut,036 HPF CR Glut,"Trp73,Ndnf","Trp73,Ebf3",Glut,OB-CR Glut
+DG Glut,037 DG Glut,"Prox1,Itpka,C1ql3","Prox1,Glis3,Egr3",Glut,DG-IMN Glut
+DG-PIR Ex IMN,038 DG-PIR Ex IMN,"Mex3a,Neurod1","Prox1,Tbr1,Sox4,Pou3f3",Glut,DG-IMN Glut
+OB Meis2 Thsd7b Gaba,039 OB Meis2 Thsd7b Gaba,"Gm5087,Foxp2,Gabra3","Foxp2,Arx,Nfix,Meis1,Npas2",GABA,OB-IMN GABA
+OB Trdn Gaba,040 OB Trdn Gaba,"Ctxn3,Ndnf","Zeb2,Sp9,Meis2,Bcl6,Bcl11b",GABA,OB-IMN GABA
+OB-in Frmd7 Gaba,041 OB-in Frmd7 Gaba,"Vipr2,Frmd7,Tenm4","Pparg,Sp8,Bcl11b,Zeb2,Meis2,Dlx1",GABA,OB-IMN GABA
+OB-out Frmd7 Gaba,042 OB-out Frmd7 Gaba,"Apold1,Kcnmb2","Zic2,Sp8,Etv1,Zeb2",GABA,OB-IMN GABA
+OB-mi Frmd7 Gaba,043 OB-mi Frmd7 Gaba,"Frmd7,Vip,Tcap","Sall3,St18,Dlx1",GABA,OB-IMN GABA
+OB Dopa-Gaba,044 OB Dopa-Gaba,"Lpar1,Lgr5,Zeb2","Nfatc1,Dlx1",GABA,OB-IMN GABA
+OB-STR-CTX Inh IMN,045 OB-STR-CTX Inh IMN,"2610307P16Rik,Dlx1,Zeb2","Pax6,Dlx2,Zeb2,Bcl11b,Meis2,Nfix",GABA,OB-IMN GABA
+Vip Gaba,046 Vip Gaba,"Grpr,Vip","Sall1,Prox1,Npas1",GABA,CTX-CGE GABA
+Sncg Gaba,047 Sncg Gaba,"Egln3,Dlx1as,Galnt18","Npas1,Sp8",GABA,CTX-CGE GABA
+RHP-COA Ndnf Gaba,048 RHP-COA Ndnf Gaba,"Ndnf,Htr3a,Gad2,Ntng1","Npas1,Arx,Zeb2,Myt1l,Maf,Nfib,Tox2,Rara",GABA,CTX-CGE GABA
+Lamp5 Gaba,049 Lamp5 Gaba,"Cplx3,Ndnf","Prox1,Maf,Dlx1,Tox3,Tshz1,Nr2f2",GABA,CTX-CGE GABA
+Lamp5 Lhx6 Gaba,050 Lamp5 Lhx6 Gaba,"Mctp2,Lhx6,Cryab","Arid5a,Lhx6,Nr2e1",GABA,CTX-MGE GABA
+Pvalb chandelier Gaba,051 Pvalb chandelier Gaba,"Pvalb,Vipr2","Maf,Lhx6,Nfib,Scrt2,Zbtb7c,Ikzf2",GABA,CTX-MGE GABA
+Pvalb Gaba,052 Pvalb Gaba,"Rbp4,Lhx6,Zfp804b","Creb5,Lhx6,Klf5",GABA,CTX-MGE GABA
+Sst Gaba,053 Sst Gaba,"Rbp4,Lhx6,Reln","Mafb,Npas1,Sox6,Zeb2",GABA,CTX-MGE GABA
+STR Prox1 Lhx6 Gaba,054 STR Prox1 Lhx6 Gaba,"Gna14,Lhx6","St18,Maf,Sox2",GABA,CNU-MGE GABA
+STR Lhx8 Gaba,055 STR Lhx8 Gaba,"Lhx8,St18","St18,Lhx6,Zic1",GABA,CNU-MGE GABA
+Sst Chodl Gaba,056 Sst Chodl Gaba,"Lhx6,Hhip","L3mbtl4,Lhx6,Sox2,Rarb",GABA,CNU-MGE GABA
+NDB-SI-MA-STRv Lhx8 Gaba,057 NDB-SI-MA-STRv Lhx8 Gaba,"Gbx1,Lhx6,Sox6","Gbx1,Lhx6,Sox6",GABA,CNU-MGE GABA
+PAL-STR Gaba-Chol,058 PAL-STR Gaba-Chol,"Chat,Lhx8","Nkx2-1,Zic1,Nfib,Tshz2",Chol,CNU-MGE GABA
+GPe-SI Sox6 Cyp26b1 Gaba,059 GPe-SI Sox6 Cyp26b1 Gaba,"Lcp1,Sox6","Npas1,Sox6,Prox1,Arx",GABA,CNU-LGE GABA
+OT D3 Folh1 Gaba,060 OT D3 Folh1 Gaba,"Drd3,Prok2","Foxp2,Isl1,Egr3,Tshz1",GABA,CNU-LGE GABA
+STR D1 Gaba,061 STR D1 Gaba,"Prkch,Slc32a1,Drd1","Ebf1,Six3,Egr3",GABA,CNU-LGE GABA
+STR D2 Gaba,062 STR D2 Gaba,"Adora2a,Phactr1,Pcp4l1","Sox8,Six3,Sp9,Klf5",GABA,CNU-LGE GABA
+STR D1 Sema5a Gaba,063 STR D1 Sema5a Gaba,"Rbp1,Gpr88,Alk","Six3,Egr3,Foxp2,Tox,Tshz1,Pou3f4",GABA,CNU-LGE GABA
+STR-PAL Chst9 Gaba,064 STR-PAL Chst9 Gaba,"Chst9,Six3,Meis2","Six3,Foxp2,Sp9,Nfib",GABA,CNU-LGE GABA
+IA Mgp Gaba,065 IA Mgp Gaba,"Col23a1,Sp9,Adarb2,Foxg1,Nxph1","Foxp2,Arx,Nfix,Rreb1,Myt1l",GABA,CNU-LGE GABA
+NDB-SI-ant Prdm12 Gaba,066 NDB-SI-ant Prdm12 Gaba,"Prdm12,Foxp2,Meis2,Pcp4l1","Prdm12,Foxp2,Meis2,Zic1,Pax6",GABA,CNU-HYa GABA
+LSX Sall3 Pax6 Gaba,067 LSX Sall3 Pax6 Gaba,"Prdm12,Eya4,Gria1","Prdm12,Pax6,Sall3",GABA,LSX GABA
+LSX Otx2 Gaba,068 LSX Otx2 Gaba,"Otx2os1,Ptk2b,Slc32a1","Otx2,Sp9,Six3",GABA,LSX GABA
+LSX Nkx2-1 Gaba,069 LSX Nkx2-1 Gaba,"C130074G19Rik,Lbhd2,Slc32a1,Tox","Zic5,Sp8,Prdm16,Zic4,Tox",GABA,LSX GABA
+LSX Prdm12 Slit2 Gaba,070 LSX Prdm12 Slit2 Gaba,"Prdm12,Hs3st2,Shisa9,Runx1t1","Prdm12,Myt1l,Prdm16,Isl1,Egr3",GABA,LSX GABA
+LSX Prdm12 Zeb2 Gaba,071 LSX Prdm12 Zeb2 Gaba,"Ano1,Myo5b,Zeb2,Slc18a2","Prdm12,Myt1l,Zeb2,Isl1",GABA,LSX GABA
+LSX Sall3 Lmo1 Gaba,072 LSX Sall3 Lmo1 Gaba,"Col6a3,Trpc4,Ptprm","Prdm12,Zic5,Zeb2,Myt1l,Prdm16",GABA,LSX GABA
+MEA-BST Sox6 Gaba,073 MEA-BST Sox6 Gaba,"B130024G19Rik,Sox6,Slc32a1,Cxcl14","Sox6,Dlx1,Nr2f2,Myt1l,Bcl11b,Tshz2,Zbtb7c",GABA,CNU-HYa GABA
+MEA-BST Lhx6 Sp9 Gaba,074 MEA-BST Lhx6 Sp9 Gaba,"Nxph2,Scn5a,Sox2ot,Fign","Lhx6,Zfp831,Foxp2,Peg3",GABA,CNU-HYa GABA
+MEA-BST Lhx6 Nr2e1 Gaba,075 MEA-BST Lhx6 Nr2e1 Gaba,"Nr2e1,Lhx6,Satb1","Nr2e1,Lhx6,Satb1",GABA,CNU-HYa GABA
+MEA-BST Lhx6 Nfib Gaba,076 MEA-BST Lhx6 Nfib Gaba,"Greb1,Lhx6,Nfib","Prox1,Lhx6,Rreb1,Nr2f2",GABA,CNU-HYa GABA
+CEA-BST Gal Avp Gaba,077 CEA-BST Gal Avp Gaba,"Avp,Meis2","Esr2,Isl1,Nr2f2",GABA,CNU-HYa GABA
+SI-MA-ACB Ebf1 Bnc2 Gaba,078 SI-MA-ACB Ebf1 Bnc2 Gaba,"Bnc2,Gad1,Meis2","Bnc2,Dlx6,Meis2",GABA,CNU-HYa GABA
+CEA-BST Six3 Cyp26b1 Gaba,079 CEA-BST Six3 Cyp26b1 Gaba,"Cyp26b1,Six3","Pax6,Six3,Zfp831,Id4",GABA,CNU-HYa GABA
+CEA-AAA-BST Six3 Sp9 Gaba,080 CEA-AAA-BST Six3 Sp9 Gaba,"Six3,Egr3,Nr2f2,Gpr88,Tshz1,Spock1","Six3,Egr3,Nr2f2,Bcl11b,Tshz1,Id4",GABA,CNU-HYa GABA
+ACB-BST-FS D1 Gaba,081 ACB-BST-FS D1 Gaba,"Zfp503,Sox1ot,Rprml,Wls,Elavl4","Foxp2,Isl1,Meis2,Nr2f1,Zim1",GABA,CNU-HYa GABA
+CEA-BST Ebf1 Pdyn Gaba,082 CEA-BST Ebf1 Pdyn Gaba,"Ebf1,Dlx6,6430628N08Rik,Fgf14","Ebf1,Dlx6,Bcl11b,Myt1l,Zfp831,Aff2",GABA,CNU-HYa GABA
+CEA-BST Rai14 Pdyn Crh Gaba,083 CEA-BST Rai14 Pdyn Crh Gaba,"Rai14,Tac2,Gda","Isl1,Egr3,Pou3f3,Zim1,Arx",GABA,CNU-HYa GABA
+BST-SI-AAA Six3 Slc22a3 Gaba,084 BST-SI-AAA Six3 Slc22a3 Gaba,"Slc22a3,Six3,Dach2","Npas1,Six3,Foxg1",GABA,CNU-HYa GABA
+SI-MPO-LPO Lhx8 Gaba,085 SI-MPO-LPO Lhx8 Gaba,"Gbx2,Lhx6,Foxp2","Gbx2,Lhx6,Foxp2",GABA,CNU-HYa GABA
+MPO-ADP Lhx8 Gaba,086 MPO-ADP Lhx8 Gaba,"Lhx8,Islr2,Pde11a","Lhx6,Zfhx4,Myt1l,Zic1,Tox",GABA,CNU-HYa GABA
+MPN-MPO-LPO Lhx6 Zfhx3 Gaba,087 MPN-MPO-LPO Lhx6 Zfhx3 Gaba,"Gm29683,Lhx6,Pde11a","Lhx6,Zfhx3,Sox2",GABA,CNU-HYa GABA
+BST Tac2 Gaba,088 BST Tac2 Gaba,"Satb2,Slc32a1,Lamp5","Isl1,Foxg1,Nr2f2,Myt1l,Arx,Dlx1",GABA,CNU-HYa GABA
+PVR Six3 Sox3 Gaba,089 PVR Six3 Sox3 Gaba,"Rorb,Six3,Ano1,Zic1","Rorb,Six3,Zic4,Isl1",GABA,CNU-HYa GABA
+BST-MPN Six3 Nrgn Gaba,090 BST-MPN Six3 Nrgn Gaba,"Rspo1,Six3,B130024G19Rik,Slc32a1","Six3,Foxg1,Nr2f2,Zic1",GABA,CNU-HYa GABA
+ARH-PVi Six6 Dopa-Gaba,091 ARH-PVi Six6 Dopa-Gaba,"Slc6a3,Coch","Sox6,Satb2",Dopa,HY GABA
+TMv-PMv Tbx3 Hist-Gaba,092 TMv-PMv Tbx3 Hist-Gaba,"Hdc,Gap43","Tbx3,Barhl2",Hist,HY GABA
+RT-ZI Gnb3 Gaba,093 RT-ZI Gnb3 Gaba,"Cplx3,Six3","Creb5,Six3,Meis2",GABA,HY GABA
+SCH Six6 Cdc14a Gaba,094 SCH Six6 Cdc14a Gaba,"Six6,Cdc14a","Six6,Zic4,Klf5",GABA,HY GABA
+DMH Prdm13 Gaba,095 DMH Prdm13 Gaba,"Prdm13,Gad1,Zfhx4","Prdm13,St18,Zfhx4",GABA,HY GABA
+PVHd Gsc Gaba,096 PVHd Gsc Gaba,"Gsc,Gad1","Gsc,Meis2",GABA,HY GABA
+PVHd-SBPV Six3 Prox1 Gaba,097 PVHd-SBPV Six3 Prox1 Gaba,"Arx,Prox1,Isl1,Sox2ot","Arx,Prox1,Isl1,Myt1l,Sox2",GABA,HY GABA
+AHN-SBPV-PVHd Pdrm12 Gaba,098 AHN-SBPV-PVHd Pdrm12 Gaba,"Prdm12,Lrfn5,Nr2f2,Dlx1","Prdm12,Myt1l,Nr2f2,Dlx1",GABA,HY GABA
+SBPV-PVa Six6 Satb2 Gaba,099 SBPV-PVa Six6 Satb2 Gaba,"Six6,Satb2,Gria3,Grid2","Six6,Lhx1,Tox3,Esr1",GABA,HY GABA
+AHN Onecut3 Gaba,100 AHN Onecut3 Gaba,"Onecut3,Slc32a1,Gda","Onecut3,Arx,Myt1l",GABA,HY GABA
+ZI Pax6 Gaba,101 ZI Pax6 Gaba,"Pax6,Isl1,Lingo2,Nr2f2","Pax6,Pou6f2,Myt1l,Lhx1,Arx,Meis2",GABA,HY GABA
+DMH-LHA Gsx1 Gaba,102 DMH-LHA Gsx1 Gaba,"Gsx1,Cntnap5a,Prox1","Gsx1,Isl1,Prox1",GABA,HY GABA
+PVHd-DMH Lhx6 Gaba,103 PVHd-DMH Lhx6 Gaba,"Lhx6,Glra1,Sp9","Lhx6,St18,Npas1",GABA,HY GABA
+TU-ARH Otp Six6 Gaba,104 TU-ARH Otp Six6 Gaba,"Six6,Otp","Six6,Otp",GABA,HY GABA
+TMd-DMH Foxd2 Gaba,105 TMd-DMH Foxd2 Gaba,"Sox14,Dlx1","Sox14,Dlx1",GABA,HY GABA
+PVpo-VMPO-MPN Hmx2 Gaba,106 PVpo-VMPO-MPN Hmx2 Gaba,"Hmx2,Slc32a1,Foxg1,Gal","Hmx2,Dlx1,Foxg1,Esr1",GABA,HY GABA
+DMH Hmx2 Gaba,107 DMH Hmx2 Gaba,"Lef1,Dlx1,Dlk1,Gal","Hmx2,Dlx1,Nr2f2,Peg3",GABA,HY GABA
+ARH-PVp Tbx3 Gaba,108 ARH-PVp Tbx3 Gaba,"Tbx3,Usp29,Slc32a1,Dlk1","Tbx3,Dlx1,Six3,Peg3",GABA,HY GABA
+LGv-ZI Otx2 Gaba,109 LGv-ZI Otx2 Gaba,"Otx2,Sp9,Lrrtm4,Rmst","Otx2,Sp9,Myt1l,Tshz2",GABA,HY GABA
+BST-po Iigp1 Glut,110 BST-po Iigp1 Glut,"Cpa6,Gm31938","Zfp114,Dmrtb1,Sox5",Glut,CNU-HYa Glut
+TRS-BAC Sln Glut,111 TRS-BAC Sln Glut,"Adgrd1,Sln","Eomes,Ebf2",Glut,CNU-HYa Glut
+GPi Tbr1 Cngb3 Gaba-Glut,112 GPi Tbr1 Cngb3 Gaba-Glut,"Cngb3,Grm5","Pax6,Tbr1",Glut-GABA,CNU-HYa Glut
+MEA-COA-BMA Ccdc42 Glut,113 MEA-COA-BMA Ccdc42 Glut,"Kcnh3,Scn5a,Adcyap1,Csmd3,Trhr,B130024G19Rik","Egr3,Zbtb7c,Nr2f2,Zim1,Id2,Myt1l,Meis2,Foxg1",Glut,CNU-HYa Glut
+COAa-PAA-MEA Barhl2 Glut,114 COAa-PAA-MEA Barhl2 Glut,"Kcnh3,Nxph4,Lhx9,Fam155a","Lhx2,Barhl2,Egr3,Myt1l,Nr2f2",Glut,CNU-HYa Glut
+MS-SF Bsx Glut,115 MS-SF Bsx Glut,"Bmp7,Isl1","Onecut3,Isl1,Zic1",Glut,CNU-HYa Glut
+AVPV-MEPO-SFO Tbr1 Glut,116 AVPV-MEPO-SFO Tbr1 Glut,"Gng8,Gad2,Tbr1","Emx2,Zic1,Lhx9,Tub,Six3",Glut,CNU-HYa Glut
+LHA Barhl2 Glut,117 LHA Barhl2 Glut,"Samd3,AW551984,Lingo2,Meis2,Prlr","Tbr1,Barhl2,Tox,Meis2,Lhx5,Peg3",Glut,CNU-HYa Glut
+ADP-MPO Trp73 Glut,118 ADP-MPO Trp73 Glut,"Trp73,Nrsn2","Trp73,Myt1l,Zfhx3",Glut,CNU-HYa Glut
+SI-MA-LPO-LHA Skor1 Glut,119 SI-MA-LPO-LHA Skor1 Glut,"Il31ra,Dmrta2,Galntl6","Dmrta2,Myt1l,Meis2,Tshz2",Glut,CNU-HYa Glut
+MEA Otp Foxp2 Glut,120 MEA Otp Foxp2 Glut,"Megf10,Slc17a6,Stc1","Otp,Egr3,Foxp2",Glut,CNU-HYa Glut
+MEA-BST Otp Zic2 Glut,121 MEA-BST Otp Zic2 Glut,"Otp,Zic4,Cxcl14","Otp,Zic4,Foxg1,Nr2f2",Glut,CNU-HYa Glut
+LHA-MEA Otp Glut,122 LHA-MEA Otp Glut,"Otp,Lhx2,Nrgn","Otp,Lhx2,Foxg1",Glut,CNU-HYa Glut
+DMH Nkx2-4 Glut,123 DMH Nkx2-4 Glut,"Tafa4,Asb4","Bsx,Nkx2-4,Prox1",Glut,HY Glut
+MPN-MPO-PVpo Hmx2 Glut,124 MPN-MPO-PVpo Hmx2 Glut,"Foxg1,Sfta3-ps,Slc17a6","Foxg1,Lhx5,Myt1l,Nkx2-1",Glut,HY Glut
+DMH Hmx2 Glut,125 DMH Hmx2 Glut,"Hmx2,Lef1,Slc17a6","Onecut3,Isl1,Rorb",Glut,HY Glut
+ARH-PVp Tbx3 Glut,126 ARH-PVp Tbx3 Glut,"Tbx3,Slc17a6,Bsx","Tbx3,Myt1l,Nhlh2,Nkx2-1",Glut,HY Glut
+DMH-LHA Vgll2 Glut,127 DMH-LHA Vgll2 Glut,Vgll2,"Rfx4,Lhx9",Glut,HY Glut
+VMH Fezf1 Glut,128 VMH Fezf1 Glut,"Fezf1,Sfta3-ps,Htr7","Fezf1,Nkx2-1,Peg3",Glut,HY Glut
+VMH Nr5a1 Glut,129 VMH Nr5a1 Glut,"Nr5a1,Lingo2","Nr5a1,Myt1l",Glut,HY Glut
+LHA Pmch Glut,130 LHA Pmch Glut,"Parpbp,Pmch","Otx1,Nkx2-1",Glut,HY Glut
+LHA-AHN-PVH Otp Trh Glut,131 LHA-AHN-PVH Otp Trh Glut,"Sim2,Sgcz","Sim2,Sim1",Glut,HY Glut
+AHN-RCH-LHA Otp Fezf1 Glut,132 AHN-RCH-LHA Otp Fezf1 Glut,"Otp,Fezf1,Ebf1","Otp,Fezf1,Ebf1",Glut,HY Glut
+PVH-SO-PVa Otp Glut,133 PVH-SO-PVa Otp Glut,"Otp,Pdyn,Tns1,Cadps2,Unc5d","Otp,Sim1,Creb3l2,Lhx5,Uncx,Zbtb7c",Glut,HY Glut
+PH-ant-LHA Otp Bsx Glut,134 PH-ant-LHA Otp Bsx Glut,"Otp,Bsx,Slc17a6","Otp,Bsx,Sim1",Glut,HY Glut
+STN-PSTN Pitx2 Glut,135 STN-PSTN Pitx2 Glut,"Cdh23,Lmx1a","Lmx1a,Barhl2,Ebf2",Glut,HY Glut
+PMv-TMv Pitx2 Glut,136 PMv-TMv Pitx2 Glut,"Irx3,Lmx1a,Gabrg3,C1ql3","Irx3,Lmx1a,Nr4a2,Peg3",Glut,HY Glut
+PH-an Pitx2 Glut,137 PH-an Pitx2 Glut,"Pax7,Slc17a6","Pax7,Sim1",Glut,HY Glut
+PH Pitx2 Glut,138 PH Pitx2 Glut,"Irx3,Lmx1a,Dmrta2,Grid2,Lncenc1","Irx3,Lmx1a,Dmrta2,Peg3",Glut,HY Glut
+PH-LHA Foxb1 Glut,139 PH-LHA Foxb1 Glut,"Foxb1,Pitx2,Frmpd4","Foxb1,Pitx2,Thrb,Mkx",Glut,HY Glut
+PMd-LHA Foxb1 Glut,140 PMd-LHA Foxb1 Glut,"Foxb1,Emx2","Foxb1,Emx2",Glut,HY Glut
+PH-SUM Foxa1 Glut,141 PH-SUM Foxa1 Glut,"Lmx1a,Zeb2,Gap43","Lmx1a,Zeb2,Pitx2",Glut,HY Glut
+HY Gnrh1 Glut,142 HY Gnrh1 Glut,Gnrh1,"Six1,Six6",Glut,HY Gnrh1 Glut
+MM-ant Foxb1 Glut,143 MM-ant Foxb1 Glut,"Tacstd2,Foxb1,Gpc6","Foxb1,Lhx1,Sox5,L3mbtl4",Glut,HY MM Glut
+MM Foxb1 Glut,144 MM Foxb1 Glut,"Sall3,Foxb1","Sall3,Foxb1",Glut,HY MM Glut
+MH Tac2 Glut,145 MH Tac2 Glut,"Ano1,Gng8","Sox6,Nr4a2,Pou4f1",Glut,MH-LH Glut
+LH Pou4f1 Sox1 Glut,146 LH Pou4f1 Sox1 Glut,"Sox1ot,Pou4f1","Pou4f1,Zic4,Shox2,Nr4a2",Glut,MH-LH Glut
+AD Serpinb7 Glut,147 AD Serpinb7 Glut,"C1ql2,Zic1","Zbtb16,Shox2,Zic5,Gbx2",Glut,TH Glut
+AV Col27a1 Glut,148 AV Col27a1 Glut,"Npsr1,Trpm6","Pparg,Shox2,Zic1,Sox5,Neurod1",Glut,TH Glut
+PVT-PT Ntrk1 Glut,149 PVT-PT Ntrk1 Glut,"Bcl11b,Gbx2,Zic5","Bcl11b,Gbx2,Zic5",Glut,TH Glut
+CM-IAD-CL-PCN Sema5b Glut,150 CM-IAD-CL-PCN Sema5b Glut,"Sema5b,Gbx2,Edaradd","Bhlhe22,Gbx2,Foxp2,Nfia",Glut,TH Glut
+TH Prkcd Grin2c Glut,151 TH Prkcd Grin2c Glut,"Slc9a3r1,Shox2,Unc13c","Sox5,Shox2,Gbx2,Lef1,Foxp2",Glut,TH Glut
+RE-Xi Nox4 Glut,152 RE-Xi Nox4 Glut,"Nox4,Shox2,Rgs16","Rreb1,Shox2,Gbx2,Zic5,Esrrg",Glut,TH Glut
+MG-POL-SGN Nts Glut,153 MG-POL-SGN Nts Glut,"Otof,Gbx2,Lhfp","Smad3,Gbx2,Lef1,Esrrg",Glut,TH Glut
+PF Fzd5 Glut,154 PF Fzd5 Glut,"Ctxn3,Fzd5","Gli3,Shox2,Sox2",Glut,TH Glut
+PRC-PAG Pax6 Glut,155 PRC-PAG Pax6 Glut,"Pax6,Slc17a6,Barhl2","Pax6,Barhl2,Lin28b",Glut,MB Glut
+MB-ant-ve Dmrta2 Glut,156 MB-ant-ve Dmrta2 Glut,"Emx2,Dmrta2,Glra1,Cdh18","Emx2,Dmrta2,Uncx,Myt1l,Foxp2,Nr2f2",Glut,MB Glut
+RN Spp1 Glut,157 RN Spp1 Glut,"Spp1,Ttc6","Pou4f1,Esrrb,Uncx",Glut,MB Glut
+MRN-PAG Nkx6-1 Glut,158 MRN-PAG Nkx6-1 Glut,"Pitx2,Slc30a3","Pitx2,Pax5",Glut,MB Glut
+IF-RL-CLI-PAG Foxa1 Glut,159 IF-RL-CLI-PAG Foxa1 Glut,"Dmrta2,Ebf3,Prkg1,Nfib","Dmrta2,Ebf3,Nfib,Foxa2",Glut,MB Glut
+PAG-SC Neurod2 Meis2 Glut,160 PAG-SC Neurod2 Meis2 Glut,"Otx2os1,Shox2,Barhl1","Barhl1,Shox2,Nfib",Glut,MB Glut
+PAG Pou4f3 Glut,161 PAG Pou4f3 Glut,"Pou4f3,Sgcz,Ebf2","Pou4f3,Myt1l,Ebf2",Glut,MB Glut
+CUN Evx2 Lhx2 Glut,162 CUN Evx2 Lhx2 Glut,"Otx2,Lhx9,Evx2,Tenm2","Evx2,Ebf2,En1,Myt1l,Bnc2",Glut,MB Glut
+APN C1ql2 Glut,163 APN C1ql2 Glut,"Esrrb,Tfap2d,C1ql2","Esrrb,Tfap2d,Foxp2",Glut,MB Glut
+APN C1ql4 Glut,164 APN C1ql4 Glut,"Ctxn3,C1ql4","Tfap2d,Maf,Nr2f2,Onecut2",Glut,MB Glut
+PAG-MRN Pou3f1 Glut,165 PAG-MRN Pou3f1 Glut,"C1ql4,Shox2,Calb1","Irx1,Shox2,Foxp2,Ebf2,L3mbtl4,Zbtb7c",Glut,MB Glut
+MRN Pou3f1 C1ql4 Glut,166 MRN Pou3f1 C1ql4 Glut,"C1ql4,Shox2,Cacng3","Tcf7l2,Ebf3,Irx2,Pou6f2,Onecut2,Peg3",Glut,MB Glut
+PRC-PAG Tcf7l2 Irx2 Glut,167 PRC-PAG Tcf7l2 Irx2 Glut,"Zic4,Tfap2d,Lingo2,Irx2,Syt17,Galnt18","Zic4,Tfap2d,Peg3,Irx2",Glut,MB Glut
+SPA-SPFm-SPFp-POL-PIL-PoT Sp9 Glut,168 SPA-SPFm-SPFp-POL-PIL-PoT Sp9 Glut,"Sp9,Slc17a6,Klhl1,Tcf7l2,Dlgap2","Sp9,Shox2,Zfp536,Tcf7l2,Esrrg",Glut,MB Glut
+PAG-SC Pou4f1 Zic1 Glut,169 PAG-SC Pou4f1 Zic1 Glut,"Barhl1,Lhx9,Zic1,Tcf7l2,Zfhx4","Barhl1,Lhx9,Zic1,Tcf7l2,Zfhx4",Glut,MB Glut
+PAG-MRN Tfap2b Glut,170 PAG-MRN Tfap2b Glut,"Tfap2b,Bnc2,Shox2,Cck","Tfap2b,Bnc2,Shox2",Glut,MB Glut
+PAG Pou4f1 Bnc2 Glut,171 PAG Pou4f1 Bnc2 Glut,"Bnc2,Shox2,4930438E09Rik,Sorcs3","Bnc2,Shox2,Ebf2,Tox",Glut,MB Glut
+PAG Pou4f1 Ebf2 Glut,172 PAG Pou4f1 Ebf2 Glut,"Barhl1,Ebf2,D130079A08Rik,Kit,Lrrtm4","Barhl1,Ebf2,Pou4f1,Bcl11a,Tcf7l2",Glut,MB Glut
+PAG Pou4f2 Glut,173 PAG Pou4f2 Glut,"Sox6,Shox2,BC039966,Tenm2,Barhl1,Npsr1,Pou4f2","Sox6,Shox2,Barhl1,Zfhx4,Pou4f2",Glut,MB Glut
+PAG Pou4f2 Mesi2 Glut,174 PAG Pou4f2 Mesi2 Glut,"Gli3,Shox2,Npas1,Ntng2,Pou4f1","Gli3,Shox2,Npas1,Pou4f1",Glut,MB Glut
+SC Bnc2 Glut,175 SC Bnc2 Glut,"Sox6,Shox2,Csgalnact1,Bnc2","Sox6,Shox2,Bnc2,Tcf7l2,Zeb2,Ebf2",Glut,MB Glut
+SCig Foxb1 Glut,176 SCig Foxb1 Glut,"Foxb1,Tfap2b,Sox6","Foxb1,Tfap2b,Sox6",Glut,MB Glut
+SCig-an-PPT Foxb1 Glut,177 SCig-an-PPT Foxb1 Glut,"Foxb1,B130024G19Rik","Foxb1,Tcf7l2,Nr2f2",Glut,MB Glut
+SCig Foxb1 Otx2 Glut,178 SCig Foxb1 Otx2 Glut,"Foxb1,Nfix","Foxb1,Nfix",Glut,MB Glut
+SCdg-PAG Tfap2b Glut,179 SCdg-PAG Tfap2b Glut,"Tfap2b,Bnc2,D130079A08Rik","Tfap2b,Bnc2,Sox5,Myt1l",Glut,MB Glut
+SCiw Pitx2 Glut,180 SCiw Pitx2 Glut,"Pitx2,Bnc2","Pitx2,Bnc2",Glut,MB Glut
+IC Tfap2d Maf Glut,181 IC Tfap2d Maf Glut,"Tfap2d,En1,Irx2,Zfhx4","Tfap2d,En1,Irx2,Zfhx4",Glut,MB Glut
+CUN-PPN Evx2 Meis2 Glut,182 CUN-PPN Evx2 Meis2 Glut,"Evx2,C1ql4,Slc5a7","Evx2,Myt1l,En1,Meis2,Bnc2",Glut,MB Glut
+PBG Mtnr1a Glut-Chol,183 PBG Mtnr1a Glut-Chol,"Mtnr1a,Evx1os","Ikzf1,Evx1",Chol,MB Glut
+PAG Tcf24 Glut,184 PAG Tcf24 Glut,Tcf24,"Nkx2-1,Otp,Onecut3",Dopa,MB Glut
+SCig Tfap2b Chrnb3 Glut,185 SCig Tfap2b Chrnb3 Glut,"Etv1,Tfap2b,Prkcq","Etv1,Tfap2b,Bcl11b",Glut,MB Glut
+SCop Pou4f2 Neurod2 Glut,186 SCop Pou4f2 Neurod2 Glut,"Hpse2,Pou4f2","Barhl1,Pou4f2,Shox2,Zfp536,Bcl11b",Glut,MB Glut
+SCsg Pde5a Glut,187 SCsg Pde5a Glut,"Robo3,Shox2,Lef1","Barhl1,Bnc2,Ebf2,Lef1",Glut,MB Glut
+SCop Sln Glut,188 SCop Sln Glut,"Scml2,Npnt","Barhl1,Pou4f1,Irx2,Nhlh2,Bcl11b",Glut,MB Glut
+PAG Ucn Glut,189 PAG Ucn Glut,Ucn,"Foxa2,Irx2",Glut,MB Glut
+ND-INC Foxd2 Glut,190 ND-INC Foxd2 Glut,"Foxd2os,Slc17a6","Foxd2,Ebf3",Glut,MB Glut
+PAG-MRN Rln3 Gaba,191 PAG-MRN Rln3 Gaba,Rln3,"Nkx2-2,Nr4a2,Gata3",GABA,MB GABA
+PPN-CUN-PCG Otp En1 Gaba,192 PPN-CUN-PCG Otp En1 Gaba,"Pax7,En1","Pax7,En1",GABA,MB GABA
+MRN-PPN-CUN Pax8 Gaba,193 MRN-PPN-CUN Pax8 Gaba,"Pax5,Otp,Pax8,En2","Pax5,Otp,Pax8,En2",GABA,MB GABA
+MRN-VTN-PPN Pax5 Cdh23 Gaba,194 MRN-VTN-PPN Pax5 Cdh23 Gaba,"Cdh23,Pax5,Gad2","Pax5,Sox14,Pax8,Lhx1,Peg3,Zfp521",GABA,MB GABA
+SNr-VTA Pax5 Npas1 Gaba,195 SNr-VTA Pax5 Npas1 Gaba,"Gm4675,Gabra1,Npas1","Sp9,Pax5,Npas1",GABA,MB GABA
+PAG-PPN Pax5 Sox21 Gaba,196 PAG-PPN Pax5 Sox21 Gaba,"Sox21,Pax5,Col23a1","Sox21,Pax5,Nfib,En1,Tal1",GABA,MB GABA
+SNr Six3 Gaba,197 SNr Six3 Gaba,"Six3os1,Irx3","Six3,Irx3",GABA,MB GABA
+IC Six3 En2 Gaba,198 IC Six3 En2 Gaba,"Six3os1,Gata3,Car8,Kcnmb2,Lingo2,Zfp804b","Six3,Gata3,Emx2,Nfia",GABA,MB GABA
+PAG-MRN-RN Foxa2 Gaba,199 PAG-MRN-RN Foxa2 Gaba,"9030622O22Rik,Gad1","Foxa2,Pax5,Peg3",GABA,MB GABA
+PAG-ND-PCG Onecut1 Gaba,200 PAG-ND-PCG Onecut1 Gaba,"Onecut1,Gata3,Lingo2","Onecut1,Gata3,Peg3",GABA,MB GABA
+PAG-RN Nkx2-2 Otx1 Gaba,201 PAG-RN Nkx2-2 Otx1 Gaba,"Nkx2-2,Slc32a1,Tfap2b","Nkx2-2,Gata3,Meis2,Pou3f3,Peg3",GABA,MB GABA
+PRT Tcf7l2 Gaba,202 PRT Tcf7l2 Gaba,"Tcf7l2,Gata3,Slc30a3,Syt6","Tcf7l2,Gata3",GABA,MB GABA
+LGv-SPFp-SPFm Nkx2-2 Tcf7l2 Gaba,203 LGv-SPFp-SPFm Nkx2-2 Tcf7l2 Gaba,"Tcf7l2,Gata3,Nkx2-2","Tcf7l2,Gata3,Nkx2-2",GABA,MB GABA
+SC Otx2 Gcnt4 Gaba,204 SC Otx2 Gcnt4 Gaba,"Gcnt4,Pax7,Syt4","Maf,Pax7,Zic1",GABA,MB GABA
+SC-PAG Lef1 Emx2 Gaba,205 SC-PAG Lef1 Emx2 Gaba,"Lef1,Pax7,Ptprk,Pdzrn4","Lef1,Pax7,Foxp2,Tfap2b,Zfpm2",GABA,MB GABA
+SCm-PAG Cdh23 Gaba,206 SCm-PAG Cdh23 Gaba,"Lef1,Gata3,Cdh23,Lingo2","Lef1,Gata3,Tfap2b,Zic1,Otx2",GABA,MB GABA
+SCs Dmbx1 Gaba,207 SCs Dmbx1 Gaba,"Fibcd1,Dmbx1,Gabrg3","Dmbx1,Sox2,Zfpm2",GABA,MB GABA
+SC Lef1 Otx2 Gaba,208 SC Lef1 Otx2 Gaba,"Lef1,Pax7,Tmem132d,Otx2os1","Lef1,Pax7,Tfap2b,Otx2",GABA,MB GABA
+SCs Pax7 Nfia Gaba,209 SCs Pax7 Nfia Gaba,"Shox2,Pax7,Nfib","Shox2,Pax7,Nfib",GABA,MB GABA
+PRT Mecom Gaba,210 PRT Mecom Gaba,"Mecom,Gad1","Mecom,Gata3",GABA,MB GABA
+SC Tnnt1 Gli3 Gaba,211 SC Tnnt1 Gli3 Gaba,"Gli3,Gata3,Ebf3","Gli3,Gata3,Ebf3",GABA,MB GABA
+SCs Lef1 Gli3 Gaba,212 SCs Lef1 Gli3 Gaba,"Gli3,Pax7","Gli3,Pax7",GABA,MB GABA
+SCsg Gabrr2 Gaba,213 SCsg Gabrr2 Gaba,"Cplx3,Otx2os1,Grm5","Lef1,Otx2,Rorb,Meis2,Foxp2",GABA,MB GABA
+IPN Otp Crisp1 Gaba,214 IPN Otp Crisp1 Gaba,"Cnksr3,Slc32a1","Mafa,Pax7,Meis2",GABA,MB GABA
+SNc-VTA-RAmb Foxa1 Dopa,215 SNc-VTA-RAmb Foxa1 Dopa,"Slc6a3,Ntn1","Pitx3,En1",Dopa,MB Dopa
+MB-MY Tph2 Glut-Sero,216 MB-MY Tph2 Glut-Sero,"Gata3,Lmx1b","Gata3,Lmx1b",Sero,MB-HB Sero
+PB Lmx1a Glut,217 PB Lmx1a Glut,"Lmx1a,Tfap2b","Lmx1a,Tfap2b",Glut,P Glut
+PSV Lmx1a Trpv6 Glut,218 PSV Lmx1a Trpv6 Glut,"Sema3a,Ebf2,Tspan18,Meis2,Ankfn1,Dach2","Ebf2,Meis2,Bcl11b,Zfhx4,Zim1,Meis1",Glut,P Glut
+PB-SUT Tlx3 Lhx2 Glut,219 PB-SUT Tlx3 Lhx2 Glut,"Bmp6,Lmx1b,Lhx2","Lmx1b,Lhx2,Irx3",Glut,P Glut
+PB Pax5 Glut,220 PB Pax5 Glut,"Prkcq,Tfap2b,Arhgap36","Tfap2b,Pax5,Bcl11b,Ebf3",Glut,P Glut
+LDT-PCG Vsx2 Lhx4 Glut,221 LDT-PCG Vsx2 Lhx4 Glut,"Sox1ot,Lhx4","Sox2,Vsx2,Ebf2",Glut,P Glut
+PB Evx2 Glut,222 PB Evx2 Glut,"Rprml,Lhx9,Meis1,Cbln1,Gabrq,Nr2f1","Lhx9,Meis1,Foxp2,Nhlh2,Meis2,Zfhx4,Nr2f1,Jun",Glut,P Glut
+B-PB Nr4a2 Glut,223 B-PB Nr4a2 Glut,"D930028M14Rik,Evx2,Grid2","Onecut3,Evx2,Meis2,Esr1",Glut,P Glut
+PCG-PRNr Vsx2 Nkx6-1 Glut,224 PCG-PRNr Vsx2 Nkx6-1 Glut,"Vsx2,Lhx5,Zfhx4,Nr2f1,Tmem163","Vsx2,Lhx5,Zfhx4,Nr2f1",Glut,P Glut
+PRNc-NI-SG-RPO Vsx2 Nr4a2 Glut,225 PRNc-NI-SG-RPO Vsx2 Nr4a2 Glut,"Vsx2,Calb1","Vsx2,Nr4a2,Nr2f2",Glut,P Glut
+PRNc-PARN Tlx1 Glut,226 PRNc-PARN Tlx1 Glut,"Lmx1b,Meis2,Pou6f2,Dlk1","Lmx1b,Meis2,Pou6f2,Plagl1",Glut,P Glut
+PB-PSV Phox2b Glut,227 PB-PSV Phox2b Glut,"Phox2b,Ptger3,Slc17a6","Phox2b,Onecut2,Lmx1b",Glut,P Glut
+PSV Pvalb Lhx2 Glut,228 PSV Pvalb Lhx2 Glut,"Tgfbr2,Prrxl1,Pcdh7","Prrxl1,Lhx2,Lmx1b,Myt1l",Glut,P Glut
+PB-NTS Phox2b Ebf3 Lmx1b Glut,229 PB-NTS Phox2b Ebf3 Lmx1b Glut,"Phox2b,Slc24a4","Phox2b,Ebf3,Lmx1b,Mef2c",Glut,P Glut
+PRNr Otp Nfib Glut,230 PRNr Otp Nfib Glut,"Otp,Evx1os,Ebf2","Otp,Neurod2,Npas1",Glut,P Glut
+IPN-LDT Vsx2 Nkx6-1 Glut,231 IPN-LDT Vsx2 Nkx6-1 Glut,"Pax8,Adcyap1","Pax8,Vsx2,Pou4f2,Peg3",Glut,P Glut
+LDT Vsx2 Nkx6-1 Nfib Glut,232 LDT Vsx2 Nkx6-1 Nfib Glut,"Pax8,Slc17a6,Nfib","Pax8,Vsx2,Nfib",Glut,P Glut
+NLL-SOC Spp1 Glut,233 NLL-SOC Spp1 Glut,"6430553K19Rik,Spp1","Foxp2,Onecut1,Maf",Glut,P Glut
+MEV Ppp1r1c Glut,234 MEV Ppp1r1c Glut,Ppp1r1c,"Runx1,Tlx3",Glut,MB Glut
+PG-TRN-LRN Fat2 Glut,235 PG-TRN-LRN Fat2 Glut,"H2-Ab1,Kcnd2","Pax6,Barhl1,Irx2",Glut,P Glut
+IRN Vip Glut,236 IRN Vip Glut,"Vip,Slc17a6","Mecom,Gli3,Myt1l",Glut,MY Glut
+PRP-NI-PRNc-GRN Otp Glut,237 PRP-NI-PRNc-GRN Otp Glut,"Otp,Evx2,Zfhx4","Otp,Evx2,Zfhx4",Glut,MY Glut
+NTS Phox2b Glut,238 NTS Phox2b Glut,"Phox2b,Hoxc4,Nrgn","Phox2b,Hoxc4,Shox2",Glut,MY Glut
+MARN-GRN Pyy Glut,239 MARN-GRN Pyy Glut,Pyy,"Sall3,Vsx2",Glut,MY Glut
+MDRNv Lhx4 Qrfprl Glut,240 MDRNv Lhx4 Qrfprl Glut,"Gbx2,Calcr","Gbx2,Lhx4,Shox2",Glut,MY Glut
+NTS Mbnl3 Glut,241 NTS Mbnl3 Glut,"Gm6213,Hoxb5","Hoxc4,Pou4f1,Esr1,Ebf3",Glut,MY Glut
+PGRNd Dmbx1 Glut,242 PGRNd Dmbx1 Glut,"Dmbx1,Mecom","Dmbx1,Mecom",Glut,MY Glut
+PGRN-PARN-MDRN Hoxb5 Glut,243 PGRN-PARN-MDRN Hoxb5 Glut,"Hoxc4,Slc17a6,Sncg,Zim1,Lamp5,Dpyd,Trhde","Hoxc4,Myt1l,Zim1,Ebf1,Bcl11a,Zfp521,Zfhx4,Meis2",Glut,MY Glut
+MV-SPIV Slc6a2 Glut,244 MV-SPIV Slc6a2 Glut,"Crabp1,Lhx9,Lingo2","Barhl1,Hoxb3,Zfhx4",Glut,MY Glut
+SPVI-SPVC Tlx3 Ebf3 Glut,245 SPVI-SPVC Tlx3 Ebf3 Glut,"Hoxb6,Ebf2,Tac1,Dab1","Hoxb6,Ebf2,Bcl11b,Lmx1b,Ebf3",Glut,MY Glut
+CU-ECU-SPVI Foxb1 Glut,246 CU-ECU-SPVI Foxb1 Glut,"Hoxb6,Slc17a6,Lhx9","Hoxb6,Lhx9,Myt1l",Glut,MY Glut
+MV-SPIV Phox2b Ebf3 Lbx1 Glut,247 MV-SPIV Phox2b Ebf3 Lbx1 Glut,"Phox2b,Neurod2","Phox2b,Neurod2",Glut,MY Glut
+MV-SPIV Zic4 Neurod2 Glut,248 MV-SPIV Zic4 Neurod2 Glut,"Zic4,Hoxb3,Myo5b,Cntnap2","Zic4,Hoxb3,Pou4f1,Nfib,Tshz3,Peg3",Glut,MY Glut
+NTS Aldh1a2 Glut,249 NTS Aldh1a2 Glut,"Aldh1a2,Hoxb6","Foxd3,Nr4a2,Hoxb6",Glut,MY Glut
+CBN Neurod2 Pvalb Glut,250 CBN Neurod2 Pvalb Glut,"Kcng4,C1ql3,Neurod2,Rasa4","Esrrb,Neurod2,Lhx9,Uncx,Neurod1",Glut,MY Glut
+NTS Dbh Glut,251 NTS Dbh Glut,"Dbh,Lingo2","Phox2b,Hoxb6",Nora,MY Glut
+DMX VII Tbx20 Chol,252 DMX VII Tbx20 Chol,Tbx20,Tbx20,Chol,MY Glut
+IO Fgl2 Glut,253 IO Fgl2 Glut,"Htr5b,Crh","Foxd3,Foxp2,Pou4f1",Glut,MY Glut
+VCO Mafa Meis2 Glut,254 VCO Mafa Meis2 Glut,"Mafa,Slc17a7,Bmpr1b,Rasef","Bnc2,Pparg,Ebf1,Mafb,Rorb",Glut,MY Glut
+SPVO Mafa Meis2 Glut,255 SPVO Mafa Meis2 Glut,"Mafa,Meis2,Fn1","Mafb,Bnc2,Lbx1",Glut,MY Glut
+SPVC Mafa Glut,256 SPVC Mafa Glut,"Mafa,Vmn1r206,Slc30a3","Mafa,Hoxd3",Glut,MY Glut
+SPVC Ccdc172 Glut,257 SPVC Ccdc172 Glut,"Ccdc172,Prrxl1","Hoxb8,Bnc2,Glis1",Glut,MY Glut
+SPVC Nmu Glut,258 SPVC Nmu Glut,Nmu,"Hoxb8,Lmx1b,Zeb2,Hoxb7",Glut,MY Glut
+MDRNd Bves Glut,259 MDRNd Bves Glut,"Fam129a,Hoxb5,Ebf3","Hoxc4,Ebf2,Prdm16,Zeb2,Meis2",Glut,MY Glut
+MDRNv Crp Glut,260 MDRNv Crp Glut,"Sp8,Slc17a6","Sp8,Vsx2",Glut,MY Glut
+HB Calcb Chol,261 HB Calcb Chol,Calcb,"Isl1,Lhx4,Tshz2,Vdr,Creb5",Chol,MY Glut
+Pineal Crx Glut,262 Pineal Crx Glut,Crx,Tulp1,Glut,Pineal Glut
+CS-RPO Meis2 Gaba,263 CS-RPO Meis2 Gaba,"Otp,G630016G05Rik,Bhlhe22,Calb2,Crnde","Otp,Meis2,Bhlhe22,Lhx1",GABA,P GABA
+PRNc Otp Gly-Gaba,264 PRNc Otp Gly-Gaba,"Otp,Slc6a5,Lhx1os","Otp,En1,Meis2,Lhx1",GABA-Glyc,P GABA
+PB Sst Gly-Gaba,265 PB Sst Gly-Gaba,"Col23a1,Pax2,Sst","Tfap2b,Pax2,Ebf1",GABA-Glyc,P GABA
+PRNc Prox1 Brs3 Gly-Gaba,266 PRNc Prox1 Brs3 Gly-Gaba,"Brs3,Hmcn1","Otp,Neurod2,St18,Meis2",GABA-Glyc,P GABA
+CS-PRNr-PCG Tmem163 Otp Gaba,267 CS-PRNr-PCG Tmem163 Otp Gaba,"Otp,Irx2,Onecut2,Nr2f1","Otp,Irx2,Onecut2,Nr2f1",GABA,P GABA
+CS-PRNr-DR En1 Sox2 Gaba,268 CS-PRNr-DR En1 Sox2 Gaba,"Sox1ot,En1,Sox14,Gad1","Sox2,En1,Sox14,Irx3",GABA,P GABA
+LDT Fgf7 Gaba,269 LDT Fgf7 Gaba,"Fgf7,Grm5","Nr4a2,Pax5,Nfib",GABA,P GABA
+LDT-DTN Gata3 Nfix Gaba,270 LDT-DTN Gata3 Nfix Gaba,"Sp9,Gata3,9530026P05Rik,Tenm2","Sp9,Gata3,St18,Zfpm2,Tshz2",GABA,P GABA
+NI-RPO Gata3 Nr4a2 Gaba,271 NI-RPO Gata3 Nr4a2 Gaba,"Slc17a8,Slc32a1,Vwa5b1,Meis2","Sox2,Gata2,Irx2,Meis2,Irx5,Zfhx4,Peg3",Glut-GABA,P GABA
+LDT-PCG-CS Gata3 Lhx1 Gaba,272 LDT-PCG-CS Gata3 Lhx1 Gaba,"Gm38505,Ebf3,Lhx1os,Gad1,Sox1ot","Sox2,Ebf3,Lhx1,Gata3,En1,Irx3",GABA,P GABA
+PDTg-PCG Pax6 Gaba,273 PDTg-PCG Pax6 Gaba,"Pax6,Tal1,B130024G19Rik","Pax6,Tal1,Irx2",GABA,P GABA
+PDTg Otp Shroom3 Gaba,274 PDTg Otp Shroom3 Gaba,"Rxfp1,Otp","Otp,Foxp2,Zeb2,Lhx1",GABA,P GABA
+PDTg Otp Olig3 Gaba,275 PDTg Otp Olig3 Gaba,Olig3,Olig3,GABA,P GABA
+LDT-PCG St18 Gaba,276 LDT-PCG St18 Gaba,"Otp,St18,Tmem163,Ebf1","Otp,St18,Ebf2,Foxo1,Ebf3",GABA,P GABA
+DTN-LDT-IPN Otp Pax3 Gaba,277 DTN-LDT-IPN Otp Pax3 Gaba,"Vmn1r207-ps,Pax7","Pax3,Otp,Foxo1",GABA,P GABA
+NLL Gata3 Gly-Gaba,278 NLL Gata3 Gly-Gaba,"Gata2,Oprd1,Kcnh8","Gata3,Maf,Meis2,En1,Esrrb",GABA-Glyc,P GABA
+PSV Pax2 Gly-Gaba,279 PSV Pax2 Gly-Gaba,"Pax2,St3gal1,Pcdh20,Acan","Maf,Pax2,Meis2,Zfhx3",GABA-Glyc,P GABA
+NLL-po Pax7 Gaba,280 NLL-po Pax7 Gaba,"Pax7,Spp1","Pax7,Rreb1,Nfia",GABA,P GABA
+POR Gata3 Gly-Gaba,281 POR Gata3 Gly-Gaba,Dkk1,"Sox9,En1,Hoxb3",GABA-Glyc,P GABA
+POR Spp1 Gly-Gaba,282 POR Spp1 Gly-Gaba,"Cox8b,Slc6a5","Nkx6-1,Six4",GABA-Glyc,P GABA
+PRP Otp Gly-Gaba,283 PRP Otp Gly-Gaba,"Otp,Hoxd3,Mab21l2","Otp,Hoxd3,Pax8",GABA-Glyc,MY GABA
+GRN-IRN-MDRNd Ikzf1 Gly-Gaba,284 GRN-IRN-MDRNd Ikzf1 Gly-Gaba,"Ikzf1,Slc6a5","Ikzf1,Hoxb5",GABA-Glyc,MY GABA
+MY Lhx1 Gly-Gaba,285 MY Lhx1 Gly-Gaba,"Hoxb3,Slc6a5,Lhx1,Sv2b,G630016G05Rik,Arpp21","Hoxb3,Pax2,Lhx1,Meis2,Zfpm2,Rarb,Zkscan16",GABA-Glyc,MY GABA
+PPY-PGRNl Vip Glyc-Gaba,286 PPY-PGRNl Vip Glyc-Gaba,"Vip,Tfap2b","Gbx2,Tfap2b,Lhx1",GABA-Glyc,MY GABA
+MV-SPIV-PRP Dmbx1 Gly-Gaba,287 MV-SPIV-PRP Dmbx1 Gly-Gaba,"Dmbx1,Ebf3,Slc6a5","Dmbx1,Ebf3,Meis2,Nhlh2",GABA-Glyc,MY GABA
+MDRN Hoxb5 Ebf2 Gly-Gaba,288 MDRN Hoxb5 Ebf2 Gly-Gaba,"Hoxb6,Irx3,Pax2","Hoxb6,Irx3,Pax2",GABA-Glyc,MY GABA
+MDRNd Prox1 Pax6 Gly-Gaba,289 MDRNd Prox1 Pax6 Gly-Gaba,"Sp8,Slc6a5","Sp8,Hoxb5,Pax6",GABA-Glyc,MY GABA
+MY Prox1 Lmo7 Gly-Gaba,290 MY Prox1 Lmo7 Gly-Gaba,"Cyp26b1,Skor1,Gad2,Thrsp","Neurod2,Tfap2a,Prox1,Esr1,Pax2,Nr2f2,L3mbtl4",GABA-Glyc,MY GABA
+NTS-MDRNd Prox1 Zic1 Gly-Gaba,291 NTS-MDRNd Prox1 Zic1 Gly-Gaba,"Zic5,Hoxa5,Gpr101","Zic5,Hoxa5,Prox1,Tfap2a",GABA-Glyc,MY GABA
+MV Nkx6-1 Gly-Gaba,292 MV Nkx6-1 Gly-Gaba,"Serpina9,Pvalb,Slc32a1","Nkx6-1,Neurod2",GABA-Glyc,MY GABA
+PAS-MV Ebf2 Gly-Gaba,293 PAS-MV Ebf2 Gly-Gaba,"Ebf2,Slc6a5,Zic1,Bhlhe22,Sema3a","Ebf2,Pax2,Zic1,Ebf3",GABA-Glyc,MY GABA
+MV Pax6 Gly-Gaba,294 MV Pax6 Gly-Gaba,"Pax6,Slc6a5,Neurod2","Pax6,Pax2,Irx2",GABA-Glyc,MY GABA
+CBN Dmbx1 Gaba,295 CBN Dmbx1 Gaba,"Ramp3,Dmbx1","Dmbx1,Ebf3,Irx2",GABA,MY GABA
+RPA Pax6 Hoxb5 Gly-Gaba,296 RPA Pax6 Hoxb5 Gly-Gaba,"Dlk1,Slc6a5,Sox1ot","Hoxb5,Tal1,Irx2",GABA-Glyc,MY GABA
+CU-ECU Pax2 Gly-Gaba,297 CU-ECU Pax2 Gly-Gaba,"Pax2,Egfr","Bnc2,Pax2",GABA-Glyc,MY GABA
+PRP Gata3 Slc6a5 Gly-Gaba,298 PRP Gata3 Slc6a5 Gly-Gaba,"Ntf3,Slc6a5","Foxp2,Hoxb3,Gata3",GABA-Glyc,MY GABA
+MARN-PPY Ngfr Gly-Gaba,299 MARN-PPY Ngfr Gly-Gaba,"Ngfr,Slc6a5","Sall1,Gata3",GABA-Glyc,MY GABA
+PARN-MDRNd-NTS Gbx2 Gly-Gaba,300 PARN-MDRNd-NTS Gbx2 Gly-Gaba,"Gbx2,Pax2,Zic4,Arhgap6,Adra1a","Gbx2,Pax2,Zic4,Zfp536",GABA-Glyc,MY GABA
+MV Nr4a2 Gly-Gaba,301 MV Nr4a2 Gly-Gaba,"Slc18a2,Gbx2","Gbx2,Nr4a2,Zbtb7c",Dopa,MY GABA
+MV Xdh Gly-Gaba,302 MV Xdh Gly-Gaba,"Xdh,Slc6a5","Sox9,Gbx2",GABA-Glyc,MY GABA
+IRN Dmbx1 Pax2 Gly-Gaba,303 IRN Dmbx1 Pax2 Gly-Gaba,"Gbx1,Dmbx1,Hoxb5","Gbx1,Dmbx1,Hoxb5",GABA-Glyc,MY GABA
+NTS-PARN Neurod2 Gly-Gaba,304 NTS-PARN Neurod2 Gly-Gaba,"Arhgap15,Slc6a5,Bcl11a,Slc4a4","Hoxa5,Neurod2,Tfap2a,Bcl11a,Peg3",GABA-Glyc,MY GABA
+SPVI-SPVC Sall3 Nfib Gly-Gaba,305 SPVI-SPVC Sall3 Nfib Gly-Gaba,"Hoxb8,Pax2,Sall3,Nfib","Hoxb8,Pax2,Sall3,Nfib",GABA-Glyc,MY GABA
+SPVI-SPVC Sall3 Lhx1 Gly-Gaba,306 SPVI-SPVC Sall3 Lhx1 Gly-Gaba,"Kank1,Hoxa5,Ryr2","Gbx1,Ebf1,Lhx1",GABA-Glyc,MY GABA
+RO-RPA Pkd2l1 Gaba,307 RO-RPA Pkd2l1 Gaba,Pkd2l1,"Nkx6-1,Tal1",GABA,MY GABA
+DCO Il22 Gly-Gaba,308 DCO Il22 Gly-Gaba,"Tmem204,Slc6a5","Zic5,Pax2,Nr2f2",GABA-Glyc,CB GABA
+CB PLI Gly-Gaba,309 CB PLI Gly-Gaba,"Bmp6,Slc6a5,Zic1,Shisa9,Rgs6","Neurod6,Tfap2b,Pax2,Zic1,Pou3f3,Mkx",GABA-Glyc,CB GABA
+CBX Golgi Gly-Gaba,310 CBX Golgi Gly-Gaba,"Zfp385c,Slc6a5","Id3,Tfap2b,Myt1l",GABA-Glyc,CB GABA
+CBX MLI Megf11 Gaba,311 CBX MLI Megf11 Gaba,"Homer3,Tfap2b,Sorcs3,Cacna1e","Smad3,Tfap2b,Hopx",GABA,CB GABA
+CBX MLI Cdh22 Gaba,312 CBX MLI Cdh22 Gaba,"4930523C07Rik,Cacng2,Shisa8","Smad3,Tfap2b,En2",GABA,CB GABA
+CBX Purkinje Gaba,313 CBX Purkinje Gaba,Pcp2,Hes3,GABA,CB GABA
+CB Granule Glut,314 CB Granule Glut,"Gabra6,Ror1","Pax6,Neurod2,Etv1",Glut,CB Glut
+DCO UBC Glut,315 DCO UBC Glut,"Sln,Lmx1a","Eomes,Lmx1a,Klf3",Glut,CB Glut
+Bergmann NN,316 Bergmann NN,"Dao,Gdf10","Pax3,Gli1",NA,Astro-Epen
+Astro-CB NN,317 Astro-CB NN,"Dao,Cyp26b1","Rfx4,Pax3,Etv4,Zic4,Klf12",NA,Astro-Epen
+Astro-NT NN,318 Astro-NT NN,"Aqp4,Cd38,Agt,Itih3","Rfx4,Dbx2,Prdm16,Nr2f1",NA,Astro-Epen
+Astro-TE NN,319 Astro-TE NN,"Gja1,Lhx2,Gpc5,Nr2f1","Rfx4,Lhx2,Sox9,Nr2f1,Meis2",NA,Astro-Epen
+Astro-OLF NN,320 Astro-OLF NN,"Gja1,Hs3st3a1","Rfx4,Olig1,Lhx2,Prdm16",NA,Astro-Epen
+Astroependymal NN,321 Astroependymal NN,"Gfap,Slit2,Slc7a11,Zic4","Rfx4,Zic4,Zfhx4,Nr2f1,Prrx1",NA,Astro-Epen
+Tanycyte NN,322 Tanycyte NN,"Gpr50,Apoe","Sox9,Nkx2-4",NA,Astro-Epen
+Ependymal NN,323 Ependymal NN,"Tmem212,Rarres2","Foxj1,Myb,Hey1",NA,Astro-Epen
+Hypendymal NN,324 Hypendymal NN,"Sspo,Spag17","Msx1,Spdef",NA,Astro-Epen
+CHOR NN,325 CHOR NN,"Ttr,Kl","Msx1,Lmx1a",NA,Astro-Epen
+OPC NN,326 OPC NN,Pdgfra,"Olig2,Myt1",NA,OPC-Oligo
+Oligo NN,327 Oligo NN,"Cldn11,Gjc3","Sox10,St18",NA,OPC-Oligo
+OEC NN,328 OEC NN,"Aqp1,Foxd3","Sox10,Bnc2",NA,OEC
+ABC NN,329 ABC NN,Slc47a1,"Foxd1,Bnc2",NA,Vascular
+VLMC NN,330 VLMC NN,"Apod,Slc6a13","Foxc1,Aff3,Mafb",NA,Vascular
+Peri NN,331 Peri NN,Kcnj8,"Tbx18,Tbx2",NA,Vascular
+SMC NN,332 SMC NN,Acta2,"Foxc1,Sox6,Nr4a1",NA,Vascular
+Endo NN,333 Endo NN,Ly6c1,"Id1,Zfp366",NA,Vascular
+Microglia NN,334 Microglia NN,"C1qa,Tmem119","Fli1,Sall1",NA,Immune
+BAM NN,335 BAM NN,"Mrc1,Maf","Fli1,Etv1,Runx1,Trps1",NA,Immune
+Monocytes NN,336 Monocytes NN,S100a9,"Spi1,Mxd1",NA,Immune
+DC NN,337 DC NN,Cd74,"Runx1,Batf3",NA,Immune
+Lymphoid NN,338 Lymphoid NN,"Cd52,Gimap3","Ikzf1,Ikzf3",NA,Immune

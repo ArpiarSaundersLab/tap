@@ -16,7 +16,7 @@ setuptools.setup(
 	package_dir={'': 'src'}, 
     include_package_data=True,
     package_data={
-        "tap": ["templates/*.html"]
+        "tap": ["templates/*.html","models/*"]
     },
 	python_requires='>=3.12',
 	classifiers=[

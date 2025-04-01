@@ -1,0 +1,34 @@
+{
+    "filename": "../assets/data/PCCM.h5ad",
+    "title": "PCCM",
+    "categories": [
+        "cell_type"
+    ],
+    "categoryNames": [
+        "cell_type"
+    ],
+    "genes": [
+        "AAV1",
+        "AAV2",
+        "AAV9"
+    ],
+    "DE": true,
+    "RF": false,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "gaussian",
+    "clusterThreshold": 0,
+    "clusterThresholdGreaterThanOrEqual": null,
+    "clusterThresholdLessThanOrEqual": null,
+    "deMethod": "t-test",
+    "mapOnly": true,
+    "excludeMarkers": true,
+    "cellTypist": false,
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistLevels": 3,
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 50,
+    "permute": false,
+    "permuteRepeats": 2
+}
