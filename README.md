@@ -24,14 +24,19 @@ TAP accepts an AnnData object and generates an interactive UI in the form of a h
 import tap as t
 
 parameters = {
-	"filename" : "my_file.h5ad",
-	"name": "Macaque No Dialout",
+	"filename" : "../assets/data/PCCM.h5ad",
+	"name": "PCCM",
 	"genes": ["AAV1","AAV2","AAV9"],
 	"categories": ["cell_type"],
 	"outputPath": ".",
+	"outputName": "test.html",
+	"runCellTypist" : False,
+	"excludeMarkers" : True,
+	"mapOnly" : True,
 }
 
 results = t.TAP(**parameters)
+
 ```
 
 ## Live Example

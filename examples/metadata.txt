@@ -8,21 +8,20 @@
         "cell_type"
     ],
     "genes": [
-        "AAV1",
         "AAV2",
-        "AAV9"
+        "Retro"
     ],
     "DE": true,
-    "RF": false,
+    "RF": true,
     "showPlots": false,
     "UMAP": true,
     "Details": true,
-    "clusterMethod": "gaussian",
-    "clusterThreshold": 0,
+    "clusterMethod": "threshold",
+    "clusterThreshold": 1,
     "clusterThresholdGreaterThanOrEqual": null,
     "clusterThresholdLessThanOrEqual": null,
     "deMethod": "t-test",
-    "mapOnly": true,
+    "mapOnly": false,
     "excludeMarkers": true,
     "cellTypist": false,
     "cellTypistModel": "Mouse_Whole_Brain.pkl",

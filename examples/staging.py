@@ -1,16 +1,19 @@
 import tap as t
 
-
 parameters = {
 	"filename" : "../assets/data/PCCM.h5ad",
 	"name": "PCCM",
-	"genes": ["AAV1","AAV2","AAV9"],
+	"genes": ["AAV2","Retro"],
 	"categories": ["cell_type"],
-	"outputPath": ".",
+	"outputPath": ".", #current directory
 	"outputName": "test.html",
 	"runCellTypist" : False,
 	"excludeMarkers" : True,
-	"mapOnly" : True,
+	"mapOnly" : False,
+	"showRF": True,
+	"removeOutliers": True,
+	"clusterMethod": "threshold",
+	"clusterThreshold": 1,
 }
 
 results = t.TAP(**parameters)

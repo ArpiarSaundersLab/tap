@@ -30,6 +30,7 @@ from sklearn.mixture import GaussianMixture
 from matplotlib.colors import ListedColormap
 import pkg_resources
 import shutil
+from tap.FeatureSelection import FeatureSelection
 warnings.filterwarnings("ignore")
 sns.set(style="whitegrid")
 sc.settings.verbosity = 0
@@ -41,7 +42,7 @@ class TAP:
 
 	def __init__(self, name="Heatmap", filename=None, adataObject=None, categories=[], categoryNames=[], 
 	genes=[], exclude=[], useRaw=False, outputPath=".", outputName="tap.html", cpus = 2, 
-	mapOnly=False, showDE=True, showRF=False, showUMAP=True, showDetails=True, 
+	mapOnly=False, showDE=True, showRF=True, showUMAP=True, showDetails=True, 
 	clusterMethod="gaussian", clusterThreshold=0, useLog10=False, showPlots=False, 
 	excludeGenes=[],deMethod="t-test", rfHyperParameterTune=False, rfHyperParameterIterations=50, 
 	balance=None, useAllGenes=False, rfPermuteFeatureImportance=False, rfPermuteRepeats=2,
@@ -106,7 +107,7 @@ class TAP:
 			self.generateCSV()
 		else:
 			self.generateCSV()
-			self.generateJsonFile()
+			self.generateJSON()
 		if minify == True:	
 			self.minifyHtml()
 
@@ -158,16 +159,15 @@ class TAP:
 			if category not in self.exclude:
 				self.totalIterations +=1
 				if category_length > 1:
-					self.totalIterations += len(self.adata[self.adata.obs[self.categories[0]] == category, :].obs[self.categories[1]].unique())
-				if category_length > 2:
 					for subcategory in self.adata[self.adata.obs[self.categories[0]] == category, :].obs[self.categories[1]].unique():
-						self.totalIterations += len(self.adata[(self.adata.obs[self.categories[0]] == category) & (self.adata.obs[self.categories[1]] == subcategory), :].obs[self.categories[2]].unique())
-		
-		#calculate the total iterations based on the parameters
-		self.totalIterations  = (self.totalIterations*len(self.genes))+len(self.genes)+1
-
+						self.totalIterations +=1
+						if category_length > 2:
+							for subsubcategory in self.adata[(self.adata.obs[self.categories[0]] == category) & (self.adata.obs[self.categories[1]] == subcategory), :].obs[self.categories[2]].unique():
+								self.totalIterations +=1
+		self.totalIterations = self.totalIterations+(self.totalIterations*len(self.genes)) + len(self.genes) + 1
 
 	def generateCellTypistPredictions(self, showPlots=False):
+		
 		#import the celltypist libraries
 		import celltypist
 		from celltypist import models
@@ -472,4 +472,328 @@ class TAP:
 			file.write(minified)
 
 
-	
+	def generateJSON(self):
+		
+		#run the GMM+RF/DE analysis on all the data
+		adata_feature_selection = FeatureSelection(self.adata_bak, 
+								serotype_of_interest="infection_count", 
+								outputPath=self.outputPath,
+								primary=None, 
+								min_cells=self.minCells, 
+								min_serotype_cells=self.minSeroTypeCells, 
+								threads=self.cpus,
+								cluster_method=self.clusterMethod,
+								cluster_threshold=self.clusterThreshold,
+								clusterThresholdGreaterThanOrEqual=self.clusterThresholdGreaterThanOrEqual,
+								clusterThresholdLessThanOrEqual=self.clusterThresholdLessThanOrEqual,
+								showDE=self.showDE,
+								showRF=self.showRF,
+								showPlots=self.showPlots,
+								category_observations=self.categories,
+								exclude_category_names=self.exclude,
+								serotype_list=self.genes,
+								exclude_genes=self.excludeGenes,
+								deMethod=self.deMethod,
+								rfHyperParameterTune=self.rfHyperParameterTune,
+								rfHyperParameterIterations = self.rfHyperParameterIterations,
+								balance=self.balance,
+								permute_feature_importance=self.rfPermuteFeatureImportance,
+								permutation_repeats=self.rfPermuteRepeats,
+								excludeMarkers=self.excludeMarkers,
+								markers=self.markers,
+								removeOutliers=self.removeOutliers,
+								totalIterations=self.totalIterations,
+								)
+
+		#define a json structure
+		data_structure = {}
+
+		#define a structure ffor the base64 encoded images
+		images = {}
+
+		#dge data dictionary
+		dge_all = adata_feature_selection.de_df.set_index('1_name')['0_name'].to_dict()
+		dge_pval_adj = adata_feature_selection.de_df[['1_pval_adj','0_pval_adj']].values.tolist()
+		dge_logfc = adata_feature_selection.de_df[['1_logfc','0_logfc']].values.tolist()
+
+		#rf dictionary
+		rf_all = adata_feature_selection.fi_df[:50].set_index('Feature')['Importance'].to_dict()
+
+		#add the "All" key to the data_structure
+		data_structure["All"] = {
+			"RF": rf_all,
+			"DGE": dge_all,
+			"DGE_pval_adj": dge_pval_adj,
+			"DGE_logfc": dge_logfc,
+			"RF_A": adata_feature_selection.accuracy,
+			"RF_AUC": adata_feature_selection.auc_score,
+			"RF_BP": adata_feature_selection.rf_params,
+		}
+
+		#image key for the "All" key
+		images["All"] = adata_feature_selection.clustering_details
+
+		#deep copy the adata_feature_selection object
+		rf_obj = copy.deepcopy(adata_feature_selection)
+
+		#run for each main primary, secondary, and tertiary category
+		data_structure = self.generateRfDgeStructure(data_structure, node=False, rf_obj=rf_obj, images=images)
+
+		#run for each gene (node)
+		for gene in self.genes:
+			currentIterationTemp = rf_obj.currentIteration
+			rf_obj = copy.deepcopy(adata_feature_selection)
+			rf_obj.currentIteration = currentIterationTemp
+			data_structure = self.generateRfDgeStructure(data_structure, node=gene, rf_obj=rf_obj, images=images)
+			gc.collect()
+
+		#rather than saving the json, write the json to the tap.html file as json on one line
+		with open(self.outputPath+self.outputName, 'r') as file:
+			filedata = file.read()
+
+		#Replace the target string
+		filedata = filedata.replace('FEATURE_DATA', json.dumps(data_structure))
+		filedata = filedata.replace('CLUSTERING_DETAILS', json.dumps(images))
+
+		# Write the file out again
+		with open(self.outputPath+self.outputName, 'w') as file:
+			file.write(filedata)
+
+		print(f"Finished Running")
+
+
+	def generateRfDgeStructure(self, data_structure, node=False, rf_obj=False, images = {}):
+
+		if self.useLog10 == True:
+			gene_of_interest = "infection_count_log10"
+		else:
+			gene_of_interest = "infection_count"
+
+		#add the node to the data_structure if it exists
+		if node:
+
+			try:
+				
+				node_lookup = node
+				if self.useLog10 == True and node.lower() != "infection_count" and node.lower() != "infection_count_log10":
+					node_lookup = node.lower() + "_log10"
+				
+				# change the focus of the rf_obj
+				rf_obj.change_focus(primary=None,serotype_of_interest=node_lookup,min_cells=self.minCells,min_serotype_cells=self.minSeroTypeCells)
+
+				# dge data dictionary
+				dge_1 = rf_obj.de_df.set_index('1_name')['0_name'].to_dict()
+				dge_1_pval_adj = rf_obj.de_df[['1_pval_adj','0_pval_adj']].values.tolist()
+				dge_1_logfc = rf_obj.de_df[['1_logfc','0_logfc']].values.tolist()
+
+				# rf dictionary
+				rf_1 = rf_obj.fi_df[:50].set_index('Feature')['Importance'].to_dict()
+
+			except Exception as e:
+				print(f"Warning(node level) (1): {node} {e}")
+				dge_1 = {"Error": node}
+				rf_1 = {"Error": node}
+				dge_1_pval_adj = {"Error": node}
+				dge_1_logfc = {"Error": node}
+
+
+			# create the primary category key
+			data_structure[node] = {
+				"RF": rf_1,
+				"DGE": dge_1,
+				"DGE_pval_adj": dge_1_pval_adj,
+				"DGE_logfc": dge_1_logfc,
+				"RF_A": rf_obj.accuracy,
+				"RF_AUC": rf_obj.auc_score,
+				"RF_BP": rf_obj.rf_params,
+			}
+
+			images[str(node)] = rf_obj.clustering_details
+			gene_of_interest = node
+
+
+		#convert to lowercase
+		gene_of_interest = gene_of_interest.lower()
+
+		if self.useLog10 == True and gene_of_interest != "infection_count_log10":
+			gene_of_interest = gene_of_interest + "_log10"
+
+		#get the unique primaries
+		primaries = self.df[self.categories[0]].unique()
+
+		#iterate through the primaries
+		for primary in primaries:
+
+			try:
+
+				# change the focus of the rf_obj
+				rf_obj.change_focus(primary=primary,serotype_of_interest=gene_of_interest,min_cells=self.minCells,min_serotype_cells=self.minSeroTypeCells)
+
+				# dge data dictionary
+				dge_1 = rf_obj.de_df.set_index('1_name')['0_name'].to_dict()
+				dge_1_pval_adj = rf_obj.de_df[['1_pval_adj','0_pval_adj']].values.tolist()
+				dge_1_logfc = rf_obj.de_df[['1_logfc','0_logfc']].values.tolist()
+
+				# rf dictionary
+				rf_1 = rf_obj.fi_df[:50].set_index('Feature')['Importance'].to_dict()
+
+			except Exception as e:
+				print(f"Warning (2): {node}:{primary}:{gene_of_interest} {e}")
+				dge_1 = {"Error": primary}
+				rf_1 = {"Error": primary}
+				dge_1_pval_adj = {"Error": primary}
+				dge_1_logfc = {"Error": primary}
+
+
+			# create the primary category key
+			if node:
+
+				data_structure[node][primary] = {
+					"RF": rf_1,
+					"DGE": dge_1,
+					"DGE_pval_adj": dge_1_pval_adj,
+					"DGE_logfc": dge_1_logfc,
+					"RF_A": rf_obj.accuracy,
+					"RF_AUC": rf_obj.auc_score,
+					"RF_BP": rf_obj.rf_params,
+				}
+
+				images[str(node)+'-'+str(primary)] = rf_obj.clustering_details
+
+			else:
+
+				data_structure[primary] = {
+					"RF": rf_1,
+					"DGE": dge_1,
+					"DGE_pval_adj": dge_1_pval_adj,
+					"DGE_logfc": dge_1_logfc,
+					"RF_A": rf_obj.accuracy,
+					"RF_AUC": rf_obj.auc_score,
+					"RF_BP": rf_obj.rf_params,
+				}
+
+				images[str(primary)] = rf_obj.clustering_details
+
+			# only run if there are more than 2 categories
+			if len(self.categories) > 1:
+
+				#get the unique secondaries for the cell type
+				secondaries = self.df[self.df[self.categories[0]] == primary][self.categories[1]].unique()
+
+				#iterate through the secondarys
+				for secondary in secondaries:
+				
+					try:
+
+						# change the focus of the rf_obj
+						rf_obj.change_focus(primary=primary,secondary=secondary,serotype_of_interest=gene_of_interest,min_cells=self.minCells,min_serotype_cells=self.minSeroTypeCells)
+
+						# dge data dictionary
+						dge_2 = rf_obj.de_df.set_index('1_name')['0_name'].to_dict()
+						dge_2_pval_adj = rf_obj.de_df[['1_pval_adj','0_pval_adj']].values.tolist()
+						dge_2_logfc = rf_obj.de_df[['1_logfc','0_logfc']].values.tolist()
+
+
+						# rf dictionary
+						rf_2 = rf_obj.fi_df[:50].set_index('Feature')['Importance'].to_dict()
+
+					except Exception as e:
+						print(f"Warning (3): {node} {primary}:{secondary}:{gene_of_interest} {e} ")
+						dge_2 = {"Error": primary+":"+secondary}
+						rf_2 = {"Error": primary+":"+secondary}
+						dge_2_pval_adj = {"Error": primary+":"+secondary}
+						dge_2_logfc = {"Error": primary+":"+secondary}
+
+
+					# create the seconday category key
+					if node:
+
+						data_structure[node][primary][secondary] = {
+							"RF": rf_2,
+							"DGE": dge_2,
+							"DGE_pval_adj": dge_2_pval_adj,
+							"DGE_logfc": dge_2_logfc,
+							"RF_A": rf_obj.accuracy,
+							"RF_AUC": rf_obj.auc_score,
+							"RF_BP": rf_obj.rf_params,
+						}
+						
+						images[str(node)+'-'+str(primary)+'-'+str(secondary)] = rf_obj.clustering_details
+
+					else:
+
+						data_structure[primary][secondary] = {
+							"RF": rf_2,
+							"DGE": dge_2,
+							"DGE_pval_adj": dge_2_pval_adj,
+							"DGE_logfc": dge_2_logfc,
+							"RF_A": rf_obj.accuracy,
+							"RF_AUC": rf_obj.auc_score,
+							"RF_BP": rf_obj.rf_params,
+						}
+
+						images[str(primary)+'-'+str(secondary)] = rf_obj.clustering_details
+
+					# only run if there are more than 2 categories
+					if len(self.categories) > 2:
+
+						#get the unique predicted_tertiary_costa for the secondary
+						tertiaries = self.df[(self.df[self.categories[0]] == primary) & (self.df[self.categories[1]] == secondary)][self.categories[2]].unique()
+
+						#iterate through the tertiaries
+						for tertiary in tertiaries:
+
+							try:
+
+								# change the focus of the rf_obj
+								rf_obj.change_focus(primary=primary,secondary=secondary,tertiary=tertiary,serotype_of_interest=gene_of_interest,min_cells=self.minCells,min_serotype_cells=self.minSeroTypeCells)
+
+								# dge data dictionary
+								dge_3 = rf_obj.de_df.set_index('1_name')['0_name'].to_dict()
+								dge_3_pval_adj = rf_obj.de_df[['1_pval_adj','0_pval_adj']].values.tolist()
+								dge_3_logfc = rf_obj.de_df[['1_logfc','0_logfc']].values.tolist()
+
+								# rf dictionary
+								rf_3 = rf_obj.fi_df[:50].set_index('Feature')['Importance'].to_dict()
+
+							except Exception as e:
+								print(f"Warning (4): {node} {primary}:{secondary}:{tertiary}:{gene_of_interest} {e}")
+								dge_3 = {"Error": primary+":"+secondary+":"+tertiary}
+								rf_3 = {"Error": primary+":"+secondary+":"+tertiary}
+								dge_3_pval_adj = {"Error": primary+":"+secondary+":"+tertiary}
+								dge_3_logfc = {"Error": primary+":"+secondary+":"+tertiary}
+
+
+							# create the tertiary category key
+							if node:
+
+								data_structure[node][primary][secondary][tertiary] = {
+									"RF": rf_3,
+									"DGE": dge_3,
+									"DGE_pval_adj": dge_3_pval_adj,
+									"DGE_logfc": dge_3_logfc,
+									"RF_A": rf_obj.accuracy,
+									"RF_AUC": rf_obj.auc_score,
+									"RF_BP": rf_obj.rf_params,
+								}
+								
+								images[str(node)+'-'+str(primary)+'-'+str(secondary)+'-'+str(tertiary)] = rf_obj.clustering_details
+
+							else:
+
+								data_structure[primary][secondary][tertiary] = {
+									"RF": rf_3,
+									"DGE": dge_3,
+									"DGE_pval_adj": dge_3_pval_adj,
+									"DGE_logfc": dge_3_logfc,
+									"RF_A": rf_obj.accuracy,
+									"RF_AUC": rf_obj.auc_score,
+									"RF_BP": rf_obj.rf_params,
+								}
+
+								images[str(primary)+'-'+str(secondary)+'-'+str(tertiary)] = rf_obj.clustering_details
+
+
+		return data_structure
+
+

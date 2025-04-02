@@ -1,1 +1,2 @@
-from .tap import TAP
+from .Tap import TAP
+from .FeatureSelection import FeatureSelection
