@@ -525,9 +525,15 @@ class FeatureSelection:
 				self.rf_params = json.dumps(self.rf_params)
 
 				#evaluate the accuracy of the model on the testing data
-				accuracy = accuracy_score(y_test, y_pred)
+				# accuracy = accuracy_score(y_test, y_pred)
+				# self.accuracy = f"{round(accuracy*100,2)}%"
+				# self.auc_score = roc_auc_score(y_test, y_pred)
+
+				y_pred_binary = (y_pred > 0.5).astype(int)
+				accuracy = accuracy_score(y_test, y_pred_binary)
 				self.accuracy = str(round(accuracy*100,2))+"%"
 				self.auc_score = roc_auc_score(y_test, y_pred)
+
 
 			else:
 				n_estimators = [10,20,40,60,80,100]

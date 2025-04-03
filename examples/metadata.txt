@@ -26,8 +26,8 @@
     "cellTypist": false,
     "cellTypistModel": "Mouse_Whole_Brain.pkl",
     "cellTypistLevels": 3,
-    "rfHyperParameterTune": true,
-    "rfHyperParameterIterations": 2,
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 10,
     "permute": false,
     "permuteRepeats": 2
 }

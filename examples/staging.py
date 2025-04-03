@@ -6,7 +6,7 @@ parameters = {
 	"genes": ["AAV2","Retro"],
 	"categories": ["cell_type"],
 	"outputPath": ".", #current directory
-	"outputName": "test.html",
+	"outputName": "test2.html",
 	"runCellTypist" : False,
 	"excludeMarkers" : True,
 	"mapOnly" : False,
@@ -14,8 +14,9 @@ parameters = {
 	"removeOutliers": True,
 	"clusterMethod": "threshold",
 	"clusterThreshold": 1,
-	"rfHyperParameterTune": True,
-	"rfHyperParameterIterations": 2,
+	"rfType": "classifier",
+	"rfHyperParameterTune": False,
+	"rfHyperParameterIterations": 10,
 }
 
 results = t.TAP(**parameters)
