@@ -32,9 +32,9 @@ class FeatureSelection:
 	def __init__(self, molotAAV_object, serotype_of_interest, primary=None, exclude_category_names=[], 
 				secondary=None, tertiary=None, min_cells=100, min_serotype_cells=100, 
 				permute_feature_importance=False, permutation_repeats=2, threads=8,
-				cluster_method='gaussian', cluster_threshold=0, showDE=True, showRF=True, serotype_list=[],
-				category_observations=[], showPlots=True, exclude_genes=[], deMethod="t-test",
-				rfHyperParameterTune=False,rfHyperParameterIterations=50, outputPath=None, balance=None,
+				cluster_method='threshold', cluster_threshold=1, showDE=True, showRF=True, serotype_list=[],
+				category_observations=[], showPlots=True, exclude_genes=[], deMethod="wilcoxon",
+				rfHyperParameterTune=False,rfHyperParameterIterations=50, rfType="classifier", outputPath=None, balance=None,
 				excludeMarkers=False,markers=[],removeOutliers=True,totalIterations=0, currentIteration=1,
 				clusterThresholdGreaterThanOrEqual=None, clusterThresholdLessThanOrEqual=None):
 		self.molotAAV_object = molotAAV_object	
@@ -61,6 +61,7 @@ class FeatureSelection:
 		self.exclude_category_names = exclude_category_names
 		self.rfHyperParameterTune = rfHyperParameterTune
 		self.rfHyperParameterIterations = rfHyperParameterIterations
+		self.rfType = rfType
 		self.balance = balance
 		self.accuracy = "0%"
 		self.auc_score = 0
@@ -88,7 +89,6 @@ class FeatureSelection:
 		else:
 			self.molotAAV_object_filtered = self.molotAAV_object_processed.adata
 		
-
 		if self.check_shape_count() == False:
 			print(f"Too few cells in the cell type to proceed.")
 			return
@@ -100,7 +100,6 @@ class FeatureSelection:
 		if self.check_labels() == False:
 			print(f"Not enough unique labels in the {self.serotype_of_interest} to proceed.")
 			return
-
 
 		if self.cluster_method == 'gaussian':
 			self.run_gmm()
@@ -324,7 +323,6 @@ class FeatureSelection:
 		
 
 	def run_gmm(self,n_components=2,max_iter=100,covariance_type="spherical"):
-
 		#extract the features to cluster
 		X = self.molotAAV_object_filtered.obs[["total_counts_log10", self.serotype_of_interest]]
 		
@@ -372,22 +370,21 @@ class FeatureSelection:
 				~self.molotAAV_object_filtered_training.obs['infection_status'].isna()
 			]
 		else:
-			# Use single threshold for clustering
+			#single threshold for clustering
 			self.molotAAV_object_filtered_training.obs['infection_status'] = np.where(
 				self.molotAAV_object_filtered_training.obs[self.serotype_of_interest] >= self.cluster_threshold,
-				1,
-				0
+				1,0
 			)
 
 	def print_infectivity_counts(self):
 		print(self.molotAAV_object_filtered_training.obs['infection_status'].value_counts())
 
 	def run_rf(self, n_estimators=20, max_depth=2, n_jobs=8, max_features=None, min_samples_split=2, permute_feature_importance=False, permutation_repeats=2):
-		# filter out the serotype of interest from the training data
+		#filter out the serotype of interest from the training data
 		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.molotAAV_object_copy.serotype_list])]
 		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.exclude_genes])]
 
-		# we need to filter out any marker genes from the list
+		#we need to filter out any marker genes from the list
 		if self.excludeMarkers == True:
 			if self.primary != None and self.secondary != None and self.tertiary != None:
 				exclude_markers = self.markers[self.tertiary]
@@ -405,10 +402,10 @@ class FeatureSelection:
 
 			self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in exclude_markers["names"]])]
 
-		# add obs that's a category of infected or not infected
+		#add obs that's a category of infected or not infected
 		self.molotAAV_object_filtered_training.obs["infection_status_cat"] = self.molotAAV_object_filtered_training.obs["infection_status"].astype('category')		
 
-		# set the x training and y labels
+		#set the x training and y labels
 		X_train = self.molotAAV_object_filtered_training.X
 		y_train = self.molotAAV_object_filtered_training.obs["infection_status"].values		
 
@@ -453,62 +450,118 @@ class FeatureSelection:
 				return
 
 		else:
-			# split the training data into training (x%), testing (x%) sets
+			#split the training data into training (x%), testing (x%) sets
 			X_train, X_test, y_train, y_test = train_test_split(X_train, y_train, test_size=0.2, random_state=22)
 
-	
-		if self.rfHyperParameterTune == False:
-			#initialize a random forest classifier
-			self.rfc = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, 
-										n_jobs=self.threads, max_features=max_features, min_samples_split=min_samples_split, random_state=22)
+		#use a random forest classifer or regressor
+		if self.rfType == "classifier":
 
-			#fit the classifier to the training data
-			self.rfc.fit(X_train, y_train)
+			if self.rfHyperParameterTune == False:
+				#initialize a random forest classifier
+				self.rfc = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, 
+											n_jobs=self.threads, max_features=max_features, min_samples_split=min_samples_split, random_state=22)
 
-			#make predictions on the testing data
-			y_pred = self.rfc.predict(X_test)
-			self.rf_params = {"n_estimators":n_estimators, "max_depth":max_depth, "n_jobs":self.threads, "max_features":max_features, "min_samples_split":min_samples_split}
-			self.rf_params = json.dumps(self.rf_params)
+				#fit the classifier to the training data
+				self.rfc.fit(X_train, y_train)
 
-			#evaluate the accuracy of the model on the testing data
-			accuracy = accuracy_score(y_test, y_pred)
-			self.accuracy = str(round(accuracy*100,2))+"%"
-			self.auc_score = roc_auc_score(y_test, y_pred)
-			
-		else:
-			n_estimators = [10,20,40,60,80,100]
-			max_features = ['auto', 'sqrt', None]
-			max_depth = [2,3,4,5,6,7,8,9,10,11,12,None]
-			min_samples_split = [2,3,4, 5,7,8,9,10]
-			min_samples_leaf = [1, 2, 3, 4, 5]
+				#make predictions on the testing data
+				y_pred = self.rfc.predict(X_test)
+				self.rf_params = {"n_estimators":n_estimators, "max_depth":max_depth, "n_jobs":self.threads, "max_features":max_features, "min_samples_split":min_samples_split}
+				self.rf_params = json.dumps(self.rf_params)
 
-			#create the grid of parameters
-			random_grid = {'n_estimators': n_estimators,
-				'max_features': max_features,
-				'max_depth': max_depth,
-				'min_samples_split': min_samples_split,
-				'min_samples_leaf': min_samples_leaf
-				}
+				#evaluate the accuracy of the model on the testing data
+				accuracy = accuracy_score(y_test, y_pred)
+				self.accuracy = str(round(accuracy*100,2))+"%"
+				self.auc_score = roc_auc_score(y_test, y_pred)
+				
+			else:
+				n_estimators = [10,20,40,60,80,100]
+				max_features = ['auto', 'sqrt', None]
+				max_depth = [2,3,4,5,6,7,8,9,10,11,12,None]
+				min_samples_split = [2,3,4, 5,7,8,9,10]
+				min_samples_leaf = [1, 2, 3, 4, 5]
 
-			# Use the random grid to search for best hyperparameters
-			rf = RandomForestRegressor()
-			rf_random = RandomizedSearchCV(estimator=rf, param_distributions=random_grid, 
-										n_iter=self.rfHyperParameterIterations, 
-										cv=3, 
-										verbose=0, 
-										random_state=22, 
-										n_jobs=self.threads)
-			rf_random.fit(X_train, y_train)
-			
-			self.rf_params = rf_random.best_params_
-			self.rf_params = json.dumps(self.rf_params)
-			
-			self.rfc = rf_random.best_estimator_
-			y_pred = self.rfc.predict(X_test)
-			y_pred_binary = (y_pred > 0.5).astype(int)
-			accuracy = accuracy_score(y_test, y_pred_binary)
-			self.accuracy = str(round(accuracy*100,2))+"%"
-			self.auc_score = roc_auc_score(y_test, y_pred)
+				#create the grid of parameters
+				random_grid = {'n_estimators': n_estimators,
+					'max_features': max_features,
+					'max_depth': max_depth,
+					'min_samples_split': min_samples_split,
+					'min_samples_leaf': min_samples_leaf
+					}
+
+				#use the random grid to search for best hyperparameters
+				#rf = RandomForestRegressor()
+				rf = RandomForestClassifier(random_state=22)
+				rf_random = RandomizedSearchCV(estimator=rf, param_distributions=random_grid, 
+											n_iter=self.rfHyperParameterIterations, 
+											cv=3, 
+											verbose=0, 
+											random_state=22, 
+											n_jobs=self.threads)
+				rf_random.fit(X_train, y_train)
+				
+				self.rf_params = rf_random.best_params_
+				self.rf_params = json.dumps(self.rf_params)
+				self.rfc = rf_random.best_estimator_
+				y_pred = self.rfc.predict(X_test)
+				y_pred_binary = (y_pred > 0.5).astype(int)
+				accuracy = accuracy_score(y_test, y_pred_binary)
+				self.accuracy = str(round(accuracy*100,2))+"%"
+				self.auc_score = roc_auc_score(y_test, y_pred)
+				
+		elif self.rfType == "regressor":
+
+			if self.rfHyperParameterTune == False:
+				#initialize a random forest regressor
+				self.rfc = RandomForestRegressor(n_estimators=n_estimators, max_depth=max_depth, 
+											n_jobs=self.threads, max_features=max_features, min_samples_split=min_samples_split, random_state=22)
+
+				#fit the regressor to the training data
+				self.rfc.fit(X_train, y_train)
+
+				#make predictions on the testing data
+				y_pred = self.rfc.predict(X_test)
+				self.rf_params = {"n_estimators":n_estimators, "max_depth":max_depth, "n_jobs":self.threads, "max_features":max_features, "min_samples_split":min_samples_split}
+				self.rf_params = json.dumps(self.rf_params)
+
+				#evaluate the accuracy of the model on the testing data
+				accuracy = accuracy_score(y_test, y_pred)
+				self.accuracy = str(round(accuracy*100,2))+"%"
+				self.auc_score = roc_auc_score(y_test, y_pred)
+
+			else:
+				n_estimators = [10,20,40,60,80,100]
+				max_features = ['auto', 'sqrt', None]
+				max_depth = [2,3,4,5,6,7,8,9,10,11,12,None]
+				min_samples_split = [2,3,4, 5,7,8,9,10]
+				min_samples_leaf = [1, 2, 3, 4, 5]
+
+				#create the grid of parameters
+				random_grid = {'n_estimators': n_estimators,
+					'max_features': max_features,
+					'max_depth': max_depth,
+					'min_samples_split': min_samples_split,
+					'min_samples_leaf': min_samples_leaf
+					}
+
+				#use the random grid to search for best hyperparameters
+				rf = RandomForestRegressor(random_state=22)
+				rf_random = RandomizedSearchCV(estimator=rf, param_distributions=random_grid,
+											n_iter=self.rfHyperParameterIterations,
+											cv=3,
+											verbose=0,
+											random_state=22,
+											n_jobs=self.threads)
+				rf_random.fit(X_train, y_train)
+
+				self.rf_params = rf_random.best_params_
+				self.rf_params = json.dumps(self.rf_params)
+				self.rfc = rf_random.best_estimator_
+				y_pred = self.rfc.predict(X_test)
+				y_pred_binary = (y_pred > 0.5).astype(int)
+				accuracy = accuracy_score(y_test, y_pred_binary)
+				self.accuracy = str(round(accuracy*100,2))+"%"
+				self.auc_score = roc_auc_score(y_test, y_pred)
 
 		#permute feature importance
 		if permute_feature_importance == True:
@@ -571,7 +624,7 @@ class FeatureSelection:
 			plt.show()
 			plt.clf()
 
-	def differential_expression(self, method='t-test', category='infection_status', n_genes=1000, use_raw=False, plot=False):
+	def differential_expression(self, method='wilcoxon', category='infection_status', n_genes=1000, use_raw=False, plot=False):
 
 		#filter out the serotype of interest from the training data
 		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.molotAAV_object_copy.serotype_list])]

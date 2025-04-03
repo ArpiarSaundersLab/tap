@@ -14,6 +14,8 @@ parameters = {
 	"removeOutliers": True,
 	"clusterMethod": "threshold",
 	"clusterThreshold": 1,
+	"rfHyperParameterTune": True,
+	"rfHyperParameterIterations": 2,
 }
 
 results = t.TAP(**parameters)

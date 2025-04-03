@@ -20,14 +20,14 @@
     "clusterThreshold": 1,
     "clusterThresholdGreaterThanOrEqual": null,
     "clusterThresholdLessThanOrEqual": null,
-    "deMethod": "t-test",
+    "deMethod": "wilcoxon",
     "mapOnly": false,
     "excludeMarkers": true,
     "cellTypist": false,
     "cellTypistModel": "Mouse_Whole_Brain.pkl",
     "cellTypistLevels": 3,
-    "rfHyperParameterTune": false,
-    "rfHyperParameterIterations": 50,
+    "rfHyperParameterTune": true,
+    "rfHyperParameterIterations": 2,
     "permute": false,
     "permuteRepeats": 2
 }

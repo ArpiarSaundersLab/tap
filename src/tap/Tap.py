@@ -43,8 +43,8 @@ class TAP:
 	def __init__(self, name="Heatmap", filename=None, adataObject=None, categories=[], categoryNames=[], 
 	genes=[], exclude=[], useRaw=False, outputPath=".", outputName="tap.html", cpus = 2, 
 	mapOnly=False, showDE=True, showRF=True, showUMAP=True, showDetails=True, 
-	clusterMethod="gaussian", clusterThreshold=0, useLog10=False, showPlots=False, 
-	excludeGenes=[],deMethod="t-test", rfHyperParameterTune=False, rfHyperParameterIterations=50, 
+	clusterMethod="threshold", clusterThreshold=1, useLog10=False, showPlots=False, 
+	excludeGenes=[], deMethod="wilcoxon", rfHyperParameterTune=False, rfHyperParameterIterations=50, rfType="classifier",
 	balance=None, useAllGenes=False, rfPermuteFeatureImportance=False, rfPermuteRepeats=2,
 	runCellTypist=False, cellTypistModel="Mouse_Whole_Brain.pkl", cellTypistPlots=False, cellTypistLevels=3,
 	minify = True, excludeMarkers=False, removeOutliers=True, minCells=20, minSeroTypeCells=20,
@@ -64,6 +64,7 @@ class TAP:
 		self.useAllGenes = useAllGenes
 		self.rfPermuteFeatureImportance = rfPermuteFeatureImportance
 		self.rfPermuteRepeats = rfPermuteRepeats
+		self.rfType = rfType
 		self.removeOutliers = removeOutliers
 		self.minCells = minCells
 		self.minSeroTypeCells = minSeroTypeCells
@@ -496,6 +497,7 @@ class TAP:
 								deMethod=self.deMethod,
 								rfHyperParameterTune=self.rfHyperParameterTune,
 								rfHyperParameterIterations = self.rfHyperParameterIterations,
+								rfType=self.rfType,
 								balance=self.balance,
 								permute_feature_importance=self.rfPermuteFeatureImportance,
 								permutation_repeats=self.rfPermuteRepeats,
@@ -590,7 +592,7 @@ class TAP:
 				rf_1 = rf_obj.fi_df[:50].set_index('Feature')['Importance'].to_dict()
 
 			except Exception as e:
-				print(f"Warning(node level) (1): {node} {e}")
+				warnings.warn(f"Warning(node level) (1): {node} {e}")
 				dge_1 = {"Error": node}
 				rf_1 = {"Error": node}
 				dge_1_pval_adj = {"Error": node}
@@ -638,7 +640,7 @@ class TAP:
 				rf_1 = rf_obj.fi_df[:50].set_index('Feature')['Importance'].to_dict()
 
 			except Exception as e:
-				print(f"Warning (2): {node}:{primary}:{gene_of_interest} {e}")
+				warnings.warn(f"Warning (2): {node}:{primary}:{gene_of_interest} {e}")
 				dge_1 = {"Error": primary}
 				rf_1 = {"Error": primary}
 				dge_1_pval_adj = {"Error": primary}
@@ -698,7 +700,7 @@ class TAP:
 						rf_2 = rf_obj.fi_df[:50].set_index('Feature')['Importance'].to_dict()
 
 					except Exception as e:
-						print(f"Warning (3): {node} {primary}:{secondary}:{gene_of_interest} {e} ")
+						warnings.warn(f"Warning (3): {node} {primary}:{secondary}:{gene_of_interest} {e} ")
 						dge_2 = {"Error": primary+":"+secondary}
 						rf_2 = {"Error": primary+":"+secondary}
 						dge_2_pval_adj = {"Error": primary+":"+secondary}
@@ -757,7 +759,7 @@ class TAP:
 								rf_3 = rf_obj.fi_df[:50].set_index('Feature')['Importance'].to_dict()
 
 							except Exception as e:
-								print(f"Warning (4): {node} {primary}:{secondary}:{tertiary}:{gene_of_interest} {e}")
+								warnings.warn(f"Warning (4): {node} {primary}:{secondary}:{tertiary}:{gene_of_interest} {e}")
 								dge_3 = {"Error": primary+":"+secondary+":"+tertiary}
 								rf_3 = {"Error": primary+":"+secondary+":"+tertiary}
 								dge_3_pval_adj = {"Error": primary+":"+secondary+":"+tertiary}
