@@ -18,16 +18,17 @@
     "Details": true,
     "clusterMethod": "threshold",
     "clusterThreshold": 1,
-    "clusterThresholdGreaterThanOrEqual": null,
-    "clusterThresholdLessThanOrEqual": null,
+    "clusterThresholdGreaterThanOrEqual": 3,
+    "clusterThresholdLessThanOrEqual": 0,
     "deMethod": "wilcoxon",
     "mapOnly": false,
     "excludeMarkers": true,
     "cellTypist": false,
-    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistModel": "BrainCellData_268_CellTypes.pkl",
     "cellTypistLevels": 3,
+    "rfType": "classifier",
     "rfHyperParameterTune": false,
     "rfHyperParameterIterations": 10,
     "permute": false,
-    "permuteRepeats": 2
+    "permuteRepeats": 3
 }

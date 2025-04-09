@@ -489,5 +489,35 @@
       "No_celltypes": 138,
       "source": "https://doi.org/10.1126/science.abo0510"
     }
+	,
+    {
+      "filename": "BrainCellData_268_CellTypes.pkl",
+      "url": "#",
+      "version": "v1",
+      "date": "2025-05-01",
+      "details": "",
+      "No_celltypes": 268,
+      "source": "#"
+    }
+	,
+    {
+      "filename": "BrainCellData_3186_CellTypes.pkl",
+      "url": "#",
+      "version": "v1",
+      "date": "2025-05-01",
+      "details": "",
+      "No_celltypes": 3186,
+      "source": "#"
+    }
+	,
+    {
+      "filename": "BrainCellData_4985_CellTypes.pkl",
+      "url": "#",
+      "version": "v1",
+      "date": "2025-05-01",
+      "details": "",
+      "No_celltypes": 4985,
+      "source": "#"
+    }	
   ]
 }

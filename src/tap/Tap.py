@@ -8,7 +8,7 @@ import tables
 import copy
 import gc
 import os
-import anndata
+import anndata as ad
 import warnings
 import time
 import matplotlib.pyplot as plt
@@ -34,6 +34,7 @@ from tap.FeatureSelection import FeatureSelection
 warnings.filterwarnings("ignore")
 sns.set(style="whitegrid")
 sc.settings.verbosity = 0
+from tqdm import tqdm
 
 class TAP:
 
@@ -98,9 +99,12 @@ class TAP:
 		self.markers ={}
 		self.copyTapTemplate()
 		self.loadData()
-		self.runTimeEstimate()
+		
 		if self.runCellTypist == True:
 			self.generateCellTypistPredictions()
+		
+		self.runTimeEstimate()
+
 		self.generateHeatmapMetadata()
 		if self.excludeMarkers == True:
 			self.determineMarkers()
@@ -140,6 +144,16 @@ class TAP:
 			#select the genes
 			self.adata = self.adata[:, input_adata_genes]
 
+		#iterate each gene and check if it exists in the adata object, then add from obs if necessary
+		for gene in self.genes:
+			if gene not in self.adata.var_names.tolist() and gene in self.adata.obs.columns.tolist():
+				print(f"Notice: {gene} not found in adata object, but in obs. Adding...")
+				print(f"Notice: obs {gene} counts should be raw counts. If they're not, result may be inaccurate.")
+				df = pd.DataFrame({"Cell": self.adata.obs.index.tolist(), f"{gene}": self.adata.obs[gene].values})
+				df = df.set_index("Cell")
+				adata2 = ad.AnnData(df)
+				self.adata = ad.concat([self.adata, adata2], join="outer", axis=1, merge="only")
+
 		#make var names unique
 		self.adata.var_names_make_unique()
 
@@ -152,7 +166,6 @@ class TAP:
 		self.adata.obs['infection_count'] = np.sum(self.adata[:, self.genes].to_df(), axis=1).astype(int)
 		is_infected = self.adata.obs['infection_count'] > 0
 		self.adata.obs['infected'] = pd.Categorical(is_infected.astype(str))
-
 
 	def runTimeEstimate(self):
 		category_length = len(self.categories)
@@ -298,6 +311,7 @@ class TAP:
 			"cellTypist": self.runCellTypist,
 			"cellTypistModel": self.cellTypistModel,
 			"cellTypistLevels": self.cellTypistLevels,
+			"rfType": self.rfType,
 			"rfHyperParameterTune": self.rfHyperParameterTune,
 			"rfHyperParameterIterations": self.rfHyperParameterIterations,
 			"permute": self.rfPermuteFeatureImportance,
@@ -355,6 +369,9 @@ class TAP:
 
 
 	def generateCSV(self, plot=False):
+
+		# make a deep copy of self.result object
+		self.result_copy = copy.deepcopy(self.adata)
 
 		#normalize by library size using Scanpy's normalize_total function
 		sc.pp.normalize_total(self.adata, target_sum=1e4)
@@ -476,7 +493,7 @@ class TAP:
 	def generateJSON(self):
 		
 		#run the GMM+RF/DE analysis on all the data
-		adata_feature_selection = FeatureSelection(self.adata_bak, 
+		adata_feature_selection = FeatureSelection(self.result_copy, 
 								serotype_of_interest="infection_count", 
 								outputPath=self.outputPath,
 								primary=None, 
@@ -552,7 +569,7 @@ class TAP:
 		#rather than saving the json, write the json to the tap.html file as json on one line
 		with open(self.outputPath+self.outputName, 'r') as file:
 			filedata = file.read()
-
+		
 		#Replace the target string
 		filedata = filedata.replace('FEATURE_DATA', json.dumps(data_structure))
 		filedata = filedata.replace('CLUSTERING_DETAILS', json.dumps(images))
@@ -797,5 +814,3 @@ class TAP:
 
 
 		return data_structure
-
-

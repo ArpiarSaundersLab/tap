@@ -90,15 +90,15 @@ class FeatureSelection:
 			self.molotAAV_object_filtered = self.molotAAV_object_processed.adata
 		
 		if self.check_shape_count() == False:
-			print(f"Too few cells in the cell type to proceed.")
+			warnings.warn(f"Too few cells in the cell type to proceed.")
 			return
 		
 		if self.check_shape_serotype() == False:
-			print(f"Not enough cells with the {self.serotype_of_interest} to proceed.")
+			warnings.warn(f"Not enough cells with the {self.serotype_of_interest} to proceed.")
 			return
 
 		if self.check_labels() == False:
-			print(f"Not enough unique labels in the {self.serotype_of_interest} to proceed.")
+			warnings.warn(f"Not enough unique labels in the {self.serotype_of_interest} to proceed.")
 			return
 
 		if self.cluster_method == 'gaussian':
@@ -139,15 +139,15 @@ class FeatureSelection:
 			self.molotAAV_object_filtered = self.molotAAV_object_processed.adata
 
 		if self.check_shape_count() == False:
-			print(f"Too few cells in the cell type to proceed.")
+			warnings.warn(f"Too few cells in the cell type to proceed.")
 			return
 		
 		if self.check_shape_serotype() == False:
-			print(f"Not enough cells with the {self.serotype_of_interest} to proceed.")
+			warnings.warn(f"Not enough cells with the {self.serotype_of_interest} to proceed.")
 			return
 
 		if self.check_labels() == False:
-			print(f"Not enough unique labels in the {self.serotype_of_interest} to proceed.")
+			warnings.warn(f"Not enough unique labels in the {self.serotype_of_interest} to proceed.")
 			return
 
 		if self.cluster_method == 'gaussian':
@@ -187,7 +187,9 @@ class FeatureSelection:
 			if serotype in self.molotAAV_object_copy.adata.var_names:
 				self.molotAAV_object_copy.adata[self.molotAAV_object_copy.adata[:, [serotype]].X == 0][:,serotype].X = 0.1
 				self.molotAAV_object_copy.adata.obs[str(serotype).lower() + "_log10"] = np.log10(self.molotAAV_object_copy.adata[:, [serotype]].to_df())
+				self.molotAAV_object_copy.adata[self.molotAAV_object_copy.adata[:, [serotype]].X == 0.1][:,serotype].X = 0
 				self.molotAAV_object_copy.adata.obs[str(serotype).lower()] =self.molotAAV_object_copy.adata[:, [serotype]].to_df()
+
  
 	def filter_by_categories(self):
 		self.molotAAV_object_processed = copy.deepcopy(self.molotAAV_object_copy)
@@ -200,7 +202,7 @@ class FeatureSelection:
 	def check_labels(self):
 
 		if self.molotAAV_object_processed.adata.obs[self.serotype_of_interest].nunique() < 2:
-			print(f"There must be at least 2 unique labels in the {self.serotype_of_interest} column.")
+			warnings.warn(f"There must be at least 2 unique labels in the {self.serotype_of_interest} column.")
 			return False
 		else:
 			return True
@@ -208,7 +210,7 @@ class FeatureSelection:
 	def check_shape_count(self):
 		# if the shape of the adata object is less than min_cells, then return false and stop the analysis.
 		if self.molotAAV_object_processed.adata.shape[0] < self.min_cells:
-			print("Only "+str(self.molotAAV_object_processed.adata.shape[0])+" cells found with the cell type of interest, "+str(self.primary))
+			warnings.warn(f"Only {str(self.molotAAV_object_processed.adata.shape[0])} cells found with the cell type of interest {str(self.primary)}")
 			return False
 		else:
 			return True
@@ -221,7 +223,7 @@ class FeatureSelection:
 			serotype_count = self.molotAAV_object_processed.adata.obs[self.serotype_of_interest.lower()][self.molotAAV_object_processed.adata.obs[self.serotype_of_interest.lower()] > 0].shape[0]
 		# if there are less than  min_serotype_cells with the serotype of interest, then return false and stop the analysis.
 		if serotype_count < self.min_serotype_cells:
-			print("Only "+str(serotype_count)+" cells with the serotype of interest, "+str(self.serotype_of_interest)+" found.")
+			warnings.warn(f"Only {str(serotype_count)} cells with the serotype of interest {str(self.serotype_of_interest)} found.")
 			return False
 		else:
 			return True
@@ -407,7 +409,11 @@ class FeatureSelection:
 
 		#set the x training and y labels
 		X_train = self.molotAAV_object_filtered_training.X
-		y_train = self.molotAAV_object_filtered_training.obs["infection_status"].values		
+		
+		if self.rfType == "classifier":
+			y_train = self.molotAAV_object_filtered_training.obs["infection_status"].values
+		elif self.rfType == "regressor":
+			y_train = self.molotAAV_object_filtered_training.obs[self.serotype_of_interest].values
 
 		#both classes must be present in the training data
 		if len(np.unique(y_train)) < 2:
@@ -467,12 +473,12 @@ class FeatureSelection:
 				#make predictions on the testing data
 				y_pred = self.rfc.predict(X_test)
 				self.rf_params = {"n_estimators":n_estimators, "max_depth":max_depth, "n_jobs":self.threads, "max_features":max_features, "min_samples_split":min_samples_split}
-				self.rf_params = json.dumps(self.rf_params)
+				#self.rf_params = json.dumps(self.rf_params)
 
 				#evaluate the accuracy of the model on the testing data
 				accuracy = accuracy_score(y_test, y_pred)
 				self.accuracy = str(round(accuracy*100,2))+"%"
-				self.auc_score = roc_auc_score(y_test, y_pred)
+				self.auc_score = round(roc_auc_score(y_test, y_pred),4)
 				
 			else:
 				n_estimators = [10,20,40,60,80,100]
@@ -490,7 +496,6 @@ class FeatureSelection:
 					}
 
 				#use the random grid to search for best hyperparameters
-				#rf = RandomForestRegressor()
 				rf = RandomForestClassifier(random_state=22)
 				rf_random = RandomizedSearchCV(estimator=rf, param_distributions=random_grid, 
 											n_iter=self.rfHyperParameterIterations, 
@@ -507,7 +512,7 @@ class FeatureSelection:
 				y_pred_binary = (y_pred > 0.5).astype(int)
 				accuracy = accuracy_score(y_test, y_pred_binary)
 				self.accuracy = str(round(accuracy*100,2))+"%"
-				self.auc_score = roc_auc_score(y_test, y_pred)
+				self.auc_score = round(roc_auc_score(y_test, y_pred),4)
 				
 		elif self.rfType == "regressor":
 
@@ -522,18 +527,17 @@ class FeatureSelection:
 				#make predictions on the testing data
 				y_pred = self.rfc.predict(X_test)
 				self.rf_params = {"n_estimators":n_estimators, "max_depth":max_depth, "n_jobs":self.threads, "max_features":max_features, "min_samples_split":min_samples_split}
-				self.rf_params = json.dumps(self.rf_params)
-
-				#evaluate the accuracy of the model on the testing data
-				# accuracy = accuracy_score(y_test, y_pred)
-				# self.accuracy = f"{round(accuracy*100,2)}%"
-				# self.auc_score = roc_auc_score(y_test, y_pred)
+				#self.rf_params = json.dumps(self.rf_params)
 
 				y_pred_binary = (y_pred > 0.5).astype(int)
 				accuracy = accuracy_score(y_test, y_pred_binary)
 				self.accuracy = str(round(accuracy*100,2))+"%"
-				self.auc_score = roc_auc_score(y_test, y_pred)
-
+				
+				from sklearn.metrics import mean_squared_error, r2_score
+				self.r2 = r2_score(y_test, y_pred)
+				self.mse = mean_squared_error(y_test, y_pred)
+				self.mse = str(round(self.mse, 4))
+				self.auc_score = "MSE:"+str(self.mse) 
 
 			else:
 				n_estimators = [10,20,40,60,80,100]
@@ -567,10 +571,16 @@ class FeatureSelection:
 				y_pred_binary = (y_pred > 0.5).astype(int)
 				accuracy = accuracy_score(y_test, y_pred_binary)
 				self.accuracy = str(round(accuracy*100,2))+"%"
-				self.auc_score = roc_auc_score(y_test, y_pred)
+				
+				from sklearn.metrics import mean_squared_error, r2_score
+				self.r2 = r2_score(y_test, y_pred)
+				self.mse = mean_squared_error(y_test, y_pred)
+				self.mse = str(round(self.mse, 4))
+				self.auc_score = "MSE:"+str(self.mse) 
 
 		#permute feature importance
 		if permute_feature_importance == True:
+
 			#convert X_test and y_test to a numpy array if necessary
 			if isinstance(X_test, sp.spmatrix):
 				print("The matrix is sparse. Converting...")
@@ -588,7 +598,7 @@ class FeatureSelection:
 
 		#get the feature importances from the random forest model
 		importances = self.rfc.feature_importances_
-
+		
 		#limit scores to 4 decimal places
 		importances = [round(x,4) for x in importances]
 

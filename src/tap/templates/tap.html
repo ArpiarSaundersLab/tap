@@ -963,11 +963,12 @@
 		}
 
 		document.getElementById("rf_accuracy").textContent = RF_A;
-		document.getElementById("rf_auc").textContent = RF_AUC.toFixed(4);
+		document.getElementById("rf_auc").textContent = RF_AUC;
 
 		if (RF_BP){
 			document.getElementById("rf_display_bp").style.display = "block";
-			var parsedRfBp = JSON.parse(RF_BP);
+			//var parsedRfBp = JSON.parse(RF_BP);
+			var parsedRfBp =RF_BP;
 			var rfBpText = "<br />";
 			for (let key in parsedRfBp) {
 				rfBpText += key + ": " + parsedRfBp[key] + "<br />";
@@ -1013,6 +1014,7 @@
 		var table = document.getElementById("dge_features");
 		while (table.rows.length > 2) { table.deleteRow(2);	}
 		var inc=0;
+
 		for (let key in DGE) {
 			if (inc<=20){
 				var newRow = table.insertRow();
