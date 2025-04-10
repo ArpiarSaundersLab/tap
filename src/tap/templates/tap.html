@@ -267,8 +267,6 @@
 	const featureDataRaw = 'FEATURE_DATA';
 	const umapDataRaw = 'UMAP_DATA';
 	const clustingDetails = CLUSTERING_DETAILS;
-	const clustingDetails2 = {"cluster1":"https://placehold.co/200x200","cluster2":"https://placehold.co/200x200"};
-	const umapGenesRaw = ["AAV1","AAV2","AAV3","C1ql1","C1ql2","C1ql3"];
 	let categorySelection = "All";
 	let geneSelection = "All";
 	let fullSelection = "All";
@@ -847,18 +845,6 @@
 		});
 	}
 
-	//parse umapGenesRaw and display in the select dropdown
-	// function parseUmapGenes(){
-	// 	const parsedUmapGenes = JSON.parse(umapGenesRaw);
-	// 	const select = document.getElementById("umap_genes");
-	// 	parsedUmapGenes.forEach(function(gene){
-	// 		var option = document.createElement("option");
-	// 		option.value = gene;
-	// 		option.text = gene;
-	// 		select.appendChild(option);
-	// 	});
-	// }
-
 	//load the rf and de data from the jsonobject
 	function displayFeatureData(){
 		RF_A=0;
@@ -1014,52 +1000,67 @@
 
 		var table = document.getElementById("dge_features");
 		while (table.rows.length > 2) { table.deleteRow(2);	}
-		var inc=0;
 
-		for (let key in DGE) {
-			if (inc<=20){
-				var newRow = table.insertRow();
-				var cell1 = newRow.insertCell(0);
-				var cell2 = newRow.insertCell(1);
-				var cell3 = newRow.insertCell(2);
-				var cell4 = newRow.insertCell(3);
-				var cell5 = newRow.insertCell(4);
-				var cell6 = newRow.insertCell(5);
-				cell1.textContent = key;
 
-				var link = document.createElement('a');
-				link.href = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+key;
-				link.target = "_blank";
-				link.textContent = key;
-				if(existsBoth[key] ){
-					link.style.background = "#0f6868";
-					link.style.padding = "3px";
+		if (DGE["Error"] == undefined){
+			var inc=0;
+			for (let key in DGE) {
+				if (inc<=20){
+					var newRow = table.insertRow();
+					var cell1 = newRow.insertCell(0);
+					var cell2 = newRow.insertCell(1);
+					var cell3 = newRow.insertCell(2);
+					var cell4 = newRow.insertCell(3);
+					var cell5 = newRow.insertCell(4);
+					var cell6 = newRow.insertCell(5);
+					cell1.textContent = key;
+
+					var link = document.createElement('a');
+					link.href = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+key;
+					link.target = "_blank";
+					link.textContent = key;
+					if(existsBoth[key] ){
+						link.style.background = "#0f6868";
+						link.style.padding = "3px";
+					}
+					cell1.innerHTML = '';
+					cell1.appendChild(link);
+					cell2.textContent = DGE_logfc[inc][0]
+					cell3.textContent = DGE_pval_adj[inc][0]
+					cell4.textContent = DGE[key];
+					var link = document.createElement('a');
+					link.href = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+DGE[key];
+					link.target = "_blank";
+					link.textContent = DGE[key];
+					if(existsBoth[DGE[key]] ){
+						link.style.background = "#0f6868";
+						link.style.padding = "3px";
+					}
+					cell4.innerHTML = '';
+					cell4.appendChild(link);
+
+					cell5.textContent = DGE_logfc[inc][1]
+					cell6.textContent = DGE_pval_adj[inc][1]
 				}
-				cell1.innerHTML = '';
-				cell1.appendChild(link);
-				cell2.textContent = DGE_logfc[inc][0]
-				cell3.textContent = DGE_pval_adj[inc][0]
-				cell4.textContent = DGE[key];
-				var link = document.createElement('a');
-				link.href = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+DGE[key];
-				link.target = "_blank";
-				link.textContent = DGE[key];
-				if(existsBoth[DGE[key]] ){
-					link.style.background = "#0f6868";
-					link.style.padding = "3px";
-				}
-				cell4.innerHTML = '';
-				cell4.appendChild(link);
-
-				cell5.textContent = DGE_logfc[inc][1]
-				cell6.textContent = DGE_pval_adj[inc][1]
+				inc++;
 			}
-			inc++;
+
+		} else {
+
+			var rf_features = document.getElementById("rf_features");
+			while (rf_features.rows.length > 1) { rf_features.deleteRow(1);	}
+
 		}
 
 		//replace the cluster_thumbnail with the new cluster plot base64 iamge text from clustingDetails
 		var clusterThumbnail = document.getElementById("cluster_thumb");
-		clusterThumbnail.src = "data:image/png;base64,"+clustingDetails[fullSelection];
+
+		if (clustingDetails[fullSelection] == ""){
+			clusterThumbnail.src = "https://placehold.co/300x300?text=Not+Available\\n\\n(not%20enough%20infected%20cells)";
+		} else {
+			clusterThumbnail.src = "data:image/png;base64,"+clustingDetails[fullSelection];
+		}
+
 
 	}
 

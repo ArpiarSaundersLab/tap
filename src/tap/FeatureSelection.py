@@ -71,7 +71,7 @@ class FeatureSelection:
 		self.removeOutliers = removeOutliers
 		self.totalIterations = totalIterations
 		self.currentIteration = currentIteration
-		self.clustering_details = {}
+		self.clustering_details = ""
 		self.fi_df = pd.DataFrame(columns=['Feature', 'Importance'])
 		self.fip_df = pd.DataFrame(columns=['Feature', 'Importance'])
 		self.de_df = pd.DataFrame()
@@ -131,6 +131,7 @@ class FeatureSelection:
 		self.filter_by_categories()
 		self.currentIteration += 1
 		self.print_run_details()
+		self.clustering_details = ""
 		
 		
 		if self.removeOutliers == True:
@@ -316,13 +317,6 @@ class FeatureSelection:
 		#delete the file
 		os.remove(self.outputPath+'/clusters.png')
 
-
-	def generate_cluster_details(self):
-		self.clustering_details = [self.molotAAV_object_filtered_training.obs["total_counts_log10"].to_list(),
-							self.molotAAV_object_filtered_training.obs[self.serotype_of_interest].to_list(),
-							self.molotAAV_object_filtered_training.obs['infection_status'].to_list()]
-
-		
 
 	def run_gmm(self,n_components=2,max_iter=100,covariance_type="spherical"):
 		#extract the features to cluster

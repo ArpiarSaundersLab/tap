@@ -615,6 +615,7 @@ class TAP:
 				rf_1 = {"Error": node}
 				dge_1_pval_adj = {"Error": node}
 				dge_1_logfc = {"Error": node}
+				rf_obj.clustering_details = ""
 
 
 			# create the primary category key
@@ -663,6 +664,7 @@ class TAP:
 				rf_1 = {"Error": primary}
 				dge_1_pval_adj = {"Error": primary}
 				dge_1_logfc = {"Error": primary}
+				rf_obj.clustering_details = ""
 
 
 			# create the primary category key
@@ -723,6 +725,7 @@ class TAP:
 						rf_2 = {"Error": primary+":"+secondary}
 						dge_2_pval_adj = {"Error": primary+":"+secondary}
 						dge_2_logfc = {"Error": primary+":"+secondary}
+						rf_obj.clustering_details = ""
 
 
 					# create the seconday category key
@@ -782,6 +785,7 @@ class TAP:
 								rf_3 = {"Error": primary+":"+secondary+":"+tertiary}
 								dge_3_pval_adj = {"Error": primary+":"+secondary+":"+tertiary}
 								dge_3_logfc = {"Error": primary+":"+secondary+":"+tertiary}
+								rf_obj.clustering_details = ""
 
 
 							# create the tertiary category key
