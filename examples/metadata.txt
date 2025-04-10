@@ -1,6 +1,7 @@
 {
     "filename": "../assets/data/PCCM.h5ad",
     "title": "PCCM",
+    "outputName": "test.html",
     "categories": [
         "cell_type"
     ],

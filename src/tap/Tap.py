@@ -293,6 +293,7 @@ class TAP:
 		metadata = {
 			"filename": self.filename,
 			"title": self.name,
+			"outputName": self.outputName,
 			"categories": self.categories,
 			"categoryNames": self.categoryNames if self.categoryNames else self.categories,			
 			"genes": self.genes,
