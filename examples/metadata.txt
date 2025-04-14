@@ -1,7 +1,7 @@
 {
-    "filename": "../assets/data/PCCM.h5ad",
-    "title": "PCCM",
-    "outputName": "test.html",
+    "filename": null,
+    "title": "unittest",
+    "outputName": "unittest.html",
     "categories": [
         "cell_type"
     ],
@@ -9,8 +9,8 @@
         "cell_type"
     ],
     "genes": [
-        "AAV2",
-        "Retro"
+        "gene_1",
+        "gene_2"
     ],
     "DE": true,
     "RF": true,
@@ -18,18 +18,18 @@
     "UMAP": true,
     "Details": true,
     "clusterMethod": "threshold",
-    "clusterThreshold": 1,
-    "clusterThresholdGreaterThanOrEqual": 3,
-    "clusterThresholdLessThanOrEqual": 0,
+    "clusterThreshold": 50,
+    "clusterThresholdGreaterThanOrEqual": 50,
+    "clusterThresholdLessThanOrEqual": 30,
     "deMethod": "wilcoxon",
     "mapOnly": false,
-    "excludeMarkers": true,
+    "excludeMarkers": false,
     "cellTypist": false,
-    "cellTypistModel": "BrainCellData_268_CellTypes.pkl",
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
     "cellTypistLevels": 3,
     "rfType": "classifier",
     "rfHyperParameterTune": false,
-    "rfHyperParameterIterations": 10,
+    "rfHyperParameterIterations": 50,
     "permute": false,
-    "permuteRepeats": 3
+    "permuteRepeats": 2
 }

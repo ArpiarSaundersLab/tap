@@ -518,6 +518,16 @@
       "details": "",
       "No_celltypes": 4985,
       "source": "#"
-    }	
+    }
+	,
+    {
+      "filename": "Macaque_Amygdala.pkl",
+      "url": "#",
+      "version": "v1",
+      "date": "2025-05-10",
+      "details": "Trained using macaque snRNA-SEQ data from Totty et al 2024. Labels 'fine_celltype', using SGD with mini-batch enabled, batch size of 100, without mean centering, for 20 epochs. Expression check is disabled, alpha is set to 0.00001, cell type balancing is enabled, feature selection is applied, and n_jobs is set to -1.",
+      "No_celltypes": 17,
+      "source": "#"
+    }		
   ]
 }

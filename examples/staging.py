@@ -1,4 +1,8 @@
 import tap as t
+import scanpy as sc
+import pandas as pd
+import numpy as np
+
 
 parameters = {
 	"filename" : "../assets/data/PCCM.h5ad",

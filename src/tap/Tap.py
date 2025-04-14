@@ -121,11 +121,19 @@ class TAP:
 
 	def loadData(self):
 
-		self.adata = sc.read(self.filename)
-
 		#if user passes in a specific object name, use that object
 		if self.adataObject:
 			self.adata = self.adataObject
+		else:
+			self.adata = sc.read(self.filename)
+
+		#does the raw object exist?
+		if self.adata.raw == None:
+			raise ValueError("Error: No raw.X found in the AnnData object.")
+		
+		#check if the raw object has float values. If so, they aren't raw counts.
+		if self.adata.raw.X[0].dtype == "float32" or self.adata.raw.X[0].dtype == "float64":
+			raise ValueError("Error: raw.X does not appear to contain raw counts.")		
 
 		input_adata_genes = self.adata.var_names.tolist()
 
@@ -531,24 +539,32 @@ class TAP:
 		#define a structure ffor the base64 encoded images
 		images = {}
 
-		#dge data dictionary
-		dge_all = adata_feature_selection.de_df.set_index('1_name')['0_name'].to_dict()
-		dge_pval_adj = adata_feature_selection.de_df[['1_pval_adj','0_pval_adj']].values.tolist()
-		dge_logfc = adata_feature_selection.de_df[['1_logfc','0_logfc']].values.tolist()
+		try:
+			#dge data dictionary
+			dge_all = adata_feature_selection.de_df.set_index('1_name')['0_name'].to_dict()
+			dge_pval_adj = adata_feature_selection.de_df[['1_pval_adj','0_pval_adj']].values.tolist()
+			dge_logfc = adata_feature_selection.de_df[['1_logfc','0_logfc']].values.tolist()
 
-		#rf dictionary
-		rf_all = adata_feature_selection.fi_df[:50].set_index('Feature')['Importance'].to_dict()
+			#rf dictionary
+			rf_all = adata_feature_selection.fi_df[:50].set_index('Feature')['Importance'].to_dict()
 
-		#add the "All" key to the data_structure
-		data_structure["All"] = {
-			"RF": rf_all,
-			"DGE": dge_all,
-			"DGE_pval_adj": dge_pval_adj,
-			"DGE_logfc": dge_logfc,
-			"RF_A": adata_feature_selection.accuracy,
-			"RF_AUC": adata_feature_selection.auc_score,
-			"RF_BP": adata_feature_selection.rf_params,
-		}
+			#add the "All" key to the data_structure
+			data_structure["All"] = {
+				"RF": rf_all,
+				"DGE": dge_all,
+				"DGE_pval_adj": dge_pval_adj,
+				"DGE_logfc": dge_logfc,
+				"RF_A": adata_feature_selection.accuracy,
+				"RF_AUC": adata_feature_selection.auc_score,
+				"RF_BP": adata_feature_selection.rf_params,
+			}
+		except Exception as e:
+			warnings.warn(f"Warning (0): {e}")
+			dge_all = {"Error": "All"}
+			rf_all = {"Error": "All"}
+			dge_pval_adj = {"Error": "All"}
+			dge_logfc = {"Error": "All"}
+			adata_feature_selection.clustering_details = ""
 
 		#image key for the "All" key
 		images["All"] = adata_feature_selection.clustering_details
@@ -578,7 +594,8 @@ class TAP:
 		# Write the file out again
 		with open(self.outputPath+self.outputName, 'w') as file:
 			file.write(filedata)
-
+		
+		self.data_structure = data_structure
 		print(f"Finished Running")
 
 
