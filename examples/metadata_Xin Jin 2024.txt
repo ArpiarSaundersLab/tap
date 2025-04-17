@@ -1,0 +1,35 @@
+{
+    "filename": null,
+    "title": "Xin Jin 2024",
+    "outputName": "xin.html",
+    "categories": [
+        "xincelltype230416"
+    ],
+    "categoryNames": [
+        "cell type"
+    ],
+    "genes": [
+        "BC1a",
+        "BC2a"
+    ],
+    "DE": true,
+    "RF": true,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "threshold",
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": null,
+    "clusterThresholdLessThanOrEqual": null,
+    "deMethod": "wilcoxon",
+    "mapOnly": true,
+    "excludeMarkers": true,
+    "cellTypist": false,
+    "cellTypistModel": "BrainCellData_268_CellTypes.pkl",
+    "cellTypistLevels": 3,
+    "rfType": "classifier",
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 10,
+    "permute": false,
+    "permuteRepeats": 3
+}

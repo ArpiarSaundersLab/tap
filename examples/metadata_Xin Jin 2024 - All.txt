@@ -1,16 +1,17 @@
 {
-    "filename": null,
-    "title": "unittest",
-    "outputName": "unittest.html",
+    "filename": "../archive/data/GSE249416/GSE249416_AAV_ctxobj.Robj.h5ad",
+    "title": "Xin Jin 2024 - All",
+    "outputName": "xin_all3.html",
     "categories": [
-        "cell_type"
+        "xincelltype230416"
     ],
     "categoryNames": [
-        "cell_type"
+        "Cell Type"
     ],
     "genes": [
-        "gene_1",
-        "gene_2"
+        "BC1a",
+        "BC1b",
+        "BC1c"
     ],
     "DE": true,
     "RF": true,
@@ -18,18 +19,18 @@
     "UMAP": true,
     "Details": true,
     "clusterMethod": "threshold",
-    "clusterThreshold": 50,
-    "clusterThresholdGreaterThanOrEqual": 50,
-    "clusterThresholdLessThanOrEqual": 30,
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": 2,
+    "clusterThresholdLessThanOrEqual": 0,
     "deMethod": "wilcoxon",
     "mapOnly": false,
-    "excludeMarkers": false,
+    "excludeMarkers": true,
     "cellTypist": false,
     "cellTypistModel": "Mouse_Whole_Brain.pkl",
     "cellTypistLevels": 3,
     "rfType": "classifier",
     "rfHyperParameterTune": false,
-    "rfHyperParameterIterations": 50,
+    "rfHyperParameterIterations": 10,
     "permute": false,
-    "permuteRepeats": 2
+    "permuteRepeats": 3
 }

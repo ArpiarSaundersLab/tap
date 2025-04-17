@@ -106,6 +106,7 @@ class TAP:
 		self.runTimeEstimate()
 
 		self.generateHeatmapMetadata()
+
 		if self.excludeMarkers == True:
 			self.determineMarkers()
 		if self.mapOnly == True:
@@ -130,10 +131,18 @@ class TAP:
 		#does the raw object exist?
 		if self.adata.raw == None:
 			raise ValueError("Error: No raw.X found in the AnnData object.")
-		
+
+
+		#is this a sparse matrix?
+		if issparse(self.adata.X) == True:
+			self.adata.X = self.adata.X.toarray()
+			self.adata.raw = ad.AnnData(self.adata.raw.X.toarray())
+
+
 		#check if the raw object has float values. If so, they aren't raw counts.
 		if self.adata.raw.X[0].dtype == "float32" or self.adata.raw.X[0].dtype == "float64":
-			raise ValueError("Error: raw.X does not appear to contain raw counts.")		
+			if np.all(self.adata.raw.X[0] % 1 != 0):
+				raise ValueError("Error: raw.X appears to be normalized or log transformed. Please use raw.X.")
 
 		input_adata_genes = self.adata.var_names.tolist()
 
@@ -161,6 +170,8 @@ class TAP:
 				df = df.set_index("Cell")
 				adata2 = ad.AnnData(df)
 				self.adata = ad.concat([self.adata, adata2], join="outer", axis=1, merge="only")
+				del adata2
+				gc.collect()
 
 		#make var names unique
 		self.adata.var_names_make_unique()
@@ -168,7 +179,8 @@ class TAP:
 		#calculate the percent of counts from mitochondrial genes
 		self.adata.var["mt"] = self.adata.var_names.str.startswith("mt-")
 		sc.pp.calculate_qc_metrics(self.adata, qc_vars=['mt'], percent_top=None, log1p=False, inplace=True)
-		self.adata = self.adata[self.adata.obs.pct_counts_mt < 10, :]
+		#let users decide ahead of time
+		#self.adata = self.adata[self.adata.obs.pct_counts_mt < 10, :]
 
 		#calculate the infection_count
 		self.adata.obs['infection_count'] = np.sum(self.adata[:, self.genes].to_df(), axis=1).astype(int)
@@ -341,8 +353,12 @@ class TAP:
 			file.write(filedata)
 
 		#line break for each key value pair
-		with open(self.outputPath+'metadata.txt', 'w') as file:
+		with open(f'{self.outputPath}metadata_{self.clean_string(self.name)}.txt', 'w') as file:
 			file.write(json.dumps(metadata, indent=4))
+
+	def clean_string(self, string):
+		import re
+		return re.sub(r"[/\\?%*:|\"<>\x7F\x00-\x1F]", "-",string)
 
 
 	def determineMarkers(self):
@@ -500,7 +516,6 @@ class TAP:
 
 
 	def generateJSON(self):
-		
 		#run the GMM+RF/DE analysis on all the data
 		adata_feature_selection = FeatureSelection(self.result_copy, 
 								serotype_of_interest="infection_count", 
@@ -590,6 +605,9 @@ class TAP:
 		#Replace the target string
 		filedata = filedata.replace('FEATURE_DATA', json.dumps(data_structure))
 		filedata = filedata.replace('CLUSTERING_DETAILS', json.dumps(images))
+		
+		#replace the word Infinity with NaN to play nice with javascript
+		filedata = filedata.replace('Infinity', '0')
 
 		# Write the file out again
 		with open(self.outputPath+self.outputName, 'w') as file:

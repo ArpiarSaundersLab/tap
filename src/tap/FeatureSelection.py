@@ -171,8 +171,9 @@ class FeatureSelection:
 		self.molotAAV_object_copy.adata.var_names_make_unique()
 
 	def preprocess(self):
-		if self.exclude_category_names != []:
-			self.molotAAV_object_copy.adata = self.molotAAV_object_copy.adata[~self.molotAAV_object_copy.adata.obs[self.primary].isin(self.exclude_category_names), :]
+		# if self.exclude_category_names != []:
+		# 	self.molotAAV_object_copy.adata = self.molotAAV_object_copy.adata[~self.molotAAV_object_copy.adata.obs[self.primary].isin(self.exclude_category_names), :]
+
 		self.molotAAV_object_copy.adata = self.molotAAV_object_copy.adata[self.molotAAV_object_copy.adata.obs["total_counts"] < self.molotAAV_object_copy.adata.obs["total_counts"].quantile(0.98), :]
 		self.molotAAV_object_copy.adata = self.molotAAV_object_copy.adata[self.molotAAV_object_copy.adata.obs["infection_count"] < self.molotAAV_object_copy.adata.obs["infection_count"].quantile(0.98), :]
 
@@ -379,7 +380,7 @@ class FeatureSelection:
 		#filter out the serotype of interest from the training data
 		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.molotAAV_object_copy.serotype_list])]
 		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.exclude_genes])]
-
+		
 		#we need to filter out any marker genes from the list
 		if self.excludeMarkers == True:
 			if self.primary != None and self.secondary != None and self.tertiary != None:
@@ -408,6 +409,7 @@ class FeatureSelection:
 			y_train = self.molotAAV_object_filtered_training.obs["infection_status"].values
 		elif self.rfType == "regressor":
 			y_train = self.molotAAV_object_filtered_training.obs[self.serotype_of_interest].values
+
 
 		#both classes must be present in the training data
 		if len(np.unique(y_train)) < 2:
@@ -467,7 +469,6 @@ class FeatureSelection:
 				#make predictions on the testing data
 				y_pred = self.rfc.predict(X_test)
 				self.rf_params = {"n_estimators":n_estimators, "max_depth":max_depth, "n_jobs":self.threads, "max_features":max_features, "min_samples_split":min_samples_split}
-				#self.rf_params = json.dumps(self.rf_params)
 
 				#evaluate the accuracy of the model on the testing data
 				accuracy = accuracy_score(y_test, y_pred)
@@ -590,23 +591,30 @@ class FeatureSelection:
 
 	def print_feature_importances(self):
 
-		#get the feature importances from the random forest model
-		importances = self.rfc.feature_importances_
-		
-		#limit scores to 4 decimal places
-		importances = [round(x,4) for x in importances]
+		#does the self.rfc doesn't exist?
+		if not hasattr(self, 'rfc'):
+			df = pd.DataFrame(columns=["Feature", "Importance"])
+			self.fi_df = df
 
-		#get the names of the features
-		feature_names = self.molotAAV_object_filtered_training.var_names[self.molotAAV_object_filtered_training.var_names != "infection_status"]
+		else:
 
-		#create a pandas dataframe to store the feature importances
-		df = pd.DataFrame({"Feature": feature_names, "Importance": importances})
+			#get the feature importances from the random forest model
+			importances = self.rfc.feature_importances_
+			
+			#limit scores to 4 decimal places
+			importances = [round(x,4) for x in importances]
 
-		#sort the dataframe by importance in descending order
-		df = df.sort_values(by="Importance", ascending=False)
-		
-		#assign the dataframe to the class property
-		self.fi_df = df
+			#get the names of the features
+			feature_names = self.molotAAV_object_filtered_training.var_names[self.molotAAV_object_filtered_training.var_names != "infection_status"]
+
+			#create a pandas dataframe to store the feature importances
+			df = pd.DataFrame({"Feature": feature_names, "Importance": importances})
+
+			#sort the dataframe by importance in descending order
+			df = df.sort_values(by="Importance", ascending=False)
+			
+			#assign the dataframe to the class property
+			self.fi_df = df
 
 
 	def plot_serotype_vs_umi_predictions(self, plot=False):
@@ -677,4 +685,3 @@ class FeatureSelection:
 		self.fi_df = pd.DataFrame(columns=['Feature', 'Importance'])
 		self.fip_df = pd.DataFrame(columns=['Feature', 'Importance'])
 		self.de_df = pd.DataFrame(columns=["0_name","1_name","0_score","1_score","0_logfc","1_logfc","0_pval","1_pval","0_pval_adj","1_pval_adj"])
-		#print("\n========================\nGarbage Cleanup\n========================\n")
