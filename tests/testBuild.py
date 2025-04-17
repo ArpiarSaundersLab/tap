@@ -30,7 +30,7 @@ class TestBuild(unittest.TestCase):
 		print("Testing TAP with gaussian clustering...")
 		parameters = {
 			"adataObject" :self.adata,
-			"name": "Unittest",
+			"name": "unittest",
 			"genes": ["gene_1","gene_2"],
 			"categories": ["cell_type"],
 			"outputPath": ".", 
@@ -131,8 +131,9 @@ class TestBuild(unittest.TestCase):
 	def tearDown(self):
 		if os.path.exists("unittest.html"):
 			os.remove("unittest.html")
-		if os.path.exists("metadata.txt"):
-			os.remove("metadata.txt")
+		if os.path.exists("metadata_unittest.txt"):
+			os.remove("metadata_unittest.txt")
+
 
 if __name__ == '__main__':
 	unittest.main()
