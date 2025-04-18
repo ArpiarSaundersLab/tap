@@ -44,10 +44,15 @@
 			height: 12px; 
 			font-size: 14px;
 		}
-		.gradient {
+		/* .gradient {
 			background: linear-gradient(to right, black, rgb(100, 0, 0), rgb(255, 0, 0));
 			height: 12px;
+		} */
+		.gradient {
+			height: 12px;
+			border-radius: 2px;
 		}
+
 		.modal-content {
 			background-color: #333;
 			color: #fff;
@@ -260,7 +265,20 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
+					<h3>Color Palette</h3>
+					<div class="mb-3">
+						<label for="colorPaletteSelect" class="form-label">Select Color Palette</label>
+						<select class="form-select" id="colorPaletteSelect">
+							<option value="cividis">Cividis</option>
+							<option value="viridis">Viridis</option>
+							<option value="plasma">Plasma</option>
+							<option value="inferno">Inferno</option>
+							<option value="magma">Magma</option>
+							<option value="tap">Tap (Black -> Red)</option>
+						</select>
+					</div>
 					<h3>Display</h3>
+					<label class="form-label">Toggle the display of specific genes below.</label>
 					<div id="gene-switches-container"></div>
 				</div>
 			</div>
@@ -290,6 +308,7 @@
 	let colors = generateColors();
 	let categoryColors = {};
 	let geneVisibility = {};
+	let colorPalette = "cividis";
 
 	//on window load and resize event
 	document.addEventListener("DOMContentLoaded", function() {
@@ -305,10 +324,10 @@
 		drawHeatmap();
 		rightMenuAnimations();
 		generatePlotly();
-		//parseUmapGenes();
 		hideLoading();
 		updateSelection();
 		showSettings()
+		setScaleGradient();
 		var debouncedResize = debounce(function() {
 			geneSelection = "All";
 			categorySelection = "All";
@@ -341,13 +360,50 @@
 
 	//onclick event for the save button
 	document.getElementById("save_tap").addEventListener("click", downloadImage);
+	document.getElementById("colorPaletteSelect").addEventListener("click", setColorPalette);
 
-	function showSettings(){
+	function setColorPalette(){
+		colorPalette = document.getElementById("colorPaletteSelect").value;
+		drawHeatmap();
+		generatePlotly();
+		setScaleGradient();
+	}
 
+	function setScaleGradient(){
+		const colormap = generateColorMap(colorPalette, 50);
+		const cssGradient = colormapToCSSGradient(colormap);
+		document.querySelector('.gradient').style.background = cssGradient;
+	}
+
+	function colormapToCSSGradient(colormap) {
+		const stops = colormap.map((rgb, i) => {
+			const pct = (i / (colormap.length - 1)) * 100;
+			return `rgb(${rgb[0]},${rgb[1]},${rgb[2]}) ${pct.toFixed(2)}%`;
+		});
+		return `linear-gradient(to right, ${stops.join(', ')})`;
+	}
+
+
+	function showSettings() {
 		document.getElementById('settings_tap').addEventListener('click', function () {
 			const container = document.getElementById('gene-switches-container');
-			container.innerHTML = ''; 
+			container.innerHTML = '';
 
+			const buttonWrapper = document.createElement('div');
+			buttonWrapper.className = 'mb-3';
+			const showAllBtn = document.createElement('button');
+			showAllBtn.className = 'btn btn-sm btn-outline-primary me-2';
+			showAllBtn.innerText = 'Show All';
+			showAllBtn.addEventListener('click', () => toggleAllGenes(true));
+			const hideAllBtn = document.createElement('button');
+			hideAllBtn.className = 'btn btn-sm btn-outline-secondary';
+			hideAllBtn.innerText = 'Hide All';
+			hideAllBtn.addEventListener('click', () => toggleAllGenes(false));
+			buttonWrapper.appendChild(showAllBtn);
+			buttonWrapper.appendChild(hideAllBtn);
+			container.appendChild(buttonWrapper);
+
+			//iterate and add gene switches
 			for (let gene of parsedMetaData.genes) {
 				const wrapper = document.createElement('div');
 				wrapper.className = 'form-check form-switch';
@@ -356,7 +412,7 @@
 				input.className = 'form-check-input';
 				input.type = 'checkbox';
 				input.id = `switch-${gene}`;
-				input.checked = geneVisibility[gene] !== false; 
+				input.checked = geneVisibility[gene] !== false;
 
 				input.addEventListener('change', function () {
 					const row = document.getElementById(`row-${gene}`);
@@ -368,7 +424,6 @@
 					}
 				});
 
-
 				const label = document.createElement('label');
 				label.className = 'form-check-label';
 				label.htmlFor = input.id;
@@ -378,12 +433,27 @@
 				wrapper.appendChild(label);
 				container.appendChild(wrapper);
 			}
-			
+
 			const modal = new bootstrap.Modal(document.getElementById('settingsModal'));
 			modal.show();
 		});
 
+		//local function to toggle all gene switches
+		function toggleAllGenes(show) {
+			for (let gene of parsedMetaData.genes) {
+				const input = document.getElementById(`switch-${gene}`);
+				const row = document.getElementById(`row-${gene}`);
+				if (input) {
+					input.checked = show;
+					geneVisibility[gene] = show;
+					if (row) {
+						row.style.display = show ? 'table-row' : 'none';
+					}
+				}
+			}
+		}
 	}
+
 
 	function applyGeneVisibility() {
 		for (let gene of parsedMetaData.genes) {
@@ -782,6 +852,10 @@
 			cell.setAttribute("tap-value", gene);
 			row.appendChild(cell);
 
+
+			const COLORS =  generateColorMap(name=colorPalette, n=256);
+
+
 			//iterate the heatmapDataObject and add the cells 
 			inc=1;
 			averageExpression = 0;
@@ -790,11 +864,17 @@
 					averageExpression += parseFloat(cellData[gene]);
 					averageExpression = parseFloat(averageExpression) / parseFloat(cellsPerPixel);
 					var cell = document.createElement("td");
-					if (averageExpression == 0) {
-						cell.style.background = "rgb(0,0,0)";
-					} else {
-						cell.style.background = "rgb(" + Math.floor(averageExpression * 256+20) + ",0,0)"; //+20 for a little extra pop
-					}
+					// if (averageExpression == 0) {
+					// 	cell.style.background = "rgb(0,0,0)";
+					// } else {
+					// 	cell.style.background = "rgb(" + Math.floor(averageExpression * 256+20) + ",0,0)"; //+20 for a little extra pop
+					// }
+
+					let idx = Math.floor(Math.min(Math.max(averageExpression, 0), 1) * 255);
+					let [r, g, b] = COLORS[idx];
+					cell.style.background = `rgb(${r},${g},${b})`;
+
+
 					if (cellsPerPixel == 1 && totalCells < heatmapTableWidth){
 						cell.style.width = (totalCells/heatmapTableWidth)*100+"%";
 					} else {
@@ -852,6 +932,65 @@
 		});
 
 	}
+
+	function generateColorMap(name = 'viridis', n = 256) {
+		const colormaps = {
+			viridis: [
+				[0.0, [68, 1, 84]], [0.25, [59, 82, 139]], [0.5, [33, 145, 140]],
+				[0.75, [94, 201, 98]], [1.0, [253, 231, 37]]
+			],
+			plasma: [
+				[0.0, [13, 8, 135]], [0.25, [126, 3, 167]], [0.5, [203, 71, 119]],
+				[0.75, [248, 149, 64]], [1.0, [240, 249, 33]]
+			],
+			inferno: [
+				[0.0, [0, 0, 4]], [0.25, [87, 15, 109]], [0.5, [187, 55, 84]],
+				[0.75, [249, 142, 8]], [1.0, [252, 255, 164]]
+			],
+			magma: [
+				[0.0, [0, 0, 3]], [0.25, [78, 18, 123]], [0.5, [155, 50, 115]],
+				[0.75, [236, 110, 92]], [1.0, [252, 253, 191]]
+			],
+			cividis: [
+				[0.0, [0, 32, 76]], [0.25, [85, 129, 151]], [0.5, [165, 184, 122]],
+				[0.75, [222, 198, 106]], [1.0, [255, 233, 69]]
+			],
+			tap: [
+				[0.0, [0, 0, 0]],[0.1, [128, 0, 0]],[1.0, [255, 0, 0]]
+			]
+		};
+
+		const anchors = colormaps[name.toLowerCase()];
+		if (!anchors) throw new Error(`Unsupported colormap: ${name}`);
+
+		const colors = [];
+		for (let i = 0; i < n; i++) {
+			const t = i / (n - 1);
+			let lower = anchors[0], upper = anchors[anchors.length - 1];
+
+			for (let j = 0; j < anchors.length - 1; j++) {
+				if (t >= anchors[j][0] && t <= anchors[j + 1][0]) {
+					lower = anchors[j];
+					upper = anchors[j + 1];
+					break;
+				}
+			}
+
+			const localT = (t - lower[0]) / (upper[0] - lower[0]);
+			const color = [0, 1, 2].map(k =>
+				Math.round(lower[1][k] + (upper[1][k] - lower[1][k]) * localT)
+			);
+			colors.push(color);
+		}
+		return colors;
+	}
+
+	function colormapToPlotlyColorscale(colormap) {
+	return colormap.map((rgb, i) => [
+		i / (colormap.length - 1),
+		`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`
+	]);
+}
 
 	function generateColors(){
 		let colors = [];
@@ -1025,7 +1164,6 @@
 
 		if (RF_BP){
 			document.getElementById("rf_display_bp").style.display = "block";
-			//var parsedRfBp = JSON.parse(RF_BP);
 			var parsedRfBp =RF_BP;
 			var rfBpText = "<br />";
 			for (let key in parsedRfBp) {
@@ -1221,6 +1359,26 @@
 		}
 		primaryCategories = heatmapDataObjectFiltered.map(function(d){ return d[parsedMetaData.categories[0]];	})
 
+		const UMAP_COLORS =  generateColorMap(name=colorPalette, n=256);
+		const plotlyColorscale = colormapToPlotlyColorscale(UMAP_COLORS);
+
+		//zip the data
+		let zipped = x.map((_, i) => ({
+			x: x[i],
+			y: y[i],
+			color: colors[i],
+			category: primaryCategories[i]
+		}));
+
+		//sort by color value (assumes numeric)
+		zipped.sort((a, b) => a.color - b.color);
+
+		//unzip the sorted data
+		x = zipped.map(d => d.x);
+		y = zipped.map(d => d.y);
+		colors = zipped.map(d => d.color);
+		primaryCategories = zipped.map(d => d.category);
+
 		var data = [
 			{
 				x: x,
@@ -1230,11 +1388,12 @@
 				marker: {
 					color: colors,
 					size: 4,
-					colorscale: [
-                    	[0, 'rgb(0, 0, 0)'], // Black
-						[0.001, 'rgb(100, 0, 0)'], // Red
-                    	[1, 'rgb(255, 0, 0)'] // Brighter Red
-                	]
+					// colorscale: [
+                    // 	[0, 'rgb(0, 0, 0)'], // Black
+					// 	[0.001, 'rgb(100, 0, 0)'], // Red
+                    // 	[1, 'rgb(255, 0, 0)'] // Brighter Red
+                	// ]
+					colorscale: plotlyColorscale,
 				},
 				text: primaryCategories,
 				hovertemplate: '<b>%{text}</b>',	

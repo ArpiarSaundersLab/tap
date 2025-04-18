@@ -164,8 +164,7 @@ class TAP:
 		#iterate each gene and check if it exists in the adata object, then add from obs if necessary
 		for gene in self.genes:
 			if gene not in self.adata.var_names.tolist() and gene in self.adata.obs.columns.tolist():
-				print(f"Notice: {gene} not found in adata object, but in obs. Adding...")
-				print(f"Notice: obs {gene} counts should be raw counts. If they're not, result may be inaccurate.")
+				print(f"Notice: {gene} not found in adata object, but in obs. The counts should be raw counts. Adding...")
 				df = pd.DataFrame({"Cell": self.adata.obs.index.tolist(), f"{gene}": self.adata.obs[gene].values})
 				df = df.set_index("Cell")
 				adata2 = ad.AnnData(df)
@@ -433,6 +432,12 @@ class TAP:
 			self.adata.X = self.adata.X.toarray()
 			self.adata.X = self.adata.X.astype(float)
 
+		#iterate all and find the max value across all the genes
+		max_value = np.max([
+			self.adata[:, gene].X.max()
+			for gene in self.genes
+		]).astype(float)
+
 		#normalize each of the serotypes the same way
 		for serotype in self.genes:
 
@@ -440,10 +445,7 @@ class TAP:
 			serotype_data = self.adata[:, serotype].X.toarray().flatten()
 
 			#find the maximum value in the serotype data
-			max_value = serotype_data.max().astype(float)
-			
-			#NEW The normalization value should be the max library size.
-			normalization_value = 1e6
+			#max_value = serotype_data.max().astype(float)
 			
 			#normalize if max_value is not zero... avoid division by zero
 			if max_value != 0:

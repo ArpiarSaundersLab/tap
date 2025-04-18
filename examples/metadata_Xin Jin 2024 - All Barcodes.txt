@@ -1,6 +1,6 @@
 {
     "filename": "../archive/data/GSE249416/GSE249416_AAV_ctxobj.Robj.h5ad",
-    "title": "Xin Jin 2024 - All",
+    "title": "Xin Jin 2024 - All Barcodes",
     "outputName": "xin_all.html",
     "categories": [
         "xincelltype230416"
