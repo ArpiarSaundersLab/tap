@@ -473,7 +473,7 @@ class FeatureSelection:
 				#evaluate the accuracy of the model on the testing data
 				accuracy = accuracy_score(y_test, y_pred)
 				self.accuracy = str(round(accuracy*100,2))+"%"
-				self.auc_score = round(roc_auc_score(y_test, y_pred),4)
+				self.auc_score =  str(round(roc_auc_score(y_test, y_pred),4))
 				
 			else:
 				n_estimators = [10,20,40,60,80,100]
@@ -501,13 +501,13 @@ class FeatureSelection:
 				rf_random.fit(X_train, y_train)
 				
 				self.rf_params = rf_random.best_params_
-				self.rf_params = json.dumps(self.rf_params)
+				#self.rf_params = json.dumps(self.rf_params)
 				self.rfc = rf_random.best_estimator_
 				y_pred = self.rfc.predict(X_test)
 				y_pred_binary = (y_pred > 0.5).astype(int)
 				accuracy = accuracy_score(y_test, y_pred_binary)
 				self.accuracy = str(round(accuracy*100,2))+"%"
-				self.auc_score = round(roc_auc_score(y_test, y_pred),4)
+				self.auc_score =  str(round(roc_auc_score(y_test, y_pred),4))
 				
 		elif self.rfType == "regressor":
 

@@ -298,6 +298,7 @@
 	const metaDataRaw = 'METADATA';
 	const heatMapDataRaw ='HEATMAP_DATA';
 	const featureDataRaw = 'FEATURE_DATA';
+	const replicateData = 'REPLICATE_DATA';
 	const umapDataRaw = 'UMAP_DATA';
 	const clustingDetails = CLUSTERING_DETAILS;
 	let categorySelection = "All";
@@ -770,17 +771,40 @@
 			topBarContainer.style.width = heatmapTableWidth+"px";
 			heatmapContainer.append(topBarContainer);
 
-			for (let categoryValue in categoryCounts[category]) {
-				var cellTypeDiv = document.createElement("div");
-				cellTypeDiv.style.minHeight = "35px";
-				cellTypeDiv.style.width = (categoryCounts[category][categoryValue]/totalCells)*100 + "%";
-				cellTypeDiv.style.backgroundColor = categoryColors[categoryValue];
-				cellTypeDiv.style.float = "left";
-				cellTypeDiv.style.cursor = "pointer";
-				cellTypeDiv.classList.add("categoryDiv");
-				cellTypeDiv.setAttribute("tap-value", categoryTreeMap[categoryValue]);
-				topBarContainer.append(cellTypeDiv);
+			let currentCategoryName = heatmapDataObject[0][category];
+			let categoryValue = 0;
+			for (let row in heatmapDataObject){
+
+				if (heatmapDataObject[row][category] == currentCategoryName){
+					categoryValue++;
+				} else {
+					var cellTypeDiv = document.createElement("div");
+					cellTypeDiv.style.minHeight = "35px";
+					cellTypeDiv.style.width = (categoryValue/totalCells)*100 + "%";
+					cellTypeDiv.style.backgroundColor = categoryColors['"'+currentCategoryName+'"'];
+					cellTypeDiv.style.float = "left";
+					cellTypeDiv.style.cursor = "pointer";
+					cellTypeDiv.classList.add("categoryDiv");
+					cellTypeDiv.setAttribute("tap-value", categoryTreeMap['"'+currentCategoryName+'"']);
+					topBarContainer.append(cellTypeDiv);
+					categoryValue = 1; 
+
+				}
+				currentCategoryName = heatmapDataObject[row][category]
+
 			}
+
+			// for (let categoryValue in categoryCounts[category]) {
+			// 	var cellTypeDiv = document.createElement("div");
+			// 	cellTypeDiv.style.minHeight = "35px";
+			// 	cellTypeDiv.style.width = (categoryCounts[category][categoryValue]/totalCells)*100 + "%";
+			// 	cellTypeDiv.style.backgroundColor = categoryColors[categoryValue];
+			// 	cellTypeDiv.style.float = "left";
+			// 	cellTypeDiv.style.cursor = "pointer";
+			// 	cellTypeDiv.classList.add("categoryDiv");
+			// 	cellTypeDiv.setAttribute("tap-value", categoryTreeMap[categoryValue]);
+			// 	topBarContainer.append(cellTypeDiv);
+			// }
 			//clear left float
 			var clearDiv = document.createElement("div");
 			clearDiv.style.clear = "both";

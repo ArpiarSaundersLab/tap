@@ -600,6 +600,11 @@ class TAP:
 			data_structure = self.generateRfDgeStructure(data_structure, node=gene, rf_obj=rf_obj, images=images)
 			gc.collect()
 
+		#save to property
+		self.data_structure = data_structure
+
+		self.findReplicateFeatures()
+
 		#rather than saving the json, write the json to the tap.html file as json on one line
 		with open(self.outputPath+self.outputName, 'r') as file:
 			filedata = file.read()
@@ -608,15 +613,21 @@ class TAP:
 		filedata = filedata.replace('FEATURE_DATA', json.dumps(data_structure))
 		filedata = filedata.replace('CLUSTERING_DETAILS', json.dumps(images))
 		
-		#replace the word Infinity with NaN to play nice with javascript
+		#replace the word Infinity with 0 to play nice with javascript
 		filedata = filedata.replace('Infinity', '0')
 
 		# Write the file out again
 		with open(self.outputPath+self.outputName, 'w') as file:
 			file.write(filedata)
 		
-		self.data_structure = data_structure
+
+		
 		print(f"Finished Running")
+
+
+	def findReplicateFeatures(self):
+		print("Finding replicate features...")
+		pass
 
 
 	def generateRfDgeStructure(self, data_structure, node=False, rf_obj=False, images = {}):

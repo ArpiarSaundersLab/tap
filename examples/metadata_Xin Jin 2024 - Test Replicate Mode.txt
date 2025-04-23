@@ -1,0 +1,38 @@
+{
+    "filename": null,
+    "title": "Xin Jin 2024 - Test Replicate Mode",
+    "outputName": "xin_test2.html",
+    "categories": [
+        "replicate",
+        "xincelltype230416"
+    ],
+    "categoryNames": [
+        "Replicate",
+        "Cell Type"
+    ],
+    "genes": [
+        "BC1a",
+        "BC1b",
+        "BC1c"
+    ],
+    "DE": true,
+    "RF": true,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "threshold",
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": 2,
+    "clusterThresholdLessThanOrEqual": 0,
+    "deMethod": "wilcoxon",
+    "mapOnly": false,
+    "excludeMarkers": true,
+    "cellTypist": false,
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistLevels": 3,
+    "rfType": "classifier",
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 20,
+    "permute": false,
+    "permuteRepeats": 5
+}
