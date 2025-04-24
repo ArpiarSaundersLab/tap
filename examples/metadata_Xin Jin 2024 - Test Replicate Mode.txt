@@ -12,8 +12,7 @@
     ],
     "genes": [
         "BC1a",
-        "BC1b",
-        "BC1c"
+        "BC1b"
     ],
     "DE": true,
     "RF": true,

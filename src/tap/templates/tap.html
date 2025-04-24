@@ -660,6 +660,24 @@
 	}
 
 
+	function generateTapValue(row,level){
+		let tapValue = "";
+		inc = 1;
+		
+		for (let category in parsedMetaData.categories){
+			if (inc <= level){
+				tapValue = tapValue +row[parsedMetaData.categories[category]]+"__";
+			}
+			inc++;
+		}
+
+		tapValue = tapValue.slice(0, -2);
+		
+		return tapValue;
+	}
+
+
+
 	//draw the heatmap
 	function drawHeatmap(){
 		
@@ -744,6 +762,7 @@
 			}
 		}
 		
+		let level = 1;
 		//iterate categoryCounts and add divs to the heatmap container. TOP BAR
 		for (let category in categoryCounts) {
 			//add a div to heatmap container that has cell type 
@@ -751,9 +770,6 @@
 			cellTypeDiv.textContent = categoryNames[category].replace(/['"]+/g, '');
 			cellTypeDiv.style.paddingLeft = "10px";
 			cellTypeDiv.style.minHeight = "35px";
-			// cellTypeDiv.style.minWidth = "100px";
-			// cellTypeDiv.style.maxWidth = "100px";
-			// cellTypeDiv.style.width = "100px";
 			cellTypeDiv.style.whiteSpace = "nowrap";
 			cellTypeDiv.style.textOverflow = "ellipsis";
 			cellTypeDiv.style.overflow = "hidden";
@@ -770,13 +786,15 @@
 			topBarContainer.style.float = "right";
 			topBarContainer.style.width = heatmapTableWidth+"px";
 			heatmapContainer.append(topBarContainer);
-
+			
 			let currentCategoryName = heatmapDataObject[0][category];
 			let categoryValue = 0;
+			let tapValue;
 			for (let row in heatmapDataObject){
 
 				if (heatmapDataObject[row][category] == currentCategoryName){
 					categoryValue++;
+					tapValue = generateTapValue(heatmapDataObject[row],level)
 				} else {
 					var cellTypeDiv = document.createElement("div");
 					cellTypeDiv.style.minHeight = "35px";
@@ -784,32 +802,24 @@
 					cellTypeDiv.style.backgroundColor = categoryColors['"'+currentCategoryName+'"'];
 					cellTypeDiv.style.float = "left";
 					cellTypeDiv.style.cursor = "pointer";
-					cellTypeDiv.classList.add("categoryDiv");
-					cellTypeDiv.setAttribute("tap-value", categoryTreeMap['"'+currentCategoryName+'"']);
+					cellTypeDiv.classList.add("categoryDiv");					
+					cellTypeDiv.setAttribute("tap-value",tapValue);
 					topBarContainer.append(cellTypeDiv);
 					categoryValue = 1; 
 
 				}
+
 				currentCategoryName = heatmapDataObject[row][category]
 
 			}
+			level++;
 
-			// for (let categoryValue in categoryCounts[category]) {
-			// 	var cellTypeDiv = document.createElement("div");
-			// 	cellTypeDiv.style.minHeight = "35px";
-			// 	cellTypeDiv.style.width = (categoryCounts[category][categoryValue]/totalCells)*100 + "%";
-			// 	cellTypeDiv.style.backgroundColor = categoryColors[categoryValue];
-			// 	cellTypeDiv.style.float = "left";
-			// 	cellTypeDiv.style.cursor = "pointer";
-			// 	cellTypeDiv.classList.add("categoryDiv");
-			// 	cellTypeDiv.setAttribute("tap-value", categoryTreeMap[categoryValue]);
-			// 	topBarContainer.append(cellTypeDiv);
-			// }
 			//clear left float
 			var clearDiv = document.createElement("div");
 			clearDiv.style.clear = "both";
 			topBarContainer.append(clearDiv);
 		}
+
 
 		document.addEventListener("click", function(event){
 

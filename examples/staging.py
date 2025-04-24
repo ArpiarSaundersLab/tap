@@ -29,7 +29,7 @@ parameters = {
 	# 		  "BC12a","BC12b","BC12c",
 	# 		  "BC13a","BC13b","BC13c",
 	# 		  "BC14a","BC14b","BC14c",],
-	"genes": ["BC1a","BC1b","BC1c"],
+	"genes": ["BC1a","BC1b",],
 	"exclude" : ["Microglia","Mural","Fibroblast"],
 	"categories": ["replicate","xincelltype230416"],
 	"categoryNames": ["Replicate","Cell Type"],
@@ -55,16 +55,18 @@ parameters = {
 results = t.TAP(**parameters)
 
 
+
+
+#results.data_structure["replicate_0"]["ULPN"]
+#results.data_structure["BC1a"]["replicate_1"]["ULPN"]
+
+
 #Check if the RF is empty
 def safe_gt(val, threshold):
     try:
         return float(val) > threshold
     except (ValueError, TypeError):
         return False
-
-
-results.data_structure["replicate_0"]["ULPN"]
-results.data_structure["BC1a"]["replicate_1"]["ULPN"]
 
 
 #iterate all nodes of the tree
