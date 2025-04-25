@@ -12,7 +12,6 @@ adata.obs["replicate"] = "replicate_" + adata.obs["replicate"]
 adata.obs.groupby("replicate")["xincelltype230416"].value_counts()
 
 parameters = {
-	#"filename" : "../archive/data/GSE249416/GSE249416_AAV_ctxobj.Robj.h5ad",
 	"adataObject": adata,
 	"name": "Xin Jin 2024 - Test Replicate Mode",
 	# "genes": ["BC1a","BC1b","BC1c",
@@ -29,10 +28,10 @@ parameters = {
 	# 		  "BC12a","BC12b","BC12c",
 	# 		  "BC13a","BC13b","BC13c",
 	# 		  "BC14a","BC14b","BC14c",],
-	"genes": ["BC1a","BC1b",],
+	"genes": ["BC1a","BC1b","BC1c"],
 	"exclude" : ["Microglia","Mural","Fibroblast"],
-	"categories": ["replicate","xincelltype230416"],
-	"categoryNames": ["Replicate","Cell Type"],
+	"categories": ["xincelltype230416"],
+	"categoryNames": ["Cell Type"],
 	"outputPath": ".",
 	"outputName": "xin_test2.html",
 	"excludeMarkers" : True,
@@ -55,12 +54,6 @@ parameters = {
 results = t.TAP(**parameters)
 
 
-
-
-#results.data_structure["replicate_0"]["ULPN"]
-#results.data_structure["BC1a"]["replicate_1"]["ULPN"]
-
-
 #Check if the RF is empty
 def safe_gt(val, threshold):
     try:
@@ -68,6 +61,7 @@ def safe_gt(val, threshold):
     except (ValueError, TypeError):
         return False
 
+ignore_nodes = ['RF', 'DGE', 'DGE_pval_adj', 'DGE_logfc', 'RF_A', 'RF_AUC', 'RF_BP']
 
 #iterate all nodes of the tree
 for node in results.data_structure:
@@ -78,10 +72,11 @@ for node in results.data_structure:
 
 	#COLUMNS
 	#are there any other nodes at this level with the same name?
-	duplicates_columns = [n for n in results.data_structure if n == node]
-	if len(duplicates_columns) > 1:
-		print(f"\tDuplicates: {duplicates_columns}")
-	
+	duplicates_cols1 = [n for n in results.data_structure if n == node]
+	if len(duplicates_cols1) > 1:
+		print(f"\tDuplicates: {duplicates_cols1}")
+		#TODO need to find all subnodes of the replicates that are beneath the the primary nodes
+
 
 	#ROWS
 	#are there any nodes at this level with the same name minus the last character?
@@ -99,10 +94,7 @@ for node in results.data_structure:
 		#which appear in both RF and DGE
 		duplicates_both = [x for x in duplicates_rf if x in duplicates_dge]
 
-		print(f"\tDuplicate rows: {duplicates_rows}")
-		print(f"\tRF Row peppers:{duplicates_rf}")
-		print(f"\tDGE Row peppers:{duplicates_dge}")
-		print(f"\tBoth Row peppers:{duplicates_both}\n")
+		print(f"\tRows: {duplicates_rows}: Peppers1: {duplicates_both}")
 	
 
 	#show all the keys this node that are in results.data_structure.keys()
@@ -131,9 +123,34 @@ for node in results.data_structure:
 		#which appear in both RF and DGE
 		list_buffer_both = [x for x in list_buffer_rf if x in list_buffer_dge]
 
-		print(f"\tRF {k}:{duplicates_rows}: peppers: {list_buffer_rf}")
-		print(f"\tDGE {k}:{duplicates_rows}: peppers: {list_buffer_dge}")
-		print(f"\tBoth {k}:{duplicates_rows}: peppers: {list_buffer_both}\n")
+		print(f"\n\t{k}:{duplicates_rows}: peppers2: {list_buffer_both}")
+		
+		
+		duplicates_cols2 = [n for n in results.data_structure[node].keys() if n[:-1] == k[:-1]]
+		for col in duplicates_cols2:
+			for key2 in results.data_structure[node][col].keys():
+				if key2 not in ignore_nodes:
+					list_buffer_rf_2 = []
+					list_buffer_dge_2 = []
+
+					for col2 in duplicates_cols2:
+						list_buffer_rf_2.append([
+							x for x in results.data_structure[node][col2][key2]['RF']
+							if safe_gt(results.data_structure[node][col2][key2]['RF'][x], 0)
+						])
+
+						list_buffer_dge_2.append([
+							x for x in results.data_structure[node][col2][key2]['DGE']
+						])
+
+					#intersection of all values in each list
+					list_buffer_rf_2 = list(set.intersection(*map(set, list_buffer_rf_2)))
+					list_buffer_dge_2 = list(set.intersection(*map(set, list_buffer_dge_2)))
+
+					#which appear in both RF and DGE
+					list_buffer_both_2 = [x for x in list_buffer_rf_2 if x in list_buffer_dge_2]
+					
+					print(f"\t{node}:{col}:{key2}: {duplicates_cols2}: peppers3: {list_buffer_both_2}")
 
 
 
