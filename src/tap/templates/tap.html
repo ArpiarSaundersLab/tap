@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="https://unpkg.com/feather-icons"></script>
 	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000000'/%3E%3C/svg%3E">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<style>
 		html,body {
 			height: 100%;
@@ -301,10 +302,11 @@
 	const replicateData = 'REPLICATE_DATA';
 	const umapDataRaw = 'UMAP_DATA';
 	const clustingDetails = CLUSTERING_DETAILS;
+	const pepperData = 'PEPPER_DATA';
 	let categorySelection = "All";
 	let geneSelection = "All";
 	let fullSelection = "All";
-	let parsedMetaData, parsedHeatMapData, parsedFeatureData, parsedUmapData, categoryTreeMap, heatmapDataObject, fullCategorySelection, heatmapDataObjectFiltered, parsedClusteringData;
+	let parsedMetaData, parsedHeatMapData, parsedFeatureData, parsedUmapData, categoryTreeMap, heatmapDataObject, fullCategorySelection, heatmapDataObjectFiltered, parsedClusteringData, parsedPepperData;
 	let RF, RF_A, RF_AUC, RF_BP, DGE, DGE_pval_adj, DGE_logfc; 
 	let colors = generateColors();
 	let categoryColors = {};
@@ -317,6 +319,7 @@
 		heatmapDataObject = parseHeatMapData();
 		heatmapDataObjectFiltered = heatmapDataObject;
 		parsedMetaData = parseMetaData();
+		parsedPepperData = parsePepperData();
 
 		if (parsedMetaData.mapOnly == false){
 			parsedFeatureData = parseFeatureData();
@@ -516,6 +519,12 @@
 	function parseClusteringData(){
 		const parsedClusteringData = JSON.parse(parseClusteringData);
 		return parsedClusteringData;
+	}
+
+
+	function parsePepperData(){
+		const parsedPepperData = JSON.parse(pepperData);
+		return parsedPepperData;
 	}
 
 	function createCategoryTreeMap(){
@@ -1221,10 +1230,32 @@
 				link.href = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+key;
 				link.target = "_blank";
 				link.textContent = key;
+
 				if(existsBoth[key] ){
-					link.style.background = "#0f6868";
-					link.style.padding = "3px";
+					//link.style.background = "#0f6868";
+					//link.style.padding = "3px";
+					link.innerHTML = key + ' &nbsp; <i class="fa-solid fa-pepper-hot fa-lg" style="color: yellow;"></i>';
 				}
+
+				if (fullSelection in parsedPepperData) {
+					
+					if (parsedPepperData[fullSelection][key]){
+						if (parsedPepperData[fullSelection][key] == 1){
+							//link.textContent = link.textContent + " 🌶️";
+							link.innerHTML = link.innerHTML + ' <i class="fa-solid fa-pepper-hot fa-lg" style="color: #e07c1f;"></i>';
+						} else {
+							link.innerHTML = link.innerHTML + ' <i class="fa-solid fa-pepper-hot fa-lg" style="color: #e07c1f;"></i>';
+							link.innerHTML = link.innerHTML + ' <i class="fa-solid fa-pepper-hot fa-lg" style="color: #ff0000;"></i>';
+						}
+					} else {
+						link.innerHTML = link.innerHTML;
+					}
+
+				} else {
+					link.innerHTML = link.innerHTML;
+				}
+
+				
 				cell1.innerHTML = '';
 				cell1.appendChild(link);
 				var cell2 = newRow.insertCell(1);

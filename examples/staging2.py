@@ -14,7 +14,7 @@ parameters = {
 	"categories": ["cell_type"],
 	"categoryNames": ["Cell Type"],
 	"outputPath": ".",
-	"outputName": "pccm.html",
+	"outputName": "PCCM.html",
 	"excludeMarkers" : True,
 	"mapOnly" : False,
 	"showRF": True,

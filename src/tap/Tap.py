@@ -35,6 +35,7 @@ warnings.filterwarnings("ignore")
 sns.set(style="whitegrid")
 sc.settings.verbosity = 0
 from tqdm import tqdm
+from biothings_client import get_client
 
 class TAP:
 
@@ -603,8 +604,6 @@ class TAP:
 		#save to property
 		self.data_structure = data_structure
 
-		self.findReplicateFeatures()
-
 		#rather than saving the json, write the json to the tap.html file as json on one line
 		with open(self.outputPath+self.outputName, 'r') as file:
 			filedata = file.read()
@@ -616,6 +615,16 @@ class TAP:
 		#replace the word Infinity with 0 to play nice with javascript
 		filedata = filedata.replace('Infinity', '0')
 
+
+		#find the "peppers"
+		print("Finding Peppers...")
+		pepper_results = self.find_pepper_results()
+		pepper_unique_list = self.get_unique_peppers(pepper_results)
+		peppers = self.get_pepper_gene_details(pepper_unique_list)
+		pepper_results2 = self.increase_pepper_heat(pepper_results, peppers)
+		filedata = filedata.replace('PEPPER_DATA', json.dumps(pepper_results2))
+
+
 		# Write the file out again
 		with open(self.outputPath+self.outputName, 'w') as file:
 			file.write(filedata)
@@ -623,11 +632,6 @@ class TAP:
 
 		
 		print(f"Finished Running")
-
-
-	def findReplicateFeatures(self):
-		print("Finding replicate features...")
-		pass
 
 
 	def generateRfDgeStructure(self, data_structure, node=False, rf_obj=False, images = {}):
@@ -867,3 +871,164 @@ class TAP:
 
 
 		return data_structure
+
+
+
+	def safe_gt(self, val, threshold):
+		try:
+			return float(val) > threshold
+		except (ValueError, TypeError):
+			return False
+
+	def add_key_to_dict(self, d, key, value, default_value=1):
+		if key not in d:
+			d[key] = {k: default_value for k in value}
+
+		return d
+
+	def is_pos(self,v):
+		try:
+			return float(v) > 0
+		except (ValueError, TypeError):
+			return False
+
+
+	def find_pepper_results(self):
+
+		ignore_nodes = ['RF', 'DGE', 'DGE_pval_adj', 'DGE_logfc', 'RF_A', 'RF_AUC', 'RF_BP']
+
+		pepper_results = {}
+
+		#iterate all nodes of the tree
+		for node in self.data_structure:
+
+			#print(f"===============\n{node}\n===============🫑🌶️")
+
+			#COLUMNS
+			#are there any other nodes at this level with the same name?
+			duplicates_cols1 = [n for n in self.data_structure if n == node]
+			if len(duplicates_cols1) > 1:
+				#print(f"\tDuplicates: {duplicates_cols1}")
+				
+				#add to the pepper_results dict
+				self.add_key_to_dict(pepper_results, node, duplicates_cols1)
+
+
+			#ROWS
+			#are there any nodes at this level with the same name minus the last character?
+			duplicates_rows = [n for n in self.data_structure if n[:-1] == node[:-1]]
+			if len(duplicates_rows) > 1:
+
+				#check the node.RF of the duplicates to see if any of the keys are the same and values  > 0 
+				#duplicates_rf = [list(filter(lambda x: self.data_structure[n]["RF"][x] > 0, self.data_structure[n]["RF"].keys())) for n in duplicates_rows]		
+				
+				duplicates_rf = [
+					[k for k, v in self.data_structure[n]["RF"].items() if self.is_pos(v)]
+					for n in duplicates_rows
+				]
+				duplicates_rf = set.intersection(*map(set, duplicates_rf))
+				
+				#check the node.DGE of the duplicate, but just look for the keys. They don't need to be > 0
+				duplicates_dge = [list(self.data_structure[n]["DGE"].keys()) for n in duplicates_rows]
+				duplicates_dge = set.intersection(*map(set, duplicates_dge))
+				
+				#which appear in both RF and DGE
+				duplicates_both = [x for x in duplicates_rf if x in duplicates_dge]
+
+				#print(f"\tRows: {duplicates_rows}: peppers1: {duplicates_both}")
+				
+				#add to the pepper_results dict
+				self.add_key_to_dict(pepper_results, node, duplicates_both)
+			
+
+			#show all the keys this node that are in self.data_structure.keys()
+			keys = [k for k in self.data_structure.keys() if k in self.data_structure[node].keys()]
+			
+			#iterate all of the node keys
+			for k in keys:
+				list_buffer_rf = []
+				list_buffer_dge = []
+				for row in duplicates_rows:
+					list_buffer_rf.append([
+						x for x in self.data_structure[row][k]['RF']
+						if self.safe_gt(self.data_structure[row][k]['RF'][x], 0)
+					])
+
+					#same for DGE, but doesn't need to be there
+					list_buffer_dge.append([
+						x for x in self.data_structure[row][k]['DGE']
+					])
+					
+				
+				#intersection of all values in each list
+				list_buffer_rf = list(set.intersection(*map(set, list_buffer_rf)))
+				list_buffer_dge = list(set.intersection(*map(set, list_buffer_dge)))
+				
+				#which appear in both RF and DGE
+				list_buffer_both = [x for x in list_buffer_rf if x in list_buffer_dge]
+
+				#print(f"\n\t{k}:{duplicates_rows}: peppers2: {list_buffer_both}")
+				
+				#add to the pepper_results dict
+				self.add_key_to_dict(pepper_results, node+"-"+k, list_buffer_both)
+				
+				duplicates_cols2 = [n for n in self.data_structure[node].keys() if n[:-1] == k[:-1]]
+				for col in duplicates_cols2:
+					for key2 in self.data_structure[node][col].keys():
+						if key2 not in ignore_nodes:
+							list_buffer_rf_2 = []
+							list_buffer_dge_2 = []
+
+							for col2 in duplicates_cols2:
+								list_buffer_rf_2.append([
+									x for x in self.data_structure[node][col2][key2]['RF']
+									if self.safe_gt(self.data_structure[node][col2][key2]['RF'][x], 0)
+								])
+
+								list_buffer_dge_2.append([
+									x for x in self.data_structure[node][col2][key2]['DGE']
+								])
+
+							#intersection of all values in each list
+							list_buffer_rf_2 = list(set.intersection(*map(set, list_buffer_rf_2)))
+							list_buffer_dge_2 = list(set.intersection(*map(set, list_buffer_dge_2)))
+
+							#which appear in both RF and DGE
+							list_buffer_both_2 = [x for x in list_buffer_rf_2 if x in list_buffer_dge_2]
+							
+							#print(f"\t{node}:{col}:{key2}: {duplicates_cols2}: peppers3: {list_buffer_both_2}")
+							
+							#add to the pepper_results dict
+							self.add_key_to_dict(pepper_results, node+"-"+col+"-"+key2, list_buffer_both_2)
+
+		return pepper_results
+
+	def get_unique_peppers(self, pepper_results):
+		pepper_list = []
+		for key in pepper_results.keys():
+			for pepper in pepper_results[key]:
+				if pepper not in pepper_list:
+					pepper_list.append(pepper)
+		return pepper_list
+
+	def get_pepper_gene_details(self, pepper_list):
+		pepper_genes = []
+		mg = get_client('gene')
+		for pepper in pepper_list:
+			gene = mg.query(pepper, size=5)
+			if gene["hits"]:
+				gene_id = gene["hits"][0]["_id"]
+				gene_details = str(mg.getgene(gene_id, fields=['name', 'symbol', 'summary','go'])).lower()
+				if any(term in gene_details for term in ['plasmamembrane', 'plasma membrane', 'transmembrane', 'adhesion', 'receptor', 'extracellular']):
+					pepper_genes.append(pepper)
+					
+		return pepper_genes
+
+	def increase_pepper_heat(self, pepper_results, peppers):
+		for key, value in pepper_results.items():
+			for k, v in value.items():
+				if k in peppers:
+					pepper_results[key][k] = pepper_results[key][k] + 1
+
+		return pepper_results
+
