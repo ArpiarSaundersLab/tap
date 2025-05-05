@@ -396,7 +396,6 @@ class FeatureSelection:
 						exclude_markers["names"] = []
 					exclude_markers["names"].append(self.markers[key]["names"])
 				exclude_markers["names"] = [item for sublist in exclude_markers["names"] for item in sublist]
-
 			self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in exclude_markers["names"]])]
 
 		#add obs that's a category of infected or not infected
@@ -649,8 +648,20 @@ class FeatureSelection:
 		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.exclude_genes])]
 
 		#convert the infection status to a category
-		self.molotAAV_object_filtered_training.obs[category] = self.molotAAV_object_filtered_training.obs[category].astype('category');
+		self.molotAAV_object_filtered_training.obs[category] = self.molotAAV_object_filtered_training.obs[category].astype('category')
 		
+		#check how many groups are present. If there's not enough groups, skip the DE analysis
+		present_groups = self.molotAAV_object_filtered_training.obs[category].unique()
+		if len(present_groups) < 2:
+			print(f"Skipping DE: Only {len(present_groups)} group(s) present. Something is wrong :(")
+			self.de_df = pd.DataFrame(columns=[
+				"0_name", "1_name", "0_score", "1_score",
+				"0_logfc", "1_logfc", "0_pval", "1_pval",
+				"0_pval_adj", "1_pval_adj"
+			])
+			return
+
+
 		#perform the differential expression test that was specified in deMethod
 		sc.tl.rank_genes_groups(self.molotAAV_object_filtered_training, category, method=self.deMethod, use_raw=use_raw)
 

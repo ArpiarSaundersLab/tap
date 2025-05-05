@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import anndata as ad
 from biothings_client import get_client
+import seaborn as sns
 
 #open the h5ad file
 adata = sc.read_h5ad("../archive/data/GSE249416/GSE249416_AAV_ctxobj.Robj.h5ad")
@@ -11,10 +12,11 @@ adata = sc.read_h5ad("../archive/data/GSE249416/GSE249416_AAV_ctxobj.Robj.h5ad")
 # adata.obs["replicate"] = adata.obs["replicate"].astype(str)
 # adata.obs["replicate"] = "replicate_" + adata.obs["replicate"]
 # adata.obs.groupby("replicate")["xincelltype230416"].value_counts()
+adata
 
 parameters = {
 	"adataObject": adata,
-	"name": "Xin Jin 2024 - Test Replicate Mode",
+	"name": "Xin Jin 2024 - Test",
 	"genes": ["BC1a","BC1b","BC1c",
 			  "BC2a","BC2b","BC2c",
 			  "BC3a","BC3b","BC3c",
@@ -29,12 +31,18 @@ parameters = {
 			  "BC12a","BC12b","BC12c",
 			  "BC13a","BC13b","BC13c",
 			  "BC14a","BC14b","BC14c",],
-	#"genes": ["BC3a","BC3b","BC3c",],
+	#"genes": ["BC1a","BC1b","BC1c"],
 	"exclude" : ["Microglia","Mural","Fibroblast"],
+	# "exclude" : ["Blood Erythrocyte",
+	# 			"Choroid plexus Choroid plexus",
+	# 			"Fibroblast Pia 3",
+	# 			"Immune Cycling microglia",
+	# 			"Vascular Pericyte",
+	# 			"Radial glia Forebrain"],
 	"categories": ["xincelltype230416"],
 	"categoryNames": ["Cell Type"],
 	"outputPath": ".",
-	"outputName": "xin_test3.html",
+	"outputName": "xin_jin_ct.html",
 	"excludeMarkers" : True,
 	"mapOnly" : False,
 	"showRF": True,
@@ -44,6 +52,8 @@ parameters = {
 	"clusterThresholdGreaterThanOrEqual": 2,
 	"clusterThresholdLessThanOrEqual": 0,
 	"rfType": "classifier",
+	"runCellTypist": False,
+	"cellTypistModel": "Developing_Mouse_Brain.pkl",
 	"rfHyperParameterTune": False,
 	"rfHyperParameterIterations": 20,
 	"rfPermuteFeatureImportance": False,

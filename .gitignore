@@ -18,3 +18,5 @@ build_wheel.sh
 /**/__pycache__/
 /**/.pytest_cache/
 site/
+examples/arc/
+examples/data/

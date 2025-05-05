@@ -121,6 +121,8 @@ class TAP:
 	def copyTapTemplate(self):		
 		shutil.copy(pkg_resources.resource_filename("tap", "templates")+"/tap.html", self.outputPath + self.outputName)
 
+
+
 	def loadData(self):
 
 		#if user passes in a specific object name, use that object
@@ -137,7 +139,11 @@ class TAP:
 		#is this a sparse matrix?
 		if issparse(self.adata.X) == True:
 			self.adata.X = self.adata.X.toarray()
-			self.adata.raw = ad.AnnData(self.adata.raw.X.toarray())
+			#self.adata.raw = ad.AnnData(self.adata.raw.X.toarray())
+			self.adata.raw = ad.AnnData(
+				X=self.adata.raw.X.toarray(),
+				var=self.adata.raw.var.copy(),
+			)
 
 
 		#check if the raw object has float values. If so, they aren't raw counts.
@@ -149,7 +155,7 @@ class TAP:
 
 		#create a copy of the adata object
 		self.adata_bak = self.adata.copy()
-
+		
 		#convert to raw
 		self.adata = self.adata.raw.to_adata() 
 
@@ -380,9 +386,8 @@ class TAP:
 					self.markers[catName] = sc.get.rank_genes_groups_df(adata_copy, 
 																		key=category, 
 																		group=catName)
-					
-					#keep only the markers with a score of 2.2 std deviations above the median.
-					self.markers[catName] = self.markers[catName][self.markers[catName]["scores"] > self.markers[catName]["scores"].median() + 2.2*self.markers[catName]["scores"].std()]
+					#keep only the markers with a score of 2.2 std deviations above the mean.
+					self.markers[catName] = self.markers[catName][self.markers[catName]["scores"] > self.markers[catName]["scores"].mean() + 2.2*self.markers[catName]["scores"].std()]
 					self.markers[catName] = self.markers[catName][self.markers[catName]["pvals_adj"] <= 0.05]
 					self.markers[catName] = self.markers[catName].sort_values(by="scores", ascending=False)
 					self.markers[catName] = self.markers[catName].reset_index(drop=True)
@@ -406,8 +411,15 @@ class TAP:
 		is_infected = self.adata.obs['infection_count'] > 0
 		self.adata.obs['infected'] = is_infected.astype(str)
 
-		#remove anything in the exclude list
+		#remove any primary cats in the exclude list
 		self.adata = self.adata[~self.adata.obs[self.categories[0]].isin(self.exclude), :]
+		
+		#if there's a secondary category or tertiary, remove those too
+		if len(self.categories) > 1:
+			self.adata = self.adata[~self.adata.obs[self.categories[1]].isin(self.exclude), :]
+		
+		if len(self.categories) > 2:
+			self.adata = self.adata[~self.adata.obs[self.categories[2]].isin(self.exclude), :]
 
 		#only keep the genes
 		self.adata = self.adata[:,self.genes]
@@ -618,17 +630,21 @@ class TAP:
 
 		#find the "peppers"
 		print("Finding Peppers...")
-		pepper_results = self.find_pepper_results()
-		pepper_unique_list = self.get_unique_peppers(pepper_results)
-		peppers = self.get_pepper_gene_details(pepper_unique_list)
-		pepper_results2 = self.increase_pepper_heat(pepper_results, peppers)
-		filedata = filedata.replace('PEPPER_DATA', json.dumps(pepper_results2))
+		self.pepper_results = self.find_pepper_results()
+		self.pepper_unique_list = self.get_unique_peppers(self.pepper_results)
+		self.peppers = self.get_pepper_gene_details(self.pepper_unique_list)
+		self.pepper_results2 = self.increase_pepper_heat(self.pepper_results, self.peppers)
+		filedata = filedata.replace('PEPPER_DATA', json.dumps(self.pepper_results2))
 
 
 		# Write the file out again
 		with open(self.outputPath+self.outputName, 'w') as file:
 			file.write(filedata)
 		
+
+		#line break for each key value pair
+		with open(f'{self.outputPath}peppers_{self.clean_string(self.name)}.txt', 'w') as file:
+			file.write(json.dumps(self.pepper_results2, indent=4))
 
 		
 		print(f"Finished Running")
@@ -902,7 +918,7 @@ class TAP:
 		#iterate all nodes of the tree
 		for node in self.data_structure:
 
-			#print(f"===============\n{node}\n===============🫑🌶️")
+			#print(f"===============\n{node} \n===============")
 
 			#COLUMNS
 			#are there any other nodes at this level with the same name?
@@ -943,63 +959,68 @@ class TAP:
 
 			#show all the keys this node that are in self.data_structure.keys()
 			keys = [k for k in self.data_structure.keys() if k in self.data_structure[node].keys()]
-			
+
 			#iterate all of the node keys
-			for k in keys:
-				list_buffer_rf = []
-				list_buffer_dge = []
-				for row in duplicates_rows:
-					list_buffer_rf.append([
-						x for x in self.data_structure[row][k]['RF']
-						if self.safe_gt(self.data_structure[row][k]['RF'][x], 0)
-					])
+			if len(duplicates_rows) > 0:
+				for k in keys:
+					list_buffer_rf = []
+					list_buffer_dge = []
+					for row in duplicates_rows:
+						
+						list_buffer_rf.append([
+							x for x in self.data_structure[row][k]['RF']
+							if self.safe_gt(self.data_structure[row][k]['RF'][x], 0)
+						])
 
-					#same for DGE, but doesn't need to be there
-					list_buffer_dge.append([
-						x for x in self.data_structure[row][k]['DGE']
-					])
+						#same for DGE, but doesn't need to be there
+						list_buffer_dge.append([
+							x for x in self.data_structure[row][k]['DGE']
+						])
+						
 					
-				
-				#intersection of all values in each list
-				list_buffer_rf = list(set.intersection(*map(set, list_buffer_rf)))
-				list_buffer_dge = list(set.intersection(*map(set, list_buffer_dge)))
-				
-				#which appear in both RF and DGE
-				list_buffer_both = [x for x in list_buffer_rf if x in list_buffer_dge]
+					#intersection of all values in each list
+					list_buffer_rf = list(set.intersection(*map(set, list_buffer_rf)))
+					list_buffer_dge = list(set.intersection(*map(set, list_buffer_dge)))
+					
+					#which appear in both RF and DGE
+					list_buffer_both = [x for x in list_buffer_rf if x in list_buffer_dge]
 
-				#print(f"\n\t{k}:{duplicates_rows}: peppers2: {list_buffer_both}")
-				
-				#add to the pepper_results dict
-				self.add_key_to_dict(pepper_results, node+"-"+k, list_buffer_both)
-				
-				duplicates_cols2 = [n for n in self.data_structure[node].keys() if n[:-1] == k[:-1]]
-				for col in duplicates_cols2:
-					for key2 in self.data_structure[node][col].keys():
-						if key2 not in ignore_nodes:
-							list_buffer_rf_2 = []
-							list_buffer_dge_2 = []
+					#print(f"\n\t{k}:{duplicates_rows}: peppers2: {list_buffer_both}")
+					
+					#add to the pepper_results dict
+					self.add_key_to_dict(pepper_results, node+"-"+k, list_buffer_both)
+					
+					duplicates_cols2 = [n for n in self.data_structure[node].keys() if n[:-1] == k[:-1]]
+					for col in duplicates_cols2:
+						for key2 in self.data_structure[node][col].keys():
+							if key2 not in ignore_nodes:
+								list_buffer_rf_2 = []
+								list_buffer_dge_2 = []
 
-							for col2 in duplicates_cols2:
-								list_buffer_rf_2.append([
-									x for x in self.data_structure[node][col2][key2]['RF']
-									if self.safe_gt(self.data_structure[node][col2][key2]['RF'][x], 0)
-								])
+								for col2 in duplicates_cols2:
+									try:
+										list_buffer_rf_2.append([
+											x for x in self.data_structure[node][col2][key2]['RF']
+											if self.safe_gt(self.data_structure[node][col2][key2]['RF'][x], 0)
+										])
 
-								list_buffer_dge_2.append([
-									x for x in self.data_structure[node][col2][key2]['DGE']
-								])
+										list_buffer_dge_2.append([
+											x for x in self.data_structure[node][col2][key2]['DGE']
+										])
+									except KeyError:
+										continue
 
-							#intersection of all values in each list
-							list_buffer_rf_2 = list(set.intersection(*map(set, list_buffer_rf_2)))
-							list_buffer_dge_2 = list(set.intersection(*map(set, list_buffer_dge_2)))
+								#intersection of all values in each list
+								list_buffer_rf_2 = list(set.intersection(*map(set, list_buffer_rf_2)))
+								list_buffer_dge_2 = list(set.intersection(*map(set, list_buffer_dge_2)))
 
-							#which appear in both RF and DGE
-							list_buffer_both_2 = [x for x in list_buffer_rf_2 if x in list_buffer_dge_2]
-							
-							#print(f"\t{node}:{col}:{key2}: {duplicates_cols2}: peppers3: {list_buffer_both_2}")
-							
-							#add to the pepper_results dict
-							self.add_key_to_dict(pepper_results, node+"-"+col+"-"+key2, list_buffer_both_2)
+								#which appear in both RF and DGE
+								list_buffer_both_2 = [x for x in list_buffer_rf_2 if x in list_buffer_dge_2]
+								
+								#print(f"\t{node}:{col}:{key2}: {duplicates_cols2}: peppers3: {list_buffer_both_2}")
+								
+								#add to the pepper_results dict
+								self.add_key_to_dict(pepper_results, node+"-"+col+"-"+key2, list_buffer_both_2)
 
 		return pepper_results
 
