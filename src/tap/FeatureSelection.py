@@ -36,7 +36,8 @@ class FeatureSelection:
 				category_observations=[], showPlots=True, exclude_genes=[], deMethod="wilcoxon",
 				rfHyperParameterTune=False,rfHyperParameterIterations=50, rfType="classifier", outputPath=None, balance=None,
 				excludeMarkers=False,markers=[],removeOutliers=True,totalIterations=0, currentIteration=1,
-				clusterThresholdGreaterThanOrEqual=None, clusterThresholdLessThanOrEqual=None):
+				clusterThresholdGreaterThanOrEqual=None, clusterThresholdLessThanOrEqual=None,
+				remove_outlier_upper_percentile=99, remove_outlier_lower_percentile=0):
 		self.molotAAV_object = molotAAV_object	
 		self.molotAAV_object.adata = molotAAV_object
 		self.serotype_of_interest = serotype_of_interest.lower()
@@ -69,6 +70,8 @@ class FeatureSelection:
 		self.excludeMarkers = excludeMarkers
 		self.markers = markers
 		self.removeOutliers = removeOutliers
+		self.remove_outlier_upper_percentile = remove_outlier_upper_percentile
+		self.remove_outlier_lower_percentile = remove_outlier_lower_percentile
 		self.totalIterations = totalIterations
 		self.currentIteration = currentIteration
 		self.clustering_details = ""
@@ -85,7 +88,7 @@ class FeatureSelection:
 		self.print_run_details()
 
 		if self.removeOutliers == True:
-			self.remove_outliers()
+			self.remove_outliers(lower_percentile=self.remove_outlier_lower_percentile, upper_percentile=self.remove_outlier_upper_percentile)
 		else:
 			self.molotAAV_object_filtered = self.molotAAV_object_processed.adata
 		
@@ -135,7 +138,7 @@ class FeatureSelection:
 		
 		
 		if self.removeOutliers == True:
-			self.remove_outliers()
+			self.remove_outliers(lower_percentile=self.remove_outlier_lower_percentile, upper_percentile=self.remove_outlier_upper_percentile)
 		else:
 			self.molotAAV_object_filtered = self.molotAAV_object_processed.adata
 

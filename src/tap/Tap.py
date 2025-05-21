@@ -50,7 +50,8 @@ class TAP:
 	balance=None, useAllGenes=False, rfPermuteFeatureImportance=False, rfPermuteRepeats=2,
 	runCellTypist=False, cellTypistModel="Mouse_Whole_Brain.pkl", cellTypistPlots=False, cellTypistLevels=3,
 	minify = True, excludeMarkers=False, removeOutliers=True, minCells=20, minSeroTypeCells=20,
-	clusterThresholdGreaterThanOrEqual=None, clusterThresholdLessThanOrEqual=None):
+	clusterThresholdGreaterThanOrEqual=None, clusterThresholdLessThanOrEqual=None,
+	remove_outlier_upper_percentile=99, remove_outlier_lower_percentile=0):
 		self.name = name 
 		self.filename = filename
 		self.adataObject = adataObject
@@ -68,6 +69,8 @@ class TAP:
 		self.rfPermuteRepeats = rfPermuteRepeats
 		self.rfType = rfType
 		self.removeOutliers = removeOutliers
+		self.remove_outlier_upper_percentile = remove_outlier_upper_percentile
+		self.remove_outlier_lower_percentile = remove_outlier_lower_percentile
 		self.minCells = minCells
 		self.minSeroTypeCells = minSeroTypeCells
 		self.totalIterations = 0
@@ -560,6 +563,8 @@ class TAP:
 								excludeMarkers=self.excludeMarkers,
 								markers=self.markers,
 								removeOutliers=self.removeOutliers,
+								remove_outlier_upper_percentile=self.remove_outlier_upper_percentile,
+								remove_outlier_lower_percentile=self.remove_outlier_lower_percentile,
 								totalIterations=self.totalIterations,
 								)
 

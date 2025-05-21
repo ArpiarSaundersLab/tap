@@ -8,57 +8,96 @@
     "replicate_3": {
         "CPE": 2
     },
-    "SHH10-replicate_1": {
-        "MIF": 2,
-        "CKB": 2,
-        "CST3": 2,
-        "SPARCL1": 2,
-        "CHCHD10": 1,
-        "PPP2R2B": 1,
-        "CLU": 2,
-        "CPE": 2
+    "AAV2": {},
+    "AAV2-replicate_1": {},
+    "AAV2-replicate_1-Astrocytes": {},
+    "AAV2-replicate_1-Excitatory": {},
+    "AAV2-replicate_1-Inhibitory": {},
+    "AAV2-replicate_2-Astrocytes": {},
+    "AAV2-replicate_2-Excitatory": {},
+    "AAV2-replicate_2-Inhibitory": {},
+    "AAV2-replicate_3-Astrocytes": {},
+    "AAV2-replicate_3-Excitatory": {},
+    "AAV2-replicate_3-Inhibitory": {},
+    "AAV2-replicate_2": {},
+    "AAV2-replicate_3": {},
+    "AAV5": {},
+    "AAV5-replicate_1": {},
+    "AAV5-replicate_1-Astrocytes": {},
+    "AAV5-replicate_1-Excitatory": {},
+    "AAV5-replicate_1-Inhibitory": {},
+    "AAV5-replicate_2-Astrocytes": {},
+    "AAV5-replicate_2-Excitatory": {},
+    "AAV5-replicate_2-Inhibitory": {},
+    "AAV5-replicate_3-Astrocytes": {},
+    "AAV5-replicate_3-Excitatory": {},
+    "AAV5-replicate_3-Inhibitory": {},
+    "AAV5-replicate_2": {},
+    "AAV5-replicate_3": {},
+    "AAV6": {},
+    "AAV6-replicate_1": {},
+    "AAV6-replicate_1-Astrocytes": {
+        "S100B": 2
     },
-    "SHH10-replicate_1-Astrocytes": {},
-    "SHH10-replicate_1-Excitatory": {},
-    "SHH10-replicate_1-Inhibitory": {
-        "GRIN2B": 2
+    "AAV6-replicate_1-Excitatory": {},
+    "AAV6-replicate_1-Inhibitory": {},
+    "AAV6-replicate_2-Astrocytes": {
+        "S100B": 2
     },
-    "SHH10-replicate_1-NPCs": {},
-    "SHH10-replicate_1-OPCs": {},
-    "SHH10-replicate_2-Astrocytes": {},
-    "SHH10-replicate_2-Excitatory": {},
-    "SHH10-replicate_2-Inhibitory": {
-        "GRIN2B": 2
+    "AAV6-replicate_2-Excitatory": {},
+    "AAV6-replicate_2-Inhibitory": {},
+    "AAV6-replicate_3-Astrocytes": {
+        "S100B": 2
     },
-    "SHH10-replicate_2-NPCs": {},
-    "SHH10-replicate_2-OPCs": {},
-    "SHH10-replicate_3-Astrocytes": {},
-    "SHH10-replicate_3-Excitatory": {},
-    "SHH10-replicate_3-Inhibitory": {
-        "GRIN2B": 2
+    "AAV6-replicate_3-Excitatory": {},
+    "AAV6-replicate_3-Inhibitory": {},
+    "AAV6-replicate_2": {},
+    "AAV6-replicate_3": {},
+    "AAV7": {},
+    "AAV7-replicate_1": {},
+    "AAV7-replicate_1-Astrocytes": {},
+    "AAV7-replicate_1-Excitatory": {
+        "MT3": 2
     },
-    "SHH10-replicate_3-NPCs": {},
-    "SHH10-replicate_3-OPCs": {},
-    "SHH10-replicate_2": {
-        "SH3BGRL3": 2,
-        "MT3": 2,
-        "GAS7": 2,
-        "MEF2C": 2,
-        "NTRK2": 2,
-        "PRKCB": 2,
-        "GLP2R": 2,
-        "CHCHD10": 1,
-        "CPE": 2
+    "AAV7-replicate_1-Inhibitory": {},
+    "AAV7-replicate_2-Astrocytes": {},
+    "AAV7-replicate_2-Excitatory": {
+        "MT3": 2
     },
-    "SHH10-replicate_3": {
-        "ANXA5": 2,
-        "MGST1": 2,
-        "SPARC": 2,
-        "TMEM47": 2,
-        "2210408F21RIK": 1,
-        "GLUL": 2,
-        "CPE": 2
+    "AAV7-replicate_2-Inhibitory": {},
+    "AAV7-replicate_3-Astrocytes": {},
+    "AAV7-replicate_3-Excitatory": {
+        "MT3": 2
     },
+    "AAV7-replicate_3-Inhibitory": {},
+    "AAV7-replicate_2": {},
+    "AAV7-replicate_3": {},
+    "AAV8": {},
+    "AAV8-replicate_1": {},
+    "AAV8-replicate_1-Astrocytes": {},
+    "AAV8-replicate_1-Excitatory": {},
+    "AAV8-replicate_1-Inhibitory": {},
+    "AAV8-replicate_2-Astrocytes": {},
+    "AAV8-replicate_2-Excitatory": {},
+    "AAV8-replicate_2-Inhibitory": {},
+    "AAV8-replicate_3-Astrocytes": {},
+    "AAV8-replicate_3-Excitatory": {},
+    "AAV8-replicate_3-Inhibitory": {},
+    "AAV8-replicate_2": {},
+    "AAV8-replicate_3": {},
+    "AAV9": {},
+    "AAV9-replicate_1": {},
+    "AAV9-replicate_1-Astrocytes": {},
+    "AAV9-replicate_1-Excitatory": {},
+    "AAV9-replicate_1-Inhibitory": {},
+    "AAV9-replicate_2-Astrocytes": {},
+    "AAV9-replicate_2-Excitatory": {},
+    "AAV9-replicate_2-Inhibitory": {},
+    "AAV9-replicate_3-Astrocytes": {},
+    "AAV9-replicate_3-Excitatory": {},
+    "AAV9-replicate_3-Inhibitory": {},
+    "AAV9-replicate_2": {},
+    "AAV9-replicate_3": {},
     "Retro-replicate_1": {
         "CCK": 2
     },
@@ -67,30 +106,75 @@
         "C1QL3": 2
     },
     "Retro-replicate_1-Inhibitory": {},
-    "Retro-replicate_1-NPCs": {},
-    "Retro-replicate_1-OPCs": {},
     "Retro-replicate_2-Astrocytes": {},
     "Retro-replicate_2-Excitatory": {
         "C1QL3": 2
     },
     "Retro-replicate_2-Inhibitory": {},
-    "Retro-replicate_2-NPCs": {},
-    "Retro-replicate_2-OPCs": {},
     "Retro-replicate_3-Astrocytes": {},
     "Retro-replicate_3-Excitatory": {
         "C1QL3": 2
     },
     "Retro-replicate_3-Inhibitory": {},
-    "Retro-replicate_3-NPCs": {},
-    "Retro-replicate_3-OPCs": {},
     "Retro-replicate_2": {
         "NRGN": 1
     },
     "Retro-replicate_3": {
-        "AAV8": 1,
+        "CNTN5": 2,
         "C1QL3": 2,
-        "PPP2R2B": 1,
         "NRGN": 1,
-        "SYNE2": 2
+        "SLC17A7": 2
+    },
+    "Rh10-replicate_1": {},
+    "Rh10-replicate_1-Astrocytes": {},
+    "Rh10-replicate_1-Excitatory": {},
+    "Rh10-replicate_1-Inhibitory": {},
+    "Rh10-replicate_2-Astrocytes": {},
+    "Rh10-replicate_2-Excitatory": {},
+    "Rh10-replicate_2-Inhibitory": {},
+    "Rh10-replicate_3-Astrocytes": {},
+    "Rh10-replicate_3-Excitatory": {},
+    "Rh10-replicate_3-Inhibitory": {},
+    "Rh10-replicate_2": {},
+    "Rh10-replicate_3": {
+        "S100A11": 2,
+        "GLUL": 2,
+        "CPE": 2,
+        "MGST1": 2
+    },
+    "Anc80-replicate_1": {
+        "SLC1A2": 2,
+        "PCSK1N": 2,
+        "SCD2": 1,
+        "PPP1R1A": 1,
+        "SPARCL1": 2,
+        "CPE": 2
+    },
+    "Anc80-replicate_1-Astrocytes": {},
+    "Anc80-replicate_1-Excitatory": {
+        "MT3": 2
+    },
+    "Anc80-replicate_1-Inhibitory": {},
+    "Anc80-replicate_2-Astrocytes": {},
+    "Anc80-replicate_2-Excitatory": {
+        "MT3": 2
+    },
+    "Anc80-replicate_2-Inhibitory": {},
+    "Anc80-replicate_3-Astrocytes": {},
+    "Anc80-replicate_3-Excitatory": {
+        "MT3": 2
+    },
+    "Anc80-replicate_3-Inhibitory": {},
+    "Anc80-replicate_2": {
+        "SNCA": 2,
+        "PCSK1N": 2,
+        "ATP1B1": 2,
+        "CHCHD10": 1,
+        "NRGN": 1
+    },
+    "Anc80-replicate_3": {
+        "NRGN": 1,
+        "FABP3": 2,
+        "CPE": 2
     }
 }
