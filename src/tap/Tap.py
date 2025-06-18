@@ -51,7 +51,7 @@ class TAP:
 	runCellTypist=False, cellTypistModel="Mouse_Whole_Brain.pkl", cellTypistPlots=False, cellTypistLevels=3,
 	minify = True, excludeMarkers=False, removeOutliers=True, minCells=20, minSeroTypeCells=20,
 	clusterThresholdGreaterThanOrEqual=None, clusterThresholdLessThanOrEqual=None,
-	remove_outlier_upper_percentile=99, remove_outlier_lower_percentile=0):
+	remove_outlier_upper_percentile=99, remove_outlier_lower_percentile=0, replicate_mode=False):
 		self.name = name 
 		self.filename = filename
 		self.adataObject = adataObject
@@ -74,6 +74,10 @@ class TAP:
 		self.minCells = minCells
 		self.minSeroTypeCells = minSeroTypeCells
 		self.totalIterations = 0
+		self.replicate_mode = replicate_mode
+		if self.rfType == "regressor" and self.balance is not None:
+			raise Exception("Cannot use regressor with balance parameter. Please set 'balance=None' or switch to classifier for full balance parameter access.")
+
 		if self.outputPath[-1] != "/":
 			self.outputPath = self.outputPath + "/"
 		if not os.path.exists(self.outputPath):
@@ -159,8 +163,17 @@ class TAP:
 		#create a copy of the adata object
 		self.adata_bak = self.adata.copy()
 		
+		# #convert to raw
+		# self.adata = self.adata.raw.to_adata() 
+
+		# #make var names unique
+		# self.adata.var_names_make_unique()	
+
 		#convert to raw
-		self.adata = self.adata.raw.to_adata() 
+		obs = self.adata.obs.copy()
+		self.adata = self.adata.raw.to_adata()
+		self.adata.obs = obs.copy()
+		self.adata.obs_names_make_unique()
 
 		#we only want the original subset of genes, but the raw values of those genes
 		if self.useAllGenes == False:
@@ -181,20 +194,19 @@ class TAP:
 				self.adata = ad.concat([self.adata, adata2], join="outer", axis=1, merge="only")
 				del adata2
 				gc.collect()
-
-		#make var names unique
-		self.adata.var_names_make_unique()
+		
+		self.adata.obsp.clear()
+		self.adata.varp.clear()
 
 		#calculate the percent of counts from mitochondrial genes
 		self.adata.var["mt"] = self.adata.var_names.str.startswith("mt-")
 		sc.pp.calculate_qc_metrics(self.adata, qc_vars=['mt'], percent_top=None, log1p=False, inplace=True)
-		#let users decide ahead of time
-		#self.adata = self.adata[self.adata.obs.pct_counts_mt < 10, :]
 
 		#calculate the infection_count
 		self.adata.obs['infection_count'] = np.sum(self.adata[:, self.genes].to_df(), axis=1).astype(int)
 		is_infected = self.adata.obs['infection_count'] > 0
 		self.adata.obs['infected'] = pd.Categorical(is_infected.astype(str))
+
 
 	def runTimeEstimate(self):
 		category_length = len(self.categories)
@@ -631,15 +643,19 @@ class TAP:
 		
 		#replace the word Infinity with 0 to play nice with javascript
 		filedata = filedata.replace('Infinity', '0')
+		filedata = filedata.replace('NaN}', '0}')
 
 
 		#find the "peppers"
-		print("Finding Peppers...")
-		self.pepper_results = self.find_pepper_results()
-		self.pepper_unique_list = self.get_unique_peppers(self.pepper_results)
-		self.peppers = self.get_pepper_gene_details(self.pepper_unique_list)
-		self.pepper_results2 = self.increase_pepper_heat(self.pepper_results, self.peppers)
-		filedata = filedata.replace('PEPPER_DATA', json.dumps(self.pepper_results2))
+		if self.replicate_mode == True:
+			print("Finding Replicate Peppers...")
+			self.pepper_results = self.find_pepper_results()
+			self.pepper_unique_list = self.get_unique_peppers(self.pepper_results)
+			self.peppers = self.get_pepper_gene_details(self.pepper_unique_list)
+			self.pepper_results2 = self.increase_pepper_heat(self.pepper_results, self.peppers)
+			filedata = filedata.replace('PEPPER_DATA', json.dumps(self.pepper_results2))
+		else:
+			filedata = filedata.replace("PEPPER_DATA", "{}")
 
 
 		# Write the file out again
@@ -648,8 +664,9 @@ class TAP:
 		
 
 		#line break for each key value pair
-		with open(f'{self.outputPath}peppers_{self.clean_string(self.name)}.txt', 'w') as file:
-			file.write(json.dumps(self.pepper_results2, indent=4))
+		if self.replicate_mode == True:
+			with open(f'{self.outputPath}peppers_{self.clean_string(self.name)}.txt', 'w') as file:
+				file.write(json.dumps(self.pepper_results2, indent=4))
 
 		
 		print(f"Finished Running")
@@ -937,7 +954,13 @@ class TAP:
 
 			#ROWS
 			#are there any nodes at this level with the same name minus the last character?
-			duplicates_rows = [n for n in self.data_structure if n[:-1] == node[:-1]]
+			#duplicates_rows = [n for n in self.data_structure if n[:-1] == node[:-1]]
+			duplicates_rows = [
+				n for n in self.data_structure 
+				if str(n)[:-1] == str(node)[:-1]
+			]
+
+
 			if len(duplicates_rows) > 1:
 
 				#check the node.RF of the duplicates to see if any of the keys are the same and values  > 0 
@@ -993,9 +1016,15 @@ class TAP:
 					#print(f"\n\t{k}:{duplicates_rows}: peppers2: {list_buffer_both}")
 					
 					#add to the pepper_results dict
-					self.add_key_to_dict(pepper_results, node+"-"+k, list_buffer_both)
+					self.add_key_to_dict(pepper_results, str(node)+"-"+str(k), list_buffer_both)
 					
-					duplicates_cols2 = [n for n in self.data_structure[node].keys() if n[:-1] == k[:-1]]
+					#duplicates_cols2 = [n for n in self.data_structure[node].keys() if n[:-1] == k[:-1]]
+					duplicates_cols2 = [
+						n for n in self.data_structure[node].keys()
+						if str(n)[:-1] == str(k)[:-1]
+					]
+
+
 					for col in duplicates_cols2:
 						for key2 in self.data_structure[node][col].keys():
 							if key2 not in ignore_nodes:
@@ -1025,7 +1054,7 @@ class TAP:
 								#print(f"\t{node}:{col}:{key2}: {duplicates_cols2}: peppers3: {list_buffer_both_2}")
 								
 								#add to the pepper_results dict
-								self.add_key_to_dict(pepper_results, node+"-"+col+"-"+key2, list_buffer_both_2)
+								self.add_key_to_dict(pepper_results, str(node)+"-"+str(col)+"-"+str(key2), list_buffer_both_2)
 
 		return pepper_results
 

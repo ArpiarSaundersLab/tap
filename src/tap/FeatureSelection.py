@@ -181,14 +181,14 @@ class FeatureSelection:
 		self.molotAAV_object_copy.adata = self.molotAAV_object_copy.adata[self.molotAAV_object_copy.adata.obs["infection_count"] < self.molotAAV_object_copy.adata.obs["infection_count"].quantile(0.98), :]
 
 	def add_log10(self):
-		self.molotAAV_object_copy.adata.obs["infection_count_log10"] = np.log10(self.molotAAV_object_copy.adata.obs["infection_count"])
+		
+		self.molotAAV_object_copy.adata.obs["infection_count_log10"] = np.log10(self.molotAAV_object_copy.adata.obs["infection_count"].values)	
 		self.molotAAV_object_copy.adata.obs["infection_count_log10"][np.isinf(self.molotAAV_object_copy.adata.obs["infection_count_log10"])] = 0
-		self.molotAAV_object_copy.adata.obs["total_counts_log10"] =  np.log10(self.molotAAV_object_copy.adata.obs["total_counts"])
+		self.molotAAV_object_copy.adata.obs["total_counts_log10"] =  np.log10(self.molotAAV_object_copy.adata.obs["total_counts"].values)
 		self.molotAAV_object_copy.adata.obs["total_counts_log10"][np.isinf(self.molotAAV_object_copy.adata.obs["total_counts_log10"])] = 0
 
 		for serotype in self.molotAAV_object_copy.serotype_list:
 			serotype = serotype.upper()
-			# does the serotype exist in the adata object?
 			if serotype in self.molotAAV_object_copy.adata.var_names:
 				self.molotAAV_object_copy.adata[self.molotAAV_object_copy.adata[:, [serotype]].X == 0][:,serotype].X = 0.1
 				self.molotAAV_object_copy.adata.obs[str(serotype).lower() + "_log10"] = np.log10(self.molotAAV_object_copy.adata[:, [serotype]].to_df())
@@ -382,8 +382,8 @@ class FeatureSelection:
 	def run_rf(self, n_estimators=20, max_depth=2, n_jobs=8, max_features=None, min_samples_split=2, permute_feature_importance=False, permutation_repeats=2):
 		#filter out the serotype of interest from the training data
 		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.molotAAV_object_copy.serotype_list])]
-		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.exclude_genes])]
-		
+		self.molotAAV_object_filtered_training = self.molotAAV_object_filtered_training[:, ~self.molotAAV_object_filtered_training.var_names.isin([x.upper() for x in self.exclude_genes])]		
+
 		#we need to filter out any marker genes from the list
 		if self.excludeMarkers == True:
 			if self.primary != None and self.secondary != None and self.tertiary != None:
@@ -411,7 +411,6 @@ class FeatureSelection:
 			y_train = self.molotAAV_object_filtered_training.obs["infection_status"].values
 		elif self.rfType == "regressor":
 			y_train = self.molotAAV_object_filtered_training.obs[self.serotype_of_interest].values
-
 
 		#both classes must be present in the training data
 		if len(np.unique(y_train)) < 2:
@@ -456,6 +455,7 @@ class FeatureSelection:
 		else:
 			#split the training data into training (x%), testing (x%) sets
 			X_train, X_test, y_train, y_test = train_test_split(X_train, y_train, test_size=0.2, random_state=22)
+
 
 		#use a random forest classifer or regressor
 		if self.rfType == "classifier":

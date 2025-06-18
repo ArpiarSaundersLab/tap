@@ -1,0 +1,39 @@
+{
+    "filename": "data/B19_noRG_preprocessed.h5ad",
+    "title": "B19 : Regressor",
+    "outputName": "b19_regressor.html",
+    "categories": [
+        "common_name_liger_granular"
+    ],
+    "categoryNames": [
+        "Cell Type"
+    ],
+    "genes": [
+        "N",
+        "P",
+        "M",
+        "EGFP",
+        "L",
+        "viral_umis"
+    ],
+    "DE": true,
+    "RF": true,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "gaussian",
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": null,
+    "clusterThresholdLessThanOrEqual": null,
+    "deMethod": "wilcoxon",
+    "mapOnly": false,
+    "excludeMarkers": false,
+    "cellTypist": false,
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistLevels": 3,
+    "rfType": "regressor",
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 10,
+    "permute": false,
+    "permuteRepeats": 2
+}
