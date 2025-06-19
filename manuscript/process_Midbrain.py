@@ -5,7 +5,7 @@ import numpy as np
 import anndata as ad
 
 parameters = {
-	"filename": "/home/kenny/Documents/OHSU/Projects/TAP/examples/data/Midbrain.h5ad",
+	"filename": "/home/kenny/Documents/OHSU/Projects/TAP/manuscript/data/Midbrain.h5ad",
 	"name": "Midbrain: M4: 1; M5: 2-3",
 	"genes": ["AAV1","AAV2","AAV5","AAV6","AAV7","AAV8","AAV9","Rh10","Retro","Anc80","SHH10"],
 	#"genes": ["AAV1","AAV2","Retro"],
