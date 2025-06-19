@@ -1,7 +1,7 @@
 {
-    "filename": "/home/kenny/Documents/OHSU/Projects/TAP/examples/data/Cortex.h5ad",
+    "filename": "/home/kenny/Documents/OHSU/Projects/TAP/manuscript/data/Cortex.h5ad",
     "title": "Cortex: M4: Kash (rep 3); M5: 1-2 (reps 1,2)",
-    "outputName": "CortexP.html",
+    "outputName": "Cortex.html",
     "categories": [
         "replicates",
         "cell_type"
@@ -28,7 +28,7 @@
     "Details": true,
     "clusterMethod": "threshold",
     "clusterThreshold": 1,
-    "clusterThresholdGreaterThanOrEqual": 2,
+    "clusterThresholdGreaterThanOrEqual": 5,
     "clusterThresholdLessThanOrEqual": 0,
     "deMethod": "wilcoxon",
     "mapOnly": false,
@@ -38,7 +38,7 @@
     "cellTypistLevels": 3,
     "rfType": "classifier",
     "rfHyperParameterTune": false,
-    "rfHyperParameterIterations": 10,
+    "rfHyperParameterIterations": 50,
     "permute": false,
     "permuteRepeats": 2
 }
