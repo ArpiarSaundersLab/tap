@@ -36,25 +36,27 @@ sns.set(style="whitegrid")
 sc.settings.verbosity = 0
 from tqdm import tqdm
 from biothings_client import get_client
+from AnnSQL import AnnSQL
 
 class TAP:
 
 	colors = [(0.8, 0.8, 0.8)] + [(plt.cm.Reds(i / 255)) for i in range(80, 256)]
 	cmap_custom = ListedColormap(colors)
 
-	def __init__(self, name="Heatmap", filename=None, adataObject=None, categories=[], categoryNames=[], 
+	def __init__(self, name="Heatmap", filename=None, adataObject=None,annSqlDB=None, categories=[], categoryNames=[], 
 	genes=[], exclude=[], useRaw=False, outputPath=".", outputName="tap.html", cpus = 2, 
 	mapOnly=False, showDE=True, showRF=True, showUMAP=True, showDetails=True, 
 	clusterMethod="threshold", clusterThreshold=1, useLog10=False, showPlots=False, 
 	excludeGenes=[], deMethod="wilcoxon", rfHyperParameterTune=False, rfHyperParameterIterations=50, rfType="classifier",
 	balance=None, useAllGenes=False, rfPermuteFeatureImportance=False, rfPermuteRepeats=2,
 	runCellTypist=False, cellTypistModel="Mouse_Whole_Brain.pkl", cellTypistPlots=False, cellTypistLevels=3,
-	minify = True, excludeMarkers=False, removeOutliers=True, minCells=20, minSeroTypeCells=20,
+	minify = False, excludeMarkers=False, removeOutliers=True, minCells=20, minSeroTypeCells=20,
 	clusterThresholdGreaterThanOrEqual=None, clusterThresholdLessThanOrEqual=None,
 	remove_outlier_upper_percentile=99, remove_outlier_lower_percentile=0, replicate_mode=False):
 		self.name = name 
 		self.filename = filename
 		self.adataObject = adataObject
+		self.annSqlDB = annSqlDB
 		self.categories = categories 
 		self.exclude = exclude 
 		self.genes = genes
@@ -132,9 +134,15 @@ class TAP:
 
 	def loadData(self):
 
+		#if user AnnSQL, convert to anndata object for processing
+		if self.annSqlDB:
+			asql = AnnSQL(db=self.annSqlDB)
+			asql.write_adata(filename='tap.h5ad')
+			self.filename = 'tap.h5ad'
+						
 		#if user passes in a specific object name, use that object
 		if self.adataObject:
-			self.adata = self.adataObject
+			self.adata = self.adataObject	
 		else:
 			self.adata = sc.read(self.filename)
 
