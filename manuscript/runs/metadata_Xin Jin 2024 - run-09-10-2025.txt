@@ -1,0 +1,42 @@
+{
+    "filename": null,
+    "title": "Xin Jin 2024 | run:09-10-2025",
+    "outputName": "xin_jin_09-10-2025_2.html",
+    "categories": [
+        "xincelltype230416"
+    ],
+    "categoryNames": [
+        "Cell Type"
+    ],
+    "genes": [
+        "BC1a",
+        "BC1b",
+        "BC1c",
+        "BC2a",
+        "BC2b",
+        "BC2c",
+        "BC4a",
+        "BC4b",
+        "BC4c"
+    ],
+    "DE": true,
+    "RF": true,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "threshold",
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": 2,
+    "clusterThresholdLessThanOrEqual": 0,
+    "deMethod": "wilcoxon",
+    "mapOnly": false,
+    "excludeMarkers": true,
+    "cellTypist": false,
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistLevels": 3,
+    "rfType": "classifier",
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 50,
+    "permute": false,
+    "permuteRepeats": 2
+}

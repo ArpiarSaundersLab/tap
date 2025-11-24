@@ -1,0 +1,852 @@
+Category,Feature,Importance
+infection_count:None:None:None,PRICKLE2,0.531
+infection_count:None:None:None,TTR,0.4021
+infection_count:None:None:None,HBA-A1,0.0659
+infection_count:None:None:None,CCNB2,0.0005
+infection_count:None:None:None,CCND1,0.0005
+infection_count:DLPN:None:None,DBI,0.4639
+infection_count:DLPN:None:None,HMGB2,0.269
+infection_count:DLPN:None:None,FABP7,0.1203
+infection_count:DLPN:None:None,RPL21,0.0526
+infection_count:DLPN:None:None,VIM,0.0421
+infection_count:DLPN:None:None,TTR,0.0252
+infection_count:DLPN:None:None,FRMD4A,0.0109
+infection_count:DLPN:None:None,HBA-A1,0.0081
+infection_count:DLPN:None:None,PANTR1,0.0079
+infection_count:ULPN:None:None,NRG3,0.7428
+infection_count:ULPN:None:None,TTR,0.1457
+infection_count:ULPN:None:None,LRFN5,0.0565
+infection_count:ULPN:None:None,DYNC1I1,0.0246
+infection_count:ULPN:None:None,LDB2,0.0211
+infection_count:ULPN:None:None,HMGB2,0.0092
+infection_count:IN MGE:None:None,TTR,0.4488
+infection_count:IN MGE:None:None,NRG3,0.1827
+infection_count:IN MGE:None:None,SOX1OT,0.1119
+infection_count:IN MGE:None:None,FABP7,0.0645
+infection_count:IN MGE:None:None,ZBTB20,0.0473
+infection_count:IN MGE:None:None,ADGRB3,0.0428
+infection_count:IN MGE:None:None,SYN2,0.0226
+infection_count:IN MGE:None:None,DBI,0.0202
+infection_count:IN MGE:None:None,THBS1,0.0103
+infection_count:IN MGE:None:None,4930509J09RIK,0.0102
+infection_count:IN MGE:None:None,SEMA6D,0.0085
+infection_count:IN MGE:None:None,TAFA2,0.0081
+infection_count:IN MGE:None:None,DPYD,0.0041
+infection_count:IN MGE:None:None,CACNA2D3,0.0031
+infection_count:IN MGE:None:None,CDH8,0.0031
+infection_count:IN MGE:None:None,CCND2,0.003
+infection_count:IN MGE:None:None,1700110K17RIK,0.0024
+infection_count:IN MGE:None:None,GM11099,0.0021
+infection_count:IN MGE:None:None,PDE3A,0.0011
+infection_count:IN MGE:None:None,MT1,0.0011
+infection_count:IN MGE:None:None,BMPER,0.0011
+infection_count:IN MGE:None:None,NPAS1,0.001
+infection_count:Apical progenitors:None:None,TTR,0.7603
+infection_count:Apical progenitors:None:None,E130114P18RIK,0.0876
+infection_count:Apical progenitors:None:None,MSX1,0.0871
+infection_count:Apical progenitors:None:None,IL1RAPL1,0.0319
+infection_count:Apical progenitors:None:None,MEST,0.0115
+infection_count:Apical progenitors:None:None,ATP1A2,0.0048
+infection_count:Apical progenitors:None:None,SPHKAP,0.0045
+infection_count:Apical progenitors:None:None,KNTC1,0.004
+infection_count:Apical progenitors:None:None,DLX1,0.0034
+infection_count:Apical progenitors:None:None,FIGN,0.0026
+infection_count:Apical progenitors:None:None,SYNDIG1,0.0009
+infection_count:Apical progenitors:None:None,EGFLAM,0.0008
+infection_count:Apical progenitors:None:None,SATB2,0.0006
+infection_count:IPC:None:None,LSAMP,0.5571
+infection_count:IPC:None:None,NDN,0.1938
+infection_count:IPC:None:None,CACNA2D3,0.1538
+infection_count:IPC:None:None,ZFHX3,0.0446
+infection_count:IPC:None:None,GM38604,0.0115
+infection_count:IPC:None:None,TTR,0.0109
+infection_count:IPC:None:None,UNC5C,0.0103
+infection_count:IPC:None:None,RBFOX1,0.0102
+infection_count:IPC:None:None,ADGRV1,0.0078
+infection_count:Migrating neurons:None:None,PCP4,0.3792
+infection_count:Migrating neurons:None:None,HS3ST4,0.151
+infection_count:Migrating neurons:None:None,CDK14,0.1223
+infection_count:Migrating neurons:None:None,GRM5,0.0933
+infection_count:Migrating neurons:None:None,PLXNA4,0.0721
+infection_count:Migrating neurons:None:None,RGS6,0.032
+infection_count:Migrating neurons:None:None,NRG3,0.0223
+infection_count:Migrating neurons:None:None,CYP26B1,0.0178
+infection_count:Migrating neurons:None:None,PANTR1,0.0177
+infection_count:Migrating neurons:None:None,NR2F1,0.0142
+infection_count:Migrating neurons:None:None,FABP7,0.0142
+infection_count:Migrating neurons:None:None,HS6ST2,0.0119
+infection_count:Migrating neurons:None:None,TENM3,0.0107
+infection_count:Migrating neurons:None:None,GM43376,0.0094
+infection_count:Migrating neurons:None:None,GRB10,0.0057
+infection_count:Migrating neurons:None:None,GM15563,0.0053
+infection_count:Migrating neurons:None:None,MAFB,0.0051
+infection_count:Migrating neurons:None:None,GLRA2,0.0051
+infection_count:Migrating neurons:None:None,BIRC5,0.004
+infection_count:Migrating neurons:None:None,FXYD5,0.004
+infection_count:Migrating neurons:None:None,1700109K24RIK,0.0027
+bc1a:None:None:None,PRICKLE2,0.6194
+bc1a:None:None:None,TTR,0.332
+bc1a:None:None:None,GRM8,0.0487
+bc1a:DLPN:None:None,TTR,0.5362
+bc1a:DLPN:None:None,HMGB2,0.0962
+bc1a:DLPN:None:None,TRPM3,0.0936
+bc1a:DLPN:None:None,KCNIP1,0.0638
+bc1a:DLPN:None:None,CCND2,0.0617
+bc1a:DLPN:None:None,DLGAP1,0.0423
+bc1a:DLPN:None:None,H2AFZ,0.0338
+bc1a:DLPN:None:None,PANTR1,0.0191
+bc1a:DLPN:None:None,NNAT,0.0179
+bc1a:DLPN:None:None,GM43376,0.0123
+bc1a:DLPN:None:None,STXBP6,0.0077
+bc1a:DLPN:None:None,XKR4,0.0062
+bc1a:DLPN:None:None,DPP6,0.0056
+bc1a:DLPN:None:None,HEXB,0.0035
+bc1a:ULPN:None:None,LRFN5,0.4533
+bc1a:ULPN:None:None,NRG3,0.3831
+bc1a:ULPN:None:None,DYNC1I1,0.0565
+bc1a:ULPN:None:None,RSPO3,0.0404
+bc1a:ULPN:None:None,TTR,0.033
+bc1a:ULPN:None:None,GRM8,0.0101
+bc1a:ULPN:None:None,SLC6A15,0.0093
+bc1a:ULPN:None:None,LDB2,0.0067
+bc1a:ULPN:None:None,FLRT2,0.005
+bc1a:ULPN:None:None,SLIT3,0.0027
+bc1a:IN MGE:None:None,TTR,0.254
+bc1a:IN MGE:None:None,DGKI,0.2368
+bc1a:IN MGE:None:None,THBS1,0.2168
+bc1a:IN MGE:None:None,PCDH7,0.1024
+bc1a:IN MGE:None:None,HCN1,0.0355
+bc1a:IN MGE:None:None,CNTNAP2,0.0341
+bc1a:IN MGE:None:None,LRRTM4,0.0242
+bc1a:IN MGE:None:None,TOX3,0.0167
+bc1a:IN MGE:None:None,GALNTL6,0.0151
+bc1a:IN MGE:None:None,ZBTB20,0.0149
+bc1a:IN MGE:None:None,KITL,0.0097
+bc1a:IN MGE:None:None,GPX1,0.009
+bc1a:IN MGE:None:None,NR2F1,0.0087
+bc1a:IN MGE:None:None,NDN,0.0079
+bc1a:IN MGE:None:None,CALD1,0.0075
+bc1a:IN MGE:None:None,GM43376,0.0067
+bc1a:Apical progenitors:None:None,CHCHD10,0.3978
+bc1a:Apical progenitors:None:None,SERPINH1,0.2019
+bc1a:Apical progenitors:None:None,PDE3A,0.1836
+bc1a:Apical progenitors:None:None,AGBL4,0.1759
+bc1a:Apical progenitors:None:None,HHIPL2,0.0215
+bc1a:Apical progenitors:None:None,TTR,0.0139
+bc1a:Apical progenitors:None:None,MYO5B,0.0055
+bc1a:IPC:None:None,CACNA2D3,0.2428
+bc1a:IPC:None:None,LSAMP,0.1913
+bc1a:IPC:None:None,NDN,0.1859
+bc1a:IPC:None:None,AFF2,0.121
+bc1a:IPC:None:None,NAV2,0.0803
+bc1a:IPC:None:None,TLE4,0.0396
+bc1a:IPC:None:None,RYR2,0.0386
+bc1a:IPC:None:None,SYN2,0.0369
+bc1a:IPC:None:None,ZFHX3,0.0191
+bc1a:IPC:None:None,LINGO2,0.0117
+bc1a:IPC:None:None,MKX,0.0081
+bc1a:IPC:None:None,GM38505,0.0067
+bc1a:IPC:None:None,GPC6,0.0033
+bc1a:IPC:None:None,RPRM,0.0033
+bc1a:IPC:None:None,KCNIP1,0.003
+bc1a:IPC:None:None,PBX3,0.0024
+bc1a:IPC:None:None,4931422A03RIK,0.0022
+bc1a:IPC:None:None,PRDM16,0.0021
+bc1a:IPC:None:None,GPR152,0.0017
+bc1a:Migrating neurons:None:None,HS3ST4,0.2916
+bc1a:Migrating neurons:None:None,FAM155A,0.1749
+bc1a:Migrating neurons:None:None,PLXNA4,0.0868
+bc1a:Migrating neurons:None:None,PCP4,0.0591
+bc1a:Migrating neurons:None:None,MEIS2,0.0577
+bc1a:Migrating neurons:None:None,NRG3,0.0523
+bc1a:Migrating neurons:None:None,RYR3,0.0394
+bc1a:Migrating neurons:None:None,CDK14,0.0337
+bc1a:Migrating neurons:None:None,HS6ST2,0.0288
+bc1a:Migrating neurons:None:None,LRFN5,0.016
+bc1a:Migrating neurons:None:None,PTPRD,0.0134
+bc1a:Migrating neurons:None:None,CDH18,0.0119
+bc1a:Migrating neurons:None:None,RBFOX1,0.0118
+bc1a:Migrating neurons:None:None,CNTNAP4,0.0117
+bc1a:Migrating neurons:None:None,CYP26B1,0.0116
+bc1a:Migrating neurons:None:None,UNC5D,0.0111
+bc1a:Migrating neurons:None:None,GRM5,0.0111
+bc1a:Migrating neurons:None:None,NR2F1,0.0105
+bc1a:Migrating neurons:None:None,SHISA9,0.0102
+bc1a:Migrating neurons:None:None,PALLD,0.0088
+bc1a:Migrating neurons:None:None,SOX9,0.0081
+bc1a:Migrating neurons:None:None,CACNB2,0.0076
+bc1a:Migrating neurons:None:None,SYN2,0.0072
+bc1a:Migrating neurons:None:None,NR3C2,0.007
+bc1a:Migrating neurons:None:None,DNAH6,0.0045
+bc1a:Migrating neurons:None:None,CFAP299,0.0045
+bc1a:Migrating neurons:None:None,SOX5,0.0044
+bc1a:Migrating neurons:None:None,SMC2,0.0041
+bc1b:None:None:None,PRICKLE2,0.6272
+bc1b:None:None:None,GRM8,0.2144
+bc1b:None:None:None,TTR,0.1583
+bc1b:DLPN:None:None,PRICKLE2,0.3605
+bc1b:DLPN:None:None,GRM8,0.1768
+bc1b:DLPN:None:None,CNTN3,0.1564
+bc1b:DLPN:None:None,TTR,0.1044
+bc1b:DLPN:None:None,SLC44A5,0.0587
+bc1b:DLPN:None:None,FAM135B,0.0358
+bc1b:DLPN:None:None,S100A10,0.0278
+bc1b:DLPN:None:None,MAGI1,0.0185
+bc1b:DLPN:None:None,H2AFZ,0.0173
+bc1b:DLPN:None:None,EFNA5,0.0151
+bc1b:DLPN:None:None,NEBL,0.0114
+bc1b:DLPN:None:None,1700111E14RIK,0.0088
+bc1b:DLPN:None:None,AKAP12,0.0085
+bc1b:ULPN:None:None,RSPO3,0.5053
+bc1b:ULPN:None:None,LRFN5,0.2956
+bc1b:ULPN:None:None,TTR,0.1008
+bc1b:ULPN:None:None,CLSTN2,0.0525
+bc1b:ULPN:None:None,FLRT2,0.0145
+bc1b:ULPN:None:None,KIRREL3,0.0093
+bc1b:ULPN:None:None,DMD,0.0079
+bc1b:ULPN:None:None,XKR4,0.0077
+bc1b:ULPN:None:None,CSMD1,0.0064
+bc1b:IN MGE:None:None,CDKN1C,0.3946
+bc1b:IN MGE:None:None,SYN2,0.2826
+bc1b:IN MGE:None:None,KCND2,0.0869
+bc1b:IN MGE:None:None,GLRA2,0.0777
+bc1b:IN MGE:None:None,TMTC2,0.0273
+bc1b:IN MGE:None:None,CLDN1,0.0179
+bc1b:IN MGE:None:None,SEMA6D,0.0152
+bc1b:IN MGE:None:None,MDGA2,0.0152
+bc1b:IN MGE:None:None,PPP1R14C,0.0141
+bc1b:IN MGE:None:None,SLC24A3,0.014
+bc1b:IN MGE:None:None,RELN,0.0139
+bc1b:IN MGE:None:None,DSCAM,0.0124
+bc1b:IN MGE:None:None,SLIT3,0.0106
+bc1b:IN MGE:None:None,CHSY3,0.0069
+bc1b:IN MGE:None:None,TLE4,0.006
+bc1b:IN MGE:None:None,SNCA,0.0047
+bc1b:Migrating neurons:None:None,CDK14,0.2155
+bc1b:Migrating neurons:None:None,GRM5,0.0942
+bc1b:Migrating neurons:None:None,PLXNA4,0.0809
+bc1b:Migrating neurons:None:None,RGS6,0.0624
+bc1b:Migrating neurons:None:None,MEIS2,0.0623
+bc1b:Migrating neurons:None:None,FAM155A,0.0565
+bc1b:Migrating neurons:None:None,TNR,0.056
+bc1b:Migrating neurons:None:None,SHISA9,0.0423
+bc1b:Migrating neurons:None:None,NRG3OS,0.0409
+bc1b:Migrating neurons:None:None,NECAB1,0.039
+bc1b:Migrating neurons:None:None,DBI,0.0333
+bc1b:Migrating neurons:None:None,RND2,0.0271
+bc1b:Migrating neurons:None:None,FGF12,0.0254
+bc1b:Migrating neurons:None:None,PRICKLE2,0.0206
+bc1b:Migrating neurons:None:None,HS3ST4,0.0164
+bc1b:Migrating neurons:None:None,NR2F1,0.0128
+bc1b:Migrating neurons:None:None,MDK,0.0118
+bc1b:Migrating neurons:None:None,RYR3,0.0102
+bc1b:Migrating neurons:None:None,TLE4,0.0094
+bc1b:Migrating neurons:None:None,NLGN1,0.0091
+bc1b:Migrating neurons:None:None,PAM,0.0087
+bc1b:Migrating neurons:None:None,RIPOR2,0.0085
+bc1b:Migrating neurons:None:None,CHSY3,0.0083
+bc1b:Migrating neurons:None:None,CYP26B1,0.0081
+bc1b:Migrating neurons:None:None,PCSK5,0.008
+bc1b:Migrating neurons:None:None,NIN,0.0073
+bc1b:Migrating neurons:None:None,DSCAM,0.0069
+bc1b:Migrating neurons:None:None,PDZD2,0.0054
+bc1b:Migrating neurons:None:None,GRIK3,0.0051
+bc1b:Migrating neurons:None:None,SEMA3A,0.005
+bc1b:Migrating neurons:None:None,LPL,0.0027
+bc1c:None:None:None,PRICKLE2,0.6649
+bc1c:None:None:None,GM43507,0.2514
+bc1c:None:None:None,FHIT,0.032
+bc1c:None:None:None,GM36975,0.0319
+bc1c:None:None:None,TTR,0.0134
+bc1c:None:None:None,GRM8,0.0064
+bc1c:DLPN:None:None,DPP6,0.3425
+bc1c:DLPN:None:None,SLC44A5,0.2891
+bc1c:DLPN:None:None,MAGI1,0.1505
+bc1c:DLPN:None:None,PRICKLE2,0.0793
+bc1c:DLPN:None:None,BRINP2,0.0267
+bc1c:DLPN:None:None,CNTNAP2,0.0237
+bc1c:DLPN:None:None,GRIA4,0.0227
+bc1c:DLPN:None:None,MPP7,0.016
+bc1c:DLPN:None:None,GRM8,0.0156
+bc1c:DLPN:None:None,HCN1,0.0083
+bc1c:DLPN:None:None,ZFHX3,0.008
+bc1c:DLPN:None:None,1700111E14RIK,0.006
+bc1c:DLPN:None:None,OXR1,0.0059
+bc1c:DLPN:None:None,FBN2,0.0057
+bc1c:ULPN:None:None,LRFN5,0.5688
+bc1c:ULPN:None:None,TTR,0.1877
+bc1c:ULPN:None:None,SNCA,0.085
+bc1c:ULPN:None:None,GM30382,0.0491
+bc1c:ULPN:None:None,CLSTN2,0.0309
+bc1c:ULPN:None:None,CDKN1C,0.0126
+bc1c:ULPN:None:None,DMD,0.0119
+bc1c:ULPN:None:None,ADAMTS3,0.0108
+bc1c:ULPN:None:None,DPP10,0.0089
+bc1c:ULPN:None:None,QK,0.0077
+bc1c:ULPN:None:None,ADGRL3,0.0069
+bc1c:ULPN:None:None,SLC6A15,0.0068
+bc1c:ULPN:None:None,GRIA1,0.0065
+bc1c:ULPN:None:None,ADGRB3,0.0064
+bc1c:IN MGE:None:None,TMTC2,0.4187
+bc1c:IN MGE:None:None,NR2F1,0.3644
+bc1c:IN MGE:None:None,TTR,0.1834
+bc1c:IN MGE:None:None,RELN,0.0216
+bc1c:IN MGE:None:None,CLDN1,0.0093
+bc1c:IN MGE:None:None,4930565N06RIK,0.0017
+bc1c:IN MGE:None:None,CTNNA3,0.001
+bc1c:Migrating neurons:None:None,PRICKLE2,0.4122
+bc1c:Migrating neurons:None:None,SHISA9,0.2341
+bc1c:Migrating neurons:None:None,HS3ST4,0.0502
+bc1c:Migrating neurons:None:None,RSPO3,0.0274
+bc1c:Migrating neurons:None:None,RND2,0.0227
+bc1c:Migrating neurons:None:None,ARL4A,0.0199
+bc1c:Migrating neurons:None:None,FGF12,0.0187
+bc1c:Migrating neurons:None:None,LSAMP,0.0184
+bc1c:Migrating neurons:None:None,GM15398,0.0183
+bc1c:Migrating neurons:None:None,SPOCK3,0.0159
+bc1c:Migrating neurons:None:None,AKAP12,0.0146
+bc1c:Migrating neurons:None:None,GRM5,0.0144
+bc1c:Migrating neurons:None:None,COL5A2,0.0139
+bc1c:Migrating neurons:None:None,XKR4,0.013
+bc1c:Migrating neurons:None:None,SYN2,0.0098
+bc1c:Migrating neurons:None:None,MDGA2,0.0097
+bc1c:Migrating neurons:None:None,CHSY3,0.0097
+bc1c:Migrating neurons:None:None,COX6B2,0.0094
+bc1c:Migrating neurons:None:None,GRIK3,0.0092
+bc1c:Migrating neurons:None:None,CDH20,0.0087
+bc1c:Migrating neurons:None:None,NDN,0.0082
+bc1c:Migrating neurons:None:None,UNC5D,0.008
+bc1c:Migrating neurons:None:None,RYR3,0.0077
+bc1c:Migrating neurons:None:None,TLE4,0.0076
+bc1c:Migrating neurons:None:None,UBE2C,0.007
+bc1c:Migrating neurons:None:None,NRN1,0.0069
+bc1c:Migrating neurons:None:None,PLPP3,0.0046
+bc2a:None:None:None,PRICKLE2,0.6534
+bc2a:None:None:None,TTR,0.2385
+bc2a:None:None:None,GRM8,0.086
+bc2a:None:None:None,OXR1,0.0222
+bc2a:DLPN:None:None,H2AFZ,0.4636
+bc2a:DLPN:None:None,TTR,0.3094
+bc2a:DLPN:None:None,PRICKLE2,0.0958
+bc2a:DLPN:None:None,NKAIN3,0.03
+bc2a:DLPN:None:None,CSMD1,0.0209
+bc2a:DLPN:None:None,LHX2,0.0195
+bc2a:DLPN:None:None,GM26871,0.019
+bc2a:DLPN:None:None,PCP4,0.0093
+bc2a:DLPN:None:None,FSTL1,0.0042
+bc2a:DLPN:None:None,RPL21,0.0037
+bc2a:DLPN:None:None,CNTN4,0.0036
+bc2a:DLPN:None:None,ADAM12,0.0033
+bc2a:DLPN:None:None,HELLS,0.0031
+bc2a:DLPN:None:None,WNT4,0.0029
+bc2a:DLPN:None:None,GM5441,0.0027
+bc2a:DLPN:None:None,6530403H02RIK,0.0025
+bc2a:DLPN:None:None,SH3RF3,0.0024
+bc2a:DLPN:None:None,SPC25,0.0022
+bc2a:DLPN:None:None,FOS,0.002
+bc2a:ULPN:None:None,LRFN5,0.7661
+bc2a:ULPN:None:None,RSPO3,0.0728
+bc2a:ULPN:None:None,NRG3,0.0648
+bc2a:ULPN:None:None,FLRT2,0.0229
+bc2a:ULPN:None:None,CTSB,0.0151
+bc2a:ULPN:None:None,ZFP804A,0.0129
+bc2a:ULPN:None:None,KCNQ5,0.0123
+bc2a:ULPN:None:None,CDH11,0.0077
+bc2a:ULPN:None:None,CLSTN2,0.0061
+bc2a:ULPN:None:None,SCHIP1,0.0056
+bc2a:ULPN:None:None,GRID1,0.0055
+bc2a:ULPN:None:None,FAM155A,0.0045
+bc2a:ULPN:None:None,LRRTM3,0.0038
+bc2a:IN MGE:None:None,CDKN1C,0.6336
+bc2a:IN MGE:None:None,THBS1,0.0948
+bc2a:IN MGE:None:None,TTR,0.0779
+bc2a:IN MGE:None:None,BRINP3,0.0281
+bc2a:IN MGE:None:None,SYN2,0.0269
+bc2a:IN MGE:None:None,ASIC2,0.0197
+bc2a:IN MGE:None:None,LRFN5,0.0188
+bc2a:IN MGE:None:None,NELL1,0.0168
+bc2a:IN MGE:None:None,SEMA6D,0.0129
+bc2a:IN MGE:None:None,RBFOX1,0.0127
+bc2a:IN MGE:None:None,MKX,0.0112
+bc2a:IN MGE:None:None,DLG2,0.011
+bc2a:IN MGE:None:None,PID1,0.0103
+bc2a:IN MGE:None:None,SLC6A15,0.0091
+bc2a:IN MGE:None:None,ULK4,0.0087
+bc2a:IN MGE:None:None,SYBU,0.0077
+bc2a:IPC:None:None,NDN,0.3654
+bc2a:IPC:None:None,LSAMP,0.2139
+bc2a:IPC:None:None,CDKN1C,0.209
+bc2a:IPC:None:None,PCDH7,0.1045
+bc2a:IPC:None:None,OLFR190,0.0864
+bc2a:IPC:None:None,CEBPD,0.0123
+bc2a:IPC:None:None,MKX,0.0025
+bc2a:IPC:None:None,PLXDC2,0.0014
+bc2a:IPC:None:None,GM17571,0.0011
+bc2a:IPC:None:None,MCTP2,0.001
+bc2a:IPC:None:None,MYLK,0.0008
+bc2a:IPC:None:None,LPL,0.0008
+bc2a:IPC:None:None,EFCAB1,0.0005
+bc2a:IPC:None:None,NXPH1,0.0003
+bc2a:IPC:None:None,EPB41L4A,0.0003
+bc2a:Migrating neurons:None:None,CDK14,0.3096
+bc2a:Migrating neurons:None:None,PLXNA4,0.1836
+bc2a:Migrating neurons:None:None,GRM5,0.1771
+bc2a:Migrating neurons:None:None,GAS6,0.0385
+bc2a:Migrating neurons:None:None,RGS6,0.0273
+bc2a:Migrating neurons:None:None,NRG3,0.0264
+bc2a:Migrating neurons:None:None,MEIS2,0.0256
+bc2a:Migrating neurons:None:None,RYR3,0.0251
+bc2a:Migrating neurons:None:None,RND2,0.02
+bc2a:Migrating neurons:None:None,MDK,0.0169
+bc2a:Migrating neurons:None:None,MDGA2,0.0167
+bc2a:Migrating neurons:None:None,CDH20,0.0146
+bc2a:Migrating neurons:None:None,SEMA6D,0.0134
+bc2a:Migrating neurons:None:None,GUCY1A1,0.013
+bc2a:Migrating neurons:None:None,DPP6,0.0118
+bc2a:Migrating neurons:None:None,PCDH19,0.011
+bc2a:Migrating neurons:None:None,TSIX,0.0103
+bc2a:Migrating neurons:None:None,SH3GL2,0.0099
+bc2a:Migrating neurons:None:None,AIRN,0.0096
+bc2a:Migrating neurons:None:None,PALLD,0.0072
+bc2a:Migrating neurons:None:None,CADM2,0.0072
+bc2a:Migrating neurons:None:None,GM26936,0.007
+bc2a:Migrating neurons:None:None,SOX6,0.0067
+bc2a:Migrating neurons:None:None,GRIA4,0.0058
+bc2a:Migrating neurons:None:None,HIST1H1E,0.0057
+bc2b:None:None:None,PRICKLE2,0.582
+bc2b:None:None:None,TTR,0.4104
+bc2b:None:None:None,HBA-A1,0.004
+bc2b:None:None:None,NEBL,0.0035
+bc2b:DLPN:None:None,HMGB2,0.4536
+bc2b:DLPN:None:None,TTR,0.2811
+bc2b:DLPN:None:None,DBI,0.2051
+bc2b:DLPN:None:None,HBA-A1,0.0349
+bc2b:DLPN:None:None,FABP7,0.0252
+bc2b:ULPN:None:None,LRFN5,0.4847
+bc2b:ULPN:None:None,NRG3,0.3099
+bc2b:ULPN:None:None,TTR,0.0709
+bc2b:ULPN:None:None,DYNC1I1,0.06
+bc2b:ULPN:None:None,CLSTN2,0.0275
+bc2b:ULPN:None:None,RSPO3,0.0188
+bc2b:ULPN:None:None,ZFHX4,0.0092
+bc2b:ULPN:None:None,SCHIP1,0.0054
+bc2b:ULPN:None:None,RPL21,0.0053
+bc2b:ULPN:None:None,NCAM2,0.0043
+bc2b:ULPN:None:None,DMD,0.004
+bc2b:IN MGE:None:None,ADGRB3,0.3158
+bc2b:IN MGE:None:None,TTR,0.2534
+bc2b:IN MGE:None:None,NRG3,0.2055
+bc2b:IN MGE:None:None,FOS,0.0834
+bc2b:IN MGE:None:None,RBFOX1,0.0344
+bc2b:IN MGE:None:None,SYN2,0.0179
+bc2b:IN MGE:None:None,RALYL,0.0141
+bc2b:IN MGE:None:None,4930509J09RIK,0.0134
+bc2b:IN MGE:None:None,DLG2,0.0133
+bc2b:IN MGE:None:None,RGS10,0.0123
+bc2b:IN MGE:None:None,CDKN1C,0.009
+bc2b:IN MGE:None:None,PRICKLE2,0.0069
+bc2b:IN MGE:None:None,THBS1,0.0063
+bc2b:IN MGE:None:None,VCL,0.0055
+bc2b:IN MGE:None:None,TRPC6,0.0045
+bc2b:IN MGE:None:None,PALLD,0.0044
+bc2b:Apical progenitors:None:None,TTR,0.7184
+bc2b:Apical progenitors:None:None,SPARC,0.2138
+bc2b:Apical progenitors:None:None,AGBL4,0.0409
+bc2b:Apical progenitors:None:None,FOS,0.0133
+bc2b:Apical progenitors:None:None,ZFP536,0.0051
+bc2b:Apical progenitors:None:None,LTBP1,0.0027
+bc2b:Apical progenitors:None:None,TENM3,0.0026
+bc2b:Apical progenitors:None:None,CDC20,0.0008
+bc2b:Apical progenitors:None:None,DLX1,0.0008
+bc2b:Apical progenitors:None:None,MFAP4,0.0007
+bc2b:Apical progenitors:None:None,PRTG,0.0006
+bc2b:Apical progenitors:None:None,GM38505,0.0004
+bc2b:IPC:None:None,LSAMP,0.6059
+bc2b:IPC:None:None,NDN,0.2407
+bc2b:IPC:None:None,TTR,0.137
+bc2b:IPC:None:None,PRICKLE2,0.006
+bc2b:IPC:None:None,GM49874,0.0053
+bc2b:IPC:None:None,PDE3A,0.0052
+bc2b:Migrating neurons:None:None,MEIS2,0.2753
+bc2b:Migrating neurons:None:None,GRM5,0.1876
+bc2b:Migrating neurons:None:None,RGS6,0.1315
+bc2b:Migrating neurons:None:None,HS6ST2,0.0589
+bc2b:Migrating neurons:None:None,CDK14,0.0573
+bc2b:Migrating neurons:None:None,NRG3,0.046
+bc2b:Migrating neurons:None:None,UBE2C,0.035
+bc2b:Migrating neurons:None:None,PRICKLE2,0.0255
+bc2b:Migrating neurons:None:None,UNC5D,0.0242
+bc2b:Migrating neurons:None:None,FABP7,0.0232
+bc2b:Migrating neurons:None:None,RYR3,0.0192
+bc2b:Migrating neurons:None:None,PRKG1,0.0137
+bc2b:Migrating neurons:None:None,PCP4,0.0127
+bc2b:Migrating neurons:None:None,PLXNA4,0.0126
+bc2b:Migrating neurons:None:None,EPHA5,0.0123
+bc2b:Migrating neurons:None:None,GM26936,0.0099
+bc2b:Migrating neurons:None:None,GM43376,0.0091
+bc2b:Migrating neurons:None:None,NR2F2,0.0081
+bc2b:Migrating neurons:None:None,LRFN5,0.0076
+bc2b:Migrating neurons:None:None,EBF1,0.0069
+bc2b:Migrating neurons:None:None,DSCAM,0.0061
+bc2b:Migrating neurons:None:None,GM47271,0.006
+bc2b:Migrating neurons:None:None,RMST,0.0057
+bc2b:Migrating neurons:None:None,GM13269,0.0054
+bc2c:None:None:None,PRICKLE2,0.6173
+bc2c:None:None:None,TTR,0.3776
+bc2c:None:None:None,ASCL1,0.005
+bc2c:DLPN:None:None,HMGB2,0.51
+bc2c:DLPN:None:None,TTR,0.2112
+bc2c:DLPN:None:None,H2AFZ,0.1027
+bc2c:DLPN:None:None,HBA-A1,0.0702
+bc2c:DLPN:None:None,RPL21,0.04
+bc2c:DLPN:None:None,DBI,0.0373
+bc2c:DLPN:None:None,NKAIN3,0.0144
+bc2c:DLPN:None:None,NNAT,0.0124
+bc2c:DLPN:None:None,CLU,0.0018
+bc2c:ULPN:None:None,NRG3,0.5881
+bc2c:ULPN:None:None,LRFN5,0.1642
+bc2c:ULPN:None:None,DYNC1I1,0.1364
+bc2c:ULPN:None:None,TTR,0.0595
+bc2c:ULPN:None:None,RSPO3,0.0336
+bc2c:ULPN:None:None,KCNT2,0.0038
+bc2c:ULPN:None:None,RALYL,0.0038
+bc2c:ULPN:None:None,SOX5,0.0028
+bc2c:ULPN:None:None,STXBP6,0.0027
+bc2c:ULPN:None:None,SLIT3,0.0026
+bc2c:ULPN:None:None,SCHIP1,0.0025
+bc2c:IN MGE:None:None,RBFOX1,0.2634
+bc2c:IN MGE:None:None,SYN2,0.19
+bc2c:IN MGE:None:None,LRFN5,0.0977
+bc2c:IN MGE:None:None,NRG3,0.0933
+bc2c:IN MGE:None:None,CSMD1,0.0584
+bc2c:IN MGE:None:None,TTR,0.0334
+bc2c:IN MGE:None:None,CDKN1C,0.0321
+bc2c:IN MGE:None:None,FOS,0.0309
+bc2c:IN MGE:None:None,PLPPR1,0.03
+bc2c:IN MGE:None:None,BRINP3,0.0281
+bc2c:IN MGE:None:None,GPX1,0.0258
+bc2c:IN MGE:None:None,DGKI,0.0188
+bc2c:IN MGE:None:None,CNTNAP3,0.0145
+bc2c:IN MGE:None:None,TSIX,0.0137
+bc2c:IN MGE:None:None,DLEU2,0.0108
+bc2c:IN MGE:None:None,CCSER1,0.0077
+bc2c:IN MGE:None:None,LRRC4C,0.0075
+bc2c:IN MGE:None:None,CNTN4,0.0063
+bc2c:IN MGE:None:None,THSD7A,0.0054
+bc2c:IN MGE:None:None,PLCB1,0.0051
+bc2c:IN MGE:None:None,VSTM2A,0.005
+bc2c:IN MGE:None:None,GLRA2,0.0044
+bc2c:IN MGE:None:None,4930509J09RIK,0.0043
+bc2c:IN MGE:None:None,RELN,0.004
+bc2c:IN MGE:None:None,GM45321,0.0038
+bc2c:IN MGE:None:None,CACNA1E,0.0031
+bc2c:IN MGE:None:None,THBS1,0.0027
+bc2c:Apical progenitors:None:None,TTR,0.6911
+bc2c:Apical progenitors:None:None,SDK1,0.2301
+bc2c:Apical progenitors:None:None,GJA1,0.0433
+bc2c:Apical progenitors:None:None,P2RY14,0.0144
+bc2c:Apical progenitors:None:None,NTNG1,0.0047
+bc2c:Apical progenitors:None:None,LUZP2,0.004
+bc2c:Apical progenitors:None:None,SOX1OT,0.0035
+bc2c:Apical progenitors:None:None,NTM,0.0011
+bc2c:Apical progenitors:None:None,ENPP2,0.0011
+bc2c:Apical progenitors:None:None,ADGRL3,0.0011
+bc2c:Apical progenitors:None:None,ADAMTS3,0.0011
+bc2c:Apical progenitors:None:None,SFTA2,0.001
+bc2c:Apical progenitors:None:None,SLC44A5,0.001
+bc2c:Apical progenitors:None:None,SPOCK3,0.001
+bc2c:Apical progenitors:None:None,DYNC1I1,0.0009
+bc2c:Apical progenitors:None:None,LTBP1,0.0007
+bc2c:IPC:None:None,DMD,0.4454
+bc2c:IPC:None:None,LSAMP,0.1396
+bc2c:IPC:None:None,ADGRV1,0.1201
+bc2c:IPC:None:None,TRPM3,0.1201
+bc2c:IPC:None:None,TTR,0.0657
+bc2c:IPC:None:None,WWOX,0.0323
+bc2c:IPC:None:None,SERPINH1,0.0217
+bc2c:IPC:None:None,TENM2,0.0173
+bc2c:IPC:None:None,CLSTN2,0.0137
+bc2c:IPC:None:None,SLC6A15,0.0082
+bc2c:IPC:None:None,NEGR1,0.008
+bc2c:IPC:None:None,STARD13,0.0079
+bc2c:Migrating neurons:None:None,CDK14,0.3013
+bc2c:Migrating neurons:None:None,MEIS2,0.2604
+bc2c:Migrating neurons:None:None,PLXNA4,0.0823
+bc2c:Migrating neurons:None:None,PCP4,0.0587
+bc2c:Migrating neurons:None:None,HS3ST4,0.0406
+bc2c:Migrating neurons:None:None,LRFN5,0.0372
+bc2c:Migrating neurons:None:None,RND2,0.0364
+bc2c:Migrating neurons:None:None,RGS6,0.018
+bc2c:Migrating neurons:None:None,NR2F1,0.0169
+bc2c:Migrating neurons:None:None,RBFOX1,0.0135
+bc2c:Migrating neurons:None:None,NAV2,0.0113
+bc2c:Migrating neurons:None:None,UNC5D,0.0112
+bc2c:Migrating neurons:None:None,ROBO1,0.0112
+bc2c:Migrating neurons:None:None,GLRA2,0.0111
+bc2c:Migrating neurons:None:None,DGKI,0.0106
+bc2c:Migrating neurons:None:None,TTR,0.0093
+bc2c:Migrating neurons:None:None,H2AFZ,0.0092
+bc2c:Migrating neurons:None:None,NRG3,0.0084
+bc2c:Migrating neurons:None:None,PALLD,0.0084
+bc2c:Migrating neurons:None:None,ID4,0.0083
+bc2c:Migrating neurons:None:None,SCHIP1,0.0067
+bc2c:Migrating neurons:None:None,EBF1,0.0065
+bc2c:Migrating neurons:None:None,MDK,0.0063
+bc2c:Migrating neurons:None:None,EOMES,0.0061
+bc2c:Migrating neurons:None:None,NRG3OS,0.0055
+bc2c:Migrating neurons:None:None,ESRRG,0.0047
+bc4a:None:None:None,PRICKLE2,0.6897
+bc4a:None:None:None,TTR,0.181
+bc4a:None:None:None,GRM8,0.0664
+bc4a:None:None:None,SAMD12,0.042
+bc4a:None:None:None,GM48091,0.0108
+bc4a:None:None:None,GM16599,0.0056
+bc4a:None:None:None,OXR1,0.0045
+bc4a:DLPN:None:None,TTR,0.3324
+bc4a:DLPN:None:None,DLGAP1,0.2021
+bc4a:DLPN:None:None,TRPM3,0.1027
+bc4a:DLPN:None:None,GM36975,0.0585
+bc4a:DLPN:None:None,NKAIN3,0.0466
+bc4a:DLPN:None:None,NNAT,0.0459
+bc4a:DLPN:None:None,KCNIP1,0.0361
+bc4a:DLPN:None:None,CNTN5,0.0356
+bc4a:DLPN:None:None,BRINP2,0.0278
+bc4a:DLPN:None:None,HBA-A1,0.0247
+bc4a:DLPN:None:None,H2AFZ,0.0189
+bc4a:DLPN:None:None,1700109K24RIK,0.0147
+bc4a:DLPN:None:None,FHIT,0.0127
+bc4a:DLPN:None:None,GM20275,0.0116
+bc4a:DLPN:None:None,ST18,0.0105
+bc4a:DLPN:None:None,PRICKLE2,0.0099
+bc4a:DLPN:None:None,SOX5OS4,0.0092
+bc4a:ULPN:None:None,RSPO3,0.5753
+bc4a:ULPN:None:None,CLSTN2,0.1054
+bc4a:ULPN:None:None,LRFN5,0.0812
+bc4a:ULPN:None:None,NRG3,0.073
+bc4a:ULPN:None:None,XKR4,0.0536
+bc4a:ULPN:None:None,DYNC1I1,0.0351
+bc4a:ULPN:None:None,FLRT2,0.0195
+bc4a:ULPN:None:None,TTR,0.0145
+bc4a:ULPN:None:None,MDGA2,0.0099
+bc4a:ULPN:None:None,SNCA,0.006
+bc4a:ULPN:None:None,NLGN1,0.0057
+bc4a:ULPN:None:None,GRM8,0.0057
+bc4a:ULPN:None:None,DMD,0.0046
+bc4a:ULPN:None:None,GM16599,0.0038
+bc4a:ULPN:None:None,LINGO2,0.0034
+bc4a:ULPN:None:None,CACNA1E,0.0033
+bc4a:IN MGE:None:None,FOS,0.2094
+bc4a:IN MGE:None:None,CDKN1C,0.1548
+bc4a:IN MGE:None:None,SYN2,0.1121
+bc4a:IN MGE:None:None,NR2F1,0.0863
+bc4a:IN MGE:None:None,PCDH7,0.0737
+bc4a:IN MGE:None:None,TTR,0.0484
+bc4a:IN MGE:None:None,HCN1,0.0378
+bc4a:IN MGE:None:None,GRID1,0.0334
+bc4a:IN MGE:None:None,NRG3,0.0302
+bc4a:IN MGE:None:None,CSMD1,0.0273
+bc4a:IN MGE:None:None,TOX,0.0271
+bc4a:IN MGE:None:None,RALYL,0.0264
+bc4a:IN MGE:None:None,NRG3OS,0.0257
+bc4a:IN MGE:None:None,CNTNAP3,0.0231
+bc4a:IN MGE:None:None,MDGA2,0.0131
+bc4a:IN MGE:None:None,DGKI,0.0115
+bc4a:IN MGE:None:None,FABP7,0.0102
+bc4a:IN MGE:None:None,PRICKLE2,0.0099
+bc4a:IN MGE:None:None,EDA,0.0089
+bc4a:IN MGE:None:None,ALK,0.0087
+bc4a:IN MGE:None:None,RYR2,0.0064
+bc4a:IN MGE:None:None,GM11149,0.0057
+bc4a:IN MGE:None:None,EFCAB6,0.005
+bc4a:IN MGE:None:None,MKX,0.005
+bc4a:Apical progenitors:None:None,TTR,0.7001
+bc4a:Apical progenitors:None:None,PTPRT,0.2841
+bc4a:Apical progenitors:None:None,PDE3A,0.0074
+bc4a:Apical progenitors:None:None,SOX1OT,0.0016
+bc4a:Apical progenitors:None:None,CRABP1,0.0009
+bc4a:Apical progenitors:None:None,RSPH1,0.0009
+bc4a:Apical progenitors:None:None,CFAP54,0.0008
+bc4a:Apical progenitors:None:None,CADPS2,0.0008
+bc4a:Apical progenitors:None:None,FIGN,0.0007
+bc4a:Apical progenitors:None:None,TAFA1,0.0007
+bc4a:Apical progenitors:None:None,SPOCK3,0.0007
+bc4a:Apical progenitors:None:None,2010001K21RIK,0.0007
+bc4a:Apical progenitors:None:None,ST6GALNAC5,0.0006
+bc4a:IPC:None:None,GRIA1,0.6622
+bc4a:IPC:None:None,GM4876,0.1943
+bc4a:IPC:None:None,CACNB2,0.1018
+bc4a:IPC:None:None,ADGRV1,0.0134
+bc4a:IPC:None:None,NDN,0.0097
+bc4a:IPC:None:None,OXR1,0.0038
+bc4a:IPC:None:None,NEGR1,0.0032
+bc4a:IPC:None:None,CCSER1,0.0021
+bc4a:IPC:None:None,IL1RAPL1,0.0019
+bc4a:IPC:None:None,FILIP1L,0.0019
+bc4a:IPC:None:None,ETV1,0.0017
+bc4a:IPC:None:None,SMOC1,0.0017
+bc4a:IPC:None:None,PBX3,0.0015
+bc4a:IPC:None:None,PRKD1,0.0008
+bc4a:Migrating neurons:None:None,CDK14,0.2577
+bc4a:Migrating neurons:None:None,PCP4,0.2051
+bc4a:Migrating neurons:None:None,PLXNA4,0.1391
+bc4a:Migrating neurons:None:None,NRG3,0.0671
+bc4a:Migrating neurons:None:None,MEIS2,0.0591
+bc4a:Migrating neurons:None:None,SHISA9,0.0568
+bc4a:Migrating neurons:None:None,KITL,0.0292
+bc4a:Migrating neurons:None:None,CYP26B1,0.0194
+bc4a:Migrating neurons:None:None,LRFN5,0.0186
+bc4a:Migrating neurons:None:None,ROBO2,0.0179
+bc4a:Migrating neurons:None:None,RYR3,0.0134
+bc4a:Migrating neurons:None:None,GM38604,0.0133
+bc4a:Migrating neurons:None:None,PANTR1,0.0131
+bc4a:Migrating neurons:None:None,CADM2,0.0127
+bc4a:Migrating neurons:None:None,KCNQ5,0.0113
+bc4a:Migrating neurons:None:None,FAM155A,0.0109
+bc4a:Migrating neurons:None:None,9630028H03RIK,0.0098
+bc4a:Migrating neurons:None:None,RBFOX1,0.0096
+bc4a:Migrating neurons:None:None,UNC5D,0.0094
+bc4a:Migrating neurons:None:None,E130114P18RIK,0.0085
+bc4a:Migrating neurons:None:None,FST,0.0064
+bc4a:Migrating neurons:None:None,GLRA2,0.0047
+bc4a:Migrating neurons:None:None,LRRIQ1,0.0042
+bc4a:Migrating neurons:None:None,LPL,0.0027
+bc4b:None:None:None,PRICKLE2,0.6309
+bc4b:None:None:None,TTR,0.2471
+bc4b:None:None:None,OXR1,0.0646
+bc4b:None:None:None,GRM8,0.0573
+bc4b:DLPN:None:None,PRICKLE2,0.1954
+bc4b:DLPN:None:None,FBN2,0.1796
+bc4b:DLPN:None:None,H2AFX,0.176
+bc4b:DLPN:None:None,SAMD12,0.0993
+bc4b:DLPN:None:None,OXR1,0.0863
+bc4b:DLPN:None:None,TTR,0.0524
+bc4b:DLPN:None:None,BRINP2,0.0483
+bc4b:DLPN:None:None,PCDH19,0.0445
+bc4b:DLPN:None:None,SLC44A5,0.0304
+bc4b:DLPN:None:None,TRPM3,0.0225
+bc4b:DLPN:None:None,QK,0.0158
+bc4b:DLPN:None:None,FHIT,0.0095
+bc4b:DLPN:None:None,GRM8,0.0091
+bc4b:DLPN:None:None,NRN1,0.0084
+bc4b:DLPN:None:None,EFNA5,0.0078
+bc4b:DLPN:None:None,GUCY1A1,0.0078
+bc4b:DLPN:None:None,WDR17,0.0069
+bc4b:ULPN:None:None,NRG3,0.6154
+bc4b:ULPN:None:None,DMD,0.1268
+bc4b:ULPN:None:None,RSPO3,0.1049
+bc4b:ULPN:None:None,LRFN5,0.0733
+bc4b:ULPN:None:None,MDGA2,0.036
+bc4b:ULPN:None:None,GM10827,0.0163
+bc4b:ULPN:None:None,TTR,0.0093
+bc4b:ULPN:None:None,FBN2,0.0073
+bc4b:ULPN:None:None,SLC6A9,0.0033
+bc4b:ULPN:None:None,CNTNAP3,0.0019
+bc4b:ULPN:None:None,STK33,0.0019
+bc4b:ULPN:None:None,2010001K21RIK,0.0019
+bc4b:ULPN:None:None,HPSE2,0.0018
+bc4b:IN MGE:None:None,SPOCK3,0.4479
+bc4b:IN MGE:None:None,PRICKLE2,0.3148
+bc4b:IN MGE:None:None,CSMD1,0.041
+bc4b:IN MGE:None:None,ARL4A,0.0392
+bc4b:IN MGE:None:None,SLC2A13,0.0374
+bc4b:IN MGE:None:None,PANTR1,0.0132
+bc4b:IN MGE:None:None,SEMA6D,0.0132
+bc4b:IN MGE:None:None,OXR1,0.013
+bc4b:IN MGE:None:None,GM38604,0.0123
+bc4b:IN MGE:None:None,TOX3,0.0121
+bc4b:IN MGE:None:None,NELL1OS,0.0118
+bc4b:IN MGE:None:None,RBFOX1,0.0076
+bc4b:IN MGE:None:None,GABRG3,0.0068
+bc4b:IN MGE:None:None,FGFBP3,0.0063
+bc4b:IN MGE:None:None,KCNH8,0.0061
+bc4b:IN MGE:None:None,GM16599,0.0059
+bc4b:IN MGE:None:None,SH3GL2,0.0059
+bc4b:IN MGE:None:None,DBI,0.0055
+bc4b:Migrating neurons:None:None,PRICKLE2,0.2994
+bc4b:Migrating neurons:None:None,SHISA9,0.2787
+bc4b:Migrating neurons:None:None,FGF12,0.1158
+bc4b:Migrating neurons:None:None,RGS6,0.0572
+bc4b:Migrating neurons:None:None,KITL,0.0344
+bc4b:Migrating neurons:None:None,KCNQ5,0.0323
+bc4b:Migrating neurons:None:None,PCSK5,0.0248
+bc4b:Migrating neurons:None:None,EGR1,0.0243
+bc4b:Migrating neurons:None:None,FAM155A,0.0185
+bc4b:Migrating neurons:None:None,RBFOX1,0.0164
+bc4b:Migrating neurons:None:None,PRKG1,0.0146
+bc4b:Migrating neurons:None:None,TNR,0.0134
+bc4b:Migrating neurons:None:None,CDK14,0.0131
+bc4b:Migrating neurons:None:None,PLXNA4,0.0111
+bc4b:Migrating neurons:None:None,GM973,0.0095
+bc4b:Migrating neurons:None:None,PLCXD3,0.0077
+bc4b:Migrating neurons:None:None,FSTL5,0.007
+bc4b:Migrating neurons:None:None,COL5A2,0.0066
+bc4b:Migrating neurons:None:None,RNASE4,0.0052
+bc4b:Migrating neurons:None:None,GRM1,0.0051
+bc4b:Migrating neurons:None:None,CHCHD10,0.005
+bc4c:None:None:None,PRICKLE2,0.6904
+bc4c:None:None:None,GM48091,0.1765
+bc4c:None:None:None,GRM8,0.0732
+bc4c:None:None:None,GM32509,0.0599
+bc4c:DLPN:None:None,GRIA4,0.6775
+bc4c:DLPN:None:None,SNCA,0.08
+bc4c:DLPN:None:None,KCNIP1,0.0654
+bc4c:DLPN:None:None,E130114P18RIK,0.0294
+bc4c:DLPN:None:None,PDE1A,0.0292
+bc4c:DLPN:None:None,BRINP2,0.027
+bc4c:DLPN:None:None,PCDH19,0.0247
+bc4c:DLPN:None:None,H2AFZ,0.0223
+bc4c:DLPN:None:None,FABP7,0.0179
+bc4c:DLPN:None:None,SYT4,0.0095
+bc4c:DLPN:None:None,CD63,0.0091
+bc4c:DLPN:None:None,GRM8,0.0079
+bc4c:ULPN:None:None,LRFN5,0.4308
+bc4c:ULPN:None:None,CSMD1,0.2348
+bc4c:ULPN:None:None,TTR,0.1811
+bc4c:ULPN:None:None,ANP32B,0.0729
+bc4c:ULPN:None:None,RYR3,0.0252
+bc4c:ULPN:None:None,DMD,0.016
+bc4c:ULPN:None:None,NRG3,0.0148
+bc4c:ULPN:None:None,CALD1,0.0086
+bc4c:ULPN:None:None,EFCAB6,0.008
+bc4c:ULPN:None:None,MDGA2,0.0077
+bc4c:IN MGE:None:None,PRICKLE2,0.332
+bc4c:IN MGE:None:None,SEMA6A,0.3076
+bc4c:IN MGE:None:None,GRIK3,0.1412
+bc4c:IN MGE:None:None,SEMA6D,0.0663
+bc4c:IN MGE:None:None,SPOCK3,0.0594
+bc4c:IN MGE:None:None,GM45323,0.0405
+bc4c:IN MGE:None:None,SLC24A3,0.0163
+bc4c:IN MGE:None:None,WLS,0.0133
+bc4c:IN MGE:None:None,TTR,0.0069
+bc4c:IN MGE:None:None,SVIL,0.0062
+bc4c:IN MGE:None:None,SLC4A5,0.0055
+bc4c:IN MGE:None:None,HELLS,0.0047
+bc4c:Migrating neurons:None:None,GRM5,0.2577
+bc4c:Migrating neurons:None:None,RYR3,0.1674
+bc4c:Migrating neurons:None:None,CDK14,0.1267
+bc4c:Migrating neurons:None:None,PLXNA4,0.0782
+bc4c:Migrating neurons:None:None,NECAB1,0.0388
+bc4c:Migrating neurons:None:None,GLRA2,0.0384
+bc4c:Migrating neurons:None:None,SEMA5A,0.0345
+bc4c:Migrating neurons:None:None,NELL1,0.0287
+bc4c:Migrating neurons:None:None,SHISA9,0.0274
+bc4c:Migrating neurons:None:None,NIN,0.0205
+bc4c:Migrating neurons:None:None,EPB41L4A,0.018
+bc4c:Migrating neurons:None:None,GRIN2A,0.0176
+bc4c:Migrating neurons:None:None,EPHA5,0.0138
+bc4c:Migrating neurons:None:None,FAM155A,0.011
+bc4c:Migrating neurons:None:None,COL12A1,0.0109
+bc4c:Migrating neurons:None:None,UNC5D,0.0105
+bc4c:Migrating neurons:None:None,TNR,0.0102
+bc4c:Migrating neurons:None:None,PRKG1,0.0099
+bc4c:Migrating neurons:None:None,GABRG3,0.0093
+bc4c:Migrating neurons:None:None,CD63,0.0086
+bc4c:Migrating neurons:None:None,SPOCK3,0.0083
+bc4c:Migrating neurons:None:None,MIA,0.0083
+bc4c:Migrating neurons:None:None,TOX3,0.008
+bc4c:Migrating neurons:None:None,H2AFZ,0.0077
+bc4c:Migrating neurons:None:None,ZFP804A,0.007
+bc4c:Migrating neurons:None:None,TRPC5,0.0069
+bc4c:Migrating neurons:None:None,ZFP536,0.0063
+bc4c:Migrating neurons:None:None,GM20275,0.0063
+bc4c:Migrating neurons:None:None,NRG3,0.0033

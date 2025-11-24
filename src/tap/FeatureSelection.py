@@ -297,15 +297,16 @@ class FeatureSelection:
 		plt.clf()
 
 	def plot_serotype_vs_umi_training(self):
-		fig = plt.figure(figsize=(4, 4))
+		fig = plt.figure(figsize=(6, 6))
 		g = sns.scatterplot(x=self.molotAAV_object_filtered_training.obs["total_counts_log10"],
 							y=self.molotAAV_object_filtered_training.obs[self.serotype_of_interest],
-							hue=self.molotAAV_object_filtered_training.obs['infection_status'])
+							hue=self.molotAAV_object_filtered_training.obs['infection_status'],
+							palette={0: 'gray', 1: 'black'},
+							s=120)
 		g.set(title="Clustered\n"+self.generateFigureTitle())
 		g.legend(loc='center left', bbox_to_anchor=(1, 0.5), prop={'size': 6})
 		plt.tight_layout()
-		#plt.savefig(self.outputPath+'/images/'+self.generateFigureFilename()+'-clusters.png', dpi=80, facecolor='w', edgecolor='w')
-		plt.savefig(self.outputPath+'clusters.png', dpi=80, facecolor='w', edgecolor='w')
+		plt.savefig(self.outputPath+'clusters.png', dpi=300, facecolor='w', edgecolor='w')
 		plt.clf()
 		plt.close()
 
@@ -534,7 +535,7 @@ class FeatureSelection:
 				self.r2 = r2_score(y_test, y_pred)
 				self.mse = mean_squared_error(y_test, y_pred)
 				self.mse = str(round(self.mse, 4))
-				self.auc_score = "MSE:"+str(self.mse) 
+				self.auc_score = "MSE:"+str(self.mse)+" R^2:"+str(round(self.r2,4))
 
 			else:
 				n_estimators = [10,20,40,60,80,100]
@@ -617,6 +618,22 @@ class FeatureSelection:
 			
 			#assign the dataframe to the class property
 			self.fi_df = df
+
+		fi_df_csv = self.fi_df
+		
+		#add the column of the category being analyzed
+		category = str(self.serotype_of_interest) + ":"+str(self.primary) + ":"+str(self.secondary) + ":"+str(self.tertiary)
+		fi_df_csv.insert(0, 'Category', category)
+
+		#remove any values that are 0
+		fi_df_csv = fi_df_csv[fi_df_csv["Importance"] > 0]
+
+
+		# #store or append self.fi_df in a csv file if the csv fi.csv exists
+		# with open(self.outputPath+'/feature_importances.csv', 'a') as f:
+		# 	fi_df_csv.to_csv(f, header=f.tell()==0, index=False)
+			
+
 
 
 	def plot_serotype_vs_umi_predictions(self, plot=False):

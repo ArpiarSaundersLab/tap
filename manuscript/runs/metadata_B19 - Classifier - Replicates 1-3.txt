@@ -1,0 +1,41 @@
+{
+    "filename": "data/B19_noRG_preprocessed_replicates.h5ad",
+    "title": "B19 : Classifier : Replicates 1-3",
+    "outputName": "b19_classifier_replicates.html",
+    "categories": [
+        "replicates",
+        "common_name_liger_granular"
+    ],
+    "categoryNames": [
+        "Replicate",
+        "Cell Type"
+    ],
+    "genes": [
+        "N",
+        "P",
+        "M",
+        "EGFP",
+        "L",
+        "viral_umis"
+    ],
+    "DE": true,
+    "RF": true,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "gaussian",
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": null,
+    "clusterThresholdLessThanOrEqual": null,
+    "deMethod": "wilcoxon",
+    "mapOnly": false,
+    "excludeMarkers": false,
+    "cellTypist": false,
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistLevels": 3,
+    "rfType": "classifier",
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 50,
+    "permute": false,
+    "permuteRepeats": 2
+}

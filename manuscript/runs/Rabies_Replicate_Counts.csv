@@ -1,0 +1,11 @@
+Counting Yellow Pepper Hits for each Combination,,,,,,,,,,
+,Replicate 1,,,Replicate 2,,,Replicate 3,,,
+,Astro,Ext,Inh,Astro,Ext,Inh,Astro,Ext,Inh,
+N,1,3,2,2,4,3,5,5,0,
+P,0,1,0,5,5,8,0,3,1,
+M,0,4,2,2,3,3,5,5,2,
+eGFP,0,4,5,2,4,2,8,3,1,
+L,4,3,4,1,4,4,5,7,2,
+Total,0,4,2,1,4,4,0,5,1,
+,,,,,,,,,,
+Totals,5,19,15,13,24,24,23,28,7,158

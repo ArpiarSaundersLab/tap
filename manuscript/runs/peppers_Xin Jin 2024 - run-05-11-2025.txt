@@ -1,0 +1,194 @@
+{
+    "BC1a": {
+        "GRM8": 2,
+        "TTR": 2,
+        "PRICKLE2": 1
+    },
+    "BC1a-DLPN": {},
+    "BC1a-ULPN": {
+        "TTR": 2,
+        "LRFN5": 2
+    },
+    "BC1a-IN MGE": {},
+    "BC1a-Apical progenitors": {},
+    "BC1a-IPC": {},
+    "BC1a-Migrating neurons": {
+        "SHISA9": 2,
+        "HS3ST4": 2,
+        "RYR3": 2,
+        "GRM5": 2
+    },
+    "BC1b": {
+        "GRM8": 2,
+        "TTR": 2,
+        "PRICKLE2": 1
+    },
+    "BC1b-DLPN": {},
+    "BC1b-ULPN": {
+        "TTR": 2,
+        "LRFN5": 2
+    },
+    "BC1b-IN MGE": {},
+    "BC1b-Apical progenitors": {},
+    "BC1b-IPC": {},
+    "BC1b-Migrating neurons": {
+        "SHISA9": 2,
+        "HS3ST4": 2,
+        "RYR3": 2,
+        "GRM5": 2
+    },
+    "BC1c": {
+        "GRM8": 2,
+        "TTR": 2,
+        "PRICKLE2": 1
+    },
+    "BC1c-DLPN": {},
+    "BC1c-ULPN": {
+        "TTR": 2,
+        "LRFN5": 2
+    },
+    "BC1c-IN MGE": {},
+    "BC1c-Apical progenitors": {},
+    "BC1c-IPC": {},
+    "BC1c-Migrating neurons": {
+        "SHISA9": 2,
+        "HS3ST4": 2,
+        "RYR3": 2,
+        "GRM5": 2
+    },
+    "BC2a": {
+        "TTR": 2,
+        "PRICKLE2": 1
+    },
+    "BC2a-DLPN": {
+        "TTR": 2
+    },
+    "BC2a-ULPN": {
+        "SCHIP1": 2,
+        "RSPO3": 2,
+        "NRG3": 2,
+        "LRFN5": 2
+    },
+    "BC2a-IN MGE": {
+        "SYN2": 2,
+        "CDKN1C": 2
+    },
+    "BC2a-Apical progenitors": {},
+    "BC2a-IPC": {},
+    "BC2a-Migrating neurons": {
+        "CDK14": 2,
+        "RGS6": 2,
+        "NRG3": 2
+    },
+    "BC2b": {
+        "TTR": 2,
+        "PRICKLE2": 1
+    },
+    "BC2b-DLPN": {
+        "TTR": 2
+    },
+    "BC2b-ULPN": {
+        "SCHIP1": 2,
+        "RSPO3": 2,
+        "NRG3": 2,
+        "LRFN5": 2
+    },
+    "BC2b-IN MGE": {
+        "SYN2": 2,
+        "CDKN1C": 2
+    },
+    "BC2b-Apical progenitors": {},
+    "BC2b-IPC": {},
+    "BC2b-Migrating neurons": {
+        "CDK14": 2,
+        "RGS6": 2,
+        "NRG3": 2
+    },
+    "BC2c": {
+        "TTR": 2,
+        "PRICKLE2": 1
+    },
+    "BC2c-DLPN": {
+        "TTR": 2
+    },
+    "BC2c-ULPN": {
+        "SCHIP1": 2,
+        "RSPO3": 2,
+        "NRG3": 2,
+        "LRFN5": 2
+    },
+    "BC2c-IN MGE": {
+        "SYN2": 2,
+        "CDKN1C": 2
+    },
+    "BC2c-Apical progenitors": {},
+    "BC2c-IPC": {},
+    "BC2c-Migrating neurons": {
+        "CDK14": 2,
+        "RGS6": 2,
+        "NRG3": 2
+    },
+    "BC4a": {
+        "GRM8": 2,
+        "PRICKLE2": 1
+    },
+    "BC4a-DLPN": {
+        "BRINP2": 2
+    },
+    "BC4a-ULPN": {
+        "DMD": 2,
+        "LRFN5": 2,
+        "MDGA2": 2,
+        "NRG3": 2
+    },
+    "BC4a-IN MGE": {},
+    "BC4a-Apical progenitors": {},
+    "BC4a-IPC": {},
+    "BC4a-Migrating neurons": {
+        "SHISA9": 2,
+        "CDK14": 2,
+        "FAM155A": 1
+    },
+    "BC4b": {
+        "GRM8": 2,
+        "PRICKLE2": 1
+    },
+    "BC4b-DLPN": {
+        "BRINP2": 2
+    },
+    "BC4b-ULPN": {
+        "DMD": 2,
+        "LRFN5": 2,
+        "MDGA2": 2,
+        "NRG3": 2
+    },
+    "BC4b-IN MGE": {},
+    "BC4b-Apical progenitors": {},
+    "BC4b-IPC": {},
+    "BC4b-Migrating neurons": {
+        "SHISA9": 2,
+        "CDK14": 2,
+        "FAM155A": 1
+    },
+    "BC4c": {
+        "GRM8": 2,
+        "PRICKLE2": 1
+    },
+    "BC4c-DLPN": {
+        "BRINP2": 2
+    },
+    "BC4c-ULPN": {
+        "DMD": 2,
+        "LRFN5": 2,
+        "MDGA2": 2,
+        "NRG3": 2
+    },
+    "BC4c-IN MGE": {},
+    "BC4c-Apical progenitors": {},
+    "BC4c-IPC": {},
+    "BC4c-Migrating neurons": {
+        "SHISA9": 2,
+        "CDK14": 2,
+        "FAM155A": 1
+    }
+}

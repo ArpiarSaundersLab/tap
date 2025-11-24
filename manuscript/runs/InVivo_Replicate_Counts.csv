@@ -1,0 +1,11 @@
+Counting Yellow Pepper Hits for each Combination,,,,,,,,,,,,,,,,,,
+,Replicate 1,,,,,,Replicate 2,,,,,,Replicate 3,,,,,
+,DLPN,ULPN,IN MGE,AP,IPC,MN,DLPN,ULPN,IN MGE,AP,IPC,MN,DLPN,ULPN,IN MGE,AP,IPC,MN
+BC1,10,6,8,4,3,14,7,6,1,0,0,17,6,4,0,0,0,13
+BC2,6,7,2,0,0,13,3,6,7,4,1,18,5,6,11,2,0,16
+BC3,13,8,12,2,0,18,8,5,0,0,0,9,4,7,0,0,0,13
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+Totals,29,21,22,6,3,45,18,17,8,4,1,44,15,17,11,2,0,42
+,,,,,,,,,,,,,,,,,,
+Total Genes,305,,,,,,,,,,,,,,,,,

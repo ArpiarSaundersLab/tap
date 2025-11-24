@@ -13,7 +13,7 @@ adata = sc.read_h5ad("../archive/data/GSE249416/GSE249416_AAV_ctxobj_2.Robj.h5ad
 # adata.obs["replicate"] = adata.obs["replicate"].astype(str)
 # adata.obs["replicate"] = "replicate_" + adata.obs["replicate"]
 # adata.obs.groupby("replicate")["xincelltype230416"].value_counts()
-
+adata
 
 parameters = {
 	"adataObject": adata,

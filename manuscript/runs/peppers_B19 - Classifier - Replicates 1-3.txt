@@ -1,0 +1,102 @@
+{
+    "Replicate_1": {},
+    "Replicate_2": {},
+    "Replicate_3": {},
+    "EGFP-Replicate_1": {
+        "LYPD1": 2,
+        "RAMP1": 2,
+        "GDA": 1,
+        "TTYH1": 2,
+        "RGS10": 2,
+        "KCNIP2": 2,
+        "DYNLL1": 2,
+        "LMO3": 2,
+        "AK3": 1,
+        "DYNLL2": 2,
+        "STMN2": 1
+    },
+    "EGFP-Replicate_1-Astrocyte": {},
+    "EGFP-Replicate_1-Glutamatergic_Neuron": {
+        "DYNLL1": 2
+    },
+    "EGFP-Replicate_1-Interneuron": {
+        "DYNLL1": 2,
+        "DYNLL2": 2
+    },
+    "EGFP-Replicate_2-Astrocyte": {},
+    "EGFP-Replicate_2-Glutamatergic_Neuron": {
+        "DYNLL1": 2
+    },
+    "EGFP-Replicate_2-Interneuron": {
+        "DYNLL1": 2,
+        "DYNLL2": 2
+    },
+    "EGFP-Replicate_3-Astrocyte": {},
+    "EGFP-Replicate_3-Glutamatergic_Neuron": {
+        "DYNLL1": 2
+    },
+    "EGFP-Replicate_3-Interneuron": {
+        "DYNLL1": 2,
+        "DYNLL2": 2
+    },
+    "EGFP-Replicate_2": {
+        "DYNLL1": 2,
+        "HTR2C": 2,
+        "EPHA4": 2,
+        "CCK": 2,
+        "STMN2": 1
+    },
+    "EGFP-Replicate_3": {
+        "TMSB4X": 2,
+        "MALAT1": 1,
+        "DYNLL1": 2,
+        "SNAP25": 2,
+        "STMN2": 1
+    },
+    "viral_umis-Replicate_1": {
+        "RAMP1": 2,
+        "CCNB1": 1,
+        "FAM162A": 1,
+        "TAGLN3": 1,
+        "SPECC1": 2,
+        "DYNLL1": 2,
+        "NPTXR": 2,
+        "GDA": 1,
+        "STMN2": 1
+    },
+    "viral_umis-Replicate_1-Astrocyte": {},
+    "viral_umis-Replicate_1-Glutamatergic_Neuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_1-Interneuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_2-Astrocyte": {},
+    "viral_umis-Replicate_2-Glutamatergic_Neuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_2-Interneuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_3-Astrocyte": {},
+    "viral_umis-Replicate_3-Glutamatergic_Neuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_3-Interneuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_2": {
+        "NCAM1": 2,
+        "STMN2": 1,
+        "CACNG3": 2,
+        "CHN1": 2,
+        "DYNLL1": 2,
+        "CCK": 2
+    },
+    "viral_umis-Replicate_3": {
+        "TMSB4X": 2,
+        "MALAT1": 1,
+        "DYNLL1": 2,
+        "STMN2": 1
+    }
+}

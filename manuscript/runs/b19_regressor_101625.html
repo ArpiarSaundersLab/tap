@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://unpkg.com/feather-icons"></script>
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000000'/%3E%3C/svg%3E">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<style>
+		html,body {
+			height: 100%;
+			background-color: #333;
+		}
+		body {
+			display: -ms-flexbox;
+			display: -webkit-box;
+			display: flex;
+			-ms-flex-pack: center;
+			-webkit-box-pack: center;
+			justify-content: center;
+			color: #fff;
+		}
+		a, a:link, a:active, a:visited {
+			color: inherit; 
+			text-decoration: none; 
+			cursor: pointer; 
+		}
+
+		a:hover{
+			color: #ebebeb;
+		}
+
+		.bg-lightdark {
+			background-color: #272a2e !important;
+		}
+		.table-swatch{
+			height: 12px; 
+			min-width: 12px;
+			width: 20px;
+		}
+		.table-legend-text{
+			height: 12px; 
+			font-size: 14px;
+		}
+		/* .gradient {
+			background: linear-gradient(to right, black, rgb(100, 0, 0), rgb(255, 0, 0));
+			height: 12px;
+		} */
+		.gradient {
+			height: 12px;
+			border-radius: 2px;
+		}
+
+		.modal-content {
+			background-color: #333;
+			color: #fff;
+			border-color: #333;
+		}
+		.modal-header{
+			border-bottom: 1px solid #494848;
+		}
+		.table>:not(caption)>*>* {
+			border-bottom-width: 1px;
+			border-color: #494848;
+		}
+		h1 a,h1 a:hover {
+			color: white;
+			text-decoration: none;
+		}
+		.overlay {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			z-index: 1000;
+			top: 0;
+			left: 0;
+			opacity: 0.5;
+			filter: alpha(opacity=50);
+			background: #444;
+			z-index: 1000;
+ 		}
+		.feature-table {
+			font-size: 10px;overflow: hidden; white-space: no-wrap; text-overflow: "ellipsis";
+		}
+
+		body.light-mode html,
+		body.light-mode body {
+			background-color: #fff!important;
+			color: #000 !important;
+		}
+
+		body.light-mode a,
+		body.light-mode a:link,
+		body.light-mode a:active,
+		body.light-mode a:visited {
+			color: #000 !important;
+		}
+
+		body.light-mode a:hover {
+			color: #333 !important;
+		}
+
+		body.light-mode .bg-dark,
+		body.light-mode .bg-lightdark,
+		body.light-mode .table-dark {
+			background: #fff !important;
+			color: #000 !important;
+		}
+
+		body.light-mode .card,
+		body.light-mode .modal-content {
+			background: #fff !important;
+			color: #000 !important;
+			border: 1px solid #000 !important;
+		}
+
+		body.light-mode .modal-header {
+			border-bottom: 1px solid #ccc !important;
+		}
+
+		body.light-mode .table>:not(caption)>*>* {
+			border-color: #ccc !important;
+		}
+
+		body.light-mode h1 a,
+		body.light-mode h1 a:hover {
+			color: #000 !important;
+		}
+
+		body.light-mode .overlay {
+			background: rgba(200, 200, 200, 0.5) !important;
+		}
+
+		body.light-mode .spinner-border {
+			color: #000 !important;
+		}
+
+		body.light-mode #rf_features.table,
+		body.light-mode #dge_features.table {
+			background-color: #fff !important;
+			color: #000 !important;
+		}
+
+		body.light-mode #rf_features.table th,
+		body.light-mode #rf_features.table td,
+		body.light-mode #dge_features.table th,
+		body.light-mode #dge_features.table td {
+			color: #000 !important;
+			border-color: #ccc !important;
+			background-color: #fff !important;
+			--bs-table-hover-bg: #f0f0f0 !important;
+		}
+
+		body.light-mode #rf_features.table.table-hover tbody tr:hover,
+		body.light-mode #dge_features.table.table-hover tbody tr:hover {
+			background-color: #f0f0f0 !important;
+			--bs-table-hover-bg: #f0f0f0 !important;
+		}
+
+		body.light-mode .text-light {
+			color: #000 !important;
+		}
+
+
+	</style>
+  </head>
+  <body>
+    <div class="overlay" id="loading" style="visibility: visible;">
+		<div class="d-flex justify-content-center mt-5">  
+			<div class="spinner-border" role="status" style="width: 3rem; height: 3rem; z-index: 20; margin-top: 200px;">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid m-2" id="application" style="visibility: hidden;">
+		<div class="row">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-12">
+						<h1 class="float-start"><a href="tap.html" id="home_link"><span id="title"></span></a></h1>
+						<button class="btn btn-secondary float-end mx-2" id="settings_tap" title="Settings"><i data-feather="settings"></i></button>
+						<button class="btn btn-secondary float-end" id="save_tap" title="Image Download"><i data-feather="download"></i></button>
+						<button id="themeToggle" class="btn btn-secondary  float-end  mx-2"><i data-feather="sun"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row m-0 mt-2">
+			<div class="col-12 col-md-10 bg-dark px-0" id="heatmap-container">
+				<div id="top-bar"></div>
+				<table id="heatmap"></table>
+			</div>
+			<div class="col-12 col-md-2 pe-md-0">
+				<div class="card bg-dark mt-4 mt-md-0" id="category_1_container" style="visibility: hidden; opacity: 0;">
+					<div class="card-header px-3 py-2" data-bs-toggle="collapse" data-bs-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent" id="category_1">
+						<div class="float-start fs-5 fw-bold"><span id="category_1_name">Cell Type</span></div>
+						<span class="float-end">
+							<i data-feather="chevron-up" class="chevron-up me-2" id="primary-chevron"></i>
+						</span>
+					</div>
+					<div id="collapseContent" class="collapse">
+						<div class="card-body p-1 fs-6">
+							<table class="table table-borderless table-sm p-2 text-light" style="overflow: hidden; white-space: no-wrap; text-overflow: ellipsis;"  id="category_1_table">
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="card bg-dark mt-2"  id="category_2_container"  style="visibility: hidden; opacity: 0;">
+					<div class="card-header px-3 py-2" data-bs-toggle="collapse" data-bs-target="#collapseContent2" aria-expanded="false" aria-controls="collapseContent2" id="category_2">
+						<div class="float-start fs-5 fw-bold"><span id="category_2_name">Sub Type</span></div>
+						<span class="float-end">
+							<i data-feather="chevron-up" class="chevron-up me-2" id="secondary-chevron"></i>
+						</span>
+					</div>
+					<div id="collapseContent2" class="collapse">
+						<div class="card-body p-1 fs-6">
+							<table class="table table-borderless table-sm p-2 text-light" style="overflow: hidden; white-space: no-wrap; text-overflow: ellipsis;"  id="category_2_table">
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="card bg-dark mt-2"  id="category_3_container"  style="visibility: hidden; opacity: 0; ">
+					<div class="card-header px-3 py-2" data-bs-toggle="collapse" data-bs-target="#collapseContent3" aria-expanded="false" aria-controls="collapseContent3"  id="category_3">
+						<div class="float-start fs-5 fw-bold"><span id="category_3_name">Tertiary</span></div>
+						<span class="float-end">
+							<i data-feather="chevron-up" class="chevron-up me-2" id="tertiary-chevron"></i>
+						</span>
+					</div>
+					<div id="collapseContent3" class="collapse">
+						<div class="card-body p-1 fs-6">
+							<table class="table table-borderless table-sm p-2 text-light" style="overflow: hidden; white-space: no-wrap; text-overflow: ellipsis;"  id="category_3_table">
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="card bg-dark mt-2">
+					<div class="card-header px-3 py-2" data-bs-toggle="collapse" data-bs-target="#collapseContent4" aria-expanded="false" aria-controls="collapseContent4">
+						<div class="float-start fs-5 fw-bold">Scale</div>
+						<span class="float-end">
+							<i data-feather="chevron-up" class="chevron-up me-2" id="scale-chevron"></i>
+						</span>
+					</div>
+					<div id="collapseContent4" class="collapse show">
+						<div class="card-body">
+							<div class="gradient"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-12 col-md-3" id="details_container">
+				<div class="card border-0 mt-3">
+					<div class="card-header bg-dark fw-bold fs-4">Selection Details</div>
+					<div>
+						<div class="card-body bg-lightdark fs-5">
+							<div class="small mt-2 fw-bold" id="category_selection">Showing all</div>
+							<div class="small mt-2">Cells Selected: <span id="cell_total" class="text-muted"></span></div>
+							<div class="small mt-2">Cells (UMI>0): <span id="cell_infected" class="text-muted"></span></div>
+							<div class="small mt-2">Cells Per Pixel: <span id="cell_pixel" class="text-muted"></span></div>
+							<h6 class="card-title mt-3 fw-bold">Random Forest</h6>
+							<div class="small mt-2" id="rf_display_accuracy">Accuracy: <span id="rf_accuracy" class="text-muted">0%</span></div>
+							<div class="small mt-2" id="rf_display_auc">AUC: <span id="rf_auc" class="text-muted">-</span></div>
+							<div class="small mt-2" id="rf_display_permute">Permute: <span id="rf_permute" class="text-muted">-</span></div>
+							<div class="small mt-2" id="rf_display_bp">Parameters: <span id="rf_bp" class="text-muted">Default</span></div>
+							<h6 class="card-title mt-3 fw-bold">Differential Expression</h6>
+							<div class="small mt-2">Method: <span class="text-muted">pseudobulk</span> <span id="de_method" class="text-muted"></span></div>
+							<h6 class="card-title mt-3 fw-bold">Clustering</h6>
+							<div class="small mt-2">Method: <span id="method" class="text-muted"></span></div>
+							<div class="small mt-2" id="threshold_container">Infection Threshold: <span class="text-muted">>=</span><span id="threshold" class="text-muted"></span></div>
+							<div id="cluster-container">
+								<img src="https://placehold.co/200x200" id="cluster_thumb" class="pt-2 img-fluid">
+							</div>
+							<div class="pt-2">
+								<div class="text-muted mt-3" style="font-size: 11px;">Using the clustering method above, data was seperated into these two potential classes of infected vs not-infected. This data was then used to train the ensemble classifier and ultimately to produce feature importance and differential expression. <b>Note:</b> There should be seperation showing two distinct classes on the top and bottom. If there isn't, then clustering didn't work well and subsequent feature analysis should be ignored. </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-3" id="umap_container">
+				<div class="card border-0 mt-3">
+					<div class="card-header bg-dark fw-bold fs-4">
+						<div class="float-start">UMAP</div>
+					</div>
+					<div>
+						<div class="card-body bg-lightdark">
+							<div id="plotly-container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-3" id="rf_container">
+				<div class="card border-0 mt-3">
+					<div class="card-header bg-dark fw-bold fs-4">Ensemble Features</div>
+					<div>
+						<div class="card-body bg-lightdark">
+							<table class="table table-dark table-hover feature-table" id="rf_features">
+								<tr>
+									<th scope="col">Gene</th>
+									<th scope="col">Score</th>
+									<th scope="col">&nbsp;</th>
+								</tr>
+								<tr><td colspan="3" class="p-2 text-center">Nothing to see here</td></tr>
+							</table>
+							<button type="button" class="btn btn-sm text-secondary" id="dl_rf"><i data-feather="download"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-3">
+				<div class="card border-0 mt-3">
+					<div class="card-header bg-dark fw-bold fs-4">Differential Expression</div>
+					<div>
+						<div class="card-body bg-lightdark">
+							<table class="table table-dark table-hover feature-table table-sm" id="dge_features">
+								<tr>
+									<th scope="col" colspan="3">Cluster 1</th>
+									<th scope="col" colspan="3">Cluster 0</th>
+								</tr>
+								<tr>
+									<th>Gene</th>
+									<th>LogFC</th>
+									<th>pval<br />(adj)</th>
+									<th>Gene</th>
+									<th>LogFC</th>
+									<th>pval<br />(adj)</th>
+								</tr>
+							</table>
+							
+							<button type="button" class="btn btn-sm text-secondary" id="dl_de"><i data-feather="download"></i></button>
+							<span class="text-muted">Showing top 20. Download to view all.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><br />
+	</div>
+	<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h3>Color Palette</h3>
+					<div class="mb-3">
+						<label for="colorPaletteSelect" class="form-label">Select Color Palette</label>
+						<select class="form-select" id="colorPaletteSelect">
+							<option value="cividis">Cividis</option>
+							<option value="viridis">Viridis</option>
+							<option value="plasma">Plasma</option>
+							<option value="inferno">Inferno</option>
+							<option value="magma">Magma</option>
+							<option value="whitebluered">TAP (White,Blue,Red)</option>
+							<option value="whiteblueredz">TAP Z(White,Blue,Red)</option>
+							<option value="viridistap">TAP (viridis)</option>
+							<option value="tap">Tap (Black -> Red)</option>
+						</select>
+					</div>
+					<h3>Display</h3>
+					<label class="form-label">Toggle the display of specific genes below.</label>
+					<div id="gene-switches-container"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+  
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+	<script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+  </body>
+</html>
+<script>
+
+	const metaDataRaw = 'METADATA';
+	const heatMapDataRaw ='HEATMAP_DATA';
+	const featureDataRaw = 'FEATURE_DATA';
+	const clustingDetails = CLUSTERING_DETAILS;
+	const pepperData = 'PEPPER_DATA';
+	let categorySelection = "All";
+	let geneSelection = "All";
+	let fullSelection = "All";
+	let parsedMetaData, parsedHeatMapData, parsedFeatureData, parsedUmapData, categoryTreeMap, heatmapDataObject, fullCategorySelection, heatmapDataObjectFiltered, parsedClusteringData, parsedPepperData;
+	let RF, RF_A, RF_AUC, RF_BP, DGE, DGE_pval_adj, DGE_logfc; 
+	let colors = generateColors();
+	let categoryColors = {};
+	let geneVisibility = {};
+	let colorPalette = "cividis";
+
+	//on window load and resize event
+	document.addEventListener("DOMContentLoaded", function() {
+		showLoading();
+		heatmapDataObject = parseHeatMapData();
+		heatmapDataObjectFiltered = heatmapDataObject;
+		parsedMetaData = parseMetaData();
+		parsedPepperData = parsePepperData();
+
+		if (parsedMetaData.mapOnly == false){
+			parsedFeatureData = parseFeatureData();
+		}
+		categoryTreeMap = createCategoryTreeMap();
+		drawHeatmap();
+		rightMenuAnimations();
+		generatePlotly();
+		hideLoading();
+		updateSelection();
+		showSettings()
+		setScaleGradient();
+		var debouncedResize = debounce(function() {
+			geneSelection = "All";
+			categorySelection = "All";
+			drawHeatmap();
+			generatePlotly();
+			hideLoading();
+			applyGeneVisibility();
+    	}, 500);
+		window.addEventListener("resize", function() {
+			showLoading();
+			debouncedResize();
+		});
+	});
+
+	//debounce function
+	function debounce(func, wait, immediate) {
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	}
+
+	//onclick event for the save button
+	document.getElementById("save_tap").addEventListener("click", downloadImage);
+	document.getElementById("colorPaletteSelect").addEventListener("click", setColorPalette);
+
+	function setColorPalette(){
+		colorPalette = document.getElementById("colorPaletteSelect").value;
+		drawHeatmap();
+		generatePlotly();
+		setScaleGradient();
+	}
+
+	function setScaleGradient(){
+		const colormap = generateColorMap(colorPalette, 50);
+		const cssGradient = colormapToCSSGradient(colormap);
+		document.querySelector('.gradient').style.background = cssGradient;
+	}
+
+	function colormapToCSSGradient(colormap) {
+		const stops = colormap.map((rgb, i) => {
+			const pct = (i / (colormap.length - 1)) * 100;
+			return `rgb(${rgb[0]},${rgb[1]},${rgb[2]}) ${pct.toFixed(2)}%`;
+		});
+		return `linear-gradient(to right, ${stops.join(', ')})`;
+	}
+
+
+	function showSettings() {
+		document.getElementById('settings_tap').addEventListener('click', function () {
+			const container = document.getElementById('gene-switches-container');
+			container.innerHTML = '';
+
+			const buttonWrapper = document.createElement('div');
+			buttonWrapper.className = 'mb-3';
+			const showAllBtn = document.createElement('button');
+			showAllBtn.className = 'btn btn-sm btn-outline-primary me-2';
+			showAllBtn.innerText = 'Show All';
+			showAllBtn.addEventListener('click', () => toggleAllGenes(true));
+			const hideAllBtn = document.createElement('button');
+			hideAllBtn.className = 'btn btn-sm btn-outline-secondary';
+			hideAllBtn.innerText = 'Hide All';
+			hideAllBtn.addEventListener('click', () => toggleAllGenes(false));
+			buttonWrapper.appendChild(showAllBtn);
+			buttonWrapper.appendChild(hideAllBtn);
+			container.appendChild(buttonWrapper);
+
+			//iterate and add gene switches
+			for (let gene of parsedMetaData.genes) {
+				const wrapper = document.createElement('div');
+				wrapper.className = 'form-check form-switch';
+
+				const input = document.createElement('input');
+				input.className = 'form-check-input';
+				input.type = 'checkbox';
+				input.id = `switch-${gene}`;
+				input.checked = geneVisibility[gene] !== false;
+
+				input.addEventListener('change', function () {
+					const row = document.getElementById(`row-${gene}`);
+					const isVisible = this.checked;
+					geneVisibility[gene] = isVisible;
+
+					if (row) {
+						row.style.display = isVisible ? 'table-row' : 'none';
+					}
+				});
+
+				const label = document.createElement('label');
+				label.className = 'form-check-label';
+				label.htmlFor = input.id;
+				label.innerText = gene;
+
+				wrapper.appendChild(input);
+				wrapper.appendChild(label);
+				container.appendChild(wrapper);
+			}
+
+			const modal = new bootstrap.Modal(document.getElementById('settingsModal'));
+			modal.show();
+		});
+
+		//local function to toggle all gene switches
+		function toggleAllGenes(show) {
+			for (let gene of parsedMetaData.genes) {
+				const input = document.getElementById(`switch-${gene}`);
+				const row = document.getElementById(`row-${gene}`);
+				if (input) {
+					input.checked = show;
+					geneVisibility[gene] = show;
+					if (row) {
+						row.style.display = show ? 'table-row' : 'none';
+					}
+				}
+			}
+		}
+	}
+
+
+	function applyGeneVisibility() {
+		for (let gene of parsedMetaData.genes) {
+			const row = document.getElementById(`row-${gene}`);
+			if (row) {
+				row.style.display = geneVisibility[gene] === false ? 'none' : 'table-row';
+			}
+		}
+	}
+
+	function showLoading() {
+		document.getElementById("application").style.visibility = "hidden";
+		document.getElementById("application").style.opacity = "0";
+		document.getElementById("loading").style.display = "block";
+	}
+
+	function hideLoading() {
+		document.getElementById("application").style.visibility = "visible";
+		document.getElementById("application").style.opacity = "1";
+		document.getElementById("loading").style.display = "none";
+	}
+
+	//parse the metadata
+	function parseMetaData(){
+		const parsedMetaData = JSON.parse(metaDataRaw);
+		document.title = parsedMetaData.title;
+		document.getElementById("title").textContent = parsedMetaData.title;
+		document.getElementById("home_link").href = parsedMetaData.outputName;
+		if(!parsedMetaData.Details){
+			document.getElementById("details_container").style.display = "none";
+		}
+		if(!parsedMetaData.UMAP){
+			document.getElementById("umap_container").style.display = "none";
+		}
+		if(!parsedMetaData.RF){
+			document.getElementById("rf_container").style.display = "none";
+		}
+		if(!parsedMetaData.DE){
+			document.getElementById("de_container").style.display = "none";
+		}
+		document.getElementById("method").textContent = parsedMetaData.clusterMethod;
+		document.getElementById("de_method").textContent = parsedMetaData.deMethod;
+		document.getElementById("rf_permute").textContent = parsedMetaData.permute;
+		return parsedMetaData;
+	}
+
+	//parse the heatMapDataRaw which is a string in csv format
+	function parseHeatMapData(){
+		const parsedHeatMapData = d3.csvParse(heatMapDataRaw);
+		return parsedHeatMapData;
+	}
+
+	function parseFeatureData(){
+		const parsedFeatureData = JSON.parse(featureDataRaw);
+		return parsedFeatureData;
+	}
+
+
+	function parseClusteringData(){
+		const parsedClusteringData = JSON.parse(parseClusteringData);
+		return parsedClusteringData;
+	}
+
+
+	function parsePepperData(){
+		const parsedPepperData = JSON.parse(pepperData);
+		return parsedPepperData;
+	}
+
+	function createCategoryTreeMap(){
+		let categoryTree = {};
+		for (let cellData of heatmapDataObject) {
+			if(parsedMetaData.categories[0]){
+				if (!categoryTree[cellData[parsedMetaData.categories[0]]]){
+					categoryTree[cellData[parsedMetaData.categories[0]]] = {};
+				}
+			}
+			if(parsedMetaData.categories[1]){
+				if (!categoryTree[cellData[parsedMetaData.categories[0]]][cellData[parsedMetaData.categories[1]]]){
+					categoryTree[cellData[parsedMetaData.categories[0]]][cellData[parsedMetaData.categories[1]]] = {};
+				}
+			}
+			if(parsedMetaData.categories[2]){
+				if (!categoryTree[cellData[parsedMetaData.categories[0]]][cellData[parsedMetaData.categories[1]]][cellData[parsedMetaData.categories[2]]]){
+					categoryTree[cellData[parsedMetaData.categories[0]]][cellData[parsedMetaData.categories[1]]][cellData[parsedMetaData.categories[2]]] = {};
+				}
+			}
+		}
+		
+		//iterate all nodes in the categoryTree
+		let categoryTreeMap = {};
+		for (let node1 in categoryTree) {
+			categoryTreeMap['"'+node1.toString()+'"'] = node1;
+			for (let node2 in categoryTree[node1]) {
+				categoryTreeMap['"'+node2.toString()+'"'] = node1+"__"+node2;
+				for (let node3 in categoryTree[node1][node2]) {
+					categoryTreeMap['"'+node3.toString()+'"'] = node1+"__"+node2+"__"+node3;
+				}
+			}
+		}
+
+		return categoryTreeMap;
+	}
+
+	//update all of the selection details directly in this function
+	function updateSelection(){
+		let selectionCount = 0;
+		let umiCount = 0;
+		fullCategorySelection = "All Selected";
+		heatmapDataObjectFiltered = [];
+
+		if (geneSelection != "All" && categorySelection == "All"){
+			fullCategorySelection = geneSelection;
+		} else if (geneSelection == "All" && categorySelection != "All"){
+			fullCategorySelection = categorySelection;
+		} else if (geneSelection != "All" && categorySelection != "All"){
+			fullCategorySelection = geneSelection+"__"+categorySelection;
+		}
+
+		for (let cellData of heatmapDataObject) {
+			if (fullCategorySelection == "All Selected"){
+				if (cellData["infection_count_normalized"]>0){
+						umiCount++;
+				}
+				heatmapDataObjectFiltered[selectionCount] = cellData;
+				selectionCount++;
+			} else {
+				if (geneSelection != "All" && categorySelection == "All"){
+					if (cellData[geneSelection]>0){
+						umiCount++;
+					}
+					heatmapDataObjectFiltered[selectionCount] = cellData;
+					selectionCount++;
+				} else if (geneSelection == "All" && categorySelection != "All"){
+					if (parseCategorySelection().length == 1){
+						if (cellData[parsedMetaData.categories[0]] == parseCategorySelection()[0]){
+							if (cellData["infection_count_normalized"]>0){
+								umiCount++;
+							}
+							heatmapDataObjectFiltered[selectionCount] = cellData;
+							selectionCount++;
+						}
+					} else if (parseCategorySelection().length == 2){
+						if (cellData[parsedMetaData.categories[0]] == parseCategorySelection()[0] && cellData[parsedMetaData.categories[1]] == parseCategorySelection()[1]){
+							if (cellData["infection_count_normalized"]>0){
+								umiCount++;
+							}
+							heatmapDataObjectFiltered[selectionCount] = cellData;
+							selectionCount++;
+						}
+					} else if (parseCategorySelection().length == 3){
+						if (cellData[parsedMetaData.categories[0]] == parseCategorySelection()[0] && cellData[parsedMetaData.categories[1]] == parseCategorySelection()[1] && cellData[parsedMetaData.categories[2]] == parseCategorySelection()[2]){
+							if (cellData["infection_count_normalized"]>0){
+								umiCount++;
+							}
+							heatmapDataObjectFiltered[selectionCount] = cellData;
+							selectionCount++;
+						}
+					}
+				} else if (geneSelection != "All" && categorySelection != "All"){
+					if (parseCategorySelection().length == 1){ //gene only
+						if (cellData[geneSelection]>0){
+							umiCount++;
+						}
+						heatmapDataObjectFiltered[selectionCount] = cellData;
+						selectionCount++;
+					} else if (parseCategorySelection().length == 2){ //gene + one category
+						if (cellData[parsedMetaData.categories[0]] == parseCategorySelection()[1]){
+							if (cellData[geneSelection]>0){
+								umiCount++;
+							}
+							heatmapDataObjectFiltered[selectionCount] = cellData;
+							selectionCount++;
+						}
+					} else if (parseCategorySelection().length == 3){  //gene + two categories
+						if (cellData[parsedMetaData.categories[0]] == parseCategorySelection()[1] && cellData[parsedMetaData.categories[1]] == parseCategorySelection()[2]){
+							if (cellData[geneSelection]>0){
+								umiCount++;
+							}
+							heatmapDataObjectFiltered[selectionCount] = cellData;
+							selectionCount++;
+						}
+					} else if (parseCategorySelection().length == 4){   //gene + three categories
+						if (cellData[parsedMetaData.categories[0]] == parseCategorySelection()[1] && cellData[parsedMetaData.categories[1]] == parseCategorySelection()[2] && cellData[parsedMetaData.categories[2]] == parseCategorySelection()[3]){
+							if (cellData[geneSelection]>0){
+								umiCount++;
+							}
+							heatmapDataObjectFiltered[selectionCount] = cellData;
+							selectionCount++;
+						}
+					}
+				}
+			}
+		}
+
+		document.getElementById("cell_total").textContent = selectionCount;
+		document.getElementById("category_selection").textContent = fullCategorySelection.replaceAll('__', ' > ');
+		document.getElementById("cell_infected").textContent = umiCount;
+		generatePlotly();
+		
+		if (parsedMetaData.mapOnly == false){
+			displayFeatureData();
+		}
+		
+	}
+
+	function parseCategorySelection(){
+		return fullCategorySelection.split("__");
+	}
+
+
+	function generateTapValue(row,level){
+		let tapValue = "";
+		inc = 1;
+		
+		for (let category in parsedMetaData.categories){
+			if (inc <= level){
+				tapValue = tapValue +row[parsedMetaData.categories[category]]+"__";
+			}
+			inc++;
+		}
+
+		tapValue = tapValue.slice(0, -2);
+		
+		return tapValue;
+	}
+
+
+
+	//draw the heatmap
+	function drawHeatmap(){
+		
+
+		let heatmapContainer = document.getElementById("heatmap-container");
+		heatmapContainer.innerHTML = "";
+		let leftColumnWidth = 100; //the left column width
+		let heatmapContainerWidth = heatmapContainer.offsetWidth;
+		let heatmapTableWidth = heatmapContainerWidth - leftColumnWidth;
+		let totalCells = heatmapDataObject.length;
+		let cellsPerPixel = Math.ceil(totalCells/heatmapTableWidth);
+		document.getElementById("cell_pixel").textContent = cellsPerPixel;
+		if (parsedMetaData.clusterMethod == "gaussian"){
+			document.getElementById("threshold_container").style.display = "none";
+		} else {
+			document.getElementById("threshold_container").style.display = "block";
+			document.getElementById("threshold").textContent = parsedMetaData.clusterThreshold;
+		}
+		
+
+		//create  categories and categoryNames lookup
+		let inc = 0;
+		let categoryNames = {};
+		for (let category of parsedMetaData.categories) {
+			categoryNames[category] = parsedMetaData.categoryNames[inc];
+			inc++;
+		}
+
+		//iterate the heatmapDataObject and count number of categories
+		inc=1;
+		categoryCounts = {};
+		for (let category of parsedMetaData.categories) {
+			categoryCounts[category] = {};
+			for (let cellData of heatmapDataObject) {
+				categoryName = '"'+cellData[category].toString()+'"'; //quotes necessary to mitigate numeric cluster names.
+				if (categoryCounts[category][categoryName]){
+					categoryCounts[category][categoryName] += 1;
+				} else {
+					categoryCounts[category][categoryName] = 1;
+				}
+			}			
+		}
+
+		//assign all categoryValues to a color
+		let colorIndex = 0;
+		for (let category in categoryCounts) {
+			for (let categoryValue in categoryCounts[category]) {
+				if (!categoryColors[categoryValue]){
+					categoryColors[categoryValue] = colors[colorIndex];
+					colorIndex++;
+				}
+			}			
+		}
+
+		//add the side column to the heatmap container
+		inc=1;
+		for (let category in categoryCounts) {
+			document.getElementById("category_"+inc+"_name").textContent = categoryNames[category];
+			document.getElementById("category_"+inc+"_table").innerHTML = "";
+			for (let categoryValue in categoryCounts[category]) {
+				document.getElementById("category_"+inc+"_container").style.visibility = "visible";
+				document.getElementById("category_"+inc+"_container").style.opacity = "1";
+				var tr = document.createElement("tr");
+				var td1 = document.createElement("td");
+				var td2 = document.createElement("td");
+				td1.classList.add("table-swatch");
+				td1.style.background = categoryColors[categoryValue];
+				td2.classList.add("table-legend-text");
+				td2.style.paddingLeft = "10px";
+				td2.textContent = categoryValue.replace(/['"]+/g, '');
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				document.getElementById("category_"+inc+"_table").appendChild(tr);
+			}
+			inc++;
+		}
+
+		//remove any sidebars that aren't needed
+		if(Object.keys(categoryCounts).length-3){
+			for(let i=Object.keys(categoryCounts).length+1;i<=3;i++){
+				document.getElementById("category_"+i+"_container").style.display = "none";
+			}
+		}
+		
+		let level = 1;
+		//iterate categoryCounts and add divs to the heatmap container. TOP BAR
+		for (let category in categoryCounts) {
+			//add a div to heatmap container that has cell type 
+			var cellTypeDiv = document.createElement("div");
+			cellTypeDiv.textContent = categoryNames[category].replace(/['"]+/g, '');
+			cellTypeDiv.style.paddingLeft = "10px";
+			cellTypeDiv.style.minHeight = "35px";
+			cellTypeDiv.style.whiteSpace = "nowrap";
+			cellTypeDiv.style.textOverflow = "ellipsis";
+			cellTypeDiv.style.overflow = "hidden";
+			cellTypeDiv.classList.add("fw-bold");
+			cellTypeDiv.style.display = "flex";
+			cellTypeDiv.style.alignItems = "center";
+			cellTypeDiv.style.justifyContent = "left";
+			cellTypeDiv.style.float = "left";
+			cellTypeDiv.style.fontSize = "14px";
+			heatmapContainer.append(cellTypeDiv);
+
+			var topBarContainer = document.createElement("div");
+			topBarContainer.id = "top-bar-"+categoryNames[category].replace(/['"]+/g, '');
+			topBarContainer.style.float = "right";
+			topBarContainer.style.width = heatmapTableWidth+"px";
+			heatmapContainer.append(topBarContainer);
+			
+			let currentCategoryName = heatmapDataObject[0][category];
+			let categoryValue = 0;
+			let tapValue;
+			for (let row in heatmapDataObject){
+
+				if (heatmapDataObject[row][category] == currentCategoryName){
+					categoryValue++;
+					tapValue = generateTapValue(heatmapDataObject[row],level)
+				} else {
+					var cellTypeDiv = document.createElement("div");
+					cellTypeDiv.style.minHeight = "35px";
+					cellTypeDiv.style.width = (categoryValue/totalCells)*100 + "%";
+					cellTypeDiv.style.backgroundColor = categoryColors['"'+currentCategoryName+'"'];
+					cellTypeDiv.style.float = "left";
+					cellTypeDiv.style.cursor = "pointer";
+					cellTypeDiv.classList.add("categoryDiv");					
+					cellTypeDiv.setAttribute("tap-value",tapValue);
+					topBarContainer.append(cellTypeDiv);
+					categoryValue = 1; 
+
+				}
+
+				currentCategoryName = heatmapDataObject[row][category]
+
+			}
+			level++;
+
+			//clear left float
+			var clearDiv = document.createElement("div");
+			clearDiv.style.clear = "both";
+			topBarContainer.append(clearDiv);
+		}
+
+
+		document.addEventListener("click", function(event){
+
+			if (event.target.classList.contains("categoryDiv")){
+				//remove all first
+				var element = document.getElementsByClassName("categorySelectionDiv");
+				for (var i = 0; i < element.length; i++) {
+					element[i].remove();
+				}
+				//add the border to the selected element
+				var targetElement = event.target;
+				var left = targetElement.getBoundingClientRect().left;
+				var top = targetElement.getBoundingClientRect().top;
+				var heatmapContainerHeight = heatmapContainer.getBoundingClientRect().height;
+				var width = targetElement.getBoundingClientRect().width;
+				var bottom = heatmapContainer.getBoundingClientRect().bottom;
+				var positionDiv = document.createElement("div");
+				categorySelection = event.target.getAttribute("tap-value");
+				positionDiv.style.left = left+"px";
+				positionDiv.style.position = "absolute";
+				positionDiv.style.width = width + "px";
+				positionDiv.style.height = bottom-top+"px";
+				positionDiv.style.border = "5px solid #fff";
+				positionDiv.style.zIndex = "100";
+				positionDiv.classList.add("categorySelectionDiv");
+				targetElement.prepend(positionDiv);
+				updateSelection();
+			}
+
+			if (event.target.classList.contains("categorySelectionDiv")){
+				var element = document.getElementsByClassName("categorySelectionDiv");
+				for (var i = 0; i < element.length; i++) {
+					element[i].remove();
+				}
+				categorySelection = "All";
+				updateSelection();
+			}
+			
+		});
+
+		//add the table to the heatmap container
+		var table = document.createElement("table");
+		table.id = "heatmap";
+		heatmapContainer.appendChild(table);
+
+		// Loop through the parsedMetaData.genes property. GENE Rows
+		for (let gene of parsedMetaData.genes) {
+			var row = document.createElement("tr");
+			var cell = document.createElement("td");
+			row.id = "row-"+gene.replace(/['"]+/g, '');
+			cell.textContent = gene;
+			cell.style.height = "25px";
+			cell.style.minWidth = "100px";
+			cell.style.maxWidth = "100px";
+			cell.style.width = "100px";
+			cell.style.whiteSpace = "nowrap";
+			cell.style.textOverflow = "ellipsis";
+			cell.style.overflow = "hidden";
+			cell.style.fontSize = "14px";
+			cell.style.paddingLeft = "10px";
+			cell.style.cursor = "pointer";
+			cell.classList.add("geneDiv");
+
+			cell.setAttribute("tap-value", gene);
+			row.appendChild(cell);
+
+
+			const COLORS =  generateColorMap(name=colorPalette, n=256);
+
+
+			//iterate the heatmapDataObject and add the cells 
+			inc=1;
+			averageExpression = 0;
+			for (let cellData of heatmapDataObject) {
+				if (inc % cellsPerPixel == 0){
+					averageExpression += parseFloat(cellData[gene]);
+					averageExpression = parseFloat(averageExpression) / parseFloat(cellsPerPixel);
+					var cell = document.createElement("td");
+					// if (averageExpression == 0) {
+					// 	cell.style.background = "rgb(0,0,0)";
+					// } else {
+					// 	cell.style.background = "rgb(" + Math.floor(averageExpression * 256+20) + ",0,0)"; //+20 for a little extra pop
+					// }
+
+					let idx = Math.floor(Math.min(Math.max(averageExpression, 0), 1) * 255);
+					let [r, g, b] = COLORS[idx];
+					cell.style.background = `rgb(${r},${g},${b})`;
+
+
+					if (cellsPerPixel == 1 && totalCells < heatmapTableWidth){
+						cell.style.width = (totalCells/heatmapTableWidth)*100+"%";
+					} else {
+						cell.style.width = "1em";
+					}
+					cell.style.height = "35px";
+					cell.style.padding = "0";
+					cell.style.margin = "0";
+					row.appendChild(cell);
+					averageExpression = 0;
+				} else {
+					averageExpression += parseFloat(cellData[gene]);
+				}
+				inc++;
+			}
+			table.appendChild(row);
+		}
+
+		document.addEventListener("click", function(event){
+
+			if (event.target.classList.contains("geneDiv")){
+				//remove all first
+				var element = document.getElementsByClassName("geneSelectionDiv");
+				for (var i = 0; i < element.length; i++) {
+					element[i].remove();
+				}
+				//add the border to the selected element
+				var targetElement = event.target;
+				var left = targetElement.getBoundingClientRect().left;
+				var top = targetElement.getBoundingClientRect().top;
+				var positionDiv = document.createElement("div");
+				geneSelection = event.target.getAttribute("tap-value");
+				positionDiv.style.left = left+"px";
+				positionDiv.style.top = top;
+				positionDiv.style.marginTop = "-7px";
+				positionDiv.style.position = "absolute";
+				positionDiv.style.width = heatmapContainerWidth + "px";
+				positionDiv.style.height = "35px";
+				positionDiv.style.border = "5px solid #fff";
+				positionDiv.style.zIndex = "100";
+				positionDiv.classList.add("geneSelectionDiv");
+				targetElement.prepend(positionDiv);	
+				updateSelection();
+			}
+
+			if (event.target.classList.contains("geneSelectionDiv")){
+				var element = document.getElementsByClassName("geneSelectionDiv");
+				for (var i = 0; i < element.length; i++) {
+					element[i].remove();
+				}
+				geneSelection = "All";	
+				updateSelection();
+			}
+
+		});
+
+	}
+
+	function generateColorMap(name = 'viridis', n = 256) {
+		const colormaps = {
+			viridis: [
+				[0.0, [68, 1, 84]], [0.25, [59, 82, 139]], [0.5, [33, 145, 140]],
+				[0.75, [94, 201, 98]], [1.0, [253, 231, 37]]
+			],
+			plasma: [
+				[0.0, [13, 8, 135]], [0.25, [126, 3, 167]], [0.5, [203, 71, 119]],
+				[0.75, [248, 149, 64]], [1.0, [240, 249, 33]]
+			],
+			inferno: [
+				[0.0, [0, 0, 4]], [0.25, [87, 15, 109]], [0.5, [187, 55, 84]],
+				[0.75, [249, 142, 8]], [1.0, [252, 255, 164]]
+			],
+			magma: [
+				[0.0, [0, 0, 3]], [0.25, [78, 18, 123]], [0.5, [155, 50, 115]],
+				[0.75, [236, 110, 92]], [1.0, [252, 253, 191]]
+			],
+			cividis: [
+				[0.0, [0, 32, 76]], [0.25, [85, 129, 151]], [0.5, [165, 184, 122]],
+				[0.75, [222, 198, 106]], [1.0, [255, 233, 69]]
+			],
+			whitebluered: [
+				[0.0, [255, 255, 255]], // white
+				[0.0001, [0, 0, 255]],    // blue
+				[1.0, [255, 0, 0]]      // red
+			],
+			viridistap: [
+				[0.0, [255, 255, 255]], [0.0001, [68, 1, 84]], [0.25, [59, 82, 139]], [0.5, [33, 145, 140]],
+				[0.75, [94, 201, 98]], [1.0, [253, 231, 37]]
+			],
+			whiteblueredz: [
+				[0.0, [0, 0, 255]],        
+				[0.1, [255, 255, 255]],   
+				[1.0, [255, 0, 0]]        
+			],
+			tap: [
+				[0.0, [0, 0, 0]],[0.1, [128, 0, 0]],[1.0, [255, 0, 0]]
+			]
+		};
+
+		const anchors = colormaps[name.toLowerCase()];
+		if (!anchors) throw new Error(`Unsupported colormap: ${name}`);
+
+		const colors = [];
+		for (let i = 0; i < n; i++) {
+			const t = i / (n - 1);
+			let lower = anchors[0], upper = anchors[anchors.length - 1];
+
+			for (let j = 0; j < anchors.length - 1; j++) {
+				if (t >= anchors[j][0] && t <= anchors[j + 1][0]) {
+					lower = anchors[j];
+					upper = anchors[j + 1];
+					break;
+				}
+			}
+
+			const localT = (t - lower[0]) / (upper[0] - lower[0]);
+			const color = [0, 1, 2].map(k =>
+				Math.round(lower[1][k] + (upper[1][k] - lower[1][k]) * localT)
+			);
+			colors.push(color);
+		}
+		return colors;
+	}
+
+	function colormapToPlotlyColorscale(colormap) {
+		return colormap.map((rgb, i) => [
+			i / (colormap.length - 1),
+			`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`
+		]);
+	}
+
+	function generateColors(){
+		let colors = [];
+		let colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+		for (let i=0;i<250;i++){
+			colors.push(colorScale(i));
+		}
+		return colors;
+	}
+
+
+	function rightMenuAnimations(){
+		feather.replace();
+		document.getElementById("collapseContent").addEventListener("show.bs.collapse", function() {
+			document.getElementById("primary-chevron").setAttribute("data-feather", "chevron-down");
+			feather.replace();
+		});
+		document.getElementById("collapseContent").addEventListener("hide.bs.collapse", function() {
+			document.getElementById("primary-chevron").setAttribute("data-feather", "chevron-up");
+			feather.replace();
+		});
+
+		document.getElementById("collapseContent2").addEventListener("show.bs.collapse", function() {
+			document.getElementById("secondary-chevron").setAttribute("data-feather", "chevron-down");
+			feather.replace();
+		});
+		document.getElementById("collapseContent2").addEventListener("hide.bs.collapse", function() {
+			document.getElementById("secondary-chevron").setAttribute("data-feather", "chevron-up");
+			feather.replace();
+		});
+
+		document.getElementById("collapseContent3").addEventListener("show.bs.collapse", function() {
+			document.getElementById("tertiary-chevron").setAttribute("data-feather", "chevron-down");
+			feather.replace();
+		});
+		document.getElementById("collapseContent3").addEventListener("hide.bs.collapse", function() {
+			document.getElementById("tertiary-chevron").setAttribute("data-feather", "chevron-up");
+			feather.replace();
+		});
+
+		document.getElementById("collapseContent4").addEventListener("show.bs.collapse", function() {
+			document.getElementById("scale-chevron").setAttribute("data-feather", "chevron-down");
+			feather.replace();
+		});
+		document.getElementById("collapseContent4").addEventListener("hide.bs.collapse", function() {
+			document.getElementById("scale-chevron").setAttribute("data-feather", "chevron-up");
+			feather.replace();
+		});		
+	}
+
+	//create a function called downloadImage the entire container as an image
+	function downloadImage(){
+		html2canvas(document.getElementById("application"), {
+			backgroundColor: "#000", 
+			height: window.outerHeight + window.innerHeight,
+			windowHeight: window.outerHeight + window.innerHeight,
+		}).then(function(canvas) {
+			var link = document.createElement('a');
+			link.download = 'tap.png';
+			link.href = canvas.toDataURL("image/png");
+			link.click();
+		});
+	}
+
+	//load the rf and de data from the jsonobject
+	function displayFeatureData(){
+		RF_A=0;
+		RF_AUC=0;
+		RF_BP="";
+		if (geneSelection == "All" && categorySelection == "All"){
+			RF = parsedFeatureData["All"]["RF"];
+			RF_A = parsedFeatureData["All"]["RF_A"];
+			RF_AUC = parsedFeatureData["All"]["RF_AUC"];
+			RF_BP = parsedFeatureData["All"]["RF_BP"];
+			DGE = parsedFeatureData["All"]["DGE"];
+			DGE_pval_adj = parsedFeatureData["All"]["DGE_pval_adj"];
+			DGE_logfc = parsedFeatureData["All"]["DGE_logfc"];
+			fullSelection = "All";
+		} else if (geneSelection != "All" && categorySelection == "All"){
+			RF = parsedFeatureData[geneSelection]["RF"];
+			RF_A = parsedFeatureData[geneSelection]["RF_A"];
+			RF_AUC = parsedFeatureData[geneSelection]["RF_AUC"];
+			RF_BP = parsedFeatureData[geneSelection]["RF_BP"];
+			DGE = parsedFeatureData[geneSelection]["DGE"];
+			DGE_pval_adj = parsedFeatureData[geneSelection]["DGE_pval_adj"];
+			DGE_logfc = parsedFeatureData[geneSelection]["DGE_logfc"];
+			fullSelection = geneSelection;
+		} else if (geneSelection == "All" && categorySelection != "All"){
+			var categorySelectionParsed = parseCategorySelection();
+			if (categorySelectionParsed.length == 1){
+				RF = parsedFeatureData[categorySelectionParsed[0]]["RF"];
+				RF_A = parsedFeatureData[categorySelectionParsed[0]]["RF_A"];
+				RF_AUC = parsedFeatureData[categorySelectionParsed[0]]["RF_AUC"];
+				RF_BP = parsedFeatureData[categorySelectionParsed[0]]["RF_BP"];
+				DGE = parsedFeatureData[categorySelectionParsed[0]]["DGE"];
+				DGE_pval_adj = parsedFeatureData[categorySelectionParsed[0]]["DGE_pval_adj"];
+				DGE_logfc = parsedFeatureData[categorySelectionParsed[0]]["DGE_logfc"];
+				fullSelection = categorySelectionParsed[0];
+			} else if (categorySelectionParsed.length == 2){
+				RF = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]]["RF"];
+				RF_A = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]]["RF_A"];
+				RF_AUC = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]]["RF_AUC"];
+				RF_BP = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]]["RF_BP"];
+				DGE = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]]["DGE"];
+				DGE_pval_adj = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]]["DGE_pval_adj"];
+				DGE_logfc = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]]["DGE_logfc"];
+				fullSelection = categorySelectionParsed[0]+"-"+categorySelectionParsed[1];
+			} else if (categorySelectionParsed.length == 3){
+				RF = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]][categorySelectionParsed[2]]["RF"];
+				RF_A = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]][categorySelectionParsed[2]]["RF_A"];
+				RF_AUC = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]][categorySelectionParsed[2]]["RF_AUC"];
+				RF_BP = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]][categorySelectionParsed[2]]["RF_BP"];
+				DGE = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]][categorySelectionParsed[2]]["DGE"];
+				DGE_pval_adj = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]][categorySelectionParsed[2]]["DGE_pval_adj"];
+				DGE_logfc = parsedFeatureData[categorySelectionParsed[0]][categorySelectionParsed[1]][categorySelectionParsed[2]]["DGE_logfc"];
+				fullSelection = categorySelectionParsed[0]+"-"+categorySelectionParsed[1]+"-"+categorySelectionParsed[2];
+			}
+		} else if (geneSelection != "All" && categorySelection != "All"){
+			var categorySelectionParsed = parseCategorySelection();
+			if (categorySelectionParsed.length == 2){
+				RF = parsedFeatureData[geneSelection][categorySelectionParsed[1]]["RF"];
+				RF_A = parsedFeatureData[geneSelection][categorySelectionParsed[1]]["RF_A"];
+				RF_AUC = parsedFeatureData[geneSelection][categorySelectionParsed[1]]["RF_AUC"];
+				RF_BP = parsedFeatureData[geneSelection][categorySelectionParsed[1]]["RF_BP"];
+				DGE = parsedFeatureData[geneSelection][categorySelectionParsed[1]]["DGE"];
+				DGE_pval_adj = parsedFeatureData[geneSelection][categorySelectionParsed[1]]["DGE_pval_adj"];
+				DGE_logfc = parsedFeatureData[geneSelection][categorySelectionParsed[1]]["DGE_logfc"];
+				fullSelection = geneSelection+"-"+categorySelectionParsed[1];
+			} else if (categorySelectionParsed.length == 3){
+				RF = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]]["RF"];
+				RF_A = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]]["RF_A"];
+				RF_AUC = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]]["RF_AUC"];
+				RF_BP = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]]["RF_BP"];
+				DGE = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]]["DGE"];
+				DGE_pval_adj = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]]["DGE_pval_adj"];
+				DGE_logfc = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]]["DGE_logfc"];
+				fullSelection = geneSelection+"-"+categorySelectionParsed[1]+"-"+categorySelectionParsed[2];
+			} else if (categorySelectionParsed.length == 4){ 
+				RF = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]][categorySelectionParsed[3]]["RF"];
+				RF_A = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]][categorySelectionParsed[3]]["RF_A"];
+				RF_AUC = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]][categorySelectionParsed[3]]["RF_AUC"];
+				RF_BP = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]][categorySelectionParsed[3]]["RF_BP"];
+				DGE = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]][categorySelectionParsed[3]]["DGE"];
+				DGE_pval_adj = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]][categorySelectionParsed[3]]["DGE_pval_adj"];
+				DGE_logfc = parsedFeatureData[geneSelection][categorySelectionParsed[1]][categorySelectionParsed[2]][categorySelectionParsed[3]]["DGE_logfc"];
+				fullSelection = geneSelection+"-"+categorySelectionParsed[1]+"-"+categorySelectionParsed[2]+"-"+categorySelectionParsed[3];
+			}
+		}
+
+		//determine which RF and DGE exist in both
+		existsBoth = {}
+		
+		for (let key in RF) {
+			var inc=0;
+			for (let key2 in DGE) {
+				if(inc <=20){
+					if (key == key2){
+						existsBoth[key] = RF[key];
+					}
+					if (key == DGE[key2]){
+						existsBoth[key] = RF[key];
+					}
+				}
+				inc++;
+			}
+			
+		}
+
+		document.getElementById("rf_accuracy").textContent = RF_A;
+		document.getElementById("rf_auc").textContent = RF_AUC;
+
+		if (RF_BP){
+			document.getElementById("rf_display_bp").style.display = "block";
+			var parsedRfBp =RF_BP;
+			var rfBpText = "<br />";
+			for (let key in parsedRfBp) {
+				rfBpText += key + ": " + parsedRfBp[key] + "<br />";
+			}
+			document.getElementById("rf_bp").innerHTML = rfBpText;
+
+		} else {
+			document.getElementById("rf_display_bp").style.display = "none";
+		}		
+
+		var table = document.getElementById("rf_features");
+		while (table.rows.length > 1) { table.deleteRow(1);	}
+		for (let key in RF) {
+			if (RF[key] >0){
+				var newRow = table.insertRow();
+				var cell1 = newRow.insertCell(0);
+				cell1.textContent = key;
+				
+				let link = document.createElement('a');
+				link.href = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+key;
+				link.target = "_blank";
+				link.textContent = key;
+
+				if(existsBoth[key] ){
+					//link.style.background = "#0f6868";
+					//link.style.padding = "3px";
+					link.innerHTML = key + ' &nbsp; <i class="fa-solid fa-pepper-hot fa-lg" style="color: yellow;"></i>';
+				}
+
+				if (fullSelection in parsedPepperData) {
+					
+					if (parsedPepperData[fullSelection][key]){
+						if (parsedPepperData[fullSelection][key] == 1){
+							//link.textContent = link.textContent + " 🌶️";
+							link.innerHTML = link.innerHTML + ' <i class="fa-solid fa-pepper-hot fa-lg" style="color: #e07c1f;"></i>';
+						} else {
+							link.innerHTML = link.innerHTML + ' <i class="fa-solid fa-pepper-hot fa-lg" style="color: #e07c1f;"></i>';
+							link.innerHTML = link.innerHTML + ' <i class="fa-solid fa-pepper-hot fa-lg" style="color: #ff0000;"></i>';
+						}
+					} else {
+						link.innerHTML = link.innerHTML;
+					}
+
+				} else {
+					link.innerHTML = link.innerHTML;
+				}
+
+				
+				cell1.innerHTML = '';
+				cell1.appendChild(link);
+				var cell2 = newRow.insertCell(1);
+				cell2.style.width = "15%";
+				cell2.textContent =  RF[key];
+				var cell3 = newRow.insertCell(2);
+				cell3.style.width = "35%";
+				let treeDiv = document.createElement('div');
+				treeDiv.style.width = (RF[key]*100).toFixed(0)+"%";
+				treeDiv.style.height = "100%";
+				treeDiv.innerHTML = "&nbsp;";
+				treeDiv.className = "bg-success";
+				cell3.appendChild(treeDiv);
+			}
+		}
+
+		var table = document.getElementById("dge_features");
+		while (table.rows.length > 2) { table.deleteRow(2);	}
+
+
+		if (DGE["Error"] == undefined){
+			var inc=0;
+			for (let key in DGE) {
+				if (inc<=20){
+					var newRow = table.insertRow();
+					var cell1 = newRow.insertCell(0);
+					var cell2 = newRow.insertCell(1);
+					var cell3 = newRow.insertCell(2);
+					var cell4 = newRow.insertCell(3);
+					var cell5 = newRow.insertCell(4);
+					var cell6 = newRow.insertCell(5);
+					cell1.textContent = key;
+
+					var link = document.createElement('a');
+					link.href = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+key;
+					link.target = "_blank";
+					link.textContent = key;
+					if(existsBoth[key] ){
+						link.style.background = "#0f6868";
+						link.style.padding = "3px";
+					}
+					cell1.innerHTML = '';
+					cell1.appendChild(link);
+					cell2.textContent = DGE_logfc[inc][0]
+					cell3.textContent = DGE_pval_adj[inc][0]
+					cell4.textContent = DGE[key];
+					var link = document.createElement('a');
+					link.href = "https://www.genecards.org/cgi-bin/carddisp.pl?gene="+DGE[key];
+					link.target = "_blank";
+					link.textContent = DGE[key];
+					if(existsBoth[DGE[key]] ){
+						link.style.background = "#0f6868";
+						link.style.padding = "3px";
+					}
+					cell4.innerHTML = '';
+					cell4.appendChild(link);
+
+					cell5.textContent = DGE_logfc[inc][1]
+					cell6.textContent = DGE_pval_adj[inc][1]
+				}
+				inc++;
+			}
+
+		} else {
+
+			var rf_features = document.getElementById("rf_features");
+			while (rf_features.rows.length > 1) { rf_features.deleteRow(1);	}
+
+		}
+
+		//replace the cluster_thumbnail with the new cluster plot base64 iamge text from clustingDetails
+		var clusterThumbnail = document.getElementById("cluster_thumb");
+
+		if (clustingDetails[fullSelection] == ""){
+			clusterThumbnail.src = "https://placehold.co/300x300?text=Not+Available\\n\\n(not%20enough%20infected%20cells)";
+		} else {
+			clusterThumbnail.src = "data:image/png;base64,"+clustingDetails[fullSelection];
+		}
+
+
+	}
+
+
+	document.getElementById("dl_rf").addEventListener("click", downloadRfCsv);
+
+	function downloadRfCsv(){
+		var csv = "Gene,Importance Score\n";
+		for (let key in RF) {
+			csv += key + "," + RF[key] + "\n";
+		}
+		var hiddenElement = document.createElement('a');
+		hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+		hiddenElement.target = '_blank';
+
+		//provide the name for the CSV file to be downloaded
+		if(parseCategorySelection().length ==1){
+			var filename = "Ensemble_Features__"+parseCategorySelection()[0];
+		} else if( parseCategorySelection().length ==2){
+			var filename = "Ensemble_Features__"+parseCategorySelection()[0]+"__"+parseCategorySelection()[1];
+		} else if( parseCategorySelection().length ==3){
+			var filename = "Ensemble_Features__"+parseCategorySelection()[0]+"__"+parseCategorySelection()[1]+"__"+parseCategorySelection()[2];
+		} else if( parseCategorySelection().length ==4){
+			var filename = "Ensemble_Features__"+parseCategorySelection()[0]+"__"+parseCategorySelection()[1]+"__"+parseCategorySelection()[2]+"__"+parseCategorySelection()[3];
+		} else {
+			var filename = "Ensemble_Features_All";
+		}
+		
+		hiddenElement.download = filename + '.csv';
+		hiddenElement.click();
+	}
+
+	document.getElementById("dl_de").addEventListener("click", downloadDECsv);
+
+	function downloadDECsv(){
+		var csv = "Cluster 1,,,Cluster 0,,,\n";
+		csv += "Gene,LogFC,Adj P-Value,Gene,LogFC,Adj P-Value\n";
+		var inc=0;
+		for (let key in DGE) {
+			if (inc<=20){
+				csv += key + "," + DGE_logfc[inc][0] + "," + DGE_pval_adj[inc][0] + ",";
+				csv += DGE[key] + "," + DGE_logfc[inc][1] + "," + DGE_pval_adj[inc][1] + "\n";
+			}
+		}
+
+		var hiddenElement = document.createElement('a');
+		hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+		hiddenElement.target = '_blank';
+
+		//provide the name for the CSV file to be downloaded
+		if(parseCategorySelection().length ==1){
+			var filename = "DGE__"+parseCategorySelection()[0];
+		} else if( parseCategorySelection().length ==2){
+			var filename = "DGE__"+parseCategorySelection()[0]+"__"+parseCategorySelection()[1];
+		} else if( parseCategorySelection().length ==3){
+			var filename = "DGE__"+parseCategorySelection()[0]+"__"+parseCategorySelection()[1]+"__"+parseCategorySelection()[2];
+		} else if( parseCategorySelection().length ==4){
+			var filename = "DGE__"+parseCategorySelection()[0]+"__"+parseCategorySelection()[1]+"__"+parseCategorySelection()[2]+"__"+parseCategorySelection()[3];
+		} else {
+			var filename = "DGE__All";
+		}
+		
+		hiddenElement.download = filename + '.csv';
+		hiddenElement.click();
+
+	}
+
+	//function to generate a plotly scatter plot with random data
+	function generatePlotly(){
+
+		//remove the previous plotly container
+		var plotlyContainer = document.getElementById("plotly-container");
+		plotlyContainer.innerHTML = "";
+		plotlyContainer.classList.remove("js-plotly-plot");
+
+		//generate the data for the plot
+		var x = heatmapDataObjectFiltered.map(function(d){ return d.umap_x;	});
+		var y = heatmapDataObjectFiltered.map(function(d){ return d.umap_y;	});
+		if (geneSelection == "All" && categorySelection == "All"){
+			colors  = heatmapDataObjectFiltered.map(function(d){ return categoryColors['"'+d[parsedMetaData.categories[0]]+'"'];	});
+		} else if (geneSelection != "All" && categorySelection == "All"){
+			colors  = heatmapDataObjectFiltered.map(function(d){ return d[geneSelection];	});
+		} else if (geneSelection == "All" && categorySelection != "All") {
+			colors  = heatmapDataObjectFiltered.map(function(d){ return d["infection_count_normalized"];	});
+		} else if (geneSelection != "All" && categorySelection != "All") {
+			colors  = heatmapDataObjectFiltered.map(function(d){ return d[geneSelection];	});
+		}
+		primaryCategories = heatmapDataObjectFiltered.map(function(d){ return d[parsedMetaData.categories[0]];	})
+
+		const UMAP_COLORS =  generateColorMap(name=colorPalette, n=256);
+		const plotlyColorscale = colormapToPlotlyColorscale(UMAP_COLORS);
+
+		//zip the data
+		let zipped = x.map((_, i) => ({
+			x: x[i],
+			y: y[i],
+			color: colors[i],
+			category: primaryCategories[i]
+		}));
+
+		//sort by color value (assumes numeric)
+		zipped.sort((a, b) => a.color - b.color);
+
+		//unzip the sorted data
+		x = zipped.map(d => d.x);
+		y = zipped.map(d => d.y);
+		colors = zipped.map(d => d.color);
+		primaryCategories = zipped.map(d => d.category);
+
+		var data = [
+			{
+				x: x,
+				y: y,
+				mode: 'markers',
+				type: 'scatter',
+				marker: {
+					color: colors,
+					size: 4,
+					// colorscale: [
+                    // 	[0, 'rgb(0, 0, 0)'], // Black
+					// 	[0.001, 'rgb(100, 0, 0)'], // Red
+                    // 	[1, 'rgb(255, 0, 0)'] // Brighter Red
+                	// ]
+					colorscale: plotlyColorscale,
+				},
+				text: primaryCategories,
+				hovertemplate: '<b>%{text}</b>',	
+				hoverinfo: 'text',
+				hoverlabel: {
+					align: 'auto',
+					font: {
+						size: 14,
+					},
+				},
+				name: '',
+			},
+		];
+
+		var layout = {
+			xaxis: {
+				showline: false,
+				zeroline: false,
+				showticklabels: true,
+				showgrid: false,
+			},
+			yaxis: {
+				zeroline: false, 
+				showticklabels: true,
+				showgrid: false,
+			},
+			margin: {
+				l: 0, r: 0, b: 0, t: 0, pad: 0 
+			},
+			showlegend: false,
+			paper_bgcolor: 'rgba(0,0,0,0)',
+			plot_bgcolor: 'rgba(0,0,0,0)',
+
+		};
+		const config = {
+			displayModeBar: false,
+		};
+
+		Plotly.react('plotly-container', data, layout, config);
+	}
+
+	document.getElementById("themeToggle").addEventListener("click", function () {
+		document.body.classList.toggle("light-mode");
+
+		if (document.body.classList.contains("light-mode")) {
+			document.body.style.backgroundColor = "#fff";
+			document.body.style.color = "#000";
+			document.documentElement.style.backgroundColor = "#fff";
+		} else {
+			document.body.style.backgroundColor = "#333";
+			document.body.style.color = "#fff";
+			document.documentElement.style.backgroundColor = "#333";
+		}
+	});
+
+</script>

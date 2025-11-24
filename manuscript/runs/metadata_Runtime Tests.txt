@@ -1,0 +1,38 @@
+{
+    "filename": null,
+    "title": "Runtime Tests",
+    "outputName": "Runtime.html",
+    "categories": [
+        "cell_type"
+    ],
+    "categoryNames": [
+        "Cell Type"
+    ],
+    "genes": [
+        "AAV1",
+        "AAV2",
+        "AAV5",
+        "AAV6",
+        "AAV7"
+    ],
+    "DE": true,
+    "RF": true,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "threshold",
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": null,
+    "clusterThresholdLessThanOrEqual": null,
+    "deMethod": "wilcoxon",
+    "mapOnly": false,
+    "excludeMarkers": true,
+    "cellTypist": false,
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistLevels": 3,
+    "rfType": "classifier",
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 50,
+    "permute": false,
+    "permuteRepeats": 2
+}

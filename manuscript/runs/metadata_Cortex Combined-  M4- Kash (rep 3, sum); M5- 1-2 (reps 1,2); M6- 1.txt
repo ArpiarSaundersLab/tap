@@ -1,0 +1,44 @@
+{
+    "filename": "/home/kenny/Documents/OHSU/Projects/TAP/manuscript/data/Cortex.h5ad",
+    "title": "Cortex Combined:  M4: Kash (rep 3, sum); M5: 1-2 (reps 1,2); M6: 1",
+    "outputName": "Cortex_Neurons_Only.html",
+    "categories": [
+        "cell_type"
+    ],
+    "categoryNames": [
+        "Cell Type"
+    ],
+    "genes": [
+        "AAV1",
+        "AAV2",
+        "AAV5",
+        "AAV6",
+        "AAV7",
+        "AAV8",
+        "AAV9",
+        "Retro",
+        "Rh10",
+        "Anc80",
+        "SHH10"
+    ],
+    "DE": true,
+    "RF": true,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "threshold",
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": 5,
+    "clusterThresholdLessThanOrEqual": 0,
+    "deMethod": "wilcoxon",
+    "mapOnly": false,
+    "excludeMarkers": true,
+    "cellTypist": false,
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistLevels": 3,
+    "rfType": "classifier",
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 50,
+    "permute": false,
+    "permuteRepeats": 2
+}

@@ -79,7 +79,6 @@ class TAP:
 		self.replicate_mode = replicate_mode
 		if self.rfType == "regressor" and self.balance is not None:
 			raise Exception("Cannot use regressor with balance parameter. Please set 'balance=None' or switch to classifier for full balance parameter access.")
-
 		if self.outputPath[-1] != "/":
 			self.outputPath = self.outputPath + "/"
 		if not os.path.exists(self.outputPath):
@@ -139,7 +138,8 @@ class TAP:
 			asql = AnnSQL(db=self.annSqlDB)
 			asql.write_adata(filename='tap.h5ad')
 			self.filename = 'tap.h5ad'
-						
+			print(f"Info: Converted AnnSQL database to AnnData object for processing.")
+		
 		#if user passes in a specific object name, use that object
 		if self.adataObject:
 			self.adata = self.adataObject	
@@ -953,19 +953,16 @@ class TAP:
 			#COLUMNS
 			#are there any other nodes at this level with the same name?
 			duplicates_cols1 = [n for n in self.data_structure if n == node]
-			if len(duplicates_cols1) > 1:
-				#print(f"\tDuplicates: {duplicates_cols1}")
-				
+			if len(duplicates_cols1) > 1:		
 				#add to the pepper_results dict
 				self.add_key_to_dict(pepper_results, node, duplicates_cols1)
 
-
 			#ROWS
 			#are there any nodes at this level with the same name minus the last character?
-			#duplicates_rows = [n for n in self.data_structure if n[:-1] == node[:-1]]
+			#nodes must be > 1 character length
 			duplicates_rows = [
 				n for n in self.data_structure 
-				if str(n)[:-1] == str(node)[:-1]
+				if str(n)[:-1] == str(node)[:-1] and len(str(n)) > 1 
 			]
 
 
@@ -1009,10 +1006,15 @@ class TAP:
 						])
 
 						#same for DGE, but doesn't need to be there
-						list_buffer_dge.append([
-							x for x in self.data_structure[row][k]['DGE']
-						])
-						
+						# list_buffer_dge.append([
+						# 	x for x in self.data_structure[row][k]['DGE']
+						# ])
+
+						list_buffer_dge.append(
+							list(self.data_structure[row][k]['DGE'].keys()) +
+							list(self.data_structure[row][k]['DGE'].values())
+						)
+
 					
 					#intersection of all values in each list
 					list_buffer_rf = list(set.intersection(*map(set, list_buffer_rf)))
@@ -1026,7 +1028,6 @@ class TAP:
 					#add to the pepper_results dict
 					self.add_key_to_dict(pepper_results, str(node)+"-"+str(k), list_buffer_both)
 					
-					#duplicates_cols2 = [n for n in self.data_structure[node].keys() if n[:-1] == k[:-1]]
 					duplicates_cols2 = [
 						n for n in self.data_structure[node].keys()
 						if str(n)[:-1] == str(k)[:-1]
@@ -1046,20 +1047,19 @@ class TAP:
 											if self.safe_gt(self.data_structure[node][col2][key2]['RF'][x], 0)
 										])
 
-										list_buffer_dge_2.append([
-											x for x in self.data_structure[node][col2][key2]['DGE']
-										])
+										list_buffer_dge_2.append(
+											list(self.data_structure[node][col2][key2]['DGE'].keys()) +
+											list(self.data_structure[node][col2][key2]['DGE'].values())
+										)
 									except KeyError:
 										continue
-
+								
 								#intersection of all values in each list
 								list_buffer_rf_2 = list(set.intersection(*map(set, list_buffer_rf_2)))
 								list_buffer_dge_2 = list(set.intersection(*map(set, list_buffer_dge_2)))
 
 								#which appear in both RF and DGE
 								list_buffer_both_2 = [x for x in list_buffer_rf_2 if x in list_buffer_dge_2]
-								
-								#print(f"\t{node}:{col}:{key2}: {duplicates_cols2}: peppers3: {list_buffer_both_2}")
 								
 								#add to the pepper_results dict
 								self.add_key_to_dict(pepper_results, str(node)+"-"+str(col)+"-"+str(key2), list_buffer_both_2)
@@ -1082,7 +1082,7 @@ class TAP:
 			if gene["hits"]:
 				gene_id = gene["hits"][0]["_id"]
 				gene_details = str(mg.getgene(gene_id, fields=['name', 'symbol', 'summary','go'])).lower()
-				if any(term in gene_details for term in ['plasmamembrane', 'plasma membrane', 'transmembrane', 'adhesion', 'receptor', 'extracellular']):
+				if any(term in gene_details for term in ['plasmamembrane', 'plasma membrane', 'transmembrane', 'adhesion', 'receptor', 'extracellular','viral','virus']):
 					pepper_genes.append(pepper)
 					
 		return pepper_genes

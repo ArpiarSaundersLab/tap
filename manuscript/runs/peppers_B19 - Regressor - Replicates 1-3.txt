@@ -1,0 +1,126 @@
+{
+    "Replicate_1": {},
+    "Replicate_2": {},
+    "Replicate_3": {},
+    "EGFP-Replicate_1": {
+        "DYNLL1": 2,
+        "FIGN": 1,
+        "CTSL": 2,
+        "SCG5": 2,
+        "EEF1A1": 2,
+        "EIF3E": 2,
+        "HIST1H2BC": 1,
+        "1500012F01RIK": 2,
+        "LDHB": 2
+    },
+    "EGFP-Replicate_1-Astrocyte": {},
+    "EGFP-Replicate_1-Glutamatergic_Neuron": {
+        "DYNLL1": 2,
+        "MGST3": 1
+    },
+    "EGFP-Replicate_1-Interneuron": {
+        "DYNLL1": 2
+    },
+    "EGFP-Replicate_2-Astrocyte": {},
+    "EGFP-Replicate_2-Glutamatergic_Neuron": {
+        "DYNLL1": 2,
+        "MGST3": 1
+    },
+    "EGFP-Replicate_2-Interneuron": {
+        "DYNLL1": 2
+    },
+    "EGFP-Replicate_3-Astrocyte": {},
+    "EGFP-Replicate_3-Glutamatergic_Neuron": {
+        "DYNLL1": 2,
+        "MGST3": 1
+    },
+    "EGFP-Replicate_3-Interneuron": {
+        "DYNLL1": 2
+    },
+    "EGFP-Replicate_2": {
+        "CHCHD10": 1,
+        "MRPS33": 1,
+        "DYNLL1": 2,
+        "ATP1B1": 2,
+        "ATP6AP2": 2,
+        "UBA52": 2,
+        "GAP43": 2,
+        "MGST3": 1
+    },
+    "EGFP-Replicate_3": {
+        "MAP1B": 2,
+        "DYNLL1": 2,
+        "TUBA1B": 1,
+        "CRE": 1,
+        "GAP43": 2,
+        "MGST3": 1,
+        "DYNLL2": 2
+    },
+    "viral_umis-Replicate_1": {
+        "RGS4": 2,
+        "SPOCK3": 2,
+        "ATP1B1": 2,
+        "CKB": 2,
+        "TUBA1B": 1,
+        "CALB1": 2,
+        "MGST3": 1,
+        "LDHB": 2,
+        "MAP1B": 2,
+        "DYNLL1": 2,
+        "CAMK2N1": 1,
+        "CTSL": 2,
+        "PLCB1": 2,
+        "HIST1H2BC": 1,
+        "TMEM59L": 2,
+        "STMN2": 1
+    },
+    "viral_umis-Replicate_1-Astrocyte": {},
+    "viral_umis-Replicate_1-Glutamatergic_Neuron": {
+        "DYNLL1": 2,
+        "MGST3": 1
+    },
+    "viral_umis-Replicate_1-Interneuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_2-Astrocyte": {},
+    "viral_umis-Replicate_2-Glutamatergic_Neuron": {
+        "DYNLL1": 2,
+        "MGST3": 1
+    },
+    "viral_umis-Replicate_2-Interneuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_3-Astrocyte": {},
+    "viral_umis-Replicate_3-Glutamatergic_Neuron": {
+        "DYNLL1": 2,
+        "MGST3": 1
+    },
+    "viral_umis-Replicate_3-Interneuron": {
+        "DYNLL1": 2
+    },
+    "viral_umis-Replicate_2": {
+        "GAP43": 2,
+        "RAMP1": 2,
+        "GM10053": 1,
+        "DYNLL1": 2,
+        "ATP1B1": 2,
+        "ITM2C": 2,
+        "CAMK1": 2,
+        "STMN4": 1,
+        "MPC1": 2,
+        "MGST3": 1,
+        "STMN3": 1
+    },
+    "viral_umis-Replicate_3": {
+        "RAB3B": 2,
+        "MTHFD2": 2,
+        "TUBA1B": 1,
+        "GAP43": 2,
+        "MGST3": 1,
+        "STMN3": 1,
+        "DYNLL1": 2,
+        "JUNB": 1,
+        "TMEM59L": 2,
+        "DYNLL2": 2
+    }
+}

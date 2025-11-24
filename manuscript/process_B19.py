@@ -15,7 +15,6 @@ adata.shape
 
 #open csv file
 meta_data = pd.read_csv("data/B19_noRG_Liger_Summary_Complete_counts.csv", index_col=0)
-meta_data.shape
 
 #make the CBC column the index
 meta_data.set_index("CBC", inplace=True)

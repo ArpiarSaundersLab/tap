@@ -1,0 +1,268 @@
+{
+    "replicate_1": {
+        "NRGN": 1
+    },
+    "replicate_2": {
+        "NRGN": 1
+    },
+    "replicate_3": {
+        "NRGN": 1
+    },
+    "AAV1": {},
+    "AAV1-replicate_1": {},
+    "AAV1-replicate_1-Excitatory": {
+        "FABP7": 1
+    },
+    "AAV1-replicate_1-Inhibitory": {},
+    "AAV1-replicate_2-Excitatory": {
+        "FABP7": 1
+    },
+    "AAV1-replicate_2-Inhibitory": {},
+    "AAV1-replicate_3-Excitatory": {
+        "FABP7": 1
+    },
+    "AAV1-replicate_3-Inhibitory": {},
+    "AAV1-replicate_2": {},
+    "AAV1-replicate_3": {},
+    "AAV2": {},
+    "AAV2-replicate_1": {},
+    "AAV2-replicate_1-Excitatory": {},
+    "AAV2-replicate_1-Inhibitory": {},
+    "AAV2-replicate_2-Excitatory": {},
+    "AAV2-replicate_2-Inhibitory": {},
+    "AAV2-replicate_3-Excitatory": {},
+    "AAV2-replicate_3-Inhibitory": {},
+    "AAV2-replicate_2": {},
+    "AAV2-replicate_3": {},
+    "AAV5": {},
+    "AAV5-replicate_1": {},
+    "AAV5-replicate_1-Excitatory": {},
+    "AAV5-replicate_1-Inhibitory": {},
+    "AAV5-replicate_2-Excitatory": {},
+    "AAV5-replicate_2-Inhibitory": {},
+    "AAV5-replicate_3-Excitatory": {},
+    "AAV5-replicate_3-Inhibitory": {},
+    "AAV5-replicate_2": {},
+    "AAV5-replicate_3": {},
+    "AAV6": {},
+    "AAV6-replicate_1": {},
+    "AAV6-replicate_1-Excitatory": {
+        "PRDX1": 2
+    },
+    "AAV6-replicate_1-Inhibitory": {},
+    "AAV6-replicate_2-Excitatory": {
+        "PRDX1": 2
+    },
+    "AAV6-replicate_2-Inhibitory": {},
+    "AAV6-replicate_3-Excitatory": {
+        "PRDX1": 2
+    },
+    "AAV6-replicate_3-Inhibitory": {},
+    "AAV6-replicate_2": {},
+    "AAV6-replicate_3": {},
+    "AAV7": {},
+    "AAV7-replicate_1": {},
+    "AAV7-replicate_1-Excitatory": {},
+    "AAV7-replicate_1-Inhibitory": {},
+    "AAV7-replicate_2-Excitatory": {},
+    "AAV7-replicate_2-Inhibitory": {},
+    "AAV7-replicate_3-Excitatory": {},
+    "AAV7-replicate_3-Inhibitory": {},
+    "AAV7-replicate_2": {},
+    "AAV7-replicate_3": {},
+    "AAV8": {},
+    "AAV8-replicate_1": {},
+    "AAV8-replicate_1-Excitatory": {},
+    "AAV8-replicate_1-Inhibitory": {},
+    "AAV8-replicate_2-Excitatory": {},
+    "AAV8-replicate_2-Inhibitory": {},
+    "AAV8-replicate_3-Excitatory": {},
+    "AAV8-replicate_3-Inhibitory": {},
+    "AAV8-replicate_2": {},
+    "AAV8-replicate_3": {},
+    "AAV9": {},
+    "AAV9-replicate_1": {},
+    "AAV9-replicate_1-Excitatory": {},
+    "AAV9-replicate_1-Inhibitory": {},
+    "AAV9-replicate_2-Excitatory": {},
+    "AAV9-replicate_2-Inhibitory": {},
+    "AAV9-replicate_3-Excitatory": {},
+    "AAV9-replicate_3-Inhibitory": {},
+    "AAV9-replicate_2": {},
+    "AAV9-replicate_3": {},
+    "Retro-replicate_1": {
+        "TAFA2": 2,
+        "PCSK1N": 2
+    },
+    "Retro-replicate_1-Excitatory": {
+        "C1QL3": 2
+    },
+    "Retro-replicate_1-Inhibitory": {},
+    "Retro-replicate_2-Excitatory": {
+        "C1QL3": 2
+    },
+    "Retro-replicate_2-Inhibitory": {},
+    "Retro-replicate_3-Excitatory": {
+        "C1QL3": 2
+    },
+    "Retro-replicate_3-Inhibitory": {},
+    "Retro-replicate_2": {
+        "DIRAS2": 2
+    },
+    "Retro-replicate_3": {
+        "NRGN": 1,
+        "CCK": 2,
+        "SCN2A": 2,
+        "CHRM3": 2,
+        "BEND6": 1,
+        "GAP43": 2,
+        "NEFL": 1,
+        "SLC24A2": 2,
+        "SEZ6L": 1,
+        "TMEM130": 2
+    },
+    "Rh10-replicate_1": {},
+    "Rh10-replicate_1-Excitatory": {},
+    "Rh10-replicate_1-Inhibitory": {},
+    "Rh10-replicate_2-Excitatory": {},
+    "Rh10-replicate_2-Inhibitory": {},
+    "Rh10-replicate_3-Excitatory": {},
+    "Rh10-replicate_3-Inhibitory": {},
+    "Rh10-replicate_2": {},
+    "Rh10-replicate_3": {
+        "PDE8B": 1,
+        "FLYWCH2": 1,
+        "CCL27A": 2,
+        "CACNG3": 2
+    },
+    "Anc80-replicate_1": {
+        "NECAB2": 2,
+        "OTUD7A": 2,
+        "CNIH2": 2,
+        "NRG3": 2,
+        "6430548M08RIK": 1,
+        "KCNQ5": 2
+    },
+    "Anc80-replicate_1-Excitatory": {
+        "H2AZ1": 2
+    },
+    "Anc80-replicate_1-Inhibitory": {},
+    "Anc80-replicate_2-Excitatory": {
+        "H2AZ1": 2
+    },
+    "Anc80-replicate_2-Inhibitory": {},
+    "Anc80-replicate_3-Excitatory": {
+        "H2AZ1": 2
+    },
+    "Anc80-replicate_3-Inhibitory": {},
+    "Anc80-replicate_2": {
+        "SULT4A1": 1,
+        "PSD": 2,
+        "ENC1": 1,
+        "CALM2": 2,
+        "SNHG12": 1,
+        "MLLT11": 1,
+        "CAMK2B": 2,
+        "ATP2B1": 2
+    },
+    "Anc80-replicate_3": {
+        "NRGN": 1,
+        "MEF2C": 2,
+        "MPPED1": 1,
+        "MATK": 2,
+        "CCN3": 2,
+        "OSBPL1A": 2,
+        "SYP": 2,
+        "ADCY1": 2,
+        "GAS7": 2,
+        "STMN2": 1,
+        "DPP6": 2
+    },
+    "SHH10-replicate_1": {
+        "SLC1A2": 2,
+        "H2BC27": 1,
+        "PPP1R1A": 1,
+        "PCSK1N": 2,
+        "STMN2": 1,
+        "CALY": 2,
+        "H2AZ1": 2,
+        "ATP2B1": 2,
+        "FAM171B": 1,
+        "OPCML": 2,
+        "GLP2R": 2,
+        "SNAP25": 2,
+        "CALM2": 2,
+        "TTC9B": 1,
+        "CST3": 2
+    },
+    "SHH10-replicate_1-Excitatory": {
+        "TUBA1B": 1,
+        "FABP7": 1,
+        "PRDX1": 2
+    },
+    "SHH10-replicate_1-Inhibitory": {
+        "CALM2": 2
+    },
+    "SHH10-replicate_2-Excitatory": {
+        "TUBA1B": 1,
+        "FABP7": 1,
+        "PRDX1": 2
+    },
+    "SHH10-replicate_2-Inhibitory": {
+        "CALM2": 2
+    },
+    "SHH10-replicate_3-Excitatory": {
+        "TUBA1B": 1,
+        "FABP7": 1,
+        "PRDX1": 2
+    },
+    "SHH10-replicate_3-Inhibitory": {
+        "CALM2": 2
+    },
+    "SHH10-replicate_2": {
+        "PTPRN": 2,
+        "KCNMA1": 2,
+        "PCSK1N": 2,
+        "PSD3": 2,
+        "CLU": 2,
+        "FAM81A": 1,
+        "HSPA5": 2,
+        "YWHAH": 2,
+        "TTYH1": 2,
+        "SCN2A": 2,
+        "SPARCL1": 2,
+        "NRG3": 2,
+        "PPP2R2B": 1,
+        "SERP2": 1,
+        "SYNM": 2,
+        "CALM2": 2,
+        "PLPPR4": 2,
+        "CAMK2B": 2
+    },
+    "SHH10-replicate_3": {
+        "SYT4": 2,
+        "HPCAL4": 1,
+        "CHST1": 1,
+        "CRACDL": 1,
+        "GAP43": 2,
+        "CST3": 2,
+        "SYP": 2,
+        "STMN2": 1,
+        "NRGN": 1,
+        "SLF1": 1,
+        "ATP1A1": 2,
+        "SCN2A": 2,
+        "2210408I21RIK": 1,
+        "GLP2R": 2,
+        "ASNS": 1,
+        "ADCY1": 2,
+        "TMEM151A": 2,
+        "SOX5": 1,
+        "PRDX1": 2,
+        "THY1": 2,
+        "CX3CL1": 2,
+        "ILDR2": 2,
+        "MLLT11": 1,
+        "RIDA": 2
+    }
+}
