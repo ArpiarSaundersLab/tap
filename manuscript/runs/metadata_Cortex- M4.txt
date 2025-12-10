@@ -1,0 +1,46 @@
+{
+    "filename": null,
+    "title": "Cortex: M4",
+    "outputName": "Cortex_M4_10-12-2025.html",
+    "categories": [
+        "cell_type"
+    ],
+    "categoryNames": [
+        "Cell Type"
+    ],
+    "genes": [
+        "AAV1",
+        "AAV2",
+        "AAV5",
+        "AAV6",
+        "AAV7",
+        "AAV8",
+        "AAV9",
+        "Retro",
+        "Retro_Kash",
+        "Retro_10",
+        "Rh10",
+        "Anc80",
+        "SHH10"
+    ],
+    "DE": true,
+    "RF": true,
+    "showPlots": false,
+    "UMAP": true,
+    "Details": true,
+    "clusterMethod": "threshold",
+    "clusterThreshold": 1,
+    "clusterThresholdGreaterThanOrEqual": 3,
+    "clusterThresholdLessThanOrEqual": 0,
+    "deMethod": "wilcoxon",
+    "mapOnly": false,
+    "excludeMarkers": true,
+    "cellTypist": false,
+    "cellTypistModel": "Mouse_Whole_Brain.pkl",
+    "cellTypistLevels": 3,
+    "rfType": "classifier",
+    "rfHyperParameterTune": false,
+    "rfHyperParameterIterations": 50,
+    "permute": false,
+    "permuteRepeats": 2
+}
