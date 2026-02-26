@@ -23,6 +23,9 @@ adata.obs["cell_type"] = adata.obs["cell_type"].replace({"NPC/Excitatory":"Excit
 #take a look at cell type counts again
 adata.obs.cell_type.value_counts()
 
+#remove replicate 5
+adata = adata[adata.obs["replicates"] != "replicate_5", :]
+
 parameters = {
 	"adataObject": adata,
 	"name": "Midbrain - All Replicated Combined",
