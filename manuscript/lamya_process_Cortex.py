@@ -4,7 +4,6 @@ from datetime import datetime
 
 #open the data
 adata = sc.read_h5ad("/home/kenny/Documents/OHSU/Projects/TAP/manuscript/data/Cortex.h5ad")
-print(adata.shape)
 
 #tak a look at the value counts
 adata.obs.replicates.value_counts()
@@ -20,7 +19,7 @@ parameters = {
 	"categoryNames": ["Replicate","Cell Type"],
 	"exclude" : ["Microglia","NPCs","OPCs"],
 	"outputPath": "runs/",
-	"outputName": "Lamya_Cortex_Combined_"+str(datetime.now().strftime("%d-%m-%Y"))+".html",
+	"outputName": "Lamya_Cortex_Combined_"+str(datetime.now().strftime("%m-%d-%Y"))+".html",
 	"clusterMethod": "threshold",
 	"clusterThreshold": 1,
 	"clusterThresholdGreaterThanOrEqual": 3,

@@ -34,7 +34,7 @@ parameters = {
 	"categoryNames": ["Replicate","Cell Type"],
 	"exclude" : ["Microglia","OPCs"], 
 	"outputPath": "runs/",
-	"outputName": "Lamya_Midbrain_Combined_"+str(datetime.now().strftime("%d-%m-%Y"))+".html",
+	"outputName": "Lamya_Midbrain_Combined_"+str(datetime.now().strftime("%m-%d-%Y"))+".html",
 	"excludeMarkers" : True,
 	"clusterMethod": "threshold",
 	"clusterThreshold": 1,

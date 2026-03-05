@@ -69,6 +69,7 @@ class TestBuild(unittest.TestCase):
 			"removeOutliers": True,
 			"clusterMethod": "threshold",
 			"clusterThreshold": 50,
+			"balance": "randomoversampler", #randomoversampler or smote
 			"minify": False,
 		}
 		results = t.TAP(**parameters)

@@ -8,6 +8,7 @@ import tables
 import copy
 import gc
 import os
+from importlib.resources import files
 import anndata as ad
 import warnings
 import time
@@ -28,7 +29,6 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.utils import shuffle
 from sklearn.mixture import GaussianMixture
 from matplotlib.colors import ListedColormap
-import pkg_resources
 import shutil
 from tap.FeatureSelection import FeatureSelection
 warnings.filterwarnings("ignore")
@@ -127,7 +127,8 @@ class TAP:
 			self.minifyHtml()
 
 	def copyTapTemplate(self):		
-		shutil.copy(pkg_resources.resource_filename("tap", "templates")+"/tap.html", self.outputPath + self.outputName)
+		template_path = files("tap").joinpath("templates", "tap.html")
+		shutil.copy(str(template_path), self.outputPath + self.outputName)
 
 
 
@@ -236,7 +237,7 @@ class TAP:
 		from celltypist import models
 
 		#set the model path
-		models.models_path = pkg_resources.resource_filename("tap", "models")
+		models.models_path = str(files("tap").joinpath("models"))
 
 		#download relevant model
 		models.download_models(model = self.cellTypistModel)
@@ -287,7 +288,7 @@ class TAP:
 		if self.cellTypistModel == "Mouse_Whole_Brain.pkl":
 			
 			#open a csv as a pandas dataframe
-			abc_atlas_metadata = pd.read_csv(pkg_resources.resource_filename("tap", "models")+"/abc_atlas_metadata.csv")
+			abc_atlas_metadata = pd.read_csv(str(files("tap").joinpath("models", "abc_atlas_metadata.csv")))
 
 			#iterate each cell in the object and query the subclass_id_label column
 			for i in range(len(self.celltypist_adata.obs)):

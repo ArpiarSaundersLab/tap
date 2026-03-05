@@ -27,5 +27,18 @@ setuptools.setup(
 	install_requires=[
 		'scanpy>=1.10.3',
 		'annsql>=1.0.0',
+		'numpy',
+		'pandas',
+		'seaborn',
+		'tables',
+		'anndata',
+		'matplotlib',
+		'scipy',
+		'scikit-learn',
+		'tqdm',
+		'biothings_client',
+		'celltypist',
+		'imbalanced-learn',
+		'minify-html',
 	],
 )
