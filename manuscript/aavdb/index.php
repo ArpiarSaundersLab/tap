@@ -6,10 +6,12 @@ session_start();
 #hardcoded credentials
 $user = 'tap';
 $pass = 'slab';
+$pass2 = 'reviewer';
+
 
 #handle login
 if ($_SERVER['REQUEST_METHOD']==='POST') {
-    if ($_POST['username']===$user && $_POST['password']===$pass) {
+    if ($_POST['password']===$pass || $_POST['password']===$pass2) {
         $_SESSION['auth']=true;
         header('Location: /');  #refresh to hide POST
         exit;
@@ -44,7 +46,6 @@ if (!($_SESSION['auth'] ?? false)):
   <form method="post">
     <h2>Login</h2>
     <?php if(!empty($error)) echo "<p>$error</p>"; ?>
-    <input name="username" placeholder="username" required>
     <input type="password" name="password" placeholder="password" required>
     <button type="submit">Sign in</button>
   </form>
@@ -246,7 +247,7 @@ endif;
                      <h4>About</h4>
                      <p class="text-body-secondary">
 						<br />
-						<b>Tropism Analysis Portal: An Interactive Machine Learning Tool to Discover Viral Host Factors Through Single-Cell RNA Profiling</b><br />
+						<b>Tropism Analysis Package: Interactive Machine Learning Software to Identify Viral Host Factors Through Single-Cell Host-Virus mRNA Profiling</b><br />
 						Authors: <i>Kenny Pavan, Lamya Ben Ameur, Zach Goode, Emily Tiedemann, Elizabeth Kolb, Arpiar Saunders</i><br />
                      </p>
                   </div>
@@ -302,6 +303,8 @@ endif;
                      Below are some example AAV tropism datasets generated using the Tropism Analysis Package (TAP). 
 					 Please explore the datasets and feel free to reach out with any questions or suggestions!
                   </p>
+				  <a href="tap_manuscript.pdf" class="btn btn-lg btn-primary my-2" target="_blank">Manuscript</a>
+				  <a href="tap_methods.pdf" class="btn btn-lg btn-secondary my-2 ms-3" target="_blank">Methods</a>
                </div>
             </div>
          </section>

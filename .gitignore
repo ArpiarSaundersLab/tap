@@ -1,7 +1,7 @@
 archive/
 data/
 exacloud/
-arc/
+runs/arc/
 env/
 archive/
 __pycache__/
@@ -19,4 +19,6 @@ build_wheel.sh
 /**/.pytest_cache/
 site/
 examples/arc/
-examples/data/
+examples/data/manuscript/runs/arc/*.zip
+manuscript/runs/arc/**/*.html
+manuscript/runs/arc/**
