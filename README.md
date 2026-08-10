@@ -42,15 +42,12 @@ TAP accepts an AnnData object or file and generates an interactive HTML report t
 import tap as t
 
 parameters = {
-    "filename": "../assets/data/PCCM.h5ad",
+    "filename": "PCCM.h5ad",
     "name": "PCCM",
-    "genes": ["AAV1", "AAV2", "AAV9"],
+    "genes": ["AAV1", "AAV2", "Retro", "AAV9"],
     "categories": ["cell_type"],
-    "outputPath": ".",
     "outputName": "test.html",
-    "runCellTypist": False,
     "excludeMarkers": True,
-    "mapOnly": True,
 }
 
 results = t.TAP(**parameters)
