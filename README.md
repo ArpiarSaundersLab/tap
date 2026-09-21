@@ -39,14 +39,6 @@ import tap as t
 A curated selection of multiplexed AAV TAPs to explore.<br />
 <a href="https://www.aavdb.com" target="_blank">aavdb.com</a>
 
-## Example Notebooks
-Notebook and starter examples are organized in the examples area of this repository.
-
-- Browse the examples directory: [examples](examples)
-- Minimal TAP script: [examples/build_tap_simple.py](examples/build_tap_simple.py)
-- Notebook example: [examples/full_example.ipynb](examples/full_example.ipynb)
-
-
 ## Usage
 TAP accepts an AnnData object or file and generates an interactive HTML report that can be opened in any browser, hosted on a server, or shared. A basic example is shown below. The package expects raw counts in the AnnData object, so the input data should include the original expression values in `adata.raw.X` for the most reliable results.
 
