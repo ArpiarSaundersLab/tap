@@ -3,7 +3,12 @@
 </p>
 
 <p align="center">
-	<a href="https://github.com/ArpiarSaundersLab/tap/tree/main/tests"><img src="https://img.shields.io/badge/build-passing-brightgreen"></a>
+	<a href="https://github.com/ArpiarSaundersLab/tap/actions/workflows/publish.yml">
+		<img src="https://github.com/ArpiarSaundersLab/tap/actions/workflows/publish.yml/badge.svg" alt="GitHub Actions workflow status">
+	</a>
+	<a href="https://pypi.org/project/scTap/">
+		<img src="https://img.shields.io/pypi/v/scTap.svg" alt="PyPI version">
+	</a>
 </p>
 
 <br>
@@ -18,9 +23,16 @@
 - Simple and configurable parameters.
 
 ## Installation
-We recommend installing in a fresh python (>=3.12) environment.
-```
+We recommend installing in a fresh Python (>=3.12) environment.
+
+```bash
 pip install scTap
+```
+
+The package is imported in Python as `tap`:
+
+```python
+import tap as t
 ```
 
 ## Live Demo
@@ -52,6 +64,8 @@ parameters = {
 
 results = t.TAP(**parameters)
 ```
+
+The published package name is `scTap`, but the Python import remains `tap`.
 
 ### TAP constructor parameters
 The `TAP` class accepts the following constructor arguments. These options control input data handling, clustering, feature selection, plotting, and output generation.
@@ -105,5 +119,5 @@ Commonly used options include `genes`, `categories`, `outputPath`, `outputName`,
 
 
 ## Citation
-Pavan Kenny et al. Tropism Analysis Package: Interactive Machine Learning Software to Identify Viral Host Factors Through Single-Cell Host-Virus mRNA Profiling. bioRxiv. Year; DOI: [add DOI].
+Pavan Kenny et al. 2026 Tropism Analysis Package: Interactive Machine Learning Software to Identify Viral Host Factors Through Single-Cell Host-Virus mRNA Profiling. bioRxiv.
 <br>

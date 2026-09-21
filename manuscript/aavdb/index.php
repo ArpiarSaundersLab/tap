@@ -1,36 +1,36 @@
 <?php
-#start a secure session
-session_set_cookie_params(['secure'=>true,'httponly'=>true,'samesite'=>'Lax']);
-session_start();
+// #start a secure session
+// session_set_cookie_params(['secure'=>true,'httponly'=>true,'samesite'=>'Lax']);
+// session_start();
 
-#hardcoded credentials
-$user = 'tap';
-$pass = 'slab';
-$pass2 = 'reviewer';
+// #hardcoded credentials
+// $user = 'tap';
+// $pass = 'slab';
+// $pass2 = 'reviewer';
 
 
-#handle login
-if ($_SERVER['REQUEST_METHOD']==='POST') {
-    if ($_POST['password']===$pass || $_POST['password']===$pass2) {
-        $_SESSION['auth']=true;
-        header('Location: /');  #refresh to hide POST
-        exit;
-    } else {
-        $error = 'invalid credentials';
-    }
-}
+// #handle login
+// if ($_SERVER['REQUEST_METHOD']==='POST') {
+//     if ($_POST['password']===$pass || $_POST['password']===$pass2) {
+//         $_SESSION['auth']=true;
+//         header('Location: /');  #refresh to hide POST
+//         exit;
+//     } else {
+//         $error = 'invalid credentials';
+//     }
+// }
 
-#handle logout
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header('Location: /');
-    exit;
-}
+// #handle logout
+// if (isset($_GET['logout'])) {
+//     session_destroy();
+//     header('Location: /');
+//     exit;
+// }
 
-#require auth before showing main content
-if (!($_SESSION['auth'] ?? false)):
+// #require auth before showing main content
+// if (!($_SESSION['auth'] ?? false)):
 ?>
-<!doctype html>
+<!-- <!doctype html>
 <html>
 <head>
   <title>Login</title>
@@ -50,10 +50,10 @@ if (!($_SESSION['auth'] ?? false)):
     <button type="submit">Sign in</button>
   </form>
 </body>
-</html>
+</html> -->
 <?php
-exit; #stop processing after showing login form
-endif;
+// exit; #stop processing after showing login form
+// endif;
 ?>
 
 <!doctype html>
@@ -145,6 +145,9 @@ endif;
 		 .cardtile-header2{
 			font-size: 16px;
 		 }
+       .btn-outline-secondary{
+          font-size: 12px;
+       }
       </style>
    </head>
    <body>
@@ -331,13 +334,17 @@ endif;
                            <p class="card-text">
                               A collection of 11 naturally occurring and engineered AAVs were used to transduce primary mixed mouse cortical cultures.
                            </p>
-							<div class="btn-group">
-								<a href="taps/1b.html" target="_blank" class="btn btn-sm btn-outline-secondary">Single</a>
-								<a href="taps/1a.html" target="_blank" class="btn btn-sm btn-outline-secondary ms-2">Replicates</a>
-							</div>
+      							<div class="btn-group">
+      								<a href="taps/1b.html" target="_blank" class="btn btn-sm btn-outline-secondary">Single (1 rep; just neurons) </a>
+                              <a href="taps/1d.html" target="_blank" class="btn btn-sm btn-outline-secondary ms-2">Midbrain (4 reps)</a>
+      								<a href="taps/1a.html" target="_blank" class="btn btn-sm btn-outline-secondary ms-2">Cortex (3 reps; just neurons)</a>
+                              <a href="taps/1c.html" target="_blank" class="btn btn-sm btn-outline-secondary ms-2">Cortex (4 reps)</a>
+      							</div>
+                           <!--
                            <div class="text-end">
                               <small class="text-body-secondary">6,968 | 16,418 cells</small>
                            </div>
+                           -->
                         </div>
                      </div>
                   </div>
@@ -361,40 +368,44 @@ endif;
                            <p class="card-text">
                               14 barcoded AAVs introduced into the lateral ventricle of E13.5 mouse embryos. Samples were pooled and single-cell RNA-seq was performed.
                            </p>
+                           <!--
                            <div class="text-end">
                               <small class="text-body-secondary">12,875 cells</small>
                            </div>
+                           -->
                         </div>
                      </div>
                   </div>
                   <div class="col">
                      <div class="card shadow-sm">
-						<a href="taps/3.html" target="_blank">
-                        <svg
-                           aria-label="Placeholder: Thumbnail"
-                           class="bd-placeholder-img card-img-top"
-                           height="225"
-                           preserveAspectRatio="xMidYMid slice"
-                           role="img"
-                           width="100%"
-                           xmlns="http://www.w3.org/2000/svg">
-                           <title>Extended Use Case</title>
-                           <rect width="100%" height="100%" fill="#B06C1C"></rect>
-                           <text x="50%" y="50%" fill="#eceeef" dy=".3em" class="cardtile-header">Extended Use Case</text>
-						   <text x="50%" y="65%" fill="#eceeef" dy=".2em" class="cardtile-header2">SAD-B19ΔG</text>
-                        </svg>
-						</a>
+      						<a href="taps/3.html" target="_blank">
+                              <svg
+                                 aria-label="Placeholder: Thumbnail"
+                                 class="bd-placeholder-img card-img-top"
+                                 height="225"
+                                 preserveAspectRatio="xMidYMid slice"
+                                 role="img"
+                                 width="100%"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                 <title>Extended Use Case</title>
+                                 <rect width="100%" height="100%" fill="#B06C1C"></rect>
+                                 <text x="50%" y="50%" fill="#eceeef" dy=".3em" class="cardtile-header">Extended Use Case</text>
+      						   <text x="50%" y="65%" fill="#eceeef" dy=".2em" class="cardtile-header2">SAD-B19ΔG</text>
+                              </svg>
+      						</a>
                         <div class="card-body">
                            <p class="card-text">
                               Rabies Virus SAD-B19ΔG was used to transduce primary mouse cortical cultures, then single-cell RNA-seq was performed and run through TAP.
                            </p>
-							<div class="btn-group">
-								<a href="taps/3.html" target="_blank" class="btn btn-sm btn-outline-secondary">Single</a>
-								<a href="taps/3a.html" target="_blank" class="btn btn-sm btn-outline-secondary ms-2">Replicates</a>
-							</div>
+      							<div class="btn-group">
+      								<a href="taps/3.html" target="_blank" class="btn btn-sm btn-outline-secondary">Single</a>
+      								<a href="taps/3a.html" target="_blank" class="btn btn-sm btn-outline-secondary ms-2">Replicates</a>
+      							</div>
+                           <!--
                            <div class="text-end">
                               <small class="text-body-secondary">12,680 cells</small>
                            </div>
+                           -->
                         </div>
                      </div>
                   </div>

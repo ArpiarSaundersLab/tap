@@ -1,0 +1,141 @@
+Metadata-Version: 2.4
+Name: tap
+Version: 0.0.2
+Summary: A Python tool for feature selection of multiplex single-cell tropism experiments.
+Author-email: Kenny Pavan <pavan@ohsu.edu>
+License: Academic Non-Commercial License
+Project-URL: Homepage, https://github.com/ArpiarSaundersLab/tap
+Project-URL: Repository, https://github.com/ArpiarSaundersLab/tap
+Project-URL: Documentation, https://github.com/ArpiarSaundersLab/tap
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: scanpy>=1.10.3
+Requires-Dist: annsql>=1.0.4
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: seaborn
+Requires-Dist: tables
+Requires-Dist: anndata
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: scikit-learn
+Requires-Dist: tqdm
+Requires-Dist: biothings_client
+Requires-Dist: celltypist
+Requires-Dist: imbalanced-learn
+Requires-Dist: minify-html
+Dynamic: license-file
+
+<p align="center">
+	<img src="assets/images/logo.png" width=150>
+</p>
+
+<p align="center">
+	<a href="https://github.com/ArpiarSaundersLab/tap/tree/main/tests"><img src="https://img.shields.io/badge/build-passing-brightgreen"></a>
+</p>
+
+<br>
+
+# Tropism Analysis Package
+**TAP** helps drive discovery of host factors associated with viral tropism in sc/nRNA-seq datasets by automating infectivity clustering, then applying an essemble feature selection pipeline to each subset of cells. The results of each subset are stored and presented in a easy-to-use intuitive interface.
+
+## Features
+- Explore your data in an interactive user interface.
+- Uses an ensemble ML approach to rank important features of tropism.
+- Easily share results as an HTML file.
+- Simple and configurable parameters.
+
+## Installation
+We recommend installing in a fresh python (>=3.12) environment.
+```
+pip install scTap
+```
+
+## Live Demo
+A curated selection of multiplexed AAV TAPs to explore.<br />
+<a href="https://www.aavdb.com" target="_blank">aavdb.com</a>
+
+## Example Notebooks
+Notebook and starter examples are organized in the examples area of this repository.
+
+- Browse the examples directory: [examples](examples)
+- Minimal TAP script: [examples/build_tap_simple.py](examples/build_tap_simple.py)
+- Notebook example: [examples/full_example.ipynb](examples/full_example.ipynb)
+
+
+## Usage
+TAP accepts an AnnData object or file and generates an interactive HTML report that can be opened in any browser, hosted on a server, or shared. A basic example is shown below. The package expects raw counts in the AnnData object, so the input data should include the original expression values in `adata.raw.X` for the most reliable results.
+
+```python
+import tap as t
+
+parameters = {
+    "filename": "PCCM.h5ad",
+    "name": "PCCM",
+    "genes": ["AAV1", "AAV2", "Retro", "AAV9"],
+    "categories": ["cell_type"],
+    "outputName": "test.html",
+    "excludeMarkers": True,
+}
+
+results = t.TAP(**parameters)
+```
+
+### TAP constructor parameters
+The `TAP` class accepts the following constructor arguments. These options control input data handling, clustering, feature selection, plotting, and output generation.
+
+| Parameter | Default | Description |
+| --- | --- | --- |
+| `name` | `"Heatmap"` | Default: `"Heatmap"`. Use a custom name for the report and related metadata. |
+| `filename` | `None` | Default: `None`. Provide an AnnData file path when you are loading from disk instead of using `adataObject`. |
+| `adataObject` | `None` | Default: `None`. Pass a preloaded AnnData object here instead of supplying `filename`. |
+| `annSqlDB` | `None` | Default: `None`. Supply an AnnSQL database identifier to convert into AnnData. |
+| `categories` | `[]` | Default: `[]`. Provide one or more metadata columns such as `cell_type` or `serotype` for grouping. |
+| `categoryNames` | `[]` | Default: `[]`. Use custom display labels for the categories shown in the report. |
+| `genes` | `[]` | Default: `[]`. Provide one or more gene names or features to include in the analysis. |
+| `exclude` | `[]` | Default: `[]`. Add genes or features to leave out of the analysis. |
+| `useRaw` | `False` | Default: `False`. Set to `True` to use raw AnnData values when they are available. |
+| `outputPath` | `"."` | Default: `"."`. Set this to a directory where the output HTML and related files should be written. |
+| `outputName` | `"tap.html"` | Default: `"tap.html"`. Use a different filename if you want a custom output file name. |
+| `cpus` | `2` | Default: `2`. Increase this for more parallel work on larger datasets. |
+| `mapOnly` | `False` | Default: `False`. Set to `True` to generate the map outputs without the full reporting workflow. |
+| `showDE` | `True` | Default: `True`. Set to `False` to suppress differential expression results. |
+| `showRF` | `True` | Default: `True`. Set to `False` to skip random forest results. |
+| `showUMAP` | `True` | Default: `True`. Set to `False` to hide UMAP plots. |
+| `showDetails` | `True` | Default: `True`. Set to `False` for a more compact report. |
+| `clusterMethod` | `"threshold"` | Default: `"threshold"`. Other supported option is `"gaussian"`. |
+| `clusterThreshold` | `1` | Default: `1`. Increase or decrease this threshold to change the clustering cutoff. |
+| `useLog10` | `False` | Default: `False`. Set to `True` to log-transform values before downstream analysis. |
+| `showPlots` | `False` | Default: `False`. Set to `True` to include additional plots in the output. |
+| `excludeGenes` | `[]` | Default: `[]`. Add genes to remove before modeling. |
+| `deMethod` | `"wilcoxon"` | Default: `"wilcoxon"`. Other common choices include `"t-test"`, `"logreg"`, or other scanpy-supported methods. |
+| `rfHyperParameterTune` | `False` | Default: `False`. Set to `True` to tune the random forest hyperparameters. |
+| `rfHyperParameterIterations` | `50` | Default: `50`. Increase this for more tuning coverage. |
+| `rfType` | `"classifier"` | Default: `"classifier"`. Other option is `"regressor"`. |
+| `balance` | `None` | Default: `None`. Other options include `"smote"`, `"randomoversampler"`, `"adasyn"`, `"borderlinesmote"`, `"kmeanssmote"`, or `"svmsmote"`. |
+| `useAllGenes` | `False` | Default: `False`. Set to `True` to use all genes rather than only the input subset. |
+| `rfPermuteFeatureImportance` | `False` | Default: `False`. Set to `True` to estimate feature importance by permutation. |
+| `rfPermuteRepeats` | `2` | Default: `2`. Increase this for more stable permutation estimates. |
+| `runCellTypist` | `False` | Default: `False`. Set to `True` to run CellTypist annotation. |
+| `cellTypistModel` | `"Mouse_Whole_Brain.pkl"` | Default: `"Mouse_Whole_Brain.pkl"`. Other CellTypist model names can be supplied here. |
+| `cellTypistPlots` | `False` | Default: `False`. Set to `True` to generate CellTypist plots. |
+| `cellTypistLevels` | `3` | Default: `3`. Increase or decrease the number of prediction levels shown. |
+| `minify` | `False` | Default: `False`. Set to `True` to minify the generated HTML output. |
+| `excludeMarkers` | `False` | Default: `False`. Set to `True` to exclude marker genes. |
+| `removeOutliers` | `True` | Default: `True`. Set to `False` to keep outlier cells in the analysis. |
+| `minCells` | `20` | Default: `20`. Lower or raise this threshold based on dataset size. |
+| `minSeroTypeCells` | `20` | Default: `20`. Adjust this for stricter or looser serotype group inclusion. |
+| `clusterThresholdGreaterThanOrEqual` | `None` | Default: `None`. Use this to set a lower bound for threshold-based group assignment. |
+| `clusterThresholdLessThanOrEqual` | `None` | Default: `None`. Use this to set an upper bound for threshold-based group assignment. |
+| `replicate_mode` | `False` | Default: `False`. Set to `True` for replicate-oriented processing. |
+
+Commonly used options include `genes`, `categories`, `outputPath`, `outputName`, `excludeMarkers`, `mapOnly`, and `runCellTypist`.
+
+
+## Citation
+Pavan Kenny et al. Tropism Analysis Package: Interactive Machine Learning Software to Identify Viral Host Factors Through Single-Cell Host-Virus mRNA Profiling. bioRxiv. Year; DOI: [add DOI].
+<br>

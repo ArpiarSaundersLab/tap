@@ -1,17 +1,47 @@
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Academic Non-Commercial License
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Copyright (c) 2026, The TAP Authors
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Permission is hereby granted, free of charge, to any academic institution,
+research laboratory, university, or non-profit research group to use, copy,
+modify, and distribute this software and associated documentation files (the
+"Software") solely for educational, academic, and non-commercial research
+purposes.
+
+The following conditions apply:
+
+1. Academic and Non-Commercial Use Only
+   The Software may be used only by academic institutions, educational
+   institutions, and non-profit research organizations for research, teaching,
+   and scholarly activities. Commercial use is strictly prohibited.
+
+2. No Commercial Use
+   Commercial use includes, but is not limited to, selling access to the
+   Software, using it as part of a commercial product or service, embedding it
+   in a for-profit platform, offering consulting or analysis services for a fee,
+   or using it for any business, enterprise, clinical, or revenue-generating
+   purpose without prior written permission.
+
+3. Attribution
+   Any copies, modified versions, or redistributed versions of the Software must
+   retain this license notice and the copyright notice above.
+
+4. No Warranty
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
+   FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+   DEALINGS IN THE SOFTWARE.
+
+5. Commercial Licensing
+   Any commercial use, redistribution, or sublicensing requires a separate
+   written commercial license agreement from the copyright holders.
+
+6. No Patent or Other Rights
+   This license does not grant any patent license or any rights beyond the
+   limited academic, non-commercial permission expressly stated herein.
+
+This license is intended to allow free academic use while prohibiting
+commercial exploitation of the Software.

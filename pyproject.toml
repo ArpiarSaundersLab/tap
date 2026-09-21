@@ -1,3 +1,51 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "scTap"
+version = "0.0.2"
+description = "A Python tool for feature selection of multiplex single-cell tropism experiments."
+readme = "README.md"
+license = "LicenseRef-Proprietary"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Kenny Pavan", email = "pavan@ohsu.edu" },
+]
+requires-python = ">=3.12"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "scanpy>=1.10.3",
+  "annsql>=1.0.4",
+  "numpy",
+  "pandas",
+  "seaborn",
+  "tables",
+  "anndata",
+  "matplotlib",
+  "scipy",
+  "scikit-learn",
+  "tqdm",
+  "biothings_client",
+  "celltypist",
+  "imbalanced-learn",
+  "minify-html",
+]
+
+[project.urls]
+Homepage = "https://github.com/ArpiarSaundersLab/tap"
+Repository = "https://github.com/ArpiarSaundersLab/tap"
+Documentation = "https://github.com/ArpiarSaundersLab/tap"
+
+[tool.setuptools]
+include-package-data = true
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tap = ["templates/*.html", "models/*"]

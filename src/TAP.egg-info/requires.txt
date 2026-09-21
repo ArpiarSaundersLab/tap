@@ -1,5 +1,5 @@
 scanpy>=1.10.3
-annsql>=1.0.0
+annsql>=1.0.4
 numpy
 pandas
 seaborn
