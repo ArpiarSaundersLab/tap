@@ -1,129 +1,69 @@
-# Releasing TAP
+# Releasing scTap
 
-This document gives a simple, repeatable release workflow for publishing the package to PyPI.
+This document gives the exact release workflow for publishing the package to PyPI.
 
-## 1. Prepare the release
+<i>Use this exact flow for a new public release.</i>
 
-Before you cut a release:
+### 1. Confirm metadata
 
-- Confirm the version is correct in [pyproject.toml](pyproject.toml).
-- Confirm the changelog notes are ready.
-- Confirm the README and install instructions match the package name and supported Python version.
-- Confirm the package builds cleanly from a fresh environment.
-- Confirm the tests pass for the release branch.
-
-## 2. Update the version
-
-Edit the package version in [pyproject.toml](pyproject.toml):
+Check that [pyproject.toml](pyproject.toml) contains:
 
 ```toml
 [project]
+name = "scTap"
 version = "0.0.2"
 ```
 
-Use semantic versioning:
-
-- `0.0.1` = initial release
-- `0.1.0` = feature release
-- `1.0.0` = stable release
-
-## 3. Create a release branch or tag
-
-On the release branch:
+Also confirm the README install instructions match:
 
 ```bash
-git checkout -b release-0.0.2
-git add .
-git commit -m "Prepare release 0.0.2"
-git tag v0.0.2
+pip install scTap
 ```
 
-## 4. Build the distribution artifacts
+### 2. Validate the build locally
 
 From the project root:
 
 ```bash
-python3 -m pip install --upgrade pip build twine
-python3 -m build
+./release.sh 0.0.2 check
 ```
 
-This creates:
+This validates the package build without uploading anything.
 
-- `dist/*.tar.gz` (source distribution)
-- `dist/*.whl` (built wheel)
-
-## 5. Validate the package locally
-
-Before uploading, test the built wheel in a fresh environment:
+### 3. Commit the release state
 
 ```bash
-python3 -m venv /tmp/tap-release-test
-source /tmp/tap-release-test/bin/activate
-pip install --upgrade pip
-pip install dist/*.whl
-python -c "import tap; print(tap.__file__)"
+git add .
+git commit -m "Prepare scTap 0.0.2"
+git push origin main
 ```
 
-Optionally run a minimal smoke test:
+### 4. Create the tag that triggers the GitHub workflow
 
 ```bash
-python - <<'PY'
-import tap
-print('tap imported successfully')
-print(getattr(tap, '__version__', 'no-version'))
-PY
-```
-
-## 6. Upload to TestPyPI (recommended)
-
-```bash
-python3 -m twine upload --repository testpypi dist/*
-```
-
-Then test installation from TestPyPI:
-
-```bash
-python3 -m venv /tmp/tap-testpypi
-source /tmp/tap-testpypi/bin/activate
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ tap
-python -c "import tap; print('installed from TestPyPI')"
-```
-
-## 7. Upload to PyPI
-
-Once the TestPyPI install works:
-
-```bash
-python3 -m twine upload dist/*
-```
-
-## 8. Push the release to GitHub
-
-```bash
-git push origin release-0.0.2
+git tag v0.0.2
 git push origin v0.0.2
 ```
 
-Then create a GitHub release from the tag and add notes.
+The workflow in [.github/workflows/publish.yml](.github/workflows/publish.yml) is configured to run on tags matching `v*`.
 
-## 9. Final checks
+### 5. Wait for GitHub Actions to publish
 
-- Confirm the package appears on PyPI.
-- Confirm README renders correctly on PyPI.
-- Confirm the install command is correct.
-- Confirm the version is correct.
-- Confirm the GitHub release is published.
+The workflow will:
 
-## Recommended release checklist
+- set up Python
+- build the package
+- publish to PyPI
 
-- [ ] Version bumped in [pyproject.toml](pyproject.toml)
-- [ ] README updated
-- [ ] Tests run successfully
-- [ ] Build succeeds
-- [ ] Wheel installs from a clean environment
-- [ ] Uploaded to TestPyPI
-- [ ] Installed successfully from TestPyPI
-- [ ] Uploaded to PyPI
-- [ ] Git tag created
-- [ ] GitHub release published
-- [ ] Documentation links checked
+### 6. Verify the release
+
+After the workflow completes, confirm that:
+
+- the package appears on PyPI as `scTap`
+- version `0.0.2` is visible
+- installation works with:
+
+```bash
+pip install scTap
+```
+
