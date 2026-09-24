@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: scTap
-Version: 0.0.5
+Version: 0.0.6
 Summary: A Python tool for feature selection of multiplex single-cell tropism experiments.
 Author-email: Kenny Pavan <pavan@ohsu.edu>
 License-Expression: LicenseRef-Proprietary
