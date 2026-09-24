@@ -51,6 +51,7 @@ parameters = {
     "genes": ["AAV1", "AAV2", "Retro", "AAV9"],
     "categories": ["cell_type"],
     "outputName": "test.html",
+	"clusterThreshold": 4,
     "excludeMarkers": True,
 }
 
